@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 15:14:45 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:26:41 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,64 @@
 
 void	ft_handler(int sig, siginfo_t *info, void *context)
 {
-	int pid;
+	int	pid;
 
 	pid = info->si_pid;
 	(void)context;
-	if(sig == SIGUSR1)
+	if (sig == SIGUSR1)
 		ft_printf("size bien recu par le serveur. Alloctation ok");
-	if(sig == SIGUSR2)
+	if (sig == SIGUSR2)
 		ft_printf("Message bien affiché par le serveur");
 }
 
-void	send_message(int pid,char *str)
+void	send_message(int pid, char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 		ft_send_int_to_pid(str[i++], pid, 100);
-	
 }
 
-int main(int argc, char **argv)
+int	ft_sigaction_init(int sig1, int sig2, struct sigaction *sa)
 {
-	struct sigaction action;
-	int	pid;
-	int	i;
+	if (sigaction(sig1, sa, NULL) == -1)
+	{
+		ft_printf("erreur\n");
+		return (1);
+	}
+	else if (sigaction(sig2, sa, NULL) == -1)
+	{
+		ft_printf("erreur\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	struct sigaction	action;
+	int					pid;
+	int					i;
 
 	i = 2;
-	if(argc == 1)
+	if (argc == 1)
 		return (1);
 	pid = ft_atoi(argv[1]);
 	action.sa_flags = SA_SIGINFO;
 	action.sa_mask = 0;
 	action.sa_sigaction = ft_handler;
-
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-
-	if(sigaction(SIGUSR1, &action, NULL) == -1 || sigaction(SIGUSR2, &action, NULL) == -1)
-    {
-        ft_printf("erreur\n");
-        return (1);
-    }
-
+	if (ft_sigaction_init(SIGUSR1, SIGUSR2, &action))
+	{
+		ft_printf("erreur\n");
+		return (1);
+	}
 	while (argv[i])
 	{
 		send_message(pid, argv[i]);
 		ft_send_end_signal(pid, 100);
-
 		i++;
 	}
 	return (0);
