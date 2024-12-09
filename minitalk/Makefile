@@ -47,4 +47,10 @@ re: clean all
 gdev:
 	cd .. && git add . && git commit -m minitalk && git push
 
+move:
+	cp -rf * ../../minitalk
+	cd ../../ && cd minitalk/
+	git add . && git commit -m minitalk && git push
+
+
 .PHONY: gdev clean all c s k
