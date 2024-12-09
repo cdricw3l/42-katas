@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:07:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:28 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:53:15 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
         }
         else 
         {
-            tmp = ft_strjoin_char(str, j);
+            tmp = ft_joint_char(str, j);
             str = tmp;
         }
         

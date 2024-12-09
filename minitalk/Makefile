@@ -10,8 +10,7 @@ SERVEURIBJS = ${SERVEURSRC:srcs/*.c=.o}
 CLIENTOBJS = ${CLIENTSRC:srcs/*.c=.o}
 
 
-TXT1= "hello "
-TXT2= "World "
+TXT1="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
 all: ${NAME}
 
@@ -20,8 +19,10 @@ s: $(NAME_S)
 	@echo Démarage du serveur $$(pgrep -n serveur)
 
 c: $(NAME_C)
-	time ./${NAME_C} $$(pgrep -n serveur) ${TXT1} ${TXT2}
-#pgrep -n serveur | xargs kill -9
+	time ./${NAME_C} $$(pgrep -n serveur) ${TXT1}
+	
+k:
+	pgrep -n serveur | xargs kill -9
 	@echo Interuption du serveur $$(pgrep -n serveur)
 
 r: k all s

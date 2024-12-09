@@ -5,58 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 14:26:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:54 by cbouhadr         ###   ########.fr       */
+/*   Created: 2024/12/09 14:51:35 by cbouhadr          #+#    #+#             */
+/*   Updated: 2024/12/09 14:52:51 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minitalk.h"
 
-void	ft_print_bit(int n)
+int	ft_strlen(char *str)
 {
-	int	bit;
+	int	i;
 
-	bit = 7;
-	while (bit >= 0)
+	i = 0;
+	if(!str)
+		return(0);
+	while (*str)
 	{
-		ft_printf("%c ", ((n >> bit) & 1) + '0');
-		bit--;
+		i++;
+		str++;
 	}
-	ft_printf("\n");
+	return (i);
 }
 
-void	ft_send_end_signal(int pid, int ms)
+void	ft_printbit(int n)
 {
-	int	bit;
+	int		bit;
+	char	c;
 
 	bit = 7;
 	while (bit >= 0)
 	{
-		usleep(ms);
-		kill(pid, SIGUSR1);
+		c = ((n >> bit) & 1) + '0';
+		write(1, &c, 1);
 		bit--;
 	}
+	printf("\n");
 }
-
-void	ft_send_int_to_pid(int n, int pid, int ms)
+char	*ft_joint_char(char *str, char c)
 {
-	int	bit;
+	int		len;
+	int		i;
+	char	*new_s;
 
-	bit = 7;
-	while (bit >= 0)
+	if (!str)
+		len = 0;
+	else
+		len = ft_strlen(str);
+	i = 0;
+	new_s = malloc(sizeof(char) * (len + 2));
+	if (!new_s)
+		return (NULL);
+	while (i < len)
 	{
-		if (((n >> bit) & 1) == 0)
-		{
-			usleep(ms);
-			kill(pid, SIGUSR1);
-			ft_printf("%d ", 0);
-		}
-		else
-		{
-			usleep(ms);
-			kill(pid, SIGUSR2);
-			ft_printf("%d ", 1);
-		}
-		bit--;
+		new_s[i] = str[i];
+		i++;
 	}
+	new_s[i++] = c;
+	new_s[i] = '\0';
+	return (new_s);
 }

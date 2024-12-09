@@ -25,9 +25,9 @@ int main(void)
 
     j = j| (1 << 3);
 
-    ft_print_bit(j);
+    //ft_print_bit(j);
     j = j| (1 << 2);
-    ft_print_bit(j);
+    //ft_print_bit(j);
     ft_printf("test realise avec succes");
 
     char *s = "hello";

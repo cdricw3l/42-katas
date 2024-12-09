@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:26:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:44:11 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:13:41 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ void	ft_send_int_to_pid(int n, int pid, int ms)
 		{
 			usleep(ms);
 			kill(pid, SIGUSR1);
-			ft_printf("%d ", 0);
 		}
 		else
 		{
 			usleep(ms);
 			kill(pid, SIGUSR2);
-			ft_printf("%d ", 1);
 		}
 		bit--;
 	}

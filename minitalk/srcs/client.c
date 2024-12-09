@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:33 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:14:45 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	send_message(int pid,char *str)
 
 	i = 0;
 	while (str[i])
-		ft_send_int_to_pid(str[i++], pid, 200);
+		ft_send_int_to_pid(str[i++], pid, 100);
 	
 }
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 	while (argv[i])
 	{
 		send_message(pid, argv[i]);
-		ft_send_end_signal(pid, 150);
+		ft_send_end_signal(pid, 100);
 
 		i++;
 	}
