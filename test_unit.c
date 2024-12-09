@@ -18,10 +18,28 @@ int main(void)
     assert(ft_strncmp(ft_strjoin_char("cb", 0), "cb", 5) == 0);
     
 
-    int i = 10;
-    ft_print_bit(i);
+  
 
-    ft_send_int_to_pid(10, 0, 100);
+
+    static int j = 0;
+
+    j = j| (1 << 3);
+
+    ft_print_bit(j);
+    j = j| (1 << 2);
+    ft_print_bit(j);
     ft_printf("test realise avec succes");
+
+    char *s = "hello";
+    char *c = NULL;
+    int i = 0;
+    while (i < 5)
+    {
+        c = ft_strjoin_char(c,s[i]);
+        i++;
+    }
+
+    printf("voici la tring %s\n", c);
+    
     return(0);
 }
