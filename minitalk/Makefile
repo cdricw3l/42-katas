@@ -52,5 +52,8 @@ move:
 	cd ../../ && cd minitalk/
 	git add . && git commit -m minitalk && git push
 
+test:
+	${CC} ${CFLAGS} test_unit.c utils_1.c -L./lib -lftprintf -lft -o test
+	./test
 
-.PHONY: gdev clean all c s k
+.PHONY: gdev clean all c s k test move
