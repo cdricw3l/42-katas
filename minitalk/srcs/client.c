@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/10 12:56:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/10 19:36:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 
 	pid = info->si_pid;
 	(void)context;
-	if (sig == SIGUSR1)
-		ft_printf("size bien recu par le serveur %d. Alloctation ok", pid);
 	if (sig == SIGUSR2)
-		ft_printf("Message bien affiché par le serveur");
+		ft_printf("Message bien affiché par le serveur %d",  pid);
 }
 
 void	send_message(int pid, char *str)
@@ -70,9 +68,10 @@ int	main(int argc, char **argv)
 	}
 	while (argv[i])
 	{
-		send_message(pid, argv[i]);
+		send_message(pid, argv[i++]);
 		ft_send_end_signal(pid, SLEEP_TIME);
-		i++;
+		usleep(100);
+		ft_printf("second message");
 	}
 	return (0);
 }

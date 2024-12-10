@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:51:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:52:51 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:33:09 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_printbit(int n)
-{
-	int		bit;
-	char	c;
-
-	bit = 7;
-	while (bit >= 0)
-	{
-		c = ((n >> bit) & 1) + '0';
-		write(1, &c, 1);
-		bit--;
-	}
-	printf("\n");
-}
 char	*ft_joint_char(char *str, char c)
 {
 	int		len;
@@ -63,4 +49,16 @@ char	*ft_joint_char(char *str, char c)
 	new_s[i++] = c;
 	new_s[i] = '\0';
 	return (new_s);
+}
+
+char	*ft_clean_alloc(char *old_ptr, int c)
+{
+	char *new_str;
+	
+	new_str = ft_joint_char(old_ptr, c);
+	if(!new_str)
+		return(NULL);
+	if (old_ptr)
+		free(old_ptr);
+	return(new_str);
 }
