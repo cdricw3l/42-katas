@@ -9,7 +9,7 @@ LIB_FILE = 	ft_isset.o ft_toupper.o
 LIBFT_F = srcs/ft_isset.o srcs/ft_toupper.o 
 SRCS = ${wildcard srcs/*.c}
 
-OBJS = ${SRCS:.c=.o}
+OBJS = ${SRCS:srcs/%.c=srcs/%.o}
 
 all: ${NAME}
 

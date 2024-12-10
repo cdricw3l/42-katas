@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmp_int.c                                       :+:      :+:    :+:   */
+/*   ft_isset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 14:09:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 16:50:41 by cw3l             ###   ########.fr       */
+/*   Created: 2024/12/09 16:42:12 by cw3l              #+#    #+#             */
+/*   Updated: 2024/12/09 16:52:30 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-int	ft_cmp_int(void *p1, void *p2)
+int	ft_isset(char c, const char *set)
 {
-	int	v1;
-	int	v2;
+	int	i;
 
-	v1 = *(int *)(p1);
-	v2 = *(int *)(p2);
-	return (v1 - v2);
+	i = 0;
+	if (!set)
+		return (0);
+	while (set[i])
+	{
+		if (c == set[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

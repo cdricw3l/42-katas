@@ -44,6 +44,7 @@ SRCS=	ft_putchar_fd.c \
 		ft_swap_ptr.c \
 		ft_is_sort.c \
 		ft_random_int.c \
+		ft_isset.c \
 
 BONUS=	ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 15:26:41 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:33:26 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 	pid = info->si_pid;
 	(void)context;
 	if (sig == SIGUSR1)
-		ft_printf("size bien recu par le serveur. Alloctation ok");
+		ft_printf("size bien recu par le serveur %d. Alloctation ok", pid);
 	if (sig == SIGUSR2)
 		ft_printf("Message bien affiché par le serveur");
 }

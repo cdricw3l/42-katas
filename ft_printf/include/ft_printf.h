@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:45:57 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/10/25 01:36:15 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:57:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_put_nbr_uns(unsigned int nb, int fd, int acc);
 int	ft_putnbr(int nb, int fd, int acc);
 int	ft_print_ptr(void *ptr, int fd);
 int	ft_printf(const char *format, ...);
-int	ft_isset(char c, char *set);
+int	ft_isset(char c, const char *set);
 int	ft_toupper(int c);
 int	ft_putnbr_hex(int nb, int fd, char k);
 

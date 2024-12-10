@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_random_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:51:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/11/29 12:33:02 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:34:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void ft_generate_number(int *arr, int size)
 {
     int i;
     int random_num;
-    int random_mem;
 
     i = 0;
-    random_mem = 0;
     while (i < size)
     {
        random_num =  random() % size + 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:34:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:55:22 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:44:31 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define MINITALK_H
 
 #include "ft_printf.h"
-
 #include "libft.h"
 
 #include <unistd.h>

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/11/29 11:57:17 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:52:45 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include<unistd.h>
-# include<stdlib.h>
-# include<stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 //Partie 1
 int		ft_isalpha(int c);
@@ -72,6 +72,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // personal add
+int		ft_isset(char c, const char *set);
 void	ft_swap_ptr(void *p1, void *p2, int len);
 int		ft_cmp_char(void *p1, void *p2);
 int		ft_cmp_int(void *p1, void *p2);
@@ -79,6 +80,6 @@ void	ft_swap_ptr(void *p1, void *p2, int size);
 void	ft_bubble_sort(void *arr, int nb, int t,
 			int (*cmp)(void *p1, void *p2));
 int		ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
-void 	ft_generate_number(int *arr, int size);
+void	ft_generate_number(int *arr, int size);
 
 #endif
