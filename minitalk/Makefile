@@ -10,8 +10,10 @@ CLIENTSRC =	srcs/client.c srcs/utils/string_utils.c srcs/utils/bit_utils.c
 
 TXT1 = "HELLO"
 TXT2 = "WORLD"
+TXT3 = "Connard"
 
-all: ${NAME}
+
+all: ${NAME_S} ${NAME_C}
 
 #run server
 s: $(NAME_S)
@@ -20,7 +22,7 @@ s: $(NAME_S)
 
 #run client
 c: $(NAME_C)
-	time ./${NAME_C} $$(pgrep -n serveur) ${TXT1} ${TXT2}
+	time ./${NAME_C} $$(pgrep -n serveur) ${TXT1} ${TXT2} ${TXT3}
 #kill serveur
 k:
 	@pgrep -n serveur | xargs kill -SIGTERM
@@ -36,9 +38,11 @@ $(NAME_C) :
 
 $(NAME) : ${NAME_C} ${NAME_S}
 
+
 clean: k
 	rm -f *.o
 	rm -rf *.dSYM
+	rm -f unit_test/test
 	
 fclean: clean	
 	rm -f ${NAME_C}
@@ -55,7 +59,7 @@ move:
 	git add . && git commit -m minitalk && git push
 
 test:
-	${CC} ${CFLAGS} unit_test/test_unit.c srcs/utils/string_utils.c srcs/utils/bit_utils.c -L./lib -lftprintf -lft -o test
-	./test
+	${CC} ${CFLAGS} unit_test/test_unit.c unit_test/test_utils.c  srcs/utils/string_utils.c srcs/utils/bit_utils.c -L./libftprintf -lftprintf -L./libft -lft -o unit_test/test
+	./unit_test/test
 
 .PHONY: gdev clean all c s k test move

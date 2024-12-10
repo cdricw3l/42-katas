@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:07:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/10 19:41:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/10 21:51:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 	int pid_client;
     (void)context;
     static char *str;
-    static int bit = 7;
+    static int bit = 15;
     static int j = 0;
 
     if(sig == 31)
@@ -39,7 +39,7 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
         if(j != 0xFF)
             str = ft_clean_alloc(str, j);
         j = 0;
-        bit = 7;
+        bit = 15;
     }
 }
 

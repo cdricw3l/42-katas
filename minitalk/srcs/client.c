@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/10 19:36:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/10 19:46:09 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 void	send_message(int pid, char *str)
 {
 	int	i;
-
+	
 	i = 0;
 	while (str[i])
 		ft_send_int_to_pid(str[i++], pid, SLEEP_TIME);
