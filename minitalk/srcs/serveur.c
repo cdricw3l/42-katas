@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   serveur.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:07:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 14:53:15 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:48:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
         {
             ft_printf("%s\n", str);
             kill(pid_client, SIGUSR2);
-            usleep(120);
-            free(str);
+            usleep(SLEEP_TIME);
             str = NULL;
+            free(str);
         }
         else 
         {
@@ -50,13 +50,18 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 int main(void)
 {
     struct sigaction action;
+    sigset_t set;
     pid_t pid_serveur;
 
-    action.sa_sigaction = ft_handler;
-    action.sa_flags = SA_SIGINFO;
-    action.sa_mask = 0;
-    pid_serveur = getpid();
+    sigemptyset(&set);
+    sigaddset(&set, SIGINT);
 
+    ft_printf("%d\n",set);
+    action.sa_sigaction = ft_handler;
+    action.sa_mask = set;
+    action.sa_flags = SA_SIGINFO;
+    
+    pid_serveur = getpid();
     ft_printf("PID du serveur : %d\n",pid_serveur);
     
     if(sigaction(SIGUSR1, &action, NULL) == -1 || sigaction(SIGUSR2, &action, NULL) == -1)

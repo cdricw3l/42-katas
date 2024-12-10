@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/09 16:33:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/10 12:56:29 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	send_message(int pid, char *str)
 
 	i = 0;
 	while (str[i])
-		ft_send_int_to_pid(str[i++], pid, 100);
+		ft_send_int_to_pid(str[i++], pid, SLEEP_TIME);
 }
 
 int	ft_sigaction_init(int sig1, int sig2, struct sigaction *sa)
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	while (argv[i])
 	{
 		send_message(pid, argv[i]);
-		ft_send_end_signal(pid, 100);
+		ft_send_end_signal(pid, SLEEP_TIME);
 		i++;
 	}
 	return (0);

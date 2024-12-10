@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:34:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/10 09:44:31 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/10 12:56:51 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <signal.h>
+
+#define SLEEP_TIME 40
 
 int	    ft_strlen(char *str);
 char    *ft_joint_char(char *str, char c);
