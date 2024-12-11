@@ -1,19 +1,15 @@
 CC= cc 
-CFLAGS= -Werror -Wextra -Wall -fsanitize=address -g
+CFLAGS= -Werror -Wextra -Wall -fsanitize=address -g3
 NAME_S= serveur
 NAME_C= client 
 NAME= minitalk
 SERVEURSRC = srcs/serveur.c srcs/utils/string_utils.c srcs/utils/bit_utils.c
 CLIENTSRC =	srcs/client.c srcs/utils/string_utils.c srcs/utils/bit_utils.c
 
-
-
 TXT1 = "HELLO"
 TXT2 = "WORLD"
-TXT3 = "Connard"
 
-
-all: ${NAME_S} ${NAME_C}
+all: ${NAME} 
 
 #run server
 s: $(NAME_S)
@@ -31,13 +27,12 @@ k:
 r: k all s
 #Serveur
 $(NAME_S) : 
-	@${CC} ${CFLAGS} ${SERVEURSRC} -L./libftprintf -lftprintf -L./libft -lft  -o ${NAME_S}
+	${CC} ${CFLAGS} ${SERVEURSRC} -L./libftprintf -lftprintf -L./libft -lft  -o ${NAME_S}
 #Client
 $(NAME_C) : 
 	${CC} ${CFLAGS} ${CLIENTSRC} -L./libftprintf -lftprintf -L./libft -lft  -o ${NAME_C}
 
-$(NAME) : ${NAME_C} ${NAME_S}
-
+$(NAME) :  ${NAME_S} ${NAME_C}
 
 clean: k
 	rm -f *.o
@@ -62,4 +57,4 @@ test:
 	${CC} ${CFLAGS} unit_test/test_unit.c unit_test/test_utils.c  srcs/utils/string_utils.c srcs/utils/bit_utils.c -L./libftprintf -lftprintf -L./libft -lft -o unit_test/test
 	./unit_test/test
 
-.PHONY: gdev clean all c s k test move
+.PHONY: gdev clean fclean re all c s k test move
