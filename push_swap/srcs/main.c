@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/13 16:35:22 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:45:29 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,13 @@ void	ft_push_swap(int *a, int len)
 	{
 		value_min =  get_low(a, len);
 		value_max =  get_high(a, len);
-		pivot = (value_max - value_min) / 2;
+		pivot = value_min;
 		while (ft_find_cible(a, pivot, len) != -1 && ft_size_of_array(a) > 3)
 		{
 			int i = ft_find_cible(a, pivot, len);
-			printf("voici la cible %d\n", a[i]);
-			printf("voici le pivot %d\n", pivot);
-			if(i > len - 1 / 2)
+			if(i > len + 1 / 2)
 			{
-				int j = len - i;
+				int j = len - i - 1;
 				while ( j != 0)
 				{
 					ft_rotate(a, 'a');
@@ -75,11 +73,16 @@ void	ft_push_swap(int *a, int len)
 			pivot = a[i];
 			ft_push_b(b, a);
 		}
-		printf("deuxieme passage\n");
-		ft_print_arr(b);
-		ft_print_arr(a);
-
 	}
+	ft_two_or_tree_args(a, 3);
+	int i = 0;
+	while (b[i])
+	{
+		ft_push_b(a, b);
+		i++;
+	}
+	ft_print_arr(a);
+	
 }
 
 int	main(int argc, char **argv)

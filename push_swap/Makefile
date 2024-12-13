@@ -34,7 +34,7 @@ lib:
 
 libft-update:
 	rm -rf libft
-	cp -r ../42-katas/libft .
+	cp -r ../libft .
 	cd libft && make bonus && make clean
 
 copy-swap:

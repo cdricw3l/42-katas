@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:02:02 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/13 16:19:14 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:36:54 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void    ft_two_or_tree_args(int *arr, int len)
 		if(arr[0] > arr[1])
 			ft_swap(arr, 0, 1, 'a');
 		if(arr[2] < arr[0])
-			ft_reverse_rotate(arr, 'a');
+			ft_rotate(arr, 'a');
 		if(arr[1] > arr[2])
 		{
 			ft_reverse_rotate(arr, 'a');
