@@ -94,4 +94,9 @@ test: r
 t:  test
 	./${NAME_TEST}
 
-.phony: clean fclean re all bonus
+gdev:
+	cd .. && git add .
+	git commit -m $(NAME)/$(DATE) 
+	git push
+
+.phony: clean fclean re all bonus gdev
