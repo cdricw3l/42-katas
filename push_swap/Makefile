@@ -24,7 +24,7 @@ fclean: clean
 re: fclean all
 
 gdev:
-	git add .
+	cd .. && git add .
 	git commit -m $(NAME)/$(DATE) 
 	git push
 
