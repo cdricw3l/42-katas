@@ -6,11 +6,27 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 18:48:45 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/13 18:57:45 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/14 04:48:32 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	get_max_value(int *arr, int size)
+{
+	int	i;
+	int	high;
+
+	i = 1;
+	high = arr[0];
+	while (i < size)
+	{
+		if (arr[i] > high)
+			high = arr[i];
+		i++;
+	}
+	return (high);
+}
 
 void    ft_radix_sort(int *arr, int len)
 {
@@ -32,9 +48,10 @@ void    ft_radix_sort(int *arr, int len)
 
 int main()
 {
-    int arr[] = {3,1,10,2,24};
+    int arr[] = {3,1,10000,2,24};
     int len = sizeof(arr) / sizeof(arr[0]);
 
-    ft_radix_sort(arr, len);
+    //ft_radix_sort(arr, len);
+    printf("voici la valeur max %d\n", get_max_value(arr,len));
     return (0);
 }
