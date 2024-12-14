@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/13 12:23:15 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/14 12:18:56 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *s);
-void	*ft_memset(void *b, int c, size_t len);
-void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *b, int c, size_t len, size_t type);
+void	ft_bzero(void *s, size_t n, size_t type);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize); // a revoir
@@ -86,5 +86,8 @@ void	ft_print_bit_16(int n);
 void	ft_print_bit_32(int n);
 void	ft_print_bit_64(int n);
 int		ft_index_of(int *arr, int len, int n);
+void 	ft_generate_number(int *arr, int size);
+int		ft_get_max_value(int *arr, int size);
+
 
 #endif

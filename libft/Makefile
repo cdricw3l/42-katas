@@ -50,6 +50,7 @@ SRCS=	ft_putchar_fd.c \
 		ft_print_bit_32.c \
 		ft_print_bit_64.c \
 		ft_index_of.c \
+		ft_get_max_value.c \
 
 BONUS=	ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
