@@ -59,3 +59,30 @@ arr[] = {10, 2, 11, 24, 243, 100 ,34}
 arr[] = {10, 2, 11, 24, 243, 100 ,34}
                 |   |    |
                 i   p    j
+
+arr[] = {10, 2, 11, 24, 243, 100 ,34}
+                    |    
+                    p
+                    i
+                    j
+Fin de boucle.
+
+Ici, la fonction de partion renvoie l'index du pivot.
+Les deux sous ensemble:
+
+sub1[] = {10, 2, 11, 24}
+sub2[] = {243, 100, 34}
+
+shemas de recursivité:
+
+[7, 2, 1, 6, 8, 5, 3, 4] (pivot = 6)  <-- 1
+├── [2, 1, 3, 4, 5] (pivot = 3)       <-- 2
+│   ├── [2, 1] (pivot = 1)            <-- 3
+│   │   ├── [] (terminé)              <-- 4
+│   │   └── [2] (terminé)             <-- 5
+│   └── [4, 5] (pivot = 5)            <-- 6
+│       ├── [4] (terminé)             <-- 7
+│       └── [] (terminé)              <-- 8
+└── [8, 7] (pivot = 7)                <-- 9
+    ├── [] (terminé)                  <-- 10
+    └── [8] (terminé)                 <-- 11
