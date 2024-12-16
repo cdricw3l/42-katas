@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 10:56:43 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 12:00:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/16 13:07:01 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void countSort(int arr[], int n, int exp)
 	// Build the output array
 	for (i = n - 1; i >= 0; i--) {
 		output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+		printf("voici l'index %d et %d\n", ((arr[i] / exp) % 10) - 1 , count[(arr[i] / exp) % 10] - 1);
 		count[(arr[i] / exp) % 10]--;
 	}
     ft_print(output, 10);
