@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/13 18:45:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/15 12:53:06 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,32 +82,32 @@ void	ft_push_swap(int *a, int len)
 		i++;
 	}
 	ft_print_arr(a);
-	
+	(void)value_max;
 }
 
-int	main(int argc, char **argv)
-{
-	int	len;
-	int	*arr;
-	int	tx;
+// int	main(int argc, char **argv)
+// {
+// 	int	len;
+// 	int	*arr;
+// 	int	tx;
 
-	arr = NULL;
-	// if (argc < 2)
-	// 	return (ft_print_error());
-	// len = number_of_int(&argv[1]);
-	// tx = ft_init_progr(&argv[1], &arr);
-	// if (tx == -1)
-	// 	return (ft_print_error());
-	// else
-	// {
-	// 	if (len == 2 || len == 3)
-	// 		ft_two_or_tree_args(arr, len);
-	// 	else
-	// 		ft_push_swap(arr, len);
-	// }
+// 	arr = NULL;
+// 	// if (argc < 2)
+// 	// 	return (ft_print_error());
+// 	// len = number_of_int(&argv[1]);
+// 	// tx = ft_init_progr(&argv[1], &arr);
+// 	// if (tx == -1)
+// 	// 	return (ft_print_error());
+// 	// else
+// 	// {
+// 	// 	if (len == 2 || len == 3)
+// 	// 		ft_two_or_tree_args(arr, len);
+// 	// 	else
+// 	// 		ft_push_swap(arr, len);
+// 	// }
 
-	int tab[] = {2, 5, 7, 9, 3, 1, 4, 6, '\0'};
-	ft_print_arr(tab);
-	ft_push_swap(tab, 9);
-	return (0);
-}
+// 	int tab[] = {2, 5, 7, 9, 3, 1, 4, 6, '\0'};
+// 	ft_print_arr(tab);
+// 	ft_push_swap(tab, 9);
+// 	return (0);
+// }

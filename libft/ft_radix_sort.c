@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 18:48:45 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/14 17:31:36 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/15 19:21:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_arr_of_count_digt(int *arr, int *arr_count, int len, int exp)
 	{
 		while (i < len)
 		{
-			//printf("value %d , arr[i]/10 %d\n", arr[i] ,arr[i] / exp);
 			if (arr[i] / exp > 0)
 			{
 				digit = (arr[i] / exp) % 10;
@@ -86,9 +85,8 @@ void	ft_count_sort(int *arr, int *tmp, int len, int exp)
 	ft_bzero(cumulatif_arr,10, sizeof(int));
 	ft_arr_of_count_digt(arr, count_digit, len, exp);
 	ft_cumulatif_arr(count_digit, cumulatif_arr, 10);
-	while (--len >= 1)
+	while (len >= 1)
 	{
-		
 		digit = (tmp[len - 1] / exp) % 10;
 		index = cumulatif_arr[digit] - 1;
 		cumulatif_arr[digit]--;
@@ -112,9 +110,7 @@ void	ft_radix_sort(int *arr, int len)
 	ft_copy_arr_int(arr, tmp, len);
 	while (max_value / exp > 0)
 	{
-		printf("deuxieme passage %d\n", max_value / exp);
 		ft_count_sort(arr, tmp, len, exp);
-		ft_print(arr, 10);
 		exp *= 10;
 	}
 }
@@ -122,12 +118,61 @@ void	ft_radix_sort(int *arr, int len)
 int main(void)
 {
 	int arr[10] = {4, 7, 8, 6, 3, 10, 2, 9, 1, 5};
+	int	count_digit[10];
+	int	cumulatif_arr[10];
 	
 	int *tmp;
 	tmp = malloc(10 * sizeof(int));
 	if (!tmp)
 		return 1;
-	ft_radix_sort(arr, 10);
+	//ft_radix_sort(arr, 10);
+
+	ft_arr_of_count_digt(arr,count_digit,10,1);
+	ft_cumulatif_arr(count_digit, cumulatif_arr, 10);
+	ft_print(count_digit, 10);
+	ft_print(cumulatif_arr, 10);
+
+	int len = 10;
+	int digit;
+	int index;
+	ft_copy_arr_int(arr,tmp,10);
+
+	while (len >= 1)
+	{
+		
+		digit = (tmp[len - 1] / 1) % 10;
+		printf("voici le digit %d\n", digit);
+		index = cumulatif_arr[digit] - 1;
+		cumulatif_arr[digit]--;
+		arr[index] = tmp[len - 1];
+		len--;
+	}
+	ft_print(arr, 10);
+	printf("\n seconde passe \n");
+
+	ft_bzero(count_digit,10,4);
+	ft_bzero(cumulatif_arr,10,4);
+	ft_arr_of_count_digt(arr,count_digit,10,1);
+	ft_cumulatif_arr(count_digit, cumulatif_arr, 10);
+	ft_print(count_digit, 10);
+	ft_print(cumulatif_arr, 10);
+
+	len = 10;
+	ft_copy_arr_int(arr,tmp,10);
+	
+	while (len >= 1)
+	{
+		
+		digit = (tmp[len - 1] / 10) % 10;
+		printf("voici le digit %d\n", digit);
+		if(digit > 0)
+		{
+			index = cumulatif_arr[digit] - 1;
+			cumulatif_arr[digit]--;
+			arr[index] = tmp[len - 1];
+		}
+		len--;
+	}
 	ft_print(arr, 10);
 
 

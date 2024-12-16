@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:27:27 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/13 16:17:09 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/15 12:52:08 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	ft_reverse_rotate(int *stack, char c)
 	int	tmp;
 	int	i;
 	int	len;
-	int	j;
+	//int	j;
 
 	len = ft_size_of_array(stack) - 1;
-	j = len;
+	//j = len;
 	if (stack)
 	{
 		i = 0;

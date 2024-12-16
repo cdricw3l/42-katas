@@ -86,3 +86,7 @@ shemas de recursivité:
 └── [8, 7] (pivot = 7)                <-- 9
     ├── [] (terminé)                  <-- 10
     └── [8] (terminé)                 <-- 11
+
+
+1 = 1
+2
