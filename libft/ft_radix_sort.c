@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 21:43:01 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/16 21:43:45 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void ft_radix_sort(int *arr, int len)
 		return ; 
 	while (max / exp > 0)
 		ft_sort(arr, tmp ,len, exp *= 10);
+	free(tmp);
 }
 
 int main()
