@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 18:48:45 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 14:45:12 by cw3l             ###   ########.fr       */
+/*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
+/*   Updated: 2024/12/16 20:26:50 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-void	ft_print(int *arr, int len)
+void ft_print(int *arr, int len)
 {
 	int i;
 
@@ -22,99 +22,81 @@ void	ft_print(int *arr, int len)
 		printf("%d ", arr[i]);
 		i++;
 	}
-	printf("\n");
-	
 }
 
-void	ft_copy_arr_int(int *arr, int *tmp, int len)
+int ft_get_max(int *arr, int len)
 {
 	int i;
+	int max;
 
 	i = 0;
-	while (i <  len)
+	if (!arr || len == 0)
+		return (-1);
+	while(i < len)
 	{
-		tmp[i] = arr[i];
+		if(arr[i] > max)
+			max = arr[i];
 		i++;
 	}
+	return(max);
 }
-
-void	ft_arr_of_count_digt(int *arr, int *arr_count, int len, int exp)
+void ft_sort(int *arr, int *tmp, int len, int exp)
 {
-	int	i;
-	int	digit;
+	int i;
+	int digit;
+	int cumulatif_arr[10] = {0};
 
 	i = 0;
-	if (arr && len > 0)
+
+	//etape 1 etablire le compte pour chaque digit.
+	while (i < len)
 	{
-		while (i < len)
-		{
-			digit = (arr[i] / exp) % 10;
-			arr_count[digit]++;
-			i++;
-		}
+		digit = (tmp[i] / exp) % 10;
+		cumulatif_arr[digit]++;
+		i++;
 	}
+	ft_print(cumulatif_arr, 10);
+
+	// etablire le tableau cumulatif;
+	printf("\n");
 	i = 1;
 	while (i < len)
 	{
-		arr_count[i] += arr_count[i - 1];
+		cumulatif_arr[i] = cumulatif_arr[i] + cumulatif_arr[i - 1];
 		i++;
 	}
-	ft_print(arr_count, 10);
+	ft_print(cumulatif_arr, 10);
+	printf("\n");
+	
+	(void)arr;
+	
 }
 
-void	ft_count_sort(int *arr, int *tmp, int len, int exp)
+void ft_radix_sort(int *arr, int len)
 {
-	int	cumulatif_arr[10] = {0};
-	int digit;
+	int exp;
+	int max;
+	int *tmp;
 
-	//ft_bzero(cumulatif_arr,10, sizeof(int));
-	ft_arr_of_count_digt(arr, cumulatif_arr, len, exp);
-	while (len > 0)
+	exp = 1;
+	max = ft_get_max(arr, len);
+	tmp = arr;
+	if (max == -1)
+		return ; 
+	while (max / exp > 0)
 	{
-		// printf("voici le digit %d et la taille %d et le count %d\n", digit, len, count);
-		digit = (arr[len - 1] / exp) % 10;
-		printf("%d\n", cumulatif_arr[digit] - 1);
-		printf("le digit : %d, len %d et arr[0] %d etz exp %d\n",arr[len - 1], len, cumulatif_arr[digit], exp);
-		arr[cumulatif_arr[digit] - 1] = tmp[len - 1];
-		// if(exp == 1000)
-		// 	ft_print(cumulatif_arr,10);
-		cumulatif_arr[digit]--;
-		len--;
-	}
-	free(tmp);
-}
-
-void	ft_radix_sort(int *arr, int len)
-{
-	int	exp;
-	int	max_value;
-	int	*tmp;
-
-	exp = 10;
-	max_value = ft_get_max_value(arr, len);
-	tmp = malloc(len * sizeof(int));
-	if (!tmp)
-		return ;
-	ft_copy_arr_int(arr, tmp, len);
-	while (max_value / exp > 0)
-	{
-		ft_count_sort(arr, tmp, len, exp);
+		ft_sort(arr, tmp, len, exp);
+		printf("\n");
 		exp *= 10;
 	}
+	//sft_print(arr, len);
 }
 
-int main(void)
+int main()
 {
-	int arr[] = {1000, 1, 200, 3, 44, 5, 650, 7, 8, 9};
-	ft_radix_sort(arr, 10);
-	//ft_arr_of_count_digt(arr, arr_count, 10, 1000);
-	ft_print(arr, 10);
+	int arr[] = {100, 1000, 1, 33, 54, 77, 3455};
+	int len = sizeof(arr) / sizeof(arr[0]);
 
-	// int	count_digit[10];
-	// int	cumulatif_arr[10];
-
-	// ft_arr_of_count_digt(arr, count_digit,10, 10);
-	// ft_print(count_digit, 10);
-	// ft_cumulatif_arr(count_digit,cumulatif_arr,10);
-
+	ft_radix_sort(arr, len);
+	return(0);
 }
