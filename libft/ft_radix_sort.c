@@ -6,16 +6,13 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 22:15:49 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/16 22:16:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
-#include <strings.h>
 
-#define SIZE 100
 
 void ft_print_arr(int *arr, int len)
 {
