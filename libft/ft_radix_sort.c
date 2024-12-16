@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 21:43:45 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/16 22:15:49 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include "libft.h"
 #include <strings.h>
+
+#define SIZE 100
 
 void ft_print_arr(int *arr, int len)
 {
@@ -85,7 +87,7 @@ void ft_sort(int *arr, int *tmp ,int len, int exp)
 	int cumulatif_arr[10];
 
 	// etape zero, mettre a initialiser a zero le tableau cumulatif.
-	ft_bzero(cumulatif_arr, len, 4);
+	ft_bzero(cumulatif_arr, 10 * 4);
 	//etape 1 etablire le compte pour chaque digit.
 	ft_count_digit(arr, cumulatif_arr, len, exp);
 	ft_cumulatif_arr(cumulatif_arr);
@@ -120,10 +122,22 @@ void ft_radix_sort(int *arr, int len)
 
 int main()
 {
-	int arr[] = {100, 1000, 1, 33, 54, 77, 3455};
+	int arr[123] = {
+        100, 1000, 1, 33, 54, 77, 3455, 22, 55, 63, 112, 210, 500, 781, 900, 1234, 5678, 4321, 8765,
+        10000, 2, 5000, 111, 201, 341, 442, 543, 632, 732, 832, 934, 103, 2100, 5001, 6400, 7500, 8230, 
+        9300, 10111, 1199, 2340, 4560, 6789, 8321, 9456, 10500, 1500, 2500, 3500, 4500, 5500, 6512, 7523, 
+        8534, 9545, 10656, 11767, 12878, 13989, 15012, 16123, 17234, 18345, 19456, 20567, 21678, 22789, 
+        23890, 24901, 26012, 27123, 28234, 29345, 30456, 31567, 32678, 33789, 34890, 35901, 37012, 38123, 
+        39234, 40345, 41456, 42567, 43678, 44789, 45890, 46901, 48012, 49123, 50234, 51345, 52456, 53567, 
+        54678, 55789, 56890, 57901, 59012, 60123, 61234, 62345, 63456, 64567, 65678, 66789, 67890, 68901, 
+        70012, 71123, 72234, 73345, 74456, 75567, 76678, 77789, 78890, 79901, 81012, 82123, 83234, 84345
+    };
 	int len = sizeof(arr) / sizeof(arr[0]);
 
+	
 	ft_radix_sort(arr, len);
 	ft_print_arr(arr, len);
+	if(ft_is_sort(arr,123,4,ft_cmp_int))
+		printf("vle tableau est bien trié\n");
 	return(0);
 }
