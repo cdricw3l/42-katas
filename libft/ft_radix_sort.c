@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 20:26:50 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/16 20:30:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void ft_sort(int *arr, int *tmp, int len, int exp)
 {
 	int i;
 	int digit;
+	//int h;
 	int cumulatif_arr[10] = {0};
 
 	i = 0;
@@ -67,9 +68,16 @@ void ft_sort(int *arr, int *tmp, int len, int exp)
 	}
 	ft_print(cumulatif_arr, 10);
 	printf("\n");
+	// h = len - 1;
+	// while (h >= 0)
+	// {
+	// 	digit = (tmp[h] / exp) % 10;
+
+	// }
 	
+
+	// processer
 	(void)arr;
-	
 }
 
 void ft_radix_sort(int *arr, int len)
