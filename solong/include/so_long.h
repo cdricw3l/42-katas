@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/17 14:42:17 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:44:13 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include "../mlx_linux/mlx.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdlib.h>
+# include <fcntl.h>
 
 
 #endif

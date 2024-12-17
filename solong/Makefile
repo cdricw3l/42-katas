@@ -21,7 +21,7 @@ fclean: clean
 
 re: clean fclean ${NAME}
 
-gdev: copy
+gdev: 
 	git add .
 	git commit -m ${NAME}
 	git push
