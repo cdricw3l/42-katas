@@ -81,3 +81,9 @@ A la seconde evaluation, exp = 10. 243 / 10 > 0 donc 2eme passage.
 A la troisieme evaluation, exp = 1000. 243 / 1000 < 0 donc fin de boucle.
 
 Le tableau devrait etre trié.
+
+
+# NOTA BENE
+
+## Bien initialiser le tableau cumulatif a zero. En effet le tableau pourais contenir des valeur residuel en memoire.
+

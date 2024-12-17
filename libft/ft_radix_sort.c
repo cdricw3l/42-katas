@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 19:32:15 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/16 22:16:27 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/17 08:32:54 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,15 @@ int main()
 
 	
 	ft_radix_sort(arr, len);
-	ft_print_arr(arr, len);
+	//ft_print_arr(arr, len);
 	if(ft_is_sort(arr,123,4,ft_cmp_int))
 		printf("vle tableau est bien trié\n");
+
+	int p =  10;
+	int q = -10;
+
+	ft_print_bit_8(p);
+	ft_print_bit_8(q);
+	
 	return(0);
 }
