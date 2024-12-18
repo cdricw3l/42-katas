@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 17:47:17 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/18 07:08:00 by cw3l             ###   ########.fr       */
+/*   Created: 2024/12/18 08:27:46 by cbouhadr          #+#    #+#             */
+/*   Updated: 2024/12/18 08:59:03 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	fill_arr()
+{
+	
+}
 
 
-// void flood_fill(char **tab, t_point size, t_point begin)
-// {
-//     int target;
+void flood_fill(char **tab, t_point *size, t_point begin)
+{
+    int target;
 
-//     target = tab[begin.y][begin.x];
-//     printf("target : %d\n", target);
-// }
+    target = tab[begin.y][begin.x];
+    printf("target : %c, la haute %d et la largeur %d\n", target, size->y, size->x);
+	//fill_arr(tab, size, target);
+	
+}
 
 
 char **make_area(char *zone[], t_point *size)
@@ -63,11 +69,12 @@ char **make_area(char *zone[], t_point *size)
 	}
 	return(area);
 }
+
 int main(void)
 {
 	char **area;
 	t_point size = {8, 5};
-	//t_point begin = {2, 2};
+	t_point begin = {2, 2};
 	char *zone[] = {
 		"1 1 1 1 1 1 1 1",
 		"1 0 0 0 1 0 0 1",
@@ -93,8 +100,6 @@ int main(void)
 		printf("\n");
 		i++;
 	}
-	//flood_fill(area, size, begin);
-	//putc('\n');
-	//print_tab(area);
+	flood_fill(area, &size, begin);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/16 21:49:45 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/18 08:21:36 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,11 @@ int		ft_index_of(int *arr, int len, int n);
 void 	ft_generate_number(int *arr, int size);
 int		ft_get_max_value(int *arr, int size);
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	
+} t_point;
 
 #endif
