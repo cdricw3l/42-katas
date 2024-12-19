@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/19 17:07:52 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:41:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 int ft_manage_keyboard(int keycode, t_data *data)
 {
-    printf("voici le keycode %d\n", keycode);
-    printf("pointeur mlx : %p, pointeur windows %p\n",data->mlx, data->window);
+    static int counter = 0;
+
+    if(keycode == 97 || keycode == 100 || keycode == 115 || keycode == 119)
+    {
+        counter++;
+        printf("compteur : %d\n", counter);
+    }    
+    printf("keycode : %d\n", keycode);
+    //printf("pointeur mlx : %p, pointeur windows %p\n",data->mlx, data->window);
     if( keycode == 65307)
     {
         mlx_destroy_window(data->mlx, data->window);
