@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:08:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 14:16:25 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:44:07 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 void    ft_display_data_info(t_data *data)
 {

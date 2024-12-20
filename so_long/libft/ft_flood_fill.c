@@ -3,39 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:27:46 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 08:24:26 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 20:00:41 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fill_arr(char **tab, int target,t_point *size, int col, int row)
+void	counter(void)
 {
-	if(col < 0 || col > size->y || row > 0 ||  row  >= size->x )
+	static int counter;
+
+	counter++;
+	printf("voici le counter %d\n", counter);
+}
+
+
+void	fill_arr(char **tab, char **tmp, int target,t_point *size, int col, int row)
+{
+	if(col < 0 || row >= size->row || row < 0 ||  col  >= size->col )
 		return ;
 		
-	if(tab[col][row] == 'F' || tab[col][row] != target)
+	if(tab[row][col] == 'F' || (tab[row][col] != target && tab[row][col] != 'C' ))
 		return ;
 
-	tab[col][row] = 'F';
+	if(tab[row][col] == 'C')
+	{
+		if(tmp[row][col] != 'X')
+		{
+			counter();
+			tmp[row][col] = 'X';
+			printf("item row %d,  col %d\n", row, col);
+		}
+	}
+	else
+		tab[row][col] = 'F';
 
-	fill_arr(tab, target, size, col, row - 1);
-	fill_arr(tab, target, size, col, row + 1);
-	fill_arr(tab, target, size, col - 1, row);
-	fill_arr(tab, target, size, col + 1, row);
+	fill_arr(tab, tmp ,target, size, col, row - 1);
+	fill_arr(tab, tmp ,target, size, col, row + 1);
+	fill_arr(tab, tmp ,target, size, col - 1, row);
+	fill_arr(tab, tmp ,target, size, col + 1, row);
 }
 
 
 void flood_fill(char **tab, t_point *size, t_point begin)
 {
     int target;
+	char **tmp;
 
-    target = tab[begin.y][begin.x];
-    printf("target : %c, la haute %d et la largeur %d\n", target, size->y, size->x);
-	fill_arr(tab, size, target, begin.y, begin.x);
+	tmp = tab;
+    target = tab[begin.row][begin.col];
+    printf("target : %c, la haute %d et la largeur %d\n", target, size->col, size->row);
+	fill_arr(tab, tmp ,target, size ,begin.col, begin.row);
 	
 }
 
@@ -49,8 +70,8 @@ char **make_area(char *zone[], t_point *size)
 	int j;
 	char **area;
 
-	hauteur = size->y;
-	larg = size->x;
+	hauteur = size->row;
+	larg = size->col;
 	printf("voici la hauteur : %d et voici la largeur %d\n",hauteur, larg);
 	i = 0;
 	k = 0;
@@ -88,7 +109,7 @@ int main(void)
 	t_point begin = {2, 2};
 	char *zone[] = {
 		"1 1 1 1 1 1 1 1",
-		"1 0 0 0 1 0 0 1",
+		"1 C 0 0 1 0 0 1",
 		"1 0 0 1 0 0 0 1",
 		"1 0 1 1 0 0 0 1",
 		"1 1 1 0 0 0 0 1",
@@ -100,10 +121,10 @@ int main(void)
 	int i = 0;
 	int j;
 
-	while (i < size.y)
+	while (i < size.row)
 	{
 		j = 0;
-		while (j < size.x)
+		while (j < size.col)
 		{
 			printf("%c ", area[i][j]);
 			j++;
@@ -114,13 +135,12 @@ int main(void)
 	
 	flood_fill(area, &size, begin);
 
-	int i = 0;
-	int j;
+	i = 0;
 
-	while (i < size.y)
+	while (i < size.row)
 	{
 		j = 0;
-		while (j < size.x)
+		while (j < size.col)
 		{
 			printf("%c ", area[i][j]);
 			j++;
@@ -128,6 +148,5 @@ int main(void)
 		printf("\n");
 		i++;
 	}
-	
 	return (0);
 }

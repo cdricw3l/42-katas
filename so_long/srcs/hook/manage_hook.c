@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   manage_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 13:15:57 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:49:18 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 void ft_keycode_counter_handler(int keycode)
 {
@@ -30,9 +30,6 @@ void ft_keycode_counter_handler(int keycode)
 
 int ft_manage_keyboard(int keycode, t_data *data)
 {
-
-    printf("voici le keycode %d\n", keycode);
-    printf("pointeur mlx : %p, pointeur windows %p\n",data->mlx, data->window);
     ft_keycode_counter_handler(keycode);
     if( keycode == 65307)
     {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flood_fill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 08:47:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 11:32:33 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:08:29 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 void	fill_arr(char **tab, int target, t_dimention size, int col, int row)
 {

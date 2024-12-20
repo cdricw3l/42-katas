@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 14:30:28 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:12:52 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef SO_LONG_H
 #define SO_LONG_H
 
-# include "../mlx_linux/mlx.h"
+//# include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 # include "../printf/ft_printf.h"
@@ -51,6 +51,7 @@ typedef struct s_data
 	t_dimention			dimention;
 	t_dimention			begin;
 	t_mouse_position	mouse_position;
+	t_dimention			exit_position;
 	int					count_item;
 
 } t_data;
@@ -72,4 +73,7 @@ int		ft_manage_keyboard(int keycode, t_data *data);
 int		ft_close_windows(int keycode, t_data **data);
 void	ft_flood_fill(char **tab, t_dimention size, t_dimention begin);
 void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
+int		check_and_init(char *path, t_data *data);
+
+
 #endif

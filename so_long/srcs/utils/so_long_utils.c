@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 13:25:40 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:13:48 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void    ft_print_map(char **map, int hauteur, int largeur)
     int j;
 
     i = 0;
-    
 
     while (i < hauteur)
     {
@@ -88,6 +87,11 @@ char **ft_parse_params(char *file, t_data *data)
             {
                 if(tmp[j] == 'C')
                     data->count_item++;
+                else if(tmp[j] == 'E')
+                {
+                    data->exit_position.hauteur = i;
+                    data->exit_position.largeur = j;
+                }
                 map[i][j] = tmp[j];
                 j++;  
             }

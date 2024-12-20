@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 13:25:16 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:46:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_close_and_rectangle(char **map, int hauteur, int largeur)
 	return (0);
 }
 
-void	check_param(char c, t_data *data, int row, int col)
+void	check_list_param(char c, t_data *data, int row, int col)
 {
 	if (c == '0')
 		data->check_arr[0] = 1;
@@ -88,7 +88,7 @@ int	ft_check_params(t_data *data)
 		{
 			if (ft_isset(data->map[i][j], set))
 			{
-				check_param(data->map[i][j], data, i, j);
+				check_list_param(data->map[i][j], data, i, j);
 				j++;
 			}
 			else
