@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:27:46 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 20:01:46 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/20 20:11:14 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	fill_arr(char **tab, char **tmp, int target,t_point *size, int col, int row
 	if(col < 0 || row >= size->row || row < 0 ||  col  >= size->col )
 		return ;
 		
-	if(tab[row][col] == 'F' || (tab[row][col] != target && tab[row][col] != 'C' ))
+	if(tab[row][col] == 'B' || (tab[row][col] == '1' ))
 		return ;
 
 	if(tab[row][col] == 'C')
 	{
+		tab[row][col] = 'X';
 		if(tmp[row][col] != 'X')
 		{
 			counter();
@@ -38,8 +39,8 @@ void	fill_arr(char **tab, char **tmp, int target,t_point *size, int col, int row
 			printf("item row %d,  col %d\n", row, col);
 		}
 	}
-	else
-		tab[row][col] = 'F';
+	else if(tab[row][col] != 'X')
+		tab[row][col] = 'B';
 
 	fill_arr(tab, tmp ,target, size, col, row - 1);
 	fill_arr(tab, tmp ,target, size, col, row + 1);
@@ -110,7 +111,7 @@ int main(void)
 	char *zone[] = {
 		"1 1 1 1 1 1 1 1",
 		"1 C 0 0 1 0 0 1",
-		"1 0 0 1 0 0 0 1",
+		"1 0 C 1 0 0 0 1",
 		"1 0 1 1 0 0 0 1",
 		"1 1 1 0 0 0 0 1",
 	};
