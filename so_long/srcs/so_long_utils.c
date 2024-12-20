@@ -6,13 +6,13 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/19 14:55:30 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:25:40 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void  ft_get_dimentions(int fd, t_data  *img)
+void  ft_get_dimentions(int fd, t_data  *data)
 {
     char *str;
     int largeur;
@@ -31,8 +31,8 @@ void  ft_get_dimentions(int fd, t_data  *img)
             hauteur++;
         }
     }
-    img->dimention.hauteur = hauteur;
-    img->dimention.largeur = largeur;
+    data->dimention.hauteur = hauteur;
+    data->dimention.largeur = largeur;
 }
 
 void    ft_print_map(char **map, int hauteur, int largeur)
@@ -41,6 +41,8 @@ void    ft_print_map(char **map, int hauteur, int largeur)
     int j;
 
     i = 0;
+    
+
     while (i < hauteur)
     {
         j = 0;
@@ -49,12 +51,12 @@ void    ft_print_map(char **map, int hauteur, int largeur)
             printf("%c", map[i][j]);
             j++;
         }
+        printf("\n");
         i++;
     }
-    printf("\n");
 }
 
-char **ft_parse_params(char *file, int hauteur, int largeur)
+char **ft_parse_params(char *file, t_data *data)
 {
     int i;
     int j;
@@ -63,7 +65,8 @@ char **ft_parse_params(char *file, int hauteur, int largeur)
     char *tmp;
     
     i = 0;
-    map = malloc(sizeof(char *) * hauteur);
+
+    map = malloc(sizeof(char *) * data->dimention.hauteur);
     if(!map)
         return(NULL);
     fd = open(file, O_RDONLY);
@@ -72,17 +75,19 @@ char **ft_parse_params(char *file, int hauteur, int largeur)
         perror(ft_error_return(2));
         return (NULL);
     }
-    while (i < hauteur)
+    while (i < data->dimention.hauteur)
     {
         j = 0;
-        map[i] = malloc(sizeof(char *) * largeur);
+        map[i] = malloc(sizeof(char *) * data->dimention.hauteur);
         if (!map[i])
             return(NULL);
         tmp = get_next_line(fd);
-        while (j < largeur)
+        while (j < data->dimention.largeur)
         {
             if(tmp)
             {
+                if(tmp[j] == 'C')
+                    data->count_item++;
                 map[i][j] = tmp[j];
                 j++;  
             }

@@ -6,15 +6,26 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:27:46 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/18 08:36:26 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:24:26 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fill_arr()
+void	fill_arr(char **tab, int target,t_point *size, int col, int row)
 {
-	
+	if(col < 0 || col > size->y || row > 0 ||  row  >= size->x )
+		return ;
+		
+	if(tab[col][row] == 'F' || tab[col][row] != target)
+		return ;
+
+	tab[col][row] = 'F';
+
+	fill_arr(tab, target, size, col, row - 1);
+	fill_arr(tab, target, size, col, row + 1);
+	fill_arr(tab, target, size, col - 1, row);
+	fill_arr(tab, target, size, col + 1, row);
 }
 
 
@@ -24,7 +35,7 @@ void flood_fill(char **tab, t_point *size, t_point begin)
 
     target = tab[begin.y][begin.x];
     printf("target : %c, la haute %d et la largeur %d\n", target, size->y, size->x);
-	//fill_arr(tab, size, target);
+	fill_arr(tab, size, target, begin.y, begin.x);
 	
 }
 
@@ -100,6 +111,23 @@ int main(void)
 		printf("\n");
 		i++;
 	}
+	
 	flood_fill(area, &size, begin);
+
+	int i = 0;
+	int j;
+
+	while (i < size.y)
+	{
+		j = 0;
+		while (j < size.x)
+		{
+			printf("%c ", area[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	
 	return (0);
 }

@@ -3,26 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   manage_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/19 19:41:32 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/20 13:15:57 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int ft_manage_keyboard(int keycode, t_data *data)
+void ft_keycode_counter_handler(int keycode)
 {
     static int counter = 0;
 
-    if(keycode == 97 || keycode == 100 || keycode == 115 || keycode == 119)
+    if(keycode == 97 || keycode == 100)
     {
         counter++;
-        printf("compteur : %d\n", counter);
-    }    
-    printf("keycode : %d\n", keycode);
-    //printf("pointeur mlx : %p, pointeur windows %p\n",data->mlx, data->window);
+        printf("Nombre de mouvement: %d\n", counter);
+    }
+    if(keycode == 115 || keycode == 119)
+    {
+        counter++;
+        printf("Nombre de mouvement: %d\n", counter);
+    }   
+}
+
+int ft_manage_keyboard(int keycode, t_data *data)
+{
+
+    printf("voici le keycode %d\n", keycode);
+    printf("pointeur mlx : %p, pointeur windows %p\n",data->mlx, data->window);
+    ft_keycode_counter_handler(keycode);
     if( keycode == 65307)
     {
         mlx_destroy_window(data->mlx, data->window);

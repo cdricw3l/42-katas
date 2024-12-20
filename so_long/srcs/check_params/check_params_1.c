@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/19 14:39:49 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:25:16 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,22 @@ int	is_close_and_rectangle(char **map, int hauteur, int largeur)
 	return (0);
 }
 
-void	check_param(char c, int check_arr[5])
+void	check_param(char c, t_data *data, int row, int col)
 {
 	if (c == '0')
-		check_arr[0] = 1;
+		data->check_arr[0] = 1;
 	if (c == '1')
-		check_arr[1] = 1;
+		data->check_arr[1] = 1;
 	if (c == 'C')
-		check_arr[2] = 1;
+		data->check_arr[2] = 1;
 	if (c == 'E')
-		check_arr[3] = 1;
+		data->check_arr[3] = 1;
 	if (c == 'P')
-		check_arr[4] = 1;
+	{
+		data->begin.hauteur = row;
+		data->begin.largeur = col;
+		data->check_arr[4] = 1;
+	}
 }
 
 int	ft_count_params(int arr[5])
@@ -67,7 +71,7 @@ int	ft_count_params(int arr[5])
 	return(count);
 }
 
-int	ft_check_params(char **map, int check_arr[5], int hauteur, int largeur)
+int	ft_check_params(t_data *data)
 {
 	int		i;
 	int		j;
@@ -75,32 +79,30 @@ int	ft_check_params(char **map, int check_arr[5], int hauteur, int largeur)
 
 	i = 0;
 	set = "01CEP";
-	if(!map || (hauteur == 0 || largeur == 0))
+	if(!data->map || (data->dimention.hauteur == 0 || data->dimention.largeur == 0))
 		return(1);
-	while (i < hauteur)
+	while (i < data->dimention.hauteur)
 	{
 		j = 0;
-		while (j < largeur)
+		while (j < data->dimention.largeur)
 		{
-			if (ft_isset(map[i][j], set))
-				check_param(map[i][j++], check_arr);
+			if (ft_isset(data->map[i][j], set))
+			{
+				check_param(data->map[i][j], data, i, j);
+				j++;
+			}
 			else
 				return(1);
 		}
 		i++;
 	}
-	if(is_close_and_rectangle(map, hauteur, largeur))
-	{
-		printf("la map n'est pas rectanglle\n");
+	if(is_close_and_rectangle(data->map, data->dimention.hauteur, data->dimention.largeur))
 		return (1);
-	}
-	if(ft_count_params(check_arr) != 5)
-	{
-		printf("il manque des items\n");
+	if(ft_count_params(data->check_arr) != 5)
 		return(1);
-	}
 	return (0);
 }
+
 // int main()
 // {
 // 	int check_arr[5];

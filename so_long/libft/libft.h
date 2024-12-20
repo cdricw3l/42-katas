@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/18 08:21:36 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:37:48 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		ft_get_max_value(int *arr, int size);
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	int	col;
+	int	row;
 	
 } t_point;
 
