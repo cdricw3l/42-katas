@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 20:07:30 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 22:57:06 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int ft_init_map(void **mlx, void **new_w, t_data *img)
     
     hauteur = 0;
     *mlx = mlx_init();
+   
+
     *new_w = mlx_new_window(*mlx, 1920, 1080, "hello");
     (*img).img = mlx_new_image(*mlx, 1920, 1080);
     (*img).addr = mlx_get_data_addr((*img).img, &(*img).bit_per_pixel, &(*img).line_length, &(*img).endian);
@@ -34,13 +36,18 @@ int ft_init_map(void **mlx, void **new_w, t_data *img)
         largeur = 0;
         while (largeur  < 1920)
         {
-    
+            //mlx_pixel_put(*mlx,*new_w,largeur, hauteur, ft_colors(largeur, hauteur));
             ft_put_px(img, largeur, hauteur, ft_colors(largeur, hauteur));
             largeur++;
         }
         hauteur++;
     }
     mlx_put_image_to_window(*mlx, *new_w, (*img).img, 0, 0);
+
+    //t_door d =  {50,50};
+    //img->door = mlx_xpm_file_to_image(*mlx, "door.xpm", &d.h, &d.w );
+    //mlx_new_image(*mlx,50,50);
+    //mlx_put_image_to_window(*mlx, *new_w, (*img).door,5,5);
     return(1);
 }
 
@@ -72,7 +79,7 @@ void    start_game(t_data *data)
     data->mouse_position.y = 0;
     
     ft_init_map(&data->mlx, &data->window, data);
-    if(!data->window|| !data->mlx)
+    if(!data->window || !data->mlx)
     {
         perror(ft_error_return(4));
         return ;

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 19:28:28 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 20:41:15 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ typedef struct s_mouse_position
 	
 } t_mouse_position;
 
+typedef struct s_door
+{
+	int w;
+	int h;
+} t_door;
+
+
 typedef struct s_data
 {
 	void				*mlx;
 	void				*window;
 	void				*img;
+	void				*door;
 	char				*addr;
 	int					bit_per_pixel;
 	int					line_length;

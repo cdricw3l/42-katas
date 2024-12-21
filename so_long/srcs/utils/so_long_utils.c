@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 19:59:40 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 21:39:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int ft_colors(int larg, int lo)
     if(larg >= 640 && larg <= 1280 )
         colors = 0x009900CC;
     if(larg % 3 == 0 && lo % 2 == 0)
-        colors = 0x00FF33CC;
+        colors = 0x00FF36CC;
     else if(larg % 3  != 0 && 2 != 0)
         colors = 0x0033CCFF;
     return(colors);

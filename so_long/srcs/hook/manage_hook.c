@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 20:02:57 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 23:12:56 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 void    update_charactere_position(t_data *data, int keycode)
 {
     if(keycode == 97)
-        if (data->begin.row > 1)
+        if (data->begin.row > 1 && data->map[data->begin.row - 1][data->begin.col] != '1')
             data->begin.row -= 1;
     if(keycode == 100)
-        if (data->begin.col < data->dimention.col - 1)
+        if (data->begin.col < data->dimention.col - 2  && data->map[data->begin.row][data->begin.col + 1] != '1')
             data->begin.col += 1;
     if(keycode == 115)
-        if (data->begin.row < data->dimention.row - 2)
+        if (data->begin.row < data->dimention.row - 2 && data->map[data->begin.row + 1][data->begin.col] != '1')
             data->begin.row += 1;
     if(keycode == 119)
-        if (data->begin.col > 1)
+        if (data->begin.col > 1 && data->map[data->begin.row][data->begin.col - 1] != '1')
             data->begin.col -= 1;
     data->count_mouvement++;
     printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->begin.row, data->begin.col);
@@ -50,6 +50,8 @@ int ft_manage_keyboard(int keycode, t_data *data)
     {
     
         mlx_destroy_window(data->mlx, data->window);
+        mlx_destroy_display(data->mlx);
+        free(data->mlx);
         exit (0);    
     }
     (void)data;
