@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 19:13:48 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/21 09:21:13 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
+
 
 void  ft_get_dimentions(int fd, t_data  *data)
 {
@@ -26,9 +27,11 @@ void  ft_get_dimentions(int fd, t_data  *data)
         str = get_next_line(fd);
         if (str != NULL)
         {
+            printf("%s\n",str);
             if (largeur == 0)
                 largeur = ft_strlen(str) - 1;
             hauteur++;
+            free(str);
         }
     }
     data->dimention.hauteur = hauteur;
@@ -96,8 +99,10 @@ char **ft_parse_params(char *file, t_data *data)
                 j++;  
             }
         }
+        free(tmp);
         i++;
     }
+   
     return(map);
 }
 

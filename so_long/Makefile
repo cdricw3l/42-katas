@@ -23,7 +23,7 @@ OBJS_TEST = $(SRCS_TEST:.c =.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(GFLAGS) $(OBJS) $(LIB2) -o $(NAME)
+	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
 #%.o: %.c
 #	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
@@ -57,6 +57,6 @@ test:
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
 launch: all 
-	valgrind --leak-check=full --show-leak-kinds=all -s ./${NAME}  map/map2.ber
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --log-file=filename -s ./${NAME}  map/map2.ber
 
 .PHONY: re all clean fclean so_long copy libft test

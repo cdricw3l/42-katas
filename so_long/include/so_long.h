@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 19:12:52 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/21 08:33:16 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef SO_LONG_H
 #define SO_LONG_H
 
-//# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 # include "../printf/ft_printf.h"

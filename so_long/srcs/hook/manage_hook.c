@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 18:49:18 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/21 09:36:27 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ int ft_manage_keyboard(int keycode, t_data *data)
     ft_keycode_counter_handler(keycode);
     if( keycode == 65307)
     {
+    
         mlx_destroy_window(data->mlx, data->window);
         exit (0);    
     }
+    (void)data;
     return(0);
 }
 

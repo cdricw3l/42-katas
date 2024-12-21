@@ -1,0 +1,713 @@
+==333903== Memcheck, a memory error detector
+==333903== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==333903== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==333903== Command: ./so_long map/map2.ber
+==333903== Parent PID: 333880
+==333903== 
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A240BB: __printf_buffer (vfprintf-process-arg.c:58)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== Use of uninitialised value of size 8
+==333903==    at 0x4A190AB: _itoa_word (_itoa.c:183)
+==333903==    by 0x4A23C8B: __printf_buffer (vfprintf-process-arg.c:155)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A190BC: _itoa_word (_itoa.c:183)
+==333903==    by 0x4A23C8B: __printf_buffer (vfprintf-process-arg.c:155)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A23D79: __printf_buffer (vfprintf-process-arg.c:186)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==333903==    at 0x4AE3864: writev (writev.c:26)
+==333903==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Address 0x4c3978c is 28 bytes inside a block of size 16,384 alloc'd
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10C8D0: mlx_int_anti_resize_win (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 
+==333903== Process terminating with default action of signal 1 (SIGHUP)
+==333903==    at 0x4AD5494: poll (poll.c:29)
+==333903==    by 0x4BDA8C9: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDC28B: xcb_wait_for_event (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48C3257: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AC4A7: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C7BA: mlx_loop (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AB47: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== HEAP SUMMARY:
+==333903==     in use at exit: 74,518 bytes in 79 blocks
+==333903==   total heap usage: 231 allocs, 152 frees, 82,241 bytes allocated
+==333903== 
+==333903== 3 bytes in 1 blocks are still reachable in loss record 1 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4A6E34E: strdup (strdup.c:42)
+==333903==    by 0x48AD0DA: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 8 bytes in 1 blocks are still reachable in loss record 2 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4A6E34E: strdup (strdup.c:42)
+==333903==    by 0x48AA0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x486F83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 8 bytes in 1 blocks are still reachable in loss record 3 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486DB16: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 10 bytes in 1 blocks are still reachable in loss record 4 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4A6E34E: strdup (strdup.c:42)
+==333903==    by 0x48AA0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x491F033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48ADC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 16 bytes in 1 blocks are still reachable in loss record 5 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4BDD46D: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDE0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48BC3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 16 bytes in 1 blocks are still reachable in loss record 6 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A456B: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 21 bytes in 1 blocks are still reachable in loss record 7 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD5D1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 24 bytes in 1 blocks are still reachable in loss record 8 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486F021: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F4C4: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 24 bytes in 1 blocks are still reachable in loss record 9 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4A6E34E: strdup (strdup.c:42)
+==333903==    by 0x48AA0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x486F83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 24 bytes in 1 blocks are still reachable in loss record 10 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486FA10: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 29 bytes in 1 blocks are still reachable in loss record 11 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A600C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48A8FE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C532: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 32 bytes in 1 blocks are still reachable in loss record 12 of 57
+==333903==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4BE1712: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE180A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE18CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE1945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48AD96A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 32 bytes in 1 blocks are still reachable in loss record 13 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4BDA257: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDAA95: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDAEEF: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDBE6D: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE185A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE18CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BE1945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48AD96A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 32 bytes in 1 blocks are still reachable in loss record 14 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486F812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 32 bytes in 1 blocks are still reachable in loss record 15 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486F812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 33 bytes in 1 blocks are still reachable in loss record 16 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A600C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48A8FE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C51D: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 40 bytes in 1 blocks are still reachable in loss record 17 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A6F79: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==333903==    by 0x4005823: call_init (dl-init.c:120)
+==333903==    by 0x4005823: _dl_init (dl-init.c:121)
+==333903==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==333903==    by 0x1: ???
+==333903==    by 0x1FFEFFFA26: ???
+==333903==    by 0x1FFEFFFA30: ???
+==333903== 
+==333903== 40 bytes in 1 blocks are still reachable in loss record 18 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A6F96: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==333903==    by 0x4005823: call_init (dl-init.c:120)
+==333903==    by 0x4005823: _dl_init (dl-init.c:121)
+==333903==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==333903==    by 0x1: ???
+==333903==    by 0x1FFEFFFA26: ???
+==333903==    by 0x1FFEFFFA30: ???
+==333903== 
+==333903== 40 bytes in 1 blocks are still reachable in loss record 19 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A6FB3: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==333903==    by 0x4005823: call_init (dl-init.c:120)
+==333903==    by 0x4005823: _dl_init (dl-init.c:121)
+==333903==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==333903==    by 0x1: ???
+==333903==    by 0x1FFEFFFA26: ???
+==333903==    by 0x1FFEFFFA30: ???
+==333903== 
+==333903== 40 bytes in 1 blocks are still reachable in loss record 20 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A45B5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 40 bytes in 1 blocks are still reachable in loss record 21 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BC6F9: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 48 bytes in 1 blocks are still reachable in loss record 22 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x10B757: ft_parse_params (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA12: check_and_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10ABBB: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 48 bytes in 1 blocks are still reachable in loss record 23 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BC350: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 48 bytes in 1 blocks are still reachable in loss record 24 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BC365: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 48 bytes in 1 blocks are still reachable in loss record 25 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A45A4: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 48 bytes in 1 blocks are still reachable in loss record 26 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A45C5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 72 bytes in 1 blocks are still reachable in loss record 27 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD48C: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 88 bytes in 1 blocks are still reachable in loss record 28 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x10CB1B: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10CE60: mlx_new_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8F2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 112 bytes in 1 blocks are still reachable in loss record 29 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BC255: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 112 bytes in 1 blocks are still reachable in loss record 30 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD751: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 128 bytes in 1 blocks are still reachable in loss record 31 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD67F: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 128 bytes in 1 blocks are still reachable in loss record 32 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AA0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x491F033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48ADC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 128 bytes in 1 blocks are still reachable in loss record 33 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AA0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x486F83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 128 bytes in 1 blocks are still reachable in loss record 34 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AA0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x486F83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 136 bytes in 1 blocks are still reachable in loss record 35 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x10C47E: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 136 bytes in 1 blocks are still reachable in loss record 36 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486E0A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10CB4B: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10CE60: mlx_new_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8F2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 146 bytes in 1 blocks are still reachable in loss record 37 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48ADCE1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 152 bytes in 1 blocks are still reachable in loss record 38 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x491F21E: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48ADC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 160 bytes in 1 blocks are still reachable in loss record 39 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x489B938: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD9EC: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 160 bytes in 1 blocks are still reachable in loss record 40 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x489B938: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C6A9: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 168 bytes in 1 blocks are still reachable in loss record 41 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48ADB34: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 192 bytes in 1 blocks are still reachable in loss record 42 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A4586: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 208 bytes in 1 blocks are still reachable in loss record 43 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x486DAC9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x486F9F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x4874C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==333903==    by 0x10C2D3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C540: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 208 bytes in 1 blocks are still reachable in loss record 44 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BE51D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C19AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C31B0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 208 bytes in 1 blocks are still reachable in loss record 45 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BE51D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C19AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C31B0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C3507: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 208 bytes in 1 blocks are still reachable in loss record 46 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BE51D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C19AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C1A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x489C885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10CCAF: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10CE60: mlx_new_image (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8F2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 288 bytes in 6 blocks are still reachable in loss record 47 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x10B7DD: ft_parse_params (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA12: check_and_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10ABBB: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 512 bytes in 1 blocks are still reachable in loss record 48 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48A8E7A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48A8F1E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C51D: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 936 bytes in 1 blocks are still reachable in loss record 49 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x10C60F: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 1,024 bytes in 1 blocks are still reachable in loss record 50 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4A3F1A4: _IO_file_doallocate (filedoalloc.c:101)
+==333903==    by 0x4A4F513: _IO_doallocbuf (genops.c:347)
+==333903==    by 0x4A4CF7F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+==333903==    by 0x4A4DA9E: _IO_new_file_xsputn (fileops.c:1244)
+==333903==    by 0x4A4DA9E: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==333903==    by 0x4A41C4C: puts (ioputs.c:40)
+==333903==    by 0x10B666: ft_get_dimentions (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A9FF: check_and_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10ABBB: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 1,664 bytes in 8 blocks are still reachable in loss record 51 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BE51D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C19AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C31F9: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C3507: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 2,080 bytes in 10 blocks are still reachable in loss record 52 of 57
+==333903==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48BE51D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C19AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C31F9: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 4,720 bytes in 1 blocks are still reachable in loss record 53 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD0C6: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 6,740 bytes in 1 blocks are still reachable in loss record 54 of 57
+==333903==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4BDD678: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDE0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48BC3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 15,232 bytes in 2 blocks are still reachable in loss record 55 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD7E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 16,384 bytes in 1 blocks are still reachable in loss record 56 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 21,176 bytes in 1 blocks are still reachable in loss record 57 of 57
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x4BDD396: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDE0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48BC3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48AD0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== LEAK SUMMARY:
+==333903==    definitely lost: 0 bytes in 0 blocks
+==333903==    indirectly lost: 0 bytes in 0 blocks
+==333903==      possibly lost: 0 bytes in 0 blocks
+==333903==    still reachable: 74,518 bytes in 79 blocks
+==333903==         suppressed: 0 bytes in 0 blocks
+==333903== 
+==333903== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+==333903== 
+==333903== 1 errors in context 1 of 5:
+==333903== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==333903==    at 0x4AE3864: writev (writev.c:26)
+==333903==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==333903==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C9C5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10C6E5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8D2: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Address 0x4c3978c is 28 bytes inside a block of size 16,384 alloc'd
+==333903==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==333903==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==333903==    by 0x10C496: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10A8A8: ft_init_map (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AA96: start_game (in /home/cb/Documents/42K/so_long/so_long)
+==333903==    by 0x10AC14: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10C8D0: mlx_int_anti_resize_win (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 
+==333903== 1 errors in context 2 of 5:
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A23D79: __printf_buffer (vfprintf-process-arg.c:186)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 
+==333903== 1 errors in context 3 of 5:
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A190BC: _itoa_word (_itoa.c:183)
+==333903==    by 0x4A23C8B: __printf_buffer (vfprintf-process-arg.c:155)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 
+==333903== 1 errors in context 4 of 5:
+==333903== Use of uninitialised value of size 8
+==333903==    at 0x4A190AB: _itoa_word (_itoa.c:183)
+==333903==    by 0x4A23C8B: __printf_buffer (vfprintf-process-arg.c:155)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== 
+==333903== 1 errors in context 5 of 5:
+==333903== Conditional jump or move depends on uninitialised value(s)
+==333903==    at 0x4A240BB: __printf_buffer (vfprintf-process-arg.c:58)
+==333903==    by 0x4A2572A: __vfprintf_internal (vfprintf-internal.c:1544)
+==333903==    by 0x4A1A1A2: printf (printf.c:33)
+==333903==    by 0x10ABF1: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903==  Uninitialised value was created by a stack allocation
+==333903==    at 0x10AB4A: main (in /home/cb/Documents/42K/so_long/so_long)
+==333903== 
+==333903== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
