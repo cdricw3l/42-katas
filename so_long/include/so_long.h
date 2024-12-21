@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 08:33:16 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 10:25:19 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 typedef struct s_dimention
 {
-	int hauteur;
-	int largeur;
+	int row;
+	int col;
 
 } t_dimention;
 

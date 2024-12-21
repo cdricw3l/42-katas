@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:08:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 16:44:07 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/21 10:29:43 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void    ft_display_data_info(t_data *data)
     printf("Nom de la map: %s \n\n", data->map_name);
 
     printf("Dimention de la map: \n");
-    printf("Hauteur: %d \nlargeur: %d\n\n", data->dimention.hauteur, data->dimention.largeur);
+    printf("Hauteur: %d \ncol: %d\n\n", data->dimention.row, data->dimention.col);
 
     printf("Position de depart du personnage\n");
-    printf("Hauteur: %d \nlargeur: %d\n\n", data->begin.hauteur, data->begin.largeur);
+    printf("Hauteur: %d \ncol: %d\n\n", data->begin.row, data->begin.col);
 
     printf("Nombre d'item: \n");
     printf("Nombre d'item sur la map: %d\n\n", data->count_item);
@@ -32,7 +32,7 @@ void    ft_display_data_info(t_data *data)
 
 
     printf("Affichage de la map: \n\n");
-    ft_print_map(data->map,data->dimention.hauteur, data->dimention.largeur);
+    ft_print_map(data->map,data->dimention.row, data->dimention.col);
     printf("//////////////////////////////////////////\n\n");
 
 }

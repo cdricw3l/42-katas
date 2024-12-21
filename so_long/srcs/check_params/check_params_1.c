@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 18:46:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2024/12/21 10:31:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	check_list_param(char c, t_data *data, int row, int col)
 		data->check_arr[3] = 1;
 	if (c == 'P')
 	{
-		data->begin.hauteur = row;
-		data->begin.largeur = col;
+		data->begin.row = row;
+		data->begin.col = col;
 		data->check_arr[4] = 1;
 	}
 }
@@ -79,12 +79,12 @@ int	ft_check_params(t_data *data)
 
 	i = 0;
 	set = "01CEP";
-	if(!data->map || (data->dimention.hauteur == 0 || data->dimention.largeur == 0))
+	if(!data->map || (data->dimention.row == 0 || data->dimention.col == 0))
 		return(1);
-	while (i < data->dimention.hauteur)
+	while (i < data->dimention.row)
 	{
 		j = 0;
-		while (j < data->dimention.largeur)
+		while (j < data->dimention.col)
 		{
 			if (ft_isset(data->map[i][j], set))
 			{
@@ -96,7 +96,7 @@ int	ft_check_params(t_data *data)
 		}
 		i++;
 	}
-	if(is_close_and_rectangle(data->map, data->dimention.hauteur, data->dimention.largeur))
+	if(is_close_and_rectangle(data->map, data->dimention.row, data->dimention.col))
 		return (1);
 	if(ft_count_params(data->check_arr) != 5)
 		return(1);

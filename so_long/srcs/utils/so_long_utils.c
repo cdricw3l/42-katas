@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 09:21:13 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 10:27:48 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void  ft_get_dimentions(int fd, t_data  *data)
             free(str);
         }
     }
-    data->dimention.hauteur = hauteur;
-    data->dimention.largeur = largeur;
+    data->dimention.row = hauteur;
+    data->dimention.col = largeur;
 }
 
 void    ft_print_map(char **map, int hauteur, int largeur)
@@ -68,7 +68,7 @@ char **ft_parse_params(char *file, t_data *data)
     
     i = 0;
 
-    map = malloc(sizeof(char *) * data->dimention.hauteur);
+    map = malloc(sizeof(char *) * data->dimention.row);
     if(!map)
         return(NULL);
     fd = open(file, O_RDONLY);
@@ -77,14 +77,14 @@ char **ft_parse_params(char *file, t_data *data)
         perror(ft_error_return(2));
         return (NULL);
     }
-    while (i < data->dimention.hauteur)
+    while (i < data->dimention.row)
     {
         j = 0;
-        map[i] = malloc(sizeof(char *) * data->dimention.hauteur);
+        map[i] = malloc(sizeof(char *) * data->dimention.col);
         if (!map[i])
             return(NULL);
         tmp = get_next_line(fd);
-        while (j < data->dimention.largeur)
+        while (j < data->dimention.col)
         {
             if(tmp)
             {
@@ -92,8 +92,8 @@ char **ft_parse_params(char *file, t_data *data)
                     data->count_item++;
                 else if(tmp[j] == 'E')
                 {
-                    data->exit_position.hauteur = i;
-                    data->exit_position.largeur = j;
+                    data->exit_position.row = i;
+                    data->exit_position.col = j;
                 }
                 map[i][j] = tmp[j];
                 j++;  

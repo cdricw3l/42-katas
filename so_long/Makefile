@@ -57,6 +57,6 @@ test:
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
 launch: all 
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --log-file=filename -s ./${NAME}  map/map2.ber
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --log-file=filename -s ./${NAME}  map/map1.ber
 
 .PHONY: re all clean fclean so_long copy libft test
