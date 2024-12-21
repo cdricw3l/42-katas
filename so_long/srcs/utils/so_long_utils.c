@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 10:27:48 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 11:27:39 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ void  ft_get_dimentions(int fd, t_data  *data)
     data->dimention.col = largeur;
 }
 
-void    ft_print_map(char **map, int hauteur, int largeur)
+void    ft_print_map(char **map, int hauteur, int largeur, int fd)
 {
     int i;
     int j;
+    char c;
 
     i = 0;
 
@@ -50,9 +51,19 @@ void    ft_print_map(char **map, int hauteur, int largeur)
         j = 0;
         while(j < largeur)
         {
-            printf("%c", map[i][j]);
+            if(fd != 13)
+            {
+                c =  map[i][j];
+                printf("%c", c);
+                printf("impression dans le fichier de log: %d\n", fd);
+                int h = write(fd, &c, 1);
+                
+                printf("voici le nombre de byte ajoute %d\n",h);
+            }
             j++;
         }
+        if(fd != 13)
+            write(fd, "\n", 1);
         printf("\n");
         i++;
     }

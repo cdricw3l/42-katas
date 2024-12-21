@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 10:25:19 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 19:28:28 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_data
 	t_mouse_position	mouse_position;
 	t_dimention			exit_position;
 	int					count_item;
+	int					count_mouvement;
 
 } t_data;
 
 void    ft_get_dimentions(int fd, t_data  *img);
-void    ft_print_map(char **map, int hauteur, int largeur);
 
 
 // check map
@@ -74,6 +74,7 @@ int		ft_close_windows(int keycode, t_data **data);
 void	ft_flood_fill(char **tab, t_dimention size, t_dimention begin);
 void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
 int		check_and_init(char *path, t_data *data);
+void    ft_print_map(char **map, int hauteur, int largeur, int fd);
 
 
 #endif

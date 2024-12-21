@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:08:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 10:29:43 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 10:55:00 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    ft_display_data_info(t_data *data)
 
 
     printf("Affichage de la map: \n\n");
-    ft_print_map(data->map,data->dimention.row, data->dimention.col);
+    ft_print_map(data->map,data->dimention.row, data->dimention.col, 13);
     printf("//////////////////////////////////////////\n\n");
 
 }

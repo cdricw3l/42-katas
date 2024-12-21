@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 10:38:19 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 11:22:13 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,18 @@ void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, in
 void ft_check_valide_way(char **tab, t_data *data, t_dimention begin)
 {
     int target;
+    int fd;
     char **tmp;
 
 	tmp = tab;
+    fd = open("/home/cb/Documents/42K/so_long/srcs/check_params/item_output", O_APPEND);
+    if(fd == -1)
+        printf("Erreur d'impression de l 'item output check\n");
+    else
+        printf("voici le file descriptor %d\n", fd);
     target = tab[begin.row][begin.col];
     printf("voici la target %c\n", target);
 	fill_arr2(tab, tmp,target, &data->dimention, begin.col, begin.row);
-    ft_print_map(tab, data->dimention.row, data->dimention.col);
+    ft_print_map(tab, data->dimention.row, data->dimention.col, fd);
     
 }

@@ -6,31 +6,40 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 09:36:27 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 19:32:05 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void ft_keycode_counter_handler(int keycode)
+void    update_charactere_position(t_data *data, int keycode)
 {
-    static int counter = 0;
+    if(keycode == 97)
+        data->begin.row -= 1;
+    if(keycode == 100)
+        data->begin.col += 1;
+    if(keycode == 115)
+        data->begin.row += 1;
+    if(keycode == 119)
+        data->begin.col -= 1;
+    data->count_mouvement++;
+    printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->begin.row, data->begin.col);
+    printf("Nombre de mouvement %d\n",data->count_mouvement);
+}
 
+void ft_keycode_counter_handler(t_data *data,int keycode)
+{
+
+    printf("voici le keycode %d\n",keycode);
     if(keycode == 97 || keycode == 100)
-    {
-        counter++;
-        printf("Nombre de mouvement: %d\n", counter);
-    }
+        update_charactere_position(data, keycode);
     if(keycode == 115 || keycode == 119)
-    {
-        counter++;
-        printf("Nombre de mouvement: %d\n", counter);
-    }   
+        update_charactere_position(data, keycode); 
 }
 
 int ft_manage_keyboard(int keycode, t_data *data)
 {
-    ft_keycode_counter_handler(keycode);
+    ft_keycode_counter_handler(data, keycode);
     if( keycode == 65307)
     {
     
