@@ -6,22 +6,28 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 19:32:05 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 20:02:57 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
+
+
 void    update_charactere_position(t_data *data, int keycode)
 {
     if(keycode == 97)
-        data->begin.row -= 1;
+        if (data->begin.row > 1)
+            data->begin.row -= 1;
     if(keycode == 100)
-        data->begin.col += 1;
+        if (data->begin.col < data->dimention.col - 1)
+            data->begin.col += 1;
     if(keycode == 115)
-        data->begin.row += 1;
+        if (data->begin.row < data->dimention.row - 2)
+            data->begin.row += 1;
     if(keycode == 119)
-        data->begin.col -= 1;
+        if (data->begin.col > 1)
+            data->begin.col -= 1;
     data->count_mouvement++;
     printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->begin.row, data->begin.col);
     printf("Nombre de mouvement %d\n",data->count_mouvement);

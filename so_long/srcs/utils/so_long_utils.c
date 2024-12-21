@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 11:27:39 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 19:59:40 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void    ft_print_map(char **map, int hauteur, int largeur, int fd)
             {
                 c =  map[i][j];
                 printf("%c", c);
-                printf("impression dans le fichier de log: %d\n", fd);
-                int h = write(fd, &c, 1);
+                //printf("impression dans le fichier de log: %d\n", fd);
+                write(fd, &c, 1);
                 
-                printf("voici le nombre de byte ajoute %d\n",h);
+                //printf("voici le nombre de byte ajoute %d\n",h);
             }
             j++;
         }
