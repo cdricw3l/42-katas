@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 23:12:56 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 23:32:07 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 void    update_charactere_position(t_data *data, int keycode)
 {
+    t_dimention initial_position;
+    
+    initial_position = data->begin;
     if(keycode == 97)
         if (data->begin.row > 1 && data->map[data->begin.row - 1][data->begin.col] != '1')
             data->begin.row -= 1;
@@ -28,9 +31,14 @@ void    update_charactere_position(t_data *data, int keycode)
     if(keycode == 119)
         if (data->begin.col > 1 && data->map[data->begin.row][data->begin.col - 1] != '1')
             data->begin.col -= 1;
-    data->count_mouvement++;
-    printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->begin.row, data->begin.col);
-    printf("Nombre de mouvement %d\n",data->count_mouvement);
+    if(initial_position.col != data->begin.col || initial_position.row != data->begin.row)
+    {
+        data->count_mouvement++;
+        printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->begin.row, data->begin.col);
+        printf("Nombre de mouvement %d\n",data->count_mouvement);
+    }
+    else
+        printf("Le personage ne bouge pas, sa position reste hauteur %d, largeur %d\n", data->begin.row,data->begin.col);
 }
 
 void ft_keycode_counter_handler(t_data *data,int keycode)
