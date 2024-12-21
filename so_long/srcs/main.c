@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 20:04:51 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 20:07:30 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int ft_init_map(void **mlx, void **new_w, t_data *img)
         largeur = 0;
         while (largeur  < 1920)
         {
+    
             ft_put_px(img, largeur, hauteur, ft_colors(largeur, hauteur));
             largeur++;
         }
@@ -78,7 +79,6 @@ void    start_game(t_data *data)
     }
  
     mlx_key_hook(data->window, ft_manage_keyboard, data);
-    
     printf("adresse 1: %p et adresse 2: %p\n", &data->mlx, &data->window);
     mlx_hook(data->window, 17, 0 ,ft_close_windows, &data);
     //mlx_mouse_hook(data->window,  ft_manage_mouse, data);
