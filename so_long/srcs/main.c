@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 09:03:26 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/21 20:04:51 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char *argv[])
             printf("voici le nombre d'ittemp sur la map %d\n", data.count_item);
             //ft_flood_fill(data.map, data.dimention, data.begin);
             ft_check_valide_way(data.map, &data, data.begin);
-            //ft_display_data_info(&data);
+            ft_display_data_info(&data);
             start_game(&data);
         }
     }
