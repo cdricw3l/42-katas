@@ -6,19 +6,20 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:41:56 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 21:39:37 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:39:12 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
 
-void  ft_get_dimentions(int fd, t_data  *data)
+t_dimention  ft_get_dimentions(int fd, t_data  *data)
 {
+    t_dimention dimention;
     char *str;
     int largeur;
     int hauteur;
-    
+    (void)data;
     largeur = 0;
     hauteur = 0;
     str  = "";
@@ -34,8 +35,9 @@ void  ft_get_dimentions(int fd, t_data  *data)
             free(str);
         }
     }
-    data->dimention.row = hauteur;
-    data->dimention.col = largeur;
+    dimention.row= hauteur;
+    dimention.col = largeur;
+    return (dimention);
 }
 
 void    ft_print_map(char **map, int hauteur, int largeur, int fd)
@@ -79,7 +81,7 @@ char **ft_parse_params(char *file, t_data *data)
     
     i = 0;
 
-    map = malloc(sizeof(char *) * data->dimention.row);
+    map = malloc(sizeof(char *) * data->game_data.dimention.row);
     if(!map)
         return(NULL);
     fd = open(file, O_RDONLY);
@@ -88,23 +90,23 @@ char **ft_parse_params(char *file, t_data *data)
         perror(ft_error_return(2));
         return (NULL);
     }
-    while (i < data->dimention.row)
+    while (i < data->game_data.dimention.row)
     {
         j = 0;
-        map[i] = malloc(sizeof(char *) * data->dimention.col);
+        map[i] = malloc(sizeof(char *) * data->game_data.dimention.col);
         if (!map[i])
             return(NULL);
         tmp = get_next_line(fd);
-        while (j < data->dimention.col)
+        while (j < data->game_data.dimention.col)
         {
             if(tmp)
             {
                 if(tmp[j] == 'C')
-                    data->count_item++;
+                    data->game_data.count_item++;
                 else if(tmp[j] == 'E')
                 {
-                    data->exit_position.row = i;
-                    data->exit_position.col = j;
+                    data->game_data.exit_position.row = i;
+                    data->game_data.exit_position.col = j;
                 }
                 map[i][j] = tmp[j];
                 j++;  

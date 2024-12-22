@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 11:22:13 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:38:31 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ft_check_valide_way(char **tab, t_data *data, t_dimention begin)
         printf("voici le file descriptor %d\n", fd);
     target = tab[begin.row][begin.col];
     printf("voici la target %c\n", target);
-	fill_arr2(tab, tmp,target, &data->dimention, begin.col, begin.row);
-    ft_print_map(tab, data->dimention.row, data->dimention.col, fd);
+	fill_arr2(tab, tmp,target, &data->game_data.dimention, begin.col, begin.row);
+    ft_print_map(tab, data->game_data.dimention.row, data->game_data.dimention.col, fd);
     
 }

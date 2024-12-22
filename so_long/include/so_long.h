@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 07:56:57 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:17:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 # include <fcntl.h>
 
 
+#define CHECK_LIST_SIZE 6
+#define CHECK_NAME_SIZE 20
+
+typedef int check_list[CHECK_LIST_SIZE];
+typedef char **check_list_name[CHECK_LIST_SIZE];
+typedef char *check_name[CHECK_NAME_SIZE];
+
+typedef struct s_check_list
+{
+	check_list		check_list;
+	check_list_name	check_list_name;
+
+} t_check_list ;
+
+
 typedef struct s_dimention
 {
 	int row;
@@ -29,43 +44,41 @@ typedef struct s_dimention
 
 } t_dimention;
 
-typedef struct s_mouse_position
+typedef struct s_game_data
 {
-	int x;
-	int y;
+	char				*map_name;
+	char				**map;
+	int					count_item;
+	int					count_mouvement;
+	t_dimention			dimention;
+	t_dimention			begin;
+	t_dimention			exit_position;
 	
-} t_mouse_position;
+} t_game_data ;
 
-typedef struct s_door
+typedef struct s_img
 {
-	int w;
-	int h;
-} t_door;
-
-
-typedef struct s_data
-{
-	void				*mlx;
-	void				*window;
 	void				*img;
 	void				*door;
 	char				*addr;
 	int					bit_per_pixel;
 	int					line_length;
 	int					endian;
-	char				**map;
-	char				*map_name;
-	int					check_arr[5];
-	t_dimention			dimention;
-	t_dimention			begin;
-	t_mouse_position	mouse_position;
-	t_dimention			exit_position;
-	int					count_item;
-	int					count_mouvement;
+	
+} t_img ;
 
+
+typedef struct s_data
+{
+	void				*mlx;
+	void				*window;
+	t_img				img;
+	t_check_list		check_list;
+	t_game_data			game_data;
+	
 } t_data;
 
-void    ft_get_dimentions(int fd, t_data  *img);
+t_dimention    ft_get_dimentions(int fd, t_data  *img);
 
 
 // check map

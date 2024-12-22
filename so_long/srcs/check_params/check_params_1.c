@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 10:31:14 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:44:55 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,29 @@ int	is_close_and_rectangle(char **map, int hauteur, int largeur)
 void	check_list_param(char c, t_data *data, int row, int col)
 {
 	if (c == '0')
-		data->check_arr[0] = 1;
+		data->check_list.check_list[0] = 1;
 	if (c == '1')
-		data->check_arr[1] = 1;
+		data->check_list.check_list[1] = 1;
 	if (c == 'C')
-		data->check_arr[2] = 1;
+		data->check_list.check_list[2] = 1;
 	if (c == 'E')
-		data->check_arr[3] = 1;
+		data->check_list.check_list[3] = 1;
 	if (c == 'P')
 	{
-		data->begin.row = row;
-		data->begin.col = col;
-		data->check_arr[4] = 1;
+		data->game_data.begin.row = row;
+		data->game_data.begin.col = col;
+		data->check_list.check_list[4] = 1;
 	}
 }
 
-int	ft_count_params(int arr[5])
+int	ft_count_params(int arr[6])
 {
 	int i;
 	int count;
 
 	i = 0;
 	count = 0;
-	while (i < 5)
+	while (i < 6)
 		count += arr[i++];
 	return(count);
 }
@@ -79,16 +79,16 @@ int	ft_check_params(t_data *data)
 
 	i = 0;
 	set = "01CEP";
-	if(!data->map || (data->dimention.row == 0 || data->dimention.col == 0))
+	if(!data->game_data.map || (data->game_data.dimention.row == 0 || data->game_data.dimention.row == 0))
 		return(1);
-	while (i < data->dimention.row)
+	while (i < data->game_data.dimention.row)
 	{
 		j = 0;
-		while (j < data->dimention.col)
+		while (j < data->game_data.dimention.col)
 		{
-			if (ft_isset(data->map[i][j], set))
+			if (ft_isset(data->game_data.map[i][j], set))
 			{
-				check_list_param(data->map[i][j], data, i, j);
+				check_list_param(data->game_data.map[i][j], data, i, j);
 				j++;
 			}
 			else
@@ -96,10 +96,13 @@ int	ft_check_params(t_data *data)
 		}
 		i++;
 	}
-	if(is_close_and_rectangle(data->map, data->dimention.row, data->dimention.col))
-		return (1);
-	if(ft_count_params(data->check_arr) != 5)
+	if(!is_close_and_rectangle(data->game_data.map, data->game_data.dimention.row, data->game_data.dimention.col))
+		data->check_list.check_list[5] = 1;
+	if(ft_count_params(data->check_list.check_list) != 6)
+	{
+		printf("Le nombre de parametre n'est pas juste:  %d\n",ft_count_params(data->check_list.check_list) );
 		return(1);
+	}
 	return (0);
 }
 

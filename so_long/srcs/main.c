@@ -6,20 +6,20 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/21 22:57:06 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:40:54 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void ft_put_px(t_data *data, int x, int y, int color)
+void ft_put_px(t_img *data, int x, int y, int color)
 {
     char *dst;
     dst = data->addr + (y * data->line_length + x * (data->bit_per_pixel / 8));
     *(unsigned int *)dst = color;
 }
 
-int ft_init_map(void **mlx, void **new_w, t_data *img)
+int ft_init_map(void **mlx, void **new_w, t_img *img)
 {
     int hauteur;
     int largeur;
@@ -62,11 +62,14 @@ int check_and_init(char *path, t_data *data)
         perror(ft_error_return(2));
         return (1);
     }
-    ft_get_dimentions(fd, data);
-    data->map = ft_parse_params(path, data);
+    data->game_data.dimention =  ft_get_dimentions(fd, data);
+    data->game_data.map = ft_parse_params(path, data);
     check = ft_check_params(data);
     if(check)
+    {
+        printf("errerrruer \n");
         return(1);
+    }
     return(check);
 }
 
@@ -75,10 +78,8 @@ void    start_game(t_data *data)
 {
     data->mlx = NULL;
     data->window = NULL;
-    data->mouse_position.x = 0;
-    data->mouse_position.y = 0;
     
-    ft_init_map(&data->mlx, &data->window, data);
+    ft_init_map(&data->mlx, &data->window, &data->img);
     if(!data->window || !data->mlx)
     {
         perror(ft_error_return(4));
@@ -104,8 +105,7 @@ int	main(int argc, char *argv[])
     }
     else
     {
-        data.map_name = argv[1];
-        if(check_and_init(data.map_name, &data))
+        if(check_and_init(argv[1], &data))
         {
             perror(ft_error_return(3)); 
             return(1);
@@ -113,9 +113,9 @@ int	main(int argc, char *argv[])
         else
         {
             
-            printf("voici le nombre d'ittemp sur la map %d\n", data.count_item);
+            printf("voici le nombre d'ittemp sur la map %d\n", data.game_data.count_item);
             //ft_flood_fill(data.map, data.dimention, data.begin);
-            ft_check_valide_way(data.map, &data, data.begin);
+            ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
             ft_display_data_info(&data);
             start_game(&data);
         }
