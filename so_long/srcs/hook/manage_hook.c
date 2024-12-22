@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 08:23:53 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 08:28:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void    update_charactere_position(t_data *data, int keycode, int init_row, int 
             data->count_item--;
             if (data->count_item == 0)
             {
-                printf("end game \n");
-                exit(0);
+                printf("You can use the exit\n");
+                data->map[data->exit_position.row][data->exit_position.col] = 'E';
             }
         }
         data->map[data->begin.row][data->begin.col] = 'P';
