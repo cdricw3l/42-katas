@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 10:38:31 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 11:25:41 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, in
 
 	if(tab[row][col] == 'C')
 	{
-		tab[row][col] = 'X';
-		if(tmp[row][col] != 'X')
+		tab[row][col] = 'I';
+		if(tmp[row][col] != 'I')
 		{
 			ft_counter();
-			tmp[row][col] = 'X';
+			tmp[row][col] = 'I';
 			printf("item row %d,  col %d\n", row, col);
 		}
 	}
-	else if(tab[row][col] != 'X')
+	else if(tab[row][col] != 'I')
 		tab[row][col] = ' ';
 
 	fill_arr2(tab, tmp ,target, size, col, row - 1);
@@ -63,7 +63,9 @@ void ft_check_valide_way(char **tab, t_data *data, t_dimention begin)
         printf("voici le file descriptor %d\n", fd);
     target = tab[begin.row][begin.col];
     printf("voici la target %c\n", target);
+	(void)data;
+	(void)tmp;
 	fill_arr2(tab, tmp,target, &data->game_data.dimention, begin.col, begin.row);
-    ft_print_map(tab, data->game_data.dimention.row, data->game_data.dimention.col, fd);
+    //ft_print_map(tab, data->game_data.dimention.row, data->game_data.dimention.col);
     
 }

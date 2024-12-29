@@ -8,7 +8,6 @@ SRCS =	srcs/main.c \
 		srcs/check_params/check_params_1.c \
 		srcs/check_params/check_valide_way.c \
 		srcs/hook/manage_hook.c \
-		srcs/utils/* \
 		gnl/get_next_line_utils.c \
 		gnl/get_next_line.c \
 
@@ -56,7 +55,9 @@ libft:
 test:
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
-launch: all 
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --log-file=filename -s ./${NAME}  map/map2.ber
+launch: 
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --log-file=./test_unit/filename -s ./test
 
 .PHONY: re all clean fclean so_long copy libft test
+
+##valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./test

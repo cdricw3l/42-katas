@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 10:17:32 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/28 20:03:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,10 @@
 # include <fcntl.h>
 
 
-#define CHECK_LIST_SIZE 6
+#define CHECK_LIST_SIZE 7
 #define CHECK_NAME_SIZE 20
 
-typedef int check_list[CHECK_LIST_SIZE];
-typedef char **check_list_name[CHECK_LIST_SIZE];
-typedef char *check_name[CHECK_NAME_SIZE];
-
-typedef struct s_check_list
-{
-	check_list		check_list;
-	check_list_name	check_list_name;
-
-} t_check_list ;
-
+typedef int t_check_list[CHECK_LIST_SIZE];
 
 typedef struct s_dimention
 {
@@ -59,7 +49,6 @@ typedef struct s_game_data
 typedef struct s_img
 {
 	void				*img;
-	void				*door;
 	char				*addr;
 	int					bit_per_pixel;
 	int					line_length;
@@ -72,9 +61,9 @@ typedef struct s_data
 {
 	void				*mlx;
 	void				*window;
-	t_img				img;
-	t_check_list		check_list;
-	t_game_data			game_data;
+	t_img				*img;
+	t_check_list		*check_list;
+	t_game_data			*game_data;
 	
 } t_data;
 
@@ -95,7 +84,7 @@ int		ft_close_windows(int keycode, t_data **data);
 void	ft_flood_fill(char **tab, t_dimention size, t_dimention begin);
 void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
 int		check_and_init(char *path, t_data *data);
-void    ft_print_map(char **map, int hauteur, int largeur, int fd);
+void    ft_print_map(char **map, int hauteur, int largeur);
 
 
 #endif

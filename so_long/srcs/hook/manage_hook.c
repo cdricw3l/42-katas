@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 10:37:16 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/22 10:55:57 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void    update_charactere_position(t_data *data, int keycode, int init_row, int 
         data->game_data.map[init_row][init_col] = ' ';
         printf("mise a jour de la position du personnage huateur %d , largeur : %d\n",data->game_data.begin.row, data->game_data.begin.col);
         printf("Nombre de mouvement %d\n",data->game_data.count_mouvement);
-        ft_print_map(data->game_data.map,data->game_data.dimention.row,data->game_data.dimention.col,4);
+        ft_print_map(data->game_data.map,data->game_data.dimention.row,data->game_data.dimention.col);
     }
     else
     {
         printf("Le personage ne bouge pas, sa position reste hauteur %d, largeur %d\n", data->game_data.begin.row,data->game_data.begin.col);
-        ft_print_map(data->game_data.map,data->game_data.dimention.row,data->game_data.dimention.col,4);
+        ft_print_map(data->game_data.map,data->game_data.dimention.row,data->game_data.dimention.col);
     }
 }
 
