@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 13:34:27 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/29 18:47:59 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 #define CHECK_LIST_SIZE 7
 #define CHECK_NAME_SIZE 20
+#define MAX_FD 1048576
 
 typedef int t_check_list[CHECK_LIST_SIZE];
 
@@ -73,7 +74,7 @@ t_dimention    ft_get_dimentions(int fd, t_data  *img);
 
 
 // check map
-
+int	ft_printf(const char *format, ...);
 int		ft_check_params(t_data *data);
 void    ft_display_data_info(t_data *data);
 int		is_close_and_rectangle(char **map, int hauteur, int largeur);
@@ -86,10 +87,10 @@ int		ft_manage_keyboard(int keycode, t_data *data);
 int		ft_close_windows(int keycode, t_data **data);
 void	ft_flood_fill(char **tab, t_dimention size, t_dimention begin);
 void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
-int		check_and_init(char *path, t_data *data);
+t_data 	*check_and_init(char *path);
 void    ft_print_map(char **map, int hauteur, int largeur);
 
-
+t_data	*ft_init_data_s(void);
 void	*ft_free_memory(t_data *data);
 
 #endif
