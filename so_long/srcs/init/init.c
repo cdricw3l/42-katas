@@ -6,93 +6,109 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 13:34:48 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/29 19:29:55 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../include/so_long.h"
 
-t_dimention	ft_s_dimention(void)
+int	ft_line_count(char *path)
 {
-	t_dimention	dimention;
+	int		i;
+	int		fd;
+	char	*line;
 
-	dimention.col = 0;
-	dimention.row = 0;
-	return (dimention);
+	i = 0;
+	line = "";
+	fd = open(path, O_RDONLY);
+	if (fd < 0 || fd > MAX_FD)
+		return (0);
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		if (line)
+		{
+			free(line);
+			i++;
+		}
+	}
+	return (i);
 }
 
-int	*ft_init_check_list_arr(void)
+int	get_map(char *path, char **map)
 {
-	int	*check_lst;
+	int		i;
+	int		fd;
+	char	*line;
 
-	check_lst = malloc(sizeof(int) * CHECK_LIST_SIZE);
-	if (!check_lst)
+	i = 0;
+	line = "";
+	fd = open(path, O_RDONLY);
+	if (fd < 0 || fd > MAX_FD)
+		return (0);
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		if (line)
+		{
+			map[i++] = ft_strdup(line);
+			free(line);
+		}
+	}
+	map[i] = NULL;
+	return (i);
+}
+
+char	**ft_get_map(char *path)
+{
+	int		line_count;
+	char	**map;
+	int		i;
+
+	line_count = ft_line_count(path);
+	map = malloc(sizeof(char *) * (line_count + 1));
+	if (!map)
 		return (NULL);
-	ft_bzero(check_lst, sizeof(int) * CHECK_LIST_SIZE);
-	return (check_lst);
-}
-
-t_img	*ft_init_image_s(void)
-{
-	t_img	*image;
-
-	image = malloc(sizeof(t_img) * 1);
-	if (!image)
+	i = get_map(path, map);
+	if (i == 0)
 		return (NULL);
-	image->img = NULL;
-	image->addr = NULL;
-	image->bit_per_pixel = 0;
-	image->line_length = 0;
-	image->endian = 0;
-	return (image);
+	return (map);
 }
 
-t_game_data	*ft_init_game_data_s(void)
-{
-	t_game_data	*game_data;
-
-	game_data = malloc(sizeof(t_game_data) * 1);
-	if (!game_data)
-		return (NULL);
-	game_data->map_name = NULL;
-	game_data->map = NULL;
-	game_data->count_item = 0;
-	game_data->count_mouvement = 0;
-	game_data->begin = ft_s_dimention();
-	game_data->dimention = ft_s_dimention();
-	game_data->exit_position = ft_s_dimention();
-	return (game_data);
-}
-
-t_data	*ft_init_data_s(void)
+t_data	*check_and_init(char *path)
 {
 	t_data	*data;
+	int		fd;
 
-	data = malloc(sizeof(t_data) * 1);
+	fd = open(path, O_RDONLY);
+	data = ft_init_data_s();
 	if (!data)
+	{
+		printf("probleme initialisation data\n");
 		return (NULL);
-	data->mlx = NULL;
-	data->window = NULL;
-	data->img = ft_init_image_s();
-	if (!data->img)
+	}
+	data->game_data->map = ft_get_map(path);
+	if (!data->game_data->map)
+	{
+		printf("probleme initialisation game map\n");
 		return (ft_free_memory(data));
-	data->check_list = ft_init_check_list_arr();
-	if (!data->check_list)
-		return (ft_free_memory(data));
-	data->game_data = ft_init_game_data_s();
-	if (!data->game_data)
-		return (ft_free_memory(data));
+	}
 	return (data);
 }
 
 // int main(void)
 // {
-// 	t_data *data;
+//     t_data *data;
+//     char *path;
 
-// 	data = ft_init_data_s();
-// 	printf("voici l'adresse de la struc %p\n", (*data).check_list);
-// 	data->check_list[0] = 10;
-// 	printf("%d\n", data->check_list[0]);
-// 	ft_free_memory(data);
-// 	return (0);
+//     path = "/home/cb/Documents/42K/so_long/map/map1.ber";
+//     data = check_and_init(path);
+//     char **map = data->game_data->map;
+//     while (*map)
+//     {
+//         printf("%s\n",*map);
+//         map++;
+//     }
+//     ft_free_memory(data);
+//     return(0);
 // }

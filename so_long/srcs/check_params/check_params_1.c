@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:33 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 10:44:55 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/29 19:31:50 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_check_params(t_data *data)
 
 	i = 0;
 	set = "01CEP";
-	if(!data->game_data.map || (data->game_data.dimention.row == 0 || data->game_data.dimention.row == 0))
+	if(!data->game_data->map || (data->game_data->dimention.row == 0 || data->game_data->dimention.row == 0))
 		return(1);
 	while (i < data->game_data.dimention.row)
 	{
