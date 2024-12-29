@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/28 20:03:36 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/29 13:34:27 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,18 @@ typedef struct s_data
 	void				*mlx;
 	void				*window;
 	t_img				*img;
-	t_check_list		*check_list;
+	int					*check_list;
 	t_game_data			*game_data;
 	
 } t_data;
+
+
 
 t_dimention    ft_get_dimentions(int fd, t_data  *img);
 
 
 // check map
+
 int		ft_check_params(t_data *data);
 void    ft_display_data_info(t_data *data);
 int		is_close_and_rectangle(char **map, int hauteur, int largeur);
@@ -86,5 +89,7 @@ void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
 int		check_and_init(char *path, t_data *data);
 void    ft_print_map(char **map, int hauteur, int largeur);
 
+
+void	*ft_free_memory(t_data *data);
 
 #endif
