@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 13:00:01 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 13:05:18 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, in
 void ft_check_valide_way(char **tab, t_dimention *size_map, t_dimention begin)
 {
     int target;
-    int fd;
     char **tmp;
 
 	tmp = tab;

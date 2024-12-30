@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:53:11 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 13:06:15 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ char	**ft_get_map(char *path)
 t_data	*init_and_check(char *path)
 {
 	t_data	*data;
-	int		fd;
 	int		check_param;
 
-	fd = open(path, O_RDONLY);
 	data = ft_init_data_s();
 	if (!data)
 	{
@@ -104,19 +102,19 @@ t_data	*init_and_check(char *path)
 }
 
 
-int main(void)
-{
-    t_data *data;
-    char *path;
-	char **map;
-    path = "map/map2.ber";
-    data = init_and_check(path);
-	if(!data)
-	{
-		printf("probleme d'initialisation data\n");
-		return(-1);
-	}
-    ft_display_data_info(data);
-	ft_free_memory(data);
-    return(0);
-}
+// int main(void)
+// {
+//     t_data *data;
+//     char *path;
+// 	char **map;
+//     path = "map/map2.ber";
+//     data = init_and_check(path);
+// 	if(!data)
+// 	{
+// 		printf("probleme d'initialisation data\n");
+// 		return(-1);
+// 	}
+//     ft_display_data_info(data);
+// 	ft_free_memory(data);
+//     return(0);
+// }

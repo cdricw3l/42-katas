@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 13:03:10 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 13:13:11 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int argc, char *argv[])
             //ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
             ft_display_data_info(data);
             // start_game(&data);
-            // ft_free_memory(data);
+            ft_free_memory(data);
         }
     }
     return(0);
