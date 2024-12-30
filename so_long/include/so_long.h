@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 18:47:59 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 01:20:50 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,8 @@ void    ft_print_map(char **map, int hauteur, int largeur);
 
 t_data	*ft_init_data_s(void);
 void	*ft_free_memory(t_data *data);
+t_data	*init_and_check(char *path);
+int ft_arr_len(char **arr);
+t_data	*ft_init_data_s(void);
 
 #endif

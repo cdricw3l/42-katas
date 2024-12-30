@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 19:18:51 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 08:40:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,27 @@ void	*ft_free_memory(t_data *data)
 {
     char **map;
 
-    map = data->game_data->map;
-    while (*map)
+     map = data->game_data->map;
+    if(map)
     {
-        free(*map);
-        map++;
+        while (*map)
+        {
+            free(*map);
+            map++;
+        }
     }
+    // if(data->game_data->map)
+    // {
+    //     map = data->game_data->map;
+    //     if(map)
+    //     {
+    //         while (*map)
+    //         {
+    //             free(*map);
+    //             map++;
+    //         }
+    //     }
+    // }
     free(data->img);
     free(data->game_data->map);
 	free(data->game_data);
@@ -71,6 +86,20 @@ void    ft_print_map(char **map, int hauteur, int largeur)
         printf("\n");
         i++;
     }
+}
+
+int ft_arr_len(char **arr)
+{
+    int i;
+
+    i = 0;
+    if(arr)
+    {
+        while (arr[i] != NULL)
+            i++;
+        return(i);
+    }
+    return (-1);
 }
 
 // char **ft_parse_params(char *file, t_data *data)

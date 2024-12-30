@@ -6,11 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 19:29:55 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 08:42:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 int	ft_line_count(char *path)
 {
@@ -66,6 +66,8 @@ char	**ft_get_map(char *path)
 	int		i;
 
 	line_count = ft_line_count(path);
+	if(line_count == 0)
+		return(NULL);
 	map = malloc(sizeof(char *) * (line_count + 1));
 	if (!map)
 		return (NULL);
@@ -75,7 +77,35 @@ char	**ft_get_map(char *path)
 	return (map);
 }
 
-t_data	*check_and_init(char *path)
+void	*ft_check_dimentions(t_data *data)
+{
+	char **map;
+	int row;
+	int col;
+	int i;
+	int j;
+	map = data->game_data->map;
+	row = ft_arr_len(map);
+	i = 0;
+	j = -1;
+	while (i < row)
+	{
+		if(i < row - 1)
+			col = ft_strlen(map[i]) - 1;
+		else
+			col = ft_strlen(map[i]);
+		if (col != j && j != -1)
+			return(NULL);
+		j = col;
+		i++;
+	}
+	data->game_data->dimention.col = j;	
+	data->game_data->dimention.row = row;	
+	printf("dimention %d et %d\n",data->game_data->dimention.row,data->game_data->dimention.col );
+	return(data->game_data);
+}
+
+t_data	*init_and_check(char *path)
 {
 	t_data	*data;
 	int		fd;
@@ -85,30 +115,33 @@ t_data	*check_and_init(char *path)
 	if (!data)
 	{
 		printf("probleme initialisation data\n");
-		return (NULL);
-	}
-	data->game_data->map = ft_get_map(path);
-	if (!data->game_data->map)
-	{
-		printf("probleme initialisation game map\n");
 		return (ft_free_memory(data));
 	}
+	data->game_data->map = ft_get_map(path);
+	printf("%p\n",data->game_data->map);
+	if (!data->game_data->map)
+	{
+		printf("probleme initialisation games map\n");
+		return (ft_free_memory(data));
+	}
+	//ft_check_dimentions(data);
 	return (data);
 }
 
-// int main(void)
-// {
-//     t_data *data;
-//     char *path;
-
-//     path = "/home/cb/Documents/42K/so_long/map/map1.ber";
-//     data = check_and_init(path);
-//     char **map = data->game_data->map;
-//     while (*map)
-//     {
-//         printf("%s\n",*map);
-//         map++;
-//     }
-//     ft_free_memory(data);
-//     return(0);
-// }
+int main(void)
+{
+    t_data *data;
+    char *path;
+	char **map;
+    path = "/home/cb/Documents/42K/so_long/map/map2.ber";
+    data = init_and_check(path);
+	printf("voici data %p\n",data);
+	if(data)
+	{
+    	printf("image adresse %p, game_data  ok\n", data->img);
+		ft_free_memory(data);
+	}
+    
+	//ft_check_dimentions(data);
+    return(0);
+}
