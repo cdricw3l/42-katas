@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 08:42:37 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 09:58:58 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_line_count(char *path)
 	return (i);
 }
 
+
+
 int	get_map(char *path, char **map)
 {
 	int		i;
@@ -49,13 +51,14 @@ int	get_map(char *path, char **map)
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
-		if (line)
+		if (line )
 		{
 			map[i++] = ft_strdup(line);
 			free(line);
 		}
 	}
 	map[i] = NULL;
+	printf("voici %d\n", i);
 	return (i);
 }
 
@@ -84,6 +87,7 @@ void	*ft_check_dimentions(t_data *data)
 	int col;
 	int i;
 	int j;
+	
 	map = data->game_data->map;
 	row = ft_arr_len(map);
 	i = 0;
@@ -101,7 +105,6 @@ void	*ft_check_dimentions(t_data *data)
 	}
 	data->game_data->dimention.col = j;	
 	data->game_data->dimention.row = row;	
-	printf("dimention %d et %d\n",data->game_data->dimention.row,data->game_data->dimention.col );
 	return(data->game_data);
 }
 
@@ -118,13 +121,15 @@ t_data	*init_and_check(char *path)
 		return (ft_free_memory(data));
 	}
 	data->game_data->map = ft_get_map(path);
-	printf("%p\n",data->game_data->map);
 	if (!data->game_data->map)
 	{
 		printf("probleme initialisation games map\n");
 		return (ft_free_memory(data));
 	}
-	//ft_check_dimentions(data);
+	if(ft_check_dimentions(data) == NULL)
+		return(ft_free_memory(data));
+	if(ft_is_square(data->game_data))
+		return (ft_free_memory(data));
 	return (data);
 }
 
@@ -135,12 +140,14 @@ int main(void)
 	char **map;
     path = "/home/cb/Documents/42K/so_long/map/map2.ber";
     data = init_and_check(path);
-	printf("voici data %p\n",data);
-	if(data)
+	if(!data)
 	{
-    	printf("image adresse %p, game_data  ok\n", data->img);
-		ft_free_memory(data);
+		printf("probleme d'initialisation data\n");
+		return(-1);
 	}
+    ft_display_data_info(data);
+	ft_free_memory(data);
+
     
 	//ft_check_dimentions(data);
     return(0);

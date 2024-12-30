@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 08:40:37 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 09:58:19 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_free_memory(t_data *data)
 {
     char **map;
 
-     map = data->game_data->map;
+    map = data->game_data->map;
     if(map)
     {
         while (*map)
@@ -25,24 +25,42 @@ void	*ft_free_memory(t_data *data)
             map++;
         }
     }
-    // if(data->game_data->map)
-    // {
-    //     map = data->game_data->map;
-    //     if(map)
-    //     {
-    //         while (*map)
-    //         {
-    //             free(*map);
-    //             map++;
-    //         }
-    //     }
-    // }
     free(data->img);
     free(data->game_data->map);
 	free(data->game_data);
 	free(data->check_list);
 	free(data);
 	return (NULL);
+}
+
+void ft_analsyse_line(char *str)
+{
+	if(!str)
+		return ;
+	while (*str)
+	{
+		printf("%d ", *str);
+		str++;
+	}
+	printf("\n");
+	
+}
+
+int ft_is_square(t_game_data *data)
+{
+    int x;
+    int y;
+
+    if(!data)
+        return(1);
+    x = data->dimention.col;
+    y = data->dimention.row;
+    if( x - y == 0)
+    {
+        printf("La map est carré\n");
+        return(1);
+    }        
+    return(0);
 }
 
 // void  ft_get_dimentions(int fd, t_data  *data)

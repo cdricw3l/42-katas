@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 01:20:50 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 09:57:35 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_data
 
 t_dimention    ft_get_dimentions(int fd, t_data  *img);
 
+//##define AREA(data) ((data).col - (data).row)
 
 // check map
 int	ft_printf(const char *format, ...);
@@ -90,10 +91,11 @@ void	ft_check_valide_way(char **tab, t_data *data, t_dimention begin);
 t_data 	*check_and_init(char *path);
 void    ft_print_map(char **map, int hauteur, int largeur);
 
-t_data	*ft_init_data_s(void);
 void	*ft_free_memory(t_data *data);
 t_data	*init_and_check(char *path);
 int ft_arr_len(char **arr);
 t_data	*ft_init_data_s(void);
+void ft_analsyse_line(char *str);
+int ft_is_square(t_game_data *data);
 
 #endif
