@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 09:58:19 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 11:00:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int ft_is_square(t_game_data *data)
         return(1);
     x = data->dimention.col;
     y = data->dimention.row;
+    printf("voici les dim %d et %d\n",x, y);
     if( x - y == 0)
     {
         printf("La map est carré\n");
