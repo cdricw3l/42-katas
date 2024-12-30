@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:34:09 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 18:17:02 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,31 @@ int ft_is_square(t_game_data *data)
 //     data->dimention.largeur = largeur;
 // }
 
-void    ft_print_map(char **map, int hauteur, int largeur)
+void    ft_print_map(t_game_data *data)
 {
     int i;
     int j;
+    int hauteur;
+    int largeur;
+    char **map;
 
     i = 0;
-
-    while (i < hauteur)
+    if(data)
     {
-        j = 0;
-        while(j < largeur)
+        hauteur = data->dimention.row;
+        largeur = data->dimention.col;
+        map = data->map;
+        while (i < hauteur)
         {
-            printf("%c", map[i][j]);
-            j++;
+            j = 0;
+            while(j < largeur)
+            {
+                printf("%c", map[i][j]);
+                j++;
+            }
+            printf("\n");
+            i++;
         }
-        printf("\n");
-        i++;
     }
 }
 

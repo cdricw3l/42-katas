@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:08:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 08:56:16 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 18:18:44 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    ft_display_data_info(t_data *data)
     printf("Check list value: \n");
     //printf("Valeur attendu: 5. Valeur effective : %d \n", ft_check_params(data));
     printf("Affichage de la map: \n\n");
-    ft_print_map(data->game_data->map,data->game_data->dimention.row, data->game_data->dimention.col);
+    ft_print_map(data->game_data);
     printf("\n//////////////////////////////////////////\n\n");
 
 }
