@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/22 11:25:41 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 13:00:01 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,16 @@ void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, in
 }
 
 
-void ft_check_valide_way(char **tab, t_data *data, t_dimention begin)
+void ft_check_valide_way(char **tab, t_dimention *size_map, t_dimention begin)
 {
     int target;
     int fd;
     char **tmp;
 
 	tmp = tab;
-    fd = open("/home/cb/Documents/42K/so_long/srcs/check_params/item_output", O_APPEND);
-    if(fd == -1)
-        printf("Erreur d'impression de l 'item output check\n");
-    else
-        printf("voici le file descriptor %d\n", fd);
     target = tab[begin.row][begin.col];
     printf("voici la target %c\n", target);
-	(void)data;
-	(void)tmp;
-	fill_arr2(tab, tmp,target, &data->game_data.dimention, begin.col, begin.row);
-    //ft_print_map(tab, data->game_data.dimention.row, data->game_data.dimention.col);
+	fill_arr2(tab, tmp,target, size_map, begin.col, begin.row);
+    ft_print_map(tab, size_map->row, size_map->row);
     
 }

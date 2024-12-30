@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:28:35 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 13:03:10 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,35 +72,32 @@
 // }
 
 
-
-
-
-
-// int	main(int argc, char *argv[])
-// {
+int	main(int argc, char *argv[])
+{
     
-//     t_data  data;
+    t_data  *data;
     
-//     if(argc != 2)
-//     {
-//         perror(ft_error_return(1));
-//         return (1);
-//     }
-//     else
-//     {
-//         if(init_and_check(argv[1], &data))
-//         {
-//             perror(ft_error_return(3)); 
-//             return(1);
-//         }
-//         else
-//         {
-//             printf("initialisation realiser avec succes\n");
-//             // ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
-//             // ft_display_data_info(&data);
-//             // start_game(&data);
-//             // ft_free_memory(data);
-//         }
-//     }
-//     return(0);
-// }
+    if(argc != 2)
+    {
+        perror(ft_error_return(1));
+        return (1);
+    }
+    else
+    {
+        data = init_and_check(argv[1]);
+        if(!data)
+        {
+            perror(ft_error_return(3)); 
+            return(1);
+        }
+        else
+        {
+            printf("initialisation realiser avec succes\n");
+            //ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
+            ft_display_data_info(data);
+            // start_game(&data);
+            // ft_free_memory(data);
+        }
+    }
+    return(0);
+}
