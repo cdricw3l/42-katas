@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:18:08 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 12:33:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_data
 	void				*mlx;
 	void				*window;
 	t_img				*img;
-	int					*check_list;
 	t_game_data			*game_data;
 	
 } t_data;

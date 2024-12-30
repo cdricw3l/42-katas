@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/29 19:32:22 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 12:28:35 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@
 //             // ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
 //             // ft_display_data_info(&data);
 //             // start_game(&data);
+//             // ft_free_memory(data);
 //         }
 //     }
 //     return(0);

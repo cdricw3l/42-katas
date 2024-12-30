@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:24:24 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 12:33:54 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@ t_dimention	ft_s_dimention(void)
 	dimention.col = 0;
 	dimention.row = 0;
 	return (dimention);
-}
-
-int	*ft_init_check_list_arr(void)
-{
-	int	*check_lst;
-
-	check_lst = malloc(sizeof(int) * CHECK_LIST_SIZE);
-	if (!check_lst)
-		return (NULL);
-	ft_bzero(check_lst, sizeof(int) * CHECK_LIST_SIZE);
-	return (check_lst);
 }
 
 t_img	*ft_init_image_s(void)
@@ -77,9 +66,6 @@ t_data	*ft_init_data_s(void)
 	data->window = NULL;
 	data->img = ft_init_image_s();
 	if (!data->img)
-		return (ft_free_memory(data));
-	data->check_list = ft_init_check_list_arr();
-	if (!data->check_list)
 		return (ft_free_memory(data));
 	data->game_data = ft_init_game_data_s();
 	if (!data->game_data)
