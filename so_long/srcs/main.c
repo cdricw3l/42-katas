@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 13:13:11 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 17:21:43 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int	main(int argc, char *argv[])
         else
         {
             printf("initialisation realiser avec succes\n");
-            //ft_check_valide_way(data.game_data.map, &data, data.game_data.begin);
             ft_display_data_info(data);
+            ft_check_valide_way(data->game_data->map, data->game_data, data->game_data->begin);
             // start_game(&data);
             ft_free_memory(data);
         }

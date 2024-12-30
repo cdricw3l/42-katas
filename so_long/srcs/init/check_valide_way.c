@@ -6,24 +6,21 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 13:05:18 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 17:25:21 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	ft_counter(void)
+
+void	fill_arr2(char **tab, int target,t_game_data *data, int col, int row)
 {
-	static int counter_i;
+	int h;
+	int w;
 
-	counter_i++;
-	printf("voici le counter %d\n", counter_i);
-}
-
-
-void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, int row)
-{
-	if(col < 0 || row >= size->row || row < 0 ||  col  >= size->col )
+	h = data->dimention.row;
+	w = data->dimention.col;
+	if(col < 0 || row >= h || row < 0 ||  col  >= w)
 		return ;
 		
 	if(tab[row][col] == ' ' || (tab[row][col] == '1' ))
@@ -31,33 +28,27 @@ void	fill_arr2(char **tab, char **tmp, int target,t_dimention *size, int col, in
 
 	if(tab[row][col] == 'C')
 	{
-		tab[row][col] = 'I';
-		if(tmp[row][col] != 'I')
-		{
-			ft_counter();
-			tmp[row][col] = 'I';
-			printf("item row %d,  col %d\n", row, col);
-		}
+		printf("itemp touvé\n");
+		tab[row][col] = 'X';
+		
 	}
-	else if(tab[row][col] != 'I')
+	else if(tab[row][col] == '0')
 		tab[row][col] = ' ';
 
-	fill_arr2(tab, tmp ,target, size, col, row - 1);
-	fill_arr2(tab, tmp ,target, size, col, row + 1);
-	fill_arr2(tab, tmp ,target, size, col - 1, row);
-	fill_arr2(tab, tmp ,target, size, col + 1, row);
+	fill_arr2(tab,target, data, col, row - 1);
+	fill_arr2(tab,target, data, col, row + 1);
+	fill_arr2(tab,target, data, col - 1, row);
+	fill_arr2(tab,target, data, col + 1, row);
 }
 
 
-void ft_check_valide_way(char **tab, t_dimention *size_map, t_dimention begin)
+void ft_check_valide_way(char **tab, t_game_data *g_data, t_dimention begin)
 {
     int target;
-    char **tmp;
 
-	tmp = tab;
     target = tab[begin.row][begin.col];
-    printf("voici la target %c\n", target);
-	fill_arr2(tab, tmp,target, size_map, begin.col, begin.row);
-    ft_print_map(tab, size_map->row, size_map->row);
+    printf("Recherche d'un chemin valide ...\n");
+	fill_arr2(tab, target, g_data, begin.col, begin.row);
+    ft_print_map(tab, g_data->dimention.row, g_data->dimention.col);
     
 }
