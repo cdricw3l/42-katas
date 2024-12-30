@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 18:17:30 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 23:27:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_game_data
 	char				*map_name;
 	char				**map;
 	int					count_item;
+	int					check_item;
 	int					count_begin;
 	int					count_exit;
 	int					count_mouvement;
@@ -99,6 +100,6 @@ int		ft_check_param(t_game_data *data, char *path);
 int		ft_is_close(char **map, int hauteur, int largeur);
 int		ft_check_dimentions(t_game_data *data);
 void	ft_process_set(t_game_data *data,char c, int row, int col);
-void	ft_check_valide_way(t_game_data *g_data);
+int		ft_check_valide_way(t_game_data *g_data);
 void    ft_print_map(t_game_data *data);
 #endif

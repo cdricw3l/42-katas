@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_utils.c                                       :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 12:33:54 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 23:07:53 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_game_data	*ft_init_game_data_s(void)
 	game_data->map_name = NULL;
 	game_data->map = NULL;
 	game_data->count_item = 0;
+	game_data->check_item = 0;
 	game_data->count_mouvement = 0;
 	game_data->count_exit = 0;
 	game_data->count_begin = 0;

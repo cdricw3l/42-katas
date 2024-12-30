@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 18:18:11 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 23:27:24 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	if (tab[row][col] == 'C')
 	{
 		printf("itemp touvé\n");
-		data->count_item--;
+		data->check_item++;
 		tab[row][col] = 'X';
 	}
-	else if (tab[row][col] == '0')
+	else if (tab[row][col] == '0'|| tab[row][col] == 'E')
 		tab[row][col] = ' ';
 	fill_arr2(target, data, col, row - 1);
 	fill_arr2(target, data, col, row + 1);
@@ -39,18 +39,24 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	fill_arr2(target, data, col + 1, row);
 }
 
-void	ft_check_valide_way(t_game_data *g_data)
+int	ft_check_valide_way(t_game_data *g_data)
 {
 	char		**tab;
 	int			target;
 	t_dimention	begin;
 
+	if (!g_data)
+		return(1);
 	tab = g_data->map;
 	begin = g_data->begin;
 	target = tab[begin.row][begin.col];
-	printf("Recherche d'un chemin valide ...\n");
+	printf("Recherche d'un chemin valide ... %d\n", g_data->check_item);
 	fill_arr2(target, g_data, begin.col, begin.row);
 	ft_print_map(g_data);
-	if (g_data->count_item > 0)
-		printf("Il n'y a pas de chemin valide. %d\n", g_data->count_item);
+	if (g_data->check_item != g_data->count_item)
+	{
+		printf("Il n'y a pas de chemin valide. %d\n", g_data->check_item);
+		return(1);
+	}
+	return(0);
 }

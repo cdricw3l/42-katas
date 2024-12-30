@@ -10,6 +10,7 @@ SRCS =	srcs/main.c \
 		gnl/get_next_line.c \
 		srcs/init/* \
 		srcs/utils/* \
+		srcs/hook/* \
 
 
 SRCS_TEST = srcs/so_long_utils.c srcs/check_params/check_params_1.c  gnl/get_next_line_utils.c gnl/get_next_line.c test_unit/test_unit_check_params/*

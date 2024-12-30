@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 18:17:02 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/30 23:33:39 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void    ft_print_map(t_game_data *data)
     char **map;
 
     i = 0;
-    if(data)
+    if(data->dimention.row && data->dimention.col)
     {
         hauteur = data->dimention.row;
         largeur = data->dimention.col;
@@ -127,52 +127,6 @@ int ft_arr_len(char **arr)
     }
     return (-1);
 }
-
-// char **ft_parse_params(char *file, t_data *data)
-// {
-//     int i;
-//     int j;
-//     int fd;
-//     char **map;
-//     char *tmp;
-    
-//     i = 0;
-
-//     map = malloc(sizeof(char *) * data->game_data->dimention.row);
-//     if(!map)
-//         return(NULL);
-//     fd = open(file, O_RDONLY);
-//     if (fd == -1)
-//     {
-//         perror(ft_error_return(2));
-//         return (NULL);
-//     }
-//     while (i < data->dimention.hauteur)
-//     {
-//         j = 0;
-//         map[i] = malloc(sizeof(char *) * data->dimention.hauteur);
-//         if (!map[i])
-//             return(NULL);
-//         tmp = get_next_line(fd);
-//         while (j < data->dimention.largeur)
-//         {
-//             if(tmp)
-//             {
-//                 if(tmp[j] == 'C')
-//                     data->count_item++;
-//                 else if(tmp[j] == 'E')
-//                 {
-//                     data->exit_position.hauteur = i;
-//                     data->exit_position.largeur = j;
-//                 }
-//                 map[i][j] = tmp[j];
-//                 j++;  
-//             }
-//         }
-//         i++;
-//     }
-//     return(map);
-// }
 
 char *ft_error_return(int error)
 {
