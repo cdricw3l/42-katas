@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:08:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 00:38:36 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 10:04:41 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void    ft_display_data_info(t_data *data)
 {
+
     printf("\n//////////////////////////////////////////\nContenu de la structure data: 🤙🤙🤙\n\n");
     printf("Nom de la map: %s \n\n", data->game_data->map_name);
+    printf("Dimention de l'ecran : x_screen: %d et y_screen: %d\n",data->screen_size.col,data->screen_size.row);
     printf("Dimention de la map: \n");
     printf("Hauteur: %d \nlargeur: %d\n\n", data->game_data->dimention.row, data->game_data->dimention.col);
     printf("Position de depart du personnage\n");

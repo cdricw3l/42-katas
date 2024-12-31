@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 01:01:42 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 10:02:47 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	main(int argc, char *argv[])
 		data = init_and_check(argv[1]);
 		if (data)
 		{
+			mlx_get_screen_size(data->mlx, data->screen_size.col,data->screen_size.col);
 			ft_display_data_info(data);
 			start_game(&data);
 			ft_free_memory(data);

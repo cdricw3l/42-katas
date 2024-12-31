@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:07:53 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 09:55:11 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ t_data	*ft_init_data_s(void)
 	data->game_data = ft_init_game_data_s();
 	if (!data->game_data)
 		return (ft_free_memory(data));
+	data->screen_size = ft_s_dimention();
 	return (data);
 }

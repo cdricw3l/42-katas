@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 01:08:01 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 09:54:12 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@
 # include <fcntl.h>
 
 
+#define MLX_SYNC_IMAGE_WRITABLE		1
+#define MLX_SYNC_WIN_FLUSH_CMD		2
+#define MLX_SYNC_WIN_CMD_COMPLETED	3
 #define CHECK_LIST_SIZE 7
 #define MAX_FD 1048576
+
 
 typedef int t_check_list[CHECK_LIST_SIZE];
 
@@ -65,6 +69,7 @@ typedef struct s_data
 	void				*window;
 	t_img				*img;
 	t_game_data			*game_data;
+	t_dimention			screen_size;
 	
 } t_data;
 
