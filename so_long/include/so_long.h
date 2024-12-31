@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 09:54:12 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 11:12:15 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #define MLX_SYNC_WIN_CMD_COMPLETED	3
 #define CHECK_LIST_SIZE 7
 #define MAX_FD 1048576
+#define TILD_SIZE 50
 
 
 typedef int t_check_list[CHECK_LIST_SIZE];

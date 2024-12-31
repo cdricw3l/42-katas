@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 09:44:53 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 12:01:23 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_update_mouvement(t_data *data, t_game_data *g, t_dimention *begin)
 		printf("Update position : y: %d, x: %d\n", begin->row, begin->col);
 		printf("Nombre de mouvement %d\n", g->count_mouvement);
 	}
-	ft_print_map(g);
 }
 
 void	ft_update_position(t_data *d, t_game_data *g, int key, t_dimention *b)
@@ -63,6 +62,7 @@ void	ft_update_position(t_data *d, t_game_data *g, int key, t_dimention *b)
 	}
 	else
 		printf("Le personage ne bouge pas:\ny: %d, x: %d\n", b->row, b->col);
+	ft_print_map(g);
 }
 
 void	ft_keycode_counter_handler(t_data *data, int keycode)
@@ -96,7 +96,7 @@ void	exit_game2(t_data **d)
 	//mlx_destroy_image(data->mlx, data->img->img);
 	//mlx_destroy_window(data->mlx, data->window);
 	//mlx_destroy_display(data->mlx);
-	ft_free_memory(data);
+	//ft_free_memory(data);
 	(void)data;
 	printf("END GAME\n");
 	exit (0);
@@ -105,6 +105,7 @@ void	exit_game2(t_data **d)
 int ft_close_windows(int keycode, t_data *data)
 {
     printf("voici le keycode %d\n", keycode);
+	(void)data;
 	
 	exit_game2(&data);
     return(0);

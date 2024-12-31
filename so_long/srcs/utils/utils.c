@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 00:46:40 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 12:18:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,9 +159,14 @@ void	exit_game(t_data *data)
 {
 
 	printf("clean memory...\n");
-	mlx_destroy_image(data->mlx, data->img->img);
-	mlx_destroy_window(data->mlx, data->window);
-	mlx_destroy_display(data->mlx);
+    if (data->mlx)
+    {
+        if(data->img->img)
+            mlx_destroy_image(data->mlx, data->img->img);
+        if(data->window)
+            mlx_destroy_window(data->mlx, data->window);
+        mlx_destroy_display(data->mlx);
+    }
 	ft_free_memory(data);
 	printf("END GAME\n");
 	exit (0);

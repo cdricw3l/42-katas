@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:27:24 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 14:54:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	tab = data->map;
 	h = data->dimention.row;
 	w = data->dimention.col;
-	if (col < 0 || row >= h || row < 0 || col >= w)
+	if (col < 0 || row >= h  || row < 0 || col >= w)
 		return ;
-	if (tab[row][col] == ' ' || (tab[row][col] == '1' ))
+	if (tab[row][col] == ' ' || (tab[row][col] == '1' || tab[row][col] == 'X' ))
 		return ;
 	if (tab[row][col] == 'C')
 	{
-		printf("itemp touvé\n");
 		data->check_item++;
 		tab[row][col] = 'X';
 	}
 	else if (tab[row][col] == '0'|| tab[row][col] == 'E')
 		tab[row][col] = ' ';
+	printf("Row %d et col %d\n", row, col);
+	ft_print_map(data);
 	fill_arr2(target, data, col, row - 1);
 	fill_arr2(target, data, col, row + 1);
 	fill_arr2(target, data, col - 1, row);
