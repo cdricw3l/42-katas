@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 00:59:17 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 09:44:53 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ void	ft_update_position(t_data *d, t_game_data *g, int key, t_dimention *b)
 
 	init_col = b->col;
 	init_row = b->row;
-	if (key == 97)
+	if (key == 100 || key == 65362)
 		if (g->map[b->row - 1][g->begin.col] != '1')
 			b->row -= 1;
-	if (key == 100)
+	if (key == 100 || key == 65363)
 		if (g->map[b->row][b->col + 1] != '1')
 			b->col += 1;
-	if (key == 115)
+	if (key == 115 || key == 65364)
 		if (g->map[b->row + 1][b->col] != '1')
 			b->row += 1;
-	if (key == 119)
+	if (key == 119 || key == 65361)
 		if (g->map[b->row][b->col - 1] != '1')
 			b->col -= 1;
 	if (init_col != b->col || init_row != b->row)
@@ -74,6 +74,10 @@ void	ft_keycode_counter_handler(t_data *data, int keycode)
 	if (keycode == 97 || keycode == 100)
 		ft_update_position(data, data->game_data, keycode, begin);
 	if (keycode == 115 || keycode == 119)
+		ft_update_position(data, data->game_data, keycode, begin);
+	if (keycode == 65361 || keycode == 65362)
+		ft_update_position(data, data->game_data, keycode, begin);
+	if (keycode == 65363 || keycode == 65364)
 		ft_update_position(data, data->game_data, keycode, begin);
 }
 
