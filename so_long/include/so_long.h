@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:27:37 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 00:48:09 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		ft_colors(int larg, int lo);
 
 int		ft_manage_mouse(int keycode, t_data *data);
 int		ft_manage_keyboard(int keycode, t_data *data);
-int		ft_close_windows(int keycode, t_data **data);
+int		ft_close_windows(int keycode, t_data *data);
 void	ft_flood_fill(char **tab, t_dimention size, t_dimention begin);
 t_data 	*check_and_init(char *path);
 
@@ -102,4 +102,7 @@ int		ft_check_dimentions(t_game_data *data);
 void	ft_process_set(t_game_data *data,char c, int row, int col);
 int		ft_check_valide_way(t_game_data *g_data);
 void    ft_print_map(t_game_data *data);
+void	end_game_menu(t_data *data);
+void	exit_game(t_data *data);
+
 #endif

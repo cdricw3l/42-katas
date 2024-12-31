@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:33:39 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 00:46:40 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,16 @@ int ft_colors(int larg, int lo)
     else if(larg % 3  != 0 && 2 != 0)
         colors = 0x0033CCFF;
     return(colors);
+}
+
+void	exit_game(t_data *data)
+{
+
+	printf("clean memory...\n");
+	mlx_destroy_image(data->mlx, data->img->img);
+	mlx_destroy_window(data->mlx, data->window);
+	mlx_destroy_display(data->mlx);
+	ft_free_memory(data);
+	printf("END GAME\n");
+	exit (0);
 }
