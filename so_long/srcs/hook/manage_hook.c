@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 12:01:23 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 19:43:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_update_mouvement(t_data *data, t_game_data *g, t_dimention *begin)
 	else
 	{
 		if (g->map[begin->row][begin->col] == 'E')
-			exit_game(data);
+			if(g->count_item == 0)
+				exit_game(data);
 		g->map[begin->row][begin->col] = 'P';
 		printf("Update position : y: %d, x: %d\n", begin->row, begin->col);
 		printf("Nombre de mouvement %d\n", g->count_mouvement);

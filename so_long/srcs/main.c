@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 12:15:47 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 20:19:47 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int ft_put_img(void **mlx, void **new_w, t_data *data)
 	largeur = 0;
 	i = 0;
 	data->img->img  = mlx_xpm_file_to_image(*mlx, "items/door.xpm",&hauteur,&largeur);
-    while (i < data->screen_size.row * TILD_SIZE)
+    while (i < data->screen_size.row - 1 * TILD_SIZE)
     {
 		j = 0;
-        while (j  < data->screen_size.col * TILD_SIZE)
+        while (j  < data->screen_size.col- 1 * TILD_SIZE)
         {
     		mlx_put_image_to_window(*mlx, *new_w, data->img->img, j, i);
             j += largeur;
@@ -48,7 +48,7 @@ void    start_game(t_data **data)
         perror(ft_error_return(4));
         return ;
     }
-    //ft_put_img(&(*data)->mlx, &(*data)->window, *data);
+    ft_put_img(&(*data)->mlx, &(*data)->window, *data);
     mlx_hook((*data)->window, 2, 1L<<0 ,ft_manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
    	mlx_hook((*data)->window, 17, 1L<<0 ,ft_close_windows, (*data));

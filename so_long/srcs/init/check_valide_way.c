@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 14:54:37 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 19:42:24 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	int		h;
 	int		w;
 	char	**tab;
+	char	c;
 
 	tab = data->map;
 	h = data->dimention.row;
 	w = data->dimention.col;
-	if (col < 0 || row >= h  || row < 0 || col >= w)
-		return ;
-	if (tab[row][col] == ' ' || (tab[row][col] == '1' || tab[row][col] == 'X' ))
-		return ;
+	c = tab[row][col];
 	if (tab[row][col] == 'C')
 	{
 		data->check_item++;
@@ -32,12 +30,20 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	}
 	else if (tab[row][col] == '0'|| tab[row][col] == 'E')
 		tab[row][col] = ' ';
-	printf("Row %d et col %d\n", row, col);
+	if(!ft_isset(c," 1X"))
+	{
+		if (col > 1 || row < h || row > 1 || col < w)
+		{
+			if(data->count_item > data->check_item)
+			{
+				fill_arr2(target, data, col, row - 1);
+				fill_arr2(target, data, col, row + 1);
+				fill_arr2(target, data, col - 1, row);
+				fill_arr2(target, data, col + 1, row);
+			}
+		}
+	}
 	ft_print_map(data);
-	fill_arr2(target, data, col, row - 1);
-	fill_arr2(target, data, col, row + 1);
-	fill_arr2(target, data, col - 1, row);
-	fill_arr2(target, data, col + 1, row);
 }
 
 int	ft_check_valide_way(t_game_data *g_data)

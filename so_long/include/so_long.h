@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 11:12:15 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 20:46:48 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SO_LONG_H
 
 # include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 # include "../printf/ft_printf.h"
@@ -63,6 +64,21 @@ typedef struct s_img
 	int					endian;
 	
 } t_img ;
+
+typedef struct	s_img2
+{
+	XImage			*image;
+	Pixmap			pix;
+	GC				gc;
+	int				size_line;
+	int				bpp;
+	int				width;
+	int				height;
+	int				type;
+	int				format;
+	char			*data;
+	XShmSegmentInfo	shm;
+}				t_img2;
 
 typedef struct s_data
 {

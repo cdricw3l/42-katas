@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:20:04 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 19:25:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_check_param(t_game_data *data, char *path)
 	i = 0;
 	set = "01CEP";
 	if (ft_check_dimentions(data))
-		return (1);
+		return (ft_check_dimentions(data));
 	while (data->map[i])
 	{
 		j = 0;
@@ -51,13 +51,13 @@ int	ft_check_param(t_game_data *data, char *path)
 			if (ft_isset(data->map[i][j], set))
 				ft_process_set(data, data->map[i][j], i, j);
 			else
-				return (1);
+				return (2);
 			j++;
 		}
 		i++;
 	}
 	if (data->count_exit + data->count_begin != 2)
-		return (1);
+		return (3);
 	data->map_name = path;
 	return (0);
 }
@@ -84,7 +84,7 @@ int	ft_check_dimentions(t_game_data *data)
 		i++;
 	}
 	if (ft_is_close(data->map, row, j))
-		return (1);
+		return (2);
 	data->dimention.col = j;
 	data->dimention.row = row;
 	return (0);

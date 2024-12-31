@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/30 23:29:23 by cb               ###   ########.fr       */
+/*   Updated: 2024/12/31 19:22:49 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ t_data	*init_and_check(char *path)
 	}
 	check_param = ft_check_param(data->game_data, path);
 	if (check_param)
+	{
+		printf("probleme avec les parametre de la map %d\n", check_param);
 		return (ft_free_memory(data));
+	}
 	if (ft_check_valide_way(data->game_data) == 1)
 		return (ft_free_memory(data));
 	return (data);
