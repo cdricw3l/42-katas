@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 20:46:48 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/01 17:19:31 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #define SO_LONG_H
 
 # include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
+//# include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 # include "../printf/ft_printf.h"
 
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 
 #define MLX_SYNC_IMAGE_WRITABLE		1
@@ -29,6 +30,7 @@
 #define CHECK_LIST_SIZE 7
 #define MAX_FD 1048576
 #define TILD_SIZE 50
+# define M_PI		3.14159265358979323846
 
 
 typedef int t_check_list[CHECK_LIST_SIZE];
@@ -39,6 +41,20 @@ typedef struct s_dimention
 	int col;
 
 } t_dimention;
+
+
+typedef struct s_border
+{
+	t_point	size;
+	t_point	targ;
+	
+	int		border_size; //epaisseur
+	int		b_color;	// border color;
+	int		r_color;	// remplissage color;
+	
+} t_border;
+
+
 
 typedef struct s_game_data
 {
@@ -64,21 +80,6 @@ typedef struct s_img
 	int					endian;
 	
 } t_img ;
-
-typedef struct	s_img2
-{
-	XImage			*image;
-	Pixmap			pix;
-	GC				gc;
-	int				size_line;
-	int				bpp;
-	int				width;
-	int				height;
-	int				type;
-	int				format;
-	char			*data;
-	XShmSegmentInfo	shm;
-}				t_img2;
 
 typedef struct s_data
 {

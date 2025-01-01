@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 08:37:48 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/01/01 17:14:03 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		ft_get_max_value(int *arr, int size);
 
 typedef struct s_point
 {
-	int	col;
 	int	row;
+	int	col;
 	
 } t_point;
 

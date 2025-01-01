@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 20:19:47 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/01 13:16:59 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,29 @@ void    start_game(t_data **data)
     mlx_loop((*data)->mlx) ;
 }
 
-int	main(int argc, char *argv[])
-{
-	t_data		*data;
+// int	main(int argc, char *argv[])
+// {
+// 	t_data		*data;
 
-	if (argc != 2)
-	{
-		perror(ft_error_return(1));
-		return (1);
-	}
-	else
-	{
-		data = init_and_check(argv[1]);
-		if (data)
-		{		
-			ft_display_data_info(data);
-			start_game(&data);
-			ft_free_memory(data);
-		}
-		else
-		{
-			perror(ft_error_return(3));
-			return (1);
-		}
-	}
-	return (0);
-}
+// 	if (argc != 2)
+// 	{
+// 		perror(ft_error_return(1));
+// 		return (1);
+// 	}
+// 	else
+// 	{
+// 		data = init_and_check(argv[1]);
+// 		if (data)
+// 		{		
+// 			ft_display_data_info(data);
+// 			start_game(&data);
+// 			ft_free_memory(data);
+// 		}
+// 		else
+// 		{
+// 			perror(ft_error_return(3));
+// 			return (1);
+// 		}
+// 	}
+// 	return (0);
+// }
