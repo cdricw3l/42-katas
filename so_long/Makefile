@@ -5,13 +5,14 @@ NAME= so_long
 NAME_TEST= so_long_test
 #srcs/hook/manage_hook.c \
 
-#srcs/main.c \#
 SRCS =	gnl/get_next_line_utils.c \
 		gnl/get_next_line.c \
 		srcs/utils/* \
 		srcs/init/* \
 		srcs/hook/* \
-		srcs/ft_menu.c
+		srcs/main.c
+
+#srcs/main.c 
 
 SRCS_TEST = srcs/so_long_utils.c srcs/check_params/check_params_1.c  gnl/get_next_line_utils.c gnl/get_next_line.c test_unit/test_unit_check_params/*
 LIB= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 

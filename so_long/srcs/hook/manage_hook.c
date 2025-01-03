@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 19:43:32 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/02 22:37:21 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void	ft_keycode_counter_handler(t_data *data, int keycode)
 int	ft_manage_keyboard(int keycode, t_data *data)
 {
 	ft_keycode_counter_handler(data, keycode);
+	if(data->img->img)
+		
+	char_layer(data);
 	if (keycode == 65307 || keycode == 64)
 		exit_game(data);
 	return (0);

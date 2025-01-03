@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/01 17:19:31 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/02 15:35:06 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #define MLX_SYNC_WIN_CMD_COMPLETED	3
 #define CHECK_LIST_SIZE 7
 #define MAX_FD 1048576
-#define TILD_SIZE 50
+#define TILD_SIZE 40
 # define M_PI		3.14159265358979323846
 
 
@@ -74,11 +74,12 @@ typedef struct s_game_data
 typedef struct s_img
 {
 	void				*img;
-	char				*addr;
+	int					*addr;
 	int					bit_per_pixel;
 	int					line_length;
 	int					endian;
-	
+	int					width;
+	int					height;
 } t_img ;
 
 typedef struct s_data
@@ -113,5 +114,7 @@ int		ft_check_valide_way(t_game_data *g_data);
 int		ft_close_windows(int keycode, t_data *data);
 int		ft_manage_keyboard(int keycode, t_data *data);
 int		ft_colors(int larg, int lo);
+int		ft_put_img(t_data *data);
+void 	*char_layer(t_data *data);
 
 #endif
