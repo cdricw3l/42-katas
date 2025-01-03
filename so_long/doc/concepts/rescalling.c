@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:23:52 by cb                #+#    #+#             */
-/*   Updated: 2025/01/03 13:30:03 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/03 14:08:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct Indicator
 {
     float indicator;
-    int *scale;
+    float *scale;
     
 } t_indicator;
 
@@ -34,20 +34,21 @@ typedef struct s_data_intput
 
 
 
-void    ft_process_data(t_data_i *data_i, t_data_i *data_o, int *new_scale)
+void    ft_process_data(t_data_i *data_i, t_data_i *data_o, float *new_scale)
 {
     int i;
     int rescale;
     t_indicator *tmp;
-    t_indicator *indic_in[] = {&data_i->critique,&data_i->engagement,&data_i->vente};
-    t_indicator *indic_out[] = {&data_o->critique,&data_o->engagement,&data_o->vente};
+    t_indicator *indic_in[] = {&data_i->critique,&data_i->vente,&data_i->engagement};
+    t_indicator *indic_out[] = {&data_o->critique,&data_o->vente,&data_o->engagement};
 
     i = 0;
     data_o->count_indicator = data_i->count_indicator;
     while (i < data_i->count_indicator)
     {
         tmp = indic_in[i];
-        rescale = (tmp->indicator - tmp->scale[0] / tmp->scale[1] - tmp->scale[0])
+        printf(" %f\n", ((tmp->indicator - tmp->scale[0]) / (tmp->scale[1] - tmp->scale[0])));
+        rescale = ((tmp->indicator - tmp->scale[0]) / (tmp->scale[1] - tmp->scale[0]))
                     * (new_scale[1] - new_scale[0]) + new_scale[0];
         indic_out[i]->indicator = rescale;
         indic_out[i]->scale = new_scale;
@@ -57,7 +58,7 @@ void    ft_process_data(t_data_i *data_i, t_data_i *data_o, int *new_scale)
     
 }
 
-t_data_i   *ft_ex1_rescalling(t_data_i *data_i, int *new_scale)
+t_data_i   *ft_ex1_rescalling(t_data_i *data_i, float *new_scale)
 {
     t_data_i *data_o;
 
@@ -65,19 +66,18 @@ t_data_i   *ft_ex1_rescalling(t_data_i *data_i, int *new_scale)
     if(!data_o)
         return(NULL);
     ft_process_data(data_i,data_o, new_scale);
-    free(data_i);
     return(data_o);
 }
 void    printf_value(t_data_i *data)
 {
-    char *indic[] = {"critique", "engagement", "vente"};
-    t_indicator *indic_out[] = {&data->critique,&data->engagement,&data->vente};
+    char *indic[] = {"critique", "vente", "engagement"};
+    t_indicator *indic_out[] = {&data->critique,&data->vente,&data->engagement};
     int i;
 
     i = 0;
     while (i <data->count_indicator)
     {
-        printf("voici la valeur pour l'indicateur %s: %f scale min: %d scale max: %d\n", indic[i],indic_out[i]->indicator,indic_out[i]->scale[0],indic_out[i]->scale[1]);
+        printf("voici la valeur pour l'indicateur %s: %f scale min: %f scale max: %f\n", indic[i],indic_out[i]->indicator,indic_out[i]->scale[0],indic_out[i]->scale[1]);
         i++;
     }
     
@@ -86,10 +86,10 @@ void    printf_value(t_data_i *data)
 int main(void)
 {
     t_data_i *data_i;
-    int scale1[2] = {0,10} ;
-    int scale2[2] = {0,500} ;
-    int scale3[2] = {0,1} ;
-    int new_scale[] = {0,100};
+    float scale1[2] = {0.0,10.0} ;
+    float scale2[2] = {0.0,500.0} ;
+    float scale3[2] = {0.0,1.0} ;
+    float new_scale[] = {0.0,100.0};
     
     data_i = malloc(sizeof(t_data_i));
     if(!data_i)
@@ -102,7 +102,9 @@ int main(void)
     data_i->engagement.scale = scale3;
     data_i->count_indicator = 3;
     
+    printf_value(data_i);
     t_data_i *data_o = ft_ex1_rescalling(data_i,new_scale);
+    free(data_i);
     printf("voici l'adresse de data %p\n", data_o);
     printf_value(data_o);
     free(data_o);

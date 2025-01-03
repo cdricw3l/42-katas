@@ -1,19 +1,27 @@
-
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(lldb) Launch",
+            "name": "C/C++: Debug active file with gdb",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/libft/test",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/test",  // Chemin vers l'exécutable dans le répertoire parent
+            "args": [],  // Arguments que vous pouvez passer à votre programme (optionnel)
+            "stopAtEntry": false,  // Ne pas s'arrêter à l'entrée du programme
+            "cwd": "${workspaceFolder}",  // Répertoire de travail pour le programme, ici c'est le répertoire du projet
             "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            //"MIDebuggerPath": "/usr/bin/lldb" // Chemin vers LLDB
+            "externalConsole": false,  // Ne pas utiliser de console externe
+            "MIMode": "gdb",  // Utilisation de gdb comme débogueur
+            "miDebuggerPath": "/usr/bin/gdb",  // Le chemin vers gdb (ajustez si nécessaire)
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "",  // Si vous compilez manuellement, vous n'avez pas besoin de tâche de pré-lancement
+            "miDebuggerArgs": "-g"
         }
     ]
 }
