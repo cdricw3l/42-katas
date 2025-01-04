@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 14:30:05 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 17:13:59 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,22 @@ char	**ft_charct_arr(int keycode)
 	if (!img_arr)
 		return(NULL);
 	(void)keycode;
-	img_arr[0] ="items/char2/walk/l_walk/L_walk_1.xpm";
-	img_arr[1] ="items/char2/walk/l_walk/L_walk_2.xpm";
-	img_arr[2] ="items/char2/walk/l_walk/L_walk_3.xpm";
-	img_arr[3] ="items/char2/walk/l_walk/L_walk_4.xpm";
-	img_arr[4] ="items/char2/walk/l_walk/L_walk_5.xpm";
-	img_arr[5] ="items/char2/walk/l_walk/L_walk_6.xpm";
-	img_arr[6] ="items/char2/walk/r_walk/R_walk_1.xpm";
-	img_arr[7] ="items/char2/walk/r_walk/R_walk_2.xpm";
-	img_arr[8] ="items/char2/walk/r_walk/R_walk_3.xpm";
-	img_arr[9] ="items/char2/walk/r_walk/R_walk_4.xpm";
-	img_arr[10] ="items/char2/walk/r_walk/R_walk_5.xpm";
-	img_arr[11] ="items/char2/walk/r_walk/R_walk_6.xpm";
+	img_arr[0] ="items/monster/l_monster/monster_l_1.xpm";
+	img_arr[1] ="items/monster/l_monster/monster_l_2.xpm";
+	img_arr[2] ="items/monster/l_monster/monster_l_3.xpm";
+	img_arr[3] ="items/monster/l_monster/monster_l_4.xpm";
+	img_arr[4] ="items/monster/l_monster/monster_l_5.xpm";
+	img_arr[5] ="items/monster/l_monster/monster_l_6.xpm";
+	img_arr[6] ="items/monster/l_monster/monster_l_7.xpm";
+	img_arr[7] ="items/monster/l_monster/monster_l_8.xpm";
+	img_arr[8] ="items/monster/r_monster/monster_r_1.xpm";
+	img_arr[9] ="items/monster/r_monster/monster_r_2.xpm";
+	img_arr[10] ="items/monster/r_monster/monster_r_3.xpm";
+	img_arr[11] ="items/monster/r_monster/monster_r_4.xpm";
+	img_arr[12] ="items/monster/r_monster/monster_r_5.xpm";
+	img_arr[13] ="items/monster/r_monster/monster_r_6.xpm";
+	img_arr[14] ="items/monster/r_monster/monster_r_7.xpm";
+	img_arr[15] ="items/monster/r_monster/monster_r_8.xpm";
 	
 	return(img_arr);
 }
@@ -105,6 +109,7 @@ void *char_layer(t_data *data, int keycode)
 		}
 		else
 			return(ft_error_img(5));
+		free(new_image);
 		i++;
 	}
 	data->img->img = new_image;
@@ -170,8 +175,13 @@ void    start_game(t_data **data)
     }
 
 	ft_put_wall(*data);
-	if(char_layer(*data,0) == NULL)
-		return ;
+	while (1)
+	{
+		if(char_layer(*data,0) == NULL)
+			return ;
+		/* code */
+	}
+	
     mlx_hook((*data)->window, 2, 1L<<0 ,ft_manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
    	mlx_hook((*data)->window, 17, 1L<<0 ,ft_close_windows, (*data));
