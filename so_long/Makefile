@@ -61,7 +61,7 @@ libft:
 test:
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
-launch:
+run:
 	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
 	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./so_long map/map2.ber
 

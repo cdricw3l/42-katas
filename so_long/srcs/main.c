@@ -6,11 +6,12 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/02 22:41:08 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 14:30:05 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+#include <signal.h>
 
 void	*ft_error_img(int e)
 {
@@ -43,45 +44,63 @@ t_img *ft_new_image(t_data *data,char *str)
 		return(ft_error_img(3));
 	return(image);
 }
-char	**ft_charct_arr()
+char	**ft_charct_arr(int keycode)
 {
 	char **img_arr;
 	
-	img_arr = malloc(sizeof(char *) * 7);
+	
+	img_arr = malloc(sizeof(char *) * 12);
 	if (!img_arr)
 		return(NULL);
-	img_arr[0] ="items/char/es2.xpm";
-	img_arr[1] ="items/char/es3.xpm";
-	img_arr[2] ="items/char/es4.xpm";
-	img_arr[3] ="items/char/es5.xpm";
-	img_arr[4] ="items/char/es6.xpm";
-	img_arr[5] ="items/char/es7.xpm";
-	img_arr[6] ="items/char/es8.xpm";
+	(void)keycode;
+	img_arr[0] ="items/char2/walk/l_walk/L_walk_1.xpm";
+	img_arr[1] ="items/char2/walk/l_walk/L_walk_2.xpm";
+	img_arr[2] ="items/char2/walk/l_walk/L_walk_3.xpm";
+	img_arr[3] ="items/char2/walk/l_walk/L_walk_4.xpm";
+	img_arr[4] ="items/char2/walk/l_walk/L_walk_5.xpm";
+	img_arr[5] ="items/char2/walk/l_walk/L_walk_6.xpm";
+	img_arr[6] ="items/char2/walk/r_walk/R_walk_1.xpm";
+	img_arr[7] ="items/char2/walk/r_walk/R_walk_2.xpm";
+	img_arr[8] ="items/char2/walk/r_walk/R_walk_3.xpm";
+	img_arr[9] ="items/char2/walk/r_walk/R_walk_4.xpm";
+	img_arr[10] ="items/char2/walk/r_walk/R_walk_5.xpm";
+	img_arr[11] ="items/char2/walk/r_walk/R_walk_6.xpm";
 	
 	return(img_arr);
 }
 
-void *char_layer(t_data *data)
+void *char_layer(t_data *data, int keycode)
 {
     t_img *new_image;
 	char **img_path;
 	int i;
+	int j;
 	
 	i = 0;
-	img_path = ft_charct_arr();
+	j = 0;
+	img_path = ft_charct_arr(keycode);
 	new_image = NULL;
 	if(!img_path)
 		return(ft_error_img(4));
-	while (i < 7)
+	if(keycode == 65363)
+	{
+		i = 6;
+		j = 12;
+	}
+	else
+	{
+		i = 0;
+		j = 6;
+	}
+	while (i < j)
 	{
 		
 		new_image = ft_new_image(data, img_path[i]);
 		if(new_image)
 		{
 			printf("voici la destination %d et % d \n",data->game_data->begin.row,data->game_data->begin.col);
-			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->game_data->begin.col * TILD_SIZE,data->game_data->begin.row * TILD_SIZE);
+			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->game_data->begin.col * (TILD_SIZE),data->game_data->begin.row * TILD_SIZE);
 			mlx_destroy_image(data->mlx,new_image->img);
-			
 
 		}
 		else
@@ -90,6 +109,51 @@ void *char_layer(t_data *data)
 	}
 	data->img->img = new_image;
     return(data);
+}
+
+void	_putwall(t_data *data, void *im)
+{
+	int w;
+	int h;
+	int i;
+	int j;
+
+	w = data->game_data->dimention.col;
+	h = data->game_data->dimention.row;
+	i = 0;
+	while (i < h *TILD_SIZE)
+	{
+		j = 0;
+		while (j < w * TILD_SIZE)
+		{
+			if (i == 0 || i == (h - 1) * TILD_SIZE)
+			{
+				mlx_put_image_to_window(data->mlx,data->window,im,j,i);
+			}
+			else
+				if (j == 0 || j == (w - 1) * TILD_SIZE)
+					mlx_put_image_to_window(data->mlx,data->window,im,j,i);
+			j+= TILD_SIZE;
+		}
+		i += TILD_SIZE;
+	}
+}
+
+void	ft_put_wall(t_data *data)
+{
+	void	*im;
+	int 	w;
+	int		h;
+
+	im = mlx_xpm_file_to_image(data->mlx, "items/wall.xpm", &w, &h);
+	if(!im)
+	{
+		printf("erreur douverutre de l'item\n");
+		return ;
+	}
+	else
+		printf("push image w %d et h %d sur map %d X %d ...\n", w,h,data->game_data->dimention.col,data->game_data->dimention.row);
+	_putwall(data, im);
 }
 
 void    start_game(t_data **data)
@@ -104,7 +168,9 @@ void    start_game(t_data **data)
         perror(ft_error_return(4));
         return ;
     }
-	if(char_layer(*data) == NULL)
+
+	ft_put_wall(*data);
+	if(char_layer(*data,0) == NULL)
 		return ;
     mlx_hook((*data)->window, 2, 1L<<0 ,ft_manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);

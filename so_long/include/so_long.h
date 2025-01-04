@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/02 15:35:06 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 13:40:02 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 #define MLX_SYNC_IMAGE_WRITABLE		1
 #define MLX_SYNC_WIN_FLUSH_CMD		2
 #define MLX_SYNC_WIN_CMD_COMPLETED	3
-#define CHECK_LIST_SIZE 7
-#define MAX_FD 1048576
-#define TILD_SIZE 40
-# define M_PI		3.14159265358979323846
+#define CHECK_LIST_SIZE 			7
+#define MAX_FD 						1048576
+#define TILD_SIZE 					128
+# define M_PI						3.14159265358979323846
 
 
 typedef int t_check_list[CHECK_LIST_SIZE];
@@ -115,6 +115,6 @@ int		ft_close_windows(int keycode, t_data *data);
 int		ft_manage_keyboard(int keycode, t_data *data);
 int		ft_colors(int larg, int lo);
 int		ft_put_img(t_data *data);
-void 	*char_layer(t_data *data);
+void 	*char_layer(t_data *data, int keycode);
 
 #endif
