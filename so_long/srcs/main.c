@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 17:13:59 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 22:15:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void *char_layer(t_data *data, int keycode)
 		new_image = ft_new_image(data, img_path[i]);
 		if(new_image)
 		{
-			printf("voici la destination %d et % d \n",data->game_data->begin.row,data->game_data->begin.col);
+			//printf("voici la destination %d et % d \n",data->game_data->begin.row,data->game_data->begin.col);
 			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->game_data->begin.col * (TILD_SIZE),data->game_data->begin.row * TILD_SIZE);
 			mlx_destroy_image(data->mlx,new_image->img);
 
@@ -164,9 +164,6 @@ void	ft_put_wall(t_data *data)
 void    start_game(t_data **data)
 {
 
-	(*data)->mlx = mlx_init();
-	mlx_get_screen_size((*data)->mlx, &(*data)->screen_size.col, &(*data)->screen_size.row);
-    printf("Dimention de l'ecran : x_screen: %d et y_screen: %d\n",(*data)->screen_size.col,(*data)->screen_size.row);
     (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->game_data->dimention.col, TILD_SIZE * (*data)->game_data->dimention.row, "hello");
     if(!(*data)->window || !(*data)->mlx)
     {
@@ -199,18 +196,14 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		data = init_and_check(argv[1]);
+		data = ft_init_and_check(argv[1]);
 		if (data)
 		{		
 			ft_display_data_info(data);
 			start_game(&data);
-			ft_free_memory(data);
 		}
 		else
-		{
-			perror(ft_error_return(3));
-			return (1);
-		}
+			return (ft_error_return(2));
 	}
 	return (0);
 }

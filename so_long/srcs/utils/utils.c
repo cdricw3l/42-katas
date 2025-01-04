@@ -6,29 +6,55 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 12:18:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 22:20:03 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	*ft_free_memory(t_data *data)
+char *ft_error_return(int error)
+{
+    if (error == 1)
+        return("[ err ] Aucune map passée en paramètre");
+    if (error == 2)
+        return("[ err ] probleme d'initialisation de la structure data\n");
+    if (error == 2)
+        return("[ err ] probleme d'initialisation de la map\n");
+    if (error == 3)
+        return("[ err ] probleme avec les parametre de la map\n");
+    if (error == 4)
+        return("[ err ] Pas de chemin valide\n");
+    if (error == 5)
+        return("[ err ] Probleme d'initialisation du pointeur mlx\n");
+    if (error == 6)
+        return("[ err ] Probleme d'initialisation de la structure image\n");
+    if (error == 7)
+        return("[ err ] Probleme d'initialisation de la structure Game data\n");
+    if (error == 8)
+        return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
+    return (NULL);
+}
+
+void	*ft_free_memory(t_data *data, int err)
 {
     char **map;
-
-    map = data->game_data->map;
-    if(map)
+    if(err != -1)
     {
-        while (*map)
+        map = data->game_data->map;
+        if(map)
         {
-            free(*map);
-            map++;
+            while (*map)
+            {
+                free(*map);
+                map++;
+            }
         }
+        free(data->img);
+        free(data->game_data->map);
+        free(data->game_data);
+        free(data);
     }
-    free(data->img);
-    free(data->game_data->map);
-	free(data->game_data);
-	free(data);
+    ft_error_return(err);
 	return (NULL);
 }
 
@@ -128,18 +154,7 @@ int ft_arr_len(char **arr)
     return (-1);
 }
 
-char *ft_error_return(int error)
-{
-    if (error == 1)
-        return("Aucune map passée en paramètre");
-    if (error == 2)
-        return("Map introuvable");
-    if (error == 3)
-        return("Map icomplete");
-    if (error == 4)
-        return("Erreur d'initialisation de la mlx ou de la fenetre");
-    return (NULL);
-}
+
 
 int ft_colors(int larg, int lo)
 {
@@ -167,7 +182,7 @@ void	exit_game(t_data *data)
             mlx_destroy_window(data->mlx, data->window);
         mlx_destroy_display(data->mlx);
     }
-	ft_free_memory(data);
+	ft_free_memory(data,0);
 	printf("END GAME\n");
 	exit (0);
 }
