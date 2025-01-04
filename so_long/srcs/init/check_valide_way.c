@@ -6,13 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 19:42:24 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 23:15:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	fill_arr2(int target, t_game_data *data, int col, int row)
+void	fill_arr2(int target, t_data *data, int col, int row)
 {
 	int		h;
 	int		w;
@@ -46,7 +46,7 @@ void	fill_arr2(int target, t_game_data *data, int col, int row)
 	ft_print_map(data);
 }
 
-int	ft_check_valide_way(t_game_data *g_data)
+int	ft_check_valide_way(t_data *g_data)
 {
 	char		**tab;
 	int			target;

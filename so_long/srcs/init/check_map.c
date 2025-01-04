@@ -6,13 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 19:25:36 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 23:12:45 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	ft_process_set(t_game_data *data, char c, int row, int col)
+void	ft_process_set(t_data *data, char c, int row, int col)
 {
 	if (data)
 	{
@@ -33,7 +33,7 @@ void	ft_process_set(t_game_data *data, char c, int row, int col)
 	}
 }
 
-int	ft_check_param(t_game_data *data, char *path)
+int	ft_check_param(t_data *data, char *path)
 {
 	char	*set;
 	int		i;
@@ -62,7 +62,7 @@ int	ft_check_param(t_game_data *data, char *path)
 	return (0);
 }
 
-int	ft_check_dimentions(t_game_data *data)
+int	ft_check_dimentions(t_data *data)
 {
 	int	row;
 	int	col;

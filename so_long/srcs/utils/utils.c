@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 12:18:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 23:13:48 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_free_memory(t_data *data)
 {
     char **map;
 
-    map = data->game_data->map;
+    map = data->map;
     if(map)
     {
         while (*map)
@@ -45,7 +45,7 @@ void ft_analsyse_line(char *str)
 	
 }
 
-int ft_is_square(t_game_data *data)
+int ft_is_square(t_data *data)
 {
     int x;
     int y;
@@ -86,7 +86,7 @@ int ft_is_square(t_game_data *data)
 //     data->dimention.largeur = largeur;
 // }
 
-void    ft_print_map(t_game_data *data)
+void    ft_print_map(t_data *data)
 {
     int i;
     int j;

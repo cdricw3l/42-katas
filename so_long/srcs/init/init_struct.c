@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 09:55:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/04 23:25:15 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ t_game_data	*ft_init_game_data_s(void)
 	game_data->count_exit = 0;
 	game_data->count_begin = 0;
 	game_data->begin = ft_s_dimention();
+	if(game_data->begin.col >= game_data->dimention.col / 2)
+		game_data->char_state = LEFT;
+	else
+		game_data->char_state = RIGHT;
 	game_data->dimention = ft_s_dimention();
 	game_data->exit_position = ft_s_dimention();
 	return (game_data);
@@ -63,7 +67,7 @@ t_data	*ft_init_data_s(void)
 	data = malloc(sizeof(t_data) * 1);
 	if (!data)
 		return (NULL);
-	data->mlx = NULL;
+	data->mlx = mlx_init();
 	data->window = NULL;
 	data->img = ft_init_image_s();
 	if (!data->img)
