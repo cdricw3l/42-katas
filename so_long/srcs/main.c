@@ -6,7 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/05 06:18:37 by cb               ###   ########.fr       */
+=======
+/*   Updated: 2025/01/04 22:15:32 by cb               ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +103,21 @@ char	**ft_charct_arr(int keycode)
 // 	while (i < j)
 // 	{
 		
+<<<<<<< HEAD
 // 		new_image = ft_new_image(data, img_path[i]);
 // 		if(new_image)
 // 		{
 // 			printf("voici la destination %d et % d \n",data->xy_data.begin.row,data->xy_data.begin.col);
 // 			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->xy_data.begin.col * (TILD_SIZE),data->xy_data.begin.row * TILD_SIZE);
 // 			mlx_destroy_image(data->mlx,new_image->img);
+=======
+		new_image = ft_new_image(data, img_path[i]);
+		if(new_image)
+		{
+			//printf("voici la destination %d et % d \n",data->game_data->begin.row,data->game_data->begin.col);
+			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->game_data->begin.col * (TILD_SIZE),data->game_data->begin.row * TILD_SIZE);
+			mlx_destroy_image(data->mlx,new_image->img);
+>>>>>>> main
 
 // 		}
 // 		else
@@ -164,9 +177,13 @@ void	ft_put_wall(t_data *data)
 void    start_game(t_data **data)
 {
 
+<<<<<<< HEAD
 	(*data)->mlx = mlx_init();
 	mlx_get_screen_size((*data)->mlx, &(*data)->xy_data.screen_size.col, &(*data)->xy_data.screen_size.row);
     (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->xy_data.map.col, TILD_SIZE * (*data)->xy_data.map.row, "hello");
+=======
+    (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->game_data->dimention.col, TILD_SIZE * (*data)->game_data->dimention.row, "hello");
+>>>>>>> main
     if(!(*data)->window || !(*data)->mlx)
     {
         perror(ft_error_return(4));
@@ -198,18 +215,22 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
+<<<<<<< HEAD
 		data = initialisation_and_check(argv[1]);
+=======
+		data = ft_init_and_check(argv[1]);
+>>>>>>> main
 		if (data)
 		{		
 			ft_display_data_info(data);
 			start_game(&data);
+<<<<<<< HEAD
 			ft_free_memory(data, 13);
+=======
+>>>>>>> main
 		}
 		else
-		{
-			perror(ft_error_return(3));
-			return (1);
-		}
+			return (ft_error_return(2));
 	}
 	return (0);
 }

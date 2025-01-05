@@ -6,7 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/04 23:15:22 by cb               ###   ########.fr       */
+=======
+/*   Updated: 2025/01/04 22:19:09 by cb               ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +47,7 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 			}
 		}
 	}
-	ft_print_map(data);
+	//ft_print_map(data);
 }
 
 int	ft_check_valide_way(t_data *g_data)
@@ -57,13 +61,9 @@ int	ft_check_valide_way(t_data *g_data)
 	tab = g_data->map;
 	begin = g_data->begin;
 	target = tab[begin.row][begin.col];
-	printf("Recherche d'un chemin valide ... %d\n", g_data->check_item);
+	printf("[ log ] try to find valide way ... %d\n", g_data->check_item);
 	fill_arr2(target, g_data, begin.col, begin.row);
-	ft_print_map(g_data);
 	if (g_data->check_item != g_data->count_item)
-	{
-		printf("Il n'y a pas de chemin valide. %d\n", g_data->check_item);
 		return(1);
-	}
 	return(0);
 }

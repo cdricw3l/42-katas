@@ -6,7 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/05 06:02:56 by cb               ###   ########.fr       */
+=======
+/*   Updated: 2025/01/04 22:15:25 by cb               ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +111,54 @@ typedef struct s_border
 t_data	*initialisation_and_check(char *path);
 t_data	*data_initialisation(char *map_path);
 
+<<<<<<< HEAD
 void	*ft_free_memory(t_data *data, int err);
 void	ft_process_set(t_data *data,char c, int row, int col);
+=======
+typedef struct s_game_data
+{
+	char				*map_name;
+	char				**map;
+	int					count_item;
+	int					check_item;
+	int					count_begin;
+	int					count_exit;
+	int					count_mouvement;
+	t_dimention			dimention;
+	t_dimention			begin;
+	t_dimention			exit_position;
+	
+} t_game_data ;
+
+typedef struct s_img
+{
+	void				*img;
+	int					*addr;
+	int					bit_per_pixel;
+	int					line_length;
+	int					endian;
+	int					width;
+	int					height;
+} t_img ;
+
+typedef struct s_data
+{
+	void				*mlx;
+	void				*window;
+	t_img				*img;
+	t_game_data			*game_data;
+	t_dimention			screen_size;
+	
+} t_data;
+
+//##define AREA(data) ((data).col - (data).row)
+// check map
+t_dimention    ft_get_dimentions(int fd, t_data  *img);
+t_data	*ft_init_and_check(char *path);
+t_data	*ft_init_data_s(void);
+void	*ft_free_memory(t_data *data, int err);
+void	ft_process_set(t_game_data *data,char c, int row, int col);
+>>>>>>> main
 void	ft_analsyse_line(char *str);
 void    ft_print_map(t_data *data);
 void	end_game_menu(t_data *data);

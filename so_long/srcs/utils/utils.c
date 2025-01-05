@@ -6,7 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/05 06:22:59 by cb               ###   ########.fr       */
+=======
+/*   Updated: 2025/01/04 22:20:03 by cb               ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +31,15 @@ char *ft_error_return(int error)
     if (error == 5)
         return("[ err ] Probleme d'initialisation du pointeur mlx\n");
     if (error == 6)
+<<<<<<< HEAD
         return("[ err ] Probleme d'initialisation du set image\n");
     if (error == 7)
         return("[ err ] Probleme screen size \n");
+=======
+        return("[ err ] Probleme d'initialisation de la structure image\n");
+    if (error == 7)
+        return("[ err ] Probleme d'initialisation de la structure Game data\n");
+>>>>>>> main
     if (error == 8)
         return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
     return (NULL);
@@ -40,7 +50,11 @@ void	*ft_free_memory(t_data *data, int err)
     char **map;
     if(err != -1)
     {
+<<<<<<< HEAD
         map = data->map;
+=======
+        map = data->game_data->map;
+>>>>>>> main
         if(map)
         {
             while (*map)
@@ -49,9 +63,15 @@ void	*ft_free_memory(t_data *data, int err)
                 map++;
             }
         }
+<<<<<<< HEAD
         clean_image_memory(data->img_set,IMG_SET);
         free(data->img_set);
         free(data->map);
+=======
+        free(data->img);
+        free(data->game_data->map);
+        free(data->game_data);
+>>>>>>> main
         free(data);
     }
     ft_error_return(err);
