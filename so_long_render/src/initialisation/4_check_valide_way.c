@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valide_way.c                                 :+:      :+:    :+:   */
+/*   4_check_valide_way.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 15:31:44 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 20:21:30 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/initialisation.h"
 
 void	fill_arr2(int target, t_data *data, int col, int row)
 {
@@ -43,10 +43,10 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 			}
 		}
 	}
-	ft_print_map(data);
+	print_map(data);
 }
 
-int	ft_check_valide_way(t_data *data)
+int	check_valide_way(t_data *data)
 {
 	char		**tab;
 	int			target;
@@ -58,7 +58,7 @@ int	ft_check_valide_way(t_data *data)
 	begin = data->xy_data.begin;
 	target = tab[begin.row][begin.col];
 	fill_arr2(target, data, begin.col, begin.row);
-	ft_print_map(data);
+	print_map(data);
 	if (data->check_item != data->count_item)
 		return(error_layer(ERR_VALIDE_WAY));
 	return(0);

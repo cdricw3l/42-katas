@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_loader.h                                     :+:      :+:    :+:   */
+/*   3_image_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 05:12:19 by cb                #+#    #+#             */
-/*   Updated: 2025/01/05 23:01:42 by cb               ###   ########.fr       */
+/*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
+/*   Updated: 2025/01/05 22:56:00 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef IMAGE_LOADER_H
-#define IMAGE_LOADER_H
+#include "../../include/so_long.h"
 
-#include "so_long.h"
+int	image_loader(char **path, t_img **img, void *mlx)
+{
+	int	i;
 
-typedef struct s_img t_img;
-
-char   **get_image_path_part3(void);
-char   **get_image_path_part2(void);
-char   **get_image_path(void);
-char	**load_path(void);
-int	    load_images(void *mlx, t_img **img, int img_set);
-int	    clean_image_memory(t_img **img, int index);
-int		image_loader(char **path, t_img **img, void *mlx);
-
-#endif
+	i = 0;
+	while (i < IMG_SET_SIZE)
+	{
+		img[i]->img = mlx_xpm_file_to_image(mlx, path[i],
+					&(img[i]->width), &(img[i]->height));
+		if (!img[i]->img)
+			return (clean_image_memory(img, i));
+		i++;
+	}
+	return (0);
+}

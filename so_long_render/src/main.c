@@ -10,33 +10,84 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 06:18:37 by cb               ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/so_long.h"
 
-void	*ft_error_img(int e)
+void	exit_game(t_data *data)
 {
-	if(e == 1)
-		printf("Erreur creation structure image\n");
-	if(e == 2)
-		printf("probleme recuperation de l'imaged (path)\n");
-	if(e == 3)
-		printf("probleme recuperation data addr\n");
-	if(e == 4)
-		printf("probleme initialisation arr path\n");
-	if(e == 5)
-		printf(" voir error 1 2 ou 3\n");
-	return(NULL);
+
+	printf("clean memory...\n");
+    if (data->mlx)
+    {
+        // if(data->img->img)
+        //     mlx_destroy_image(data->mlx, data->img->img);
+        if(data->window)
+            mlx_destroy_window(data->mlx, data->window);
+        mlx_destroy_display(data->mlx);
+    }
+	free_memory(data,0);
+	printf("END GAME\n");
+	exit (0);
+}
+
+void	_putwall(t_data *data, void *im)
+{
+	int w;
+	int h;
+	int i;
+	int j;
+
+	w = data->xy_data.map.col;
+	h = data->xy_data.map.row;
+	i = 0;
+	while (i < h *TILD_SIZE)
+	{
+		j = 0;
+		while (j < w * TILD_SIZE)
+		{
+			if (i == 0 || i == (h - 1) * TILD_SIZE)
+			{
+				mlx_put_image_to_window(data->mlx,data->window,im,j,i);
+			}
+			else
+				if (j == 0 || j == (w - 1) * TILD_SIZE)
+					mlx_put_image_to_window(data->mlx,data->window,im,j,i);
+			j+= TILD_SIZE;
+		}
+		i += TILD_SIZE;
+	}
+}
+
+void	ft_put_wall(t_data *data)
+{
+	void	*im;
+	int 	w;
+	int		h;
+
+	im = mlx_xpm_file_to_image(data->mlx, "items/wall.xpm", &w, &h);
+	if(!im)
+	{
+		printf("erreur douverutre de l'item\n");
+		return ;
+	}
+	else
+		printf("push image w %d et h %d sur map %d X %d ...\n", w,h,data->xy_data.map.col,data->xy_data.map.row);
+	_putwall(data, im);
+}
+
+void    start_game(t_data **data)
+{
+
+    (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->xy_data.map.col, TILD_SIZE * (*data)->xy_data.map.row, "hello");
+    if(!(*data)->window || !(*data)->mlx)
+	{
+
+        return ;
+	}
+	ft_put_wall(*data);	
+    mlx_hook((*data)->window, 2, 1L<<0 , manage_keyboard, (*data));
+    printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
+   	mlx_hook((*data)->window, 17, 1L<<0 , close_windows, (*data));
+    mlx_loop((*data)->mlx) ;
 }
 	
 int	main(int argc, char *argv[])
@@ -44,24 +95,18 @@ int	main(int argc, char *argv[])
 	t_data		*data;
 
 	if (argc != 2)
-	{
-		perror(ft_error_return(1));
-		return (1);
-	}
+		return (error_layer(0));
 	else
 	{
 		data = initialisation_and_check(argv[1]);
 		if (data)
 		{		
-			ft_display_data_info(data);
+			//ft_display_data_info(data); // a suuprimmer pour le rendu
 			start_game(&data);
-			ft_free_memory(data, 13);
+			free_memory(data, 13);
 		}
 		else
-		{
-			perror(ft_error_return(3));
-			return (1);
-		}
+			return (error_layer(1));
 	}
 	return (0);
 }

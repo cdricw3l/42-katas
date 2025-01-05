@@ -1,21 +1,28 @@
 CC = gcc 
-GFLAGS= -Werror -Wall -Wextra
+GFLAGS= -Werror -Wall -Wextra -I./include
 
 NAME= so_long
 NAME_TEST= so_long_test
 #srcs/hook/manage_hook.c \
 
-SRCS =	gnl/get_next_line_utils.c \
-		gnl/get_next_line.c \
-		srcs/utils/* \
-		srcs/init/* \
-		srcs/hook/* \
-		srcs/main.c
+SRCS =	src/gnl/get_next_line_utils.c \
+		src/gnl/get_next_line.c \
+		src/hook/hook_manager.c \
+		src/error_managment/error_layer.c \
+		src/memory_managment/memory_cleaner.c \
+		src/initialisation/1_init.c \
+		src/initialisation/2_get_map.c \
+		src/initialisation/3_check_map.c \
+		src/initialisation/4_check_valide_way.c \
+		src/image_loader/1_start_img_loader.c \
+		src/image_loader/2_path_loader.c \
+		src/image_loader/3_image_loader.c \
+		src/main.c
 
+LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 
 #srcs/main.c 
 
 SRCS_TEST = src/unit_test.c src/error_managment/*.c
-LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 
 LIB2= -Llibft -lft
 
 MAP=
@@ -29,16 +36,14 @@ $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
 	./${NAME} ${MAP}
 
-#%.o: %.c
-#	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
-	rm -f srcs/*.o
+	rm -f srcs/initialisation/*.o srcs/image_loader/*.o srcs/memory_managment/*.o srcs/hook/*.o srcs/error_managment/*.o srcs/gnl/*.o
 
 fclean: clean
 	rm -f ${NAME}
 	rm -f ${NAME_TEST}
-	rm filename
+	rm  -f filename
 
 re: clean fclean ${NAME}
 

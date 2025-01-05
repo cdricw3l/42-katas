@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 16:18:35 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 22:50:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include "../lib/mlx_linux/mlx.h"
 # include "image_loader.h"
 # include "error_managment.h"
-//# include "../mlx_linux/mlx_int.h"
+# include "memory_managment.h"
+# include "hook.h"
+# include "initialisation.h"
 # include "../libft/libft.h"
 # include "../src/gnl/get_next_line.h"
 # include "../lib/printf/ft_printf.h"
 
 
-# include <assert.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
@@ -41,7 +42,7 @@
 #define FRONT 3
 #define	FACE  4
 
-#define	IMG_SET	31
+#define	IMG_SET_SIZE 6
 
 typedef struct s_xy
 {
@@ -59,7 +60,19 @@ typedef struct s_xy_data
 
 } t_xy_data;
 
-
+typedef struct s_img
+{
+	char 				*class;
+	char 				*subclass;
+	void				*img;
+	int					*addr;
+	int					bit_per_pixel;
+	int					line_length;
+	int					endian;
+	int					width;
+	int					height;
+	
+} t_img ;
 
 typedef struct s_data
 {
@@ -92,25 +105,24 @@ typedef struct s_border
 
 t_data	*initialisation_and_check(char *path);
 t_data	*data_initialisation(char *map_path);
-
-void	*ft_free_memory(t_data *data, int err);
-void	ft_process_set(t_data *data,char c, int row, int col);
-void	ft_analsyse_line(char *str);
-void    ft_print_map(t_data *data);
-void	end_game_menu(t_data *data);
+void    print_map(t_data *data);
 void	exit_game(t_data *data);
-void    ft_display_data_info(t_data *data);
-char    *ft_error_return(int error);
-int		ft_arr_len(char **arr);
-int		ft_is_square(t_data *data);
-int		ft_check_param(t_data *data, char *path);
-int		ft_is_close(char **map, int hauteur, int largeur);
-int		ft_check_dimentions(t_data *data);
-int		ft_check_valide_way(t_data *g_data);
-int		ft_close_windows(int keycode, t_data *data);
-int		ft_manage_keyboard(int keycode, t_data *data);
-int		ft_colors(int larg, int lo);
-int		ft_put_img(t_data *data);
-void 	*char_layer(t_data *data, int keycode);
+// void	ft_process_set(t_data *data,char c, int row, int col);
+// void    ft_print_map(t_data *data);
+// void	end_game_menu(t_data *data);
+// void	exit_game(t_data *data);
+// void    ft_display_data_info(t_data *data);
+// char    *ft_error_return(int error);
+// int		ft_arr_len(char **arr);
+// int		ft_is_square(t_data *data);
+// int		ft_check_param(t_data *data, char *path);
+// int		ft_is_close(char **map, int hauteur, int largeur);
+// int		ft_check_dimentions(t_data *data);
+// int		ft_check_valide_way(t_data *g_data);
+// int		ft_close_windows(int keycode, t_data *data);
+// int		ft_manage_keyboard(int keycode, t_data *data);
+// int		ft_colors(int larg, int lo);
+// int		ft_put_img(t_data *data);
+// void 	*char_layer(t_data *data, int keycode);
 
 #endif

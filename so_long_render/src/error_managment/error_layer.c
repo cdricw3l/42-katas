@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 16:46:49 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 21:26:53 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,29 @@
 
 char *error_return(int error)
 {
-	if (error == 0)
+	if (error == ERR_NO_MAP)
 		return("[ err ] Aucune map passée en paramètre");
-	if (error == 2)
+	if (error == ERR_STRUC_INIT)
 		return("[ err ] probleme d'initialisation de la structure data\n");
-	if (error == 2)
-		return("[ err ] probleme d'initialisation de la map\n");
-	if (error == 3)
-		return("[ err ] probleme avec les parametre de la map\n");
-	if (error == 4)
-		return("[ err ] Pas de chemin valide\n");
-	if (error == 5)
+	if (error == ERR_MLX)
 		return("[ err ] Probleme d'initialisation du pointeur mlx\n");
-	if (error == 6)
+	if (error == ERR_IMG_SET)
 		return("[ err ] Probleme d'initialisation du set image\n");
-	if (error == 7)
+	if (error == ERR_SCREEN)
 		return("[ err ] Probleme screen size \n");
-	if (error == 8)
+	if (error == ERR_GET_MAP)
+		return("[ err ] probleme recuperqtion de la map\n");
+	if (error == ERR_CHECK_MAP)
+		return("[ err ] probleme avec les parametre de la map\n");
+	if (error == ERR_NO_WAY)
+		return("[ err ] Pas de chemin valide\n");
+	if (error == ERR_ALLOC_IMG)
+		return("Erreur creation structures image\n");
+	if (error == ERR_GET_IMGPATH)
+		return("[ err ] proble de recuperation des path\n");
+	if (error == ERR_IMG_LOADING)
+		return("[ err ] Erreur chargement des images \n");
+	if (error == 6)
 		return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
 	if (error == 16)
 		return("[ err ] Erreur ouverture file logs\n");

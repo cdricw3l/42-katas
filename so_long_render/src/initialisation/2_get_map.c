@@ -1,16 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_main.c                                        :+:      :+:    :+:   */
+/*   2_get_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 15:01:16 by cb               ###   ########.fr       */
+/*   Created: 2025/01/05 17:59:05 by cb                #+#    #+#             */
+/*   Updated: 2025/01/05 23:00:33 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/initialisation.h"
+
+void   print_map(t_data *data)
+{
+    int i;
+    int j;
+    int hauteur;
+    int largeur;
+    char **map;
+
+    i = 0;
+    if(data->xy_data.map.row && data->xy_data.map.col)
+    {
+        hauteur = data->xy_data.map.row;
+        largeur = data->xy_data.map.col;
+        map = data->map;
+        while (i < hauteur)
+        {
+            j = 0;
+            while(j < largeur)
+            {
+                printf("%c", map[i][j]);
+                j++;
+            }
+            printf("\n");
+            i++;
+        }
+    }
+}
 
 int	ft_line_count(char *path)
 {
@@ -35,7 +63,7 @@ int	ft_line_count(char *path)
 	return (i);
 }
 
-int	get_map(char *path, char **map)
+int	_get_map(char *path, char **map)
 {
 	int		i;
 	int		fd;
@@ -56,11 +84,10 @@ int	get_map(char *path, char **map)
 		}
 	}
 	map[i] = NULL;
-	printf("voici %d\n", i);
 	return (i);
 }
 
-char	**ft_get_map(char *path)
+char	**get_map(char *path)
 {
 	char	**map;
 	int		i;
@@ -72,36 +99,8 @@ char	**ft_get_map(char *path)
 	map = malloc(sizeof(char *) * (line_count + 1));
 	if (!map)
 		return (NULL);
-	i = get_map(path, map);
+	i = _get_map(path, map);
 	if (i == 0)
 		return (NULL);
 	return (map);
-}
-
-t_data	*initialisation_and_check(char *path)
-{
-	t_data	*data;
-	int		check_param;
-
-	data = data_initialisation(path);
-	if (!data)
-	{
-		printf("probleme d'initialisation de la structure data\n");
-		return (NULL);
-	}
-	data->map = ft_get_map(path);
-	if (!data->map)
-	{
-		printf("probleme d'initialisation de la map\n");
-		return (ft_free_memory(data, 8)); 					//error
-	}
-	check_param = ft_check_param(data, path);
-	if (check_param)
-	{
-		printf("probleme avec les parametre de la map %d\n", check_param);
-		return (ft_free_memory(data, 9));					//error
-	}
-	if (ft_check_valide_way(data) == 1)
-		return (ft_free_memory(data, 10));					//error
-	return (data);
 }
