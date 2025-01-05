@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/05 04:56:13 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 05:03:15 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,20 @@ int main(void)
         printf("erreur\n");
         return(3);
     }
+
+    int z;
+    z = 0;
+    while (z < 3)
+    {
+        int k = 0;
+        while (k < 16)
+        {
+            printf("%d: %s\n", k,arr[z][k]);
+            k++;
+        }
+        z++;
+    }
+    
     free(data->mlx);
     int i = 0;
     while (i < IMG_SET)
