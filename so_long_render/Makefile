@@ -38,7 +38,19 @@ $(NAME): $(OBJS)
 
 
 clean:
-	rm -f srcs/initialisation/*.o srcs/image_loader/*.o srcs/memory_managment/*.o srcs/hook/*.o srcs/error_managment/*.o srcs/gnl/*.o
+	rm -f 	src/gnl/get_next_line_utils.o \
+			src/gnl/get_next_line.o \
+			src/hook/hook_manager.o \
+			src/error_managment/error_layer.o \
+			src/memory_managment/memory_cleaner.o \
+			src/initialisation/1_init.o \
+			src/initialisation/2_get_map.o \
+			src/initialisation/3_check_map.o \
+			src/initialisation/4_check_valide_way.o \
+			src/image_loader/1_start_img_loader.o \
+			src/image_loader/2_path_loader.o \
+			src/image_loader/3_image_loader.o \
+			src/main.o
 
 fclean: clean
 	rm -f ${NAME}
