@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 23:30:34 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 03:31:41 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include "../gnl/get_next_line.h"
 # include "../printf/ft_printf.h"
 
+
+# include <assert.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
@@ -37,22 +39,14 @@
 #define FRONT 3
 #define	FACE  4
 
-typedef struct s_data
+#define	IMG_SET	31
+
+typedef struct s_xy
 {
-	void				*mlx;
-	void				*window;
-	char				*map_name;
-	char				**map;
-	int					char_state;
-	int					count_item;
-	int					check_item;
-	int					count_begin;
-	int					count_exit;
-	int					count_mouvement;
-	t_xy_data			xy_data;
-	t_img				**img_set
-	
-} t_data ;
+	int row;
+	int col;
+
+} t_xy;
 
 typedef struct s_xy_data
 {
@@ -72,15 +66,29 @@ typedef struct s_img
 	int					endian;
 	int					width;
 	int					height;
+	
 } t_img ;
 
-
-typedef struct s_xy
+typedef struct s_data
 {
-	int row;
-	int col;
+	void				*mlx;
+	void				*window;
+	char				*map_name;
+	char				**map;
+	int					char_state;
+	int					count_item;
+	int					check_item;
+	int					count_begin;
+	int					count_exit;
+	int					count_mouvement;
+	t_xy_data			xy_data;
+	t_img				**img_set;
+	
+} t_data ;
 
-} t_xy;
+
+
+
 
 
 typedef struct s_border
@@ -96,7 +104,7 @@ typedef struct s_border
 
 //##define AREA(data) ((data).col - (data).row)
 // check map
-t_dimention    ft_get_dimentions(int fd, t_data  *img);
+//t_xy    ft_get_dimentions(int fd, t_data  *img);
 t_data	*init_and_check(char *path);
 t_data	*ft_init_data_s(void);
 void	*ft_free_memory(t_data *data, int err);

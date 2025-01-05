@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "so_long.h": "c",
-        "concepts": "c"
+        "concepts": "c",
+        "cstdlib": "c"
     }
 }

@@ -1,109 +1,373 @@
-==43635== Memcheck, a memory error detector
-==43635== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==43635== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==43635== Command: ./so_long map/map2.ber
-==43635== Parent PID: 43610
-==43635== 
-==43635== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==43635==    at 0x4AEF864: writev (writev.c:26)
-==43635==    by 0x4BE6ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==43635==    by 0x4BE6C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==43635==    by 0x4BE7D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==43635==    by 0x48CA0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==43635==    by 0x48CF148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==43635==    by 0x48CF52B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==43635==    by 0x1114F5: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x1113C5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110E54: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Address 0x4c46e5c is 28 bytes inside a block of size 16,384 alloc'd
-==43635==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==43635==    by 0x48B942D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==43635==    by 0x111176: mlx_init (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110DB6: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Uninitialised value was created by a stack allocation
-==43635==    at 0x111400: mlx_int_anti_resize_win (in /home/cb/Documents/42K/so_long/so_long)
-==43635== 
-==43635== Invalid write of size 8
-==43635==    at 0x110A48: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Address 0x4ceddf0 is 0 bytes after a block of size 96 alloc'd
-==43635==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==43635==    by 0x11094F: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635== 
-==43635== Invalid write of size 8
-==43635==    at 0x110A5A: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Address 0x4ceddf8 is 8 bytes after a block of size 96 alloc'd
-==43635==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==43635==    by 0x11094F: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635== 
-==43635== Invalid write of size 8
-==43635==    at 0x110A6C: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Address 0x4cede00 is 16 bytes after a block of size 96 alloc'd
-==43635==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==43635==    by 0x11094F: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635== 
-==43635== Invalid write of size 8
-==43635==    at 0x110A7E: ft_charct_arr (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110AB1: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-==43635==  Address 0x4cede08 is 24 bytes after a block of size 96 in arena "client"
-==43635== 
---43635-- VALGRIND INTERNAL ERROR: Valgrind received a signal 11 (SIGSEGV) - exiting
---43635-- si_code=1;  Faulting address: 0xC604BDA6A0;  sp: 0x10091adda0
-
-valgrind: the 'impossible' happened:
-   Killed by fatal signal
-
-host stacktrace:
-==43635==    at 0x5804D523: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-==43635==    by 0x58004DC9: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-==43635==    by 0x580052B3: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-==43635==    by 0x5800544D: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-==43635==    by 0x5809E9C8: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-==43635==    by 0x580EB087: ??? (in /usr/libexec/valgrind/memcheck-amd64-linux)
-
-sched status:
-  running_tid=1
-
-Thread 1: status = VgTs_Runnable (lwpid 43635)
-==43635==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==43635==    by 0x11088C: ft_new_image (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110B28: char_layer (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110EAE: start_game (in /home/cb/Documents/42K/so_long/so_long)
-==43635==    by 0x110F35: main (in /home/cb/Documents/42K/so_long/so_long)
-client stack range: [0x1FFEFFD000 0x1FFF000FFF] client SP: 0x1FFEFFF1C0
-valgrind stack range: [0x10090AE000 0x10091ADFFF] top usage: 18232 of 1048576
-
-
-Note: see also the FAQ in the source distribution.
-It contains workarounds to several common problems.
-In particular, if Valgrind aborted or crashed after
-identifying problems in your program, there's a good chance
-that fixing those problems will prevent Valgrind aborting or
-crashing, especially if it happened in m_mallocfree.c.
-
-If that doesn't help, please report this bug to: www.valgrind.org
-
-In the bug report, send all the above text, the valgrind
-version, and what OS and version you are using.  Thanks.
-
+==75517== Memcheck, a memory error detector
+==75517== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==75517== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==75517== Command: ./testee
+==75517== Parent PID: 65169
+==75517== 
+==75517== 
+==75517== HEAP SUMMARY:
+==75517==     in use at exit: 71,454 bytes in 74 blocks
+==75517==   total heap usage: 70,958 allocs, 70,884 frees, 9,907,884 bytes allocated
+==75517== 
+==75517== 3 bytes in 1 blocks are still reachable in loss record 1 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4A7A34E: strdup (strdup.c:42)
+==75517==    by 0x48B90DA: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 8 bytes in 1 blocks are still reachable in loss record 2 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4A7A34E: strdup (strdup.c:42)
+==75517==    by 0x48B60CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x487B83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 8 bytes in 1 blocks are still reachable in loss record 3 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4879B16: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 10 bytes in 1 blocks are still reachable in loss record 4 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4A7A34E: strdup (strdup.c:42)
+==75517==    by 0x48B60CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x492B033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B9C72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 16 bytes in 1 blocks are still reachable in loss record 5 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4BE946D: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BEA0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x48C83C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 16 bytes in 1 blocks are still reachable in loss record 6 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B056B: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 21 bytes in 1 blocks are still reachable in loss record 7 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B95D1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 24 bytes in 1 blocks are still reachable in loss record 8 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487B021: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B4C4: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 24 bytes in 1 blocks are still reachable in loss record 9 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4A7A34E: strdup (strdup.c:42)
+==75517==    by 0x48B60CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x487B83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 24 bytes in 1 blocks are still reachable in loss record 10 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487BA10: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 24 bytes in 1 blocks are still reachable in loss record 11 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48C66B6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48CF5CD: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48CFAA4: XSync (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x1103F8: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x110650: mlx_new_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FB59: mlx_int_parse_xpm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FF73: mlx_xpm_file_to_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EBFF: load_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EFD4: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 29 bytes in 1 blocks are still reachable in loss record 12 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B200C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B4FE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F342: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 32 bytes in 1 blocks are still reachable in loss record 13 of 44
+==75517==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4BED712: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED80A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED8CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x48B996A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 32 bytes in 1 blocks are still reachable in loss record 14 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4BE6257: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BE6A95: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BE6EEF: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BE7E6D: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED85A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED8CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BED945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x48B996A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 32 bytes in 1 blocks are still reachable in loss record 15 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487B812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 32 bytes in 1 blocks are still reachable in loss record 16 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487B812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 33 bytes in 1 blocks are still reachable in loss record 17 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B200C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B4FE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F32D: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 40 bytes in 1 blocks are still reachable in loss record 18 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B05B5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 40 bytes in 1 blocks are still reachable in loss record 19 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48C86F9: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 48 bytes in 1 blocks are still reachable in loss record 20 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48C8350: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 48 bytes in 1 blocks are still reachable in loss record 21 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48C8365: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 48 bytes in 1 blocks are still reachable in loss record 22 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B05A4: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 48 bytes in 1 blocks are still reachable in loss record 23 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B05C5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 72 bytes in 1 blocks are still reachable in loss record 24 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B948C: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 112 bytes in 1 blocks are still reachable in loss record 25 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48C8255: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 112 bytes in 1 blocks are still reachable in loss record 26 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B9751: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 128 bytes in 1 blocks are still reachable in loss record 27 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B967F: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 128 bytes in 1 blocks are still reachable in loss record 28 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B60BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x492B033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B9C72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 128 bytes in 1 blocks are still reachable in loss record 29 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B60BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x487B83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 128 bytes in 1 blocks are still reachable in loss record 30 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B60BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x487B83F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 146 bytes in 1 blocks are still reachable in loss record 31 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B9CE1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 152 bytes in 1 blocks are still reachable in loss record 32 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x492B21E: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B9C72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 160 bytes in 1 blocks are still reachable in loss record 33 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48A7938: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B99EC: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 168 bytes in 1 blocks are still reachable in loss record 34 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B9B34: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 192 bytes in 1 blocks are still reachable in loss record 35 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B0586: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B93D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 208 bytes in 1 blocks are still reachable in loss record 36 of 44
+==75517==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4879AC9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x487B9F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x4880C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x10F0E3: mlx_int_deal_shm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10F350: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 512 bytes in 1 blocks are still reachable in loss record 37 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B4E7A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B4F1E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F32D: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 1,904 bytes in 14 blocks are definitely lost in loss record 38 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487A0A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x11033B: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x110650: mlx_new_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FB59: mlx_int_parse_xpm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FF73: mlx_xpm_file_to_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EBFF: load_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EFD4: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 2,312 bytes in 17 blocks are definitely lost in loss record 39 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x487A0A6: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==75517==    by 0x11033B: mlx_int_new_xshm_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x110650: mlx_new_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FB59: mlx_int_parse_xpm (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10FF73: mlx_xpm_file_to_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EB71: load_image (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EFD4: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 4,720 bytes in 1 blocks are still reachable in loss record 40 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B90C6: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 6,740 bytes in 1 blocks are still reachable in loss record 41 of 44
+==75517==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4BE9678: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BEA0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x48C83C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 15,232 bytes in 2 blocks are still reachable in loss record 42 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B97E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 16,384 bytes in 1 blocks are still reachable in loss record 43 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x48B942D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== 21,176 bytes in 1 blocks are still reachable in loss record 44 of 44
+==75517==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==75517==    by 0x4BE9396: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x4BEA0D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==75517==    by 0x48C83C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x48B90FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==75517==    by 0x10F2A6: mlx_init (in /home/cb/Documents/42K/so_long/testee)
+==75517==    by 0x10EF79: main (in /home/cb/Documents/42K/so_long/testee)
+==75517== 
+==75517== LEAK SUMMARY:
+==75517==    definitely lost: 4,216 bytes in 31 blocks
+==75517==    indirectly lost: 0 bytes in 0 blocks
+==75517==      possibly lost: 0 bytes in 0 blocks
+==75517==    still reachable: 67,238 bytes in 43 blocks
+==75517==         suppressed: 0 bytes in 0 blocks
+==75517== 
+==75517== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
