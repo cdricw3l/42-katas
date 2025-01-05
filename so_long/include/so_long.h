@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 03:31:41 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 06:02:56 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SO_LONG_H
 
 # include "../mlx_linux/mlx.h"
+# include "image_loader.h"
 //# include "../mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
@@ -102,11 +103,10 @@ typedef struct s_border
 	
 } t_border;
 
-//##define AREA(data) ((data).col - (data).row)
-// check map
-//t_xy    ft_get_dimentions(int fd, t_data  *img);
-t_data	*init_and_check(char *path);
-t_data	*ft_init_data_s(void);
+
+t_data	*initialisation_and_check(char *path);
+t_data	*data_initialisation(char *map_path);
+
 void	*ft_free_memory(t_data *data, int err);
 void	ft_process_set(t_data *data,char c, int row, int col);
 void	ft_analsyse_line(char *str);

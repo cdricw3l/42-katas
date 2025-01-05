@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 17:13:59 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 06:18:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,48 +73,48 @@ char	**ft_charct_arr(int keycode)
 	return(img_arr);
 }
 
-void *char_layer(t_data *data, int keycode)
-{
-    t_img *new_image;
-	char **img_path;
-	int i;
-	int j;
+// void *char_layer(t_data *data, int keycode)
+// {
+//     t_img *new_image;
+// 	char **img_path;
+// 	int i;
+// 	int j;
 	
-	i = 0;
-	j = 0;
-	img_path = ft_charct_arr(keycode);
-	new_image = NULL;
-	if(!img_path)
-		return(ft_error_img(4));
-	if(keycode == 65363)
-	{
-		i = 6;
-		j = 12;
-	}
-	else
-	{
-		i = 0;
-		j = 6;
-	}
-	while (i < j)
-	{
+// 	i = 0;
+// 	j = 0;
+// 	img_path = ft_charct_arr(keycode);
+// 	new_image = NULL;
+// 	if(!img_path)
+// 		return(ft_error_img(4));
+// 	if(keycode == 65363)
+// 	{
+// 		i = 6;
+// 		j = 12;
+// 	}
+// 	else
+// 	{
+// 		i = 0;
+// 		j = 6;
+// 	}
+// 	while (i < j)
+// 	{
 		
-		new_image = ft_new_image(data, img_path[i]);
-		if(new_image)
-		{
-			printf("voici la destination %d et % d \n",data->game_data->begin.row,data->game_data->begin.col);
-			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->game_data->begin.col * (TILD_SIZE),data->game_data->begin.row * TILD_SIZE);
-			mlx_destroy_image(data->mlx,new_image->img);
+// 		new_image = ft_new_image(data, img_path[i]);
+// 		if(new_image)
+// 		{
+// 			printf("voici la destination %d et % d \n",data->xy_data.begin.row,data->xy_data.begin.col);
+// 			mlx_put_image_to_window(data->mlx,data->window,new_image->img,data->xy_data.begin.col * (TILD_SIZE),data->xy_data.begin.row * TILD_SIZE);
+// 			mlx_destroy_image(data->mlx,new_image->img);
 
-		}
-		else
-			return(ft_error_img(5));
-		free(new_image);
-		i++;
-	}
-	data->img->img = new_image;
-    return(data);
-}
+// 		}
+// 		else
+// 			return(ft_error_img(5));
+// 		free(new_image);
+// 		i++;
+// 	}
+// 	data->img->img = new_image;
+//     return(data);
+// }
 
 void	_putwall(t_data *data, void *im)
 {
@@ -123,8 +123,8 @@ void	_putwall(t_data *data, void *im)
 	int i;
 	int j;
 
-	w = data->game_data->dimention.col;
-	h = data->game_data->dimention.row;
+	w = data->xy_data.map.col;
+	h = data->xy_data.map.row;
 	i = 0;
 	while (i < h *TILD_SIZE)
 	{
@@ -157,7 +157,7 @@ void	ft_put_wall(t_data *data)
 		return ;
 	}
 	else
-		printf("push image w %d et h %d sur map %d X %d ...\n", w,h,data->game_data->dimention.col,data->game_data->dimention.row);
+		printf("push image w %d et h %d sur map %d X %d ...\n", w,h,data->xy_data.map.col,data->xy_data.map.row);
 	_putwall(data, im);
 }
 
@@ -165,9 +165,8 @@ void    start_game(t_data **data)
 {
 
 	(*data)->mlx = mlx_init();
-	mlx_get_screen_size((*data)->mlx, &(*data)->screen_size.col, &(*data)->screen_size.row);
-    printf("Dimention de l'ecran : x_screen: %d et y_screen: %d\n",(*data)->screen_size.col,(*data)->screen_size.row);
-    (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->game_data->dimention.col, TILD_SIZE * (*data)->game_data->dimention.row, "hello");
+	mlx_get_screen_size((*data)->mlx, &(*data)->xy_data.screen_size.col, &(*data)->xy_data.screen_size.row);
+    (*data)->window = mlx_new_window((*data)->mlx, TILD_SIZE * (*data)->xy_data.map.col, TILD_SIZE * (*data)->xy_data.map.row, "hello");
     if(!(*data)->window || !(*data)->mlx)
     {
         perror(ft_error_return(4));
@@ -175,12 +174,12 @@ void    start_game(t_data **data)
     }
 
 	ft_put_wall(*data);
-	while (1)
-	{
-		if(char_layer(*data,0) == NULL)
-			return ;
-		/* code */
-	}
+	// while (1)
+	// {
+	// 	if(char_layer(*data,0) == NULL)
+	// 		return ;
+	// 	/* code */
+	// }
 	
     mlx_hook((*data)->window, 2, 1L<<0 ,ft_manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
@@ -199,12 +198,12 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		data = init_and_check(argv[1]);
+		data = initialisation_and_check(argv[1]);
 		if (data)
 		{		
 			ft_display_data_info(data);
 			start_game(&data);
-			ft_free_memory(data);
+			ft_free_memory(data, 13);
 		}
 		else
 		{

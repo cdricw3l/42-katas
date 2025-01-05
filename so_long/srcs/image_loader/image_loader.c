@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/05 05:25:25 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 05:40:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	clean_image_memory(t_img **img, int index)
 	return (1);
 }
 
-int	load_image(char **path[3], t_img **img, void *mlx)
+int	image_loader(char **path[3], t_img **img, void *mlx)
 {
 	int	i;
 	int	j;
@@ -77,7 +77,7 @@ int	init_image(t_img **img, int img_set)
 	return (0);
 }
 
-int	image_loader(void *mlx, t_img **img, int img_set)
+int	load_images(void *mlx, t_img **img, int img_set)
 {
 	int		init;
 	int		get_path;
@@ -90,7 +90,7 @@ int	image_loader(void *mlx, t_img **img, int img_set)
 	get_path = load_path(path);
 	if (get_path)
 		return (1);
-	load = load_image(path, img, mlx);
+	load = image_loader(path, img, mlx);
 	if (load)
 		return (1);
 	return (0);

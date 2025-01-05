@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 23:12:45 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 06:29:19 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_process_set(t_data *data, char c, int row, int col)
 			data->count_item++;
 		if (c == 'E')
 		{
-			data->exit_position.col = col;
-			data->exit_position.row = row;
+			data->xy_data.exit.col = col;
+			data->xy_data.exit.row = row;
 			data->count_exit++;
 		}
 		if (c == 'P')
 		{
-			data->begin.row = row;
-			data->begin.col = col;
+			data->xy_data.begin.row = row;
+			data->xy_data.begin.col = col;
 			data->count_begin++;
 		}
 	}
@@ -85,8 +85,8 @@ int	ft_check_dimentions(t_data *data)
 	}
 	if (ft_is_close(data->map, row, j))
 		return (2);
-	data->dimention.col = j;
-	data->dimention.row = row;
+	data->xy_data.map.col = j;
+	data->xy_data.map.row = row;
 	return (0);
 }
 

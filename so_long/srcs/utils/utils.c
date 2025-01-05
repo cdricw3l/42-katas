@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/04 23:29:02 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 06:22:59 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ char *ft_error_return(int error)
     if (error == 5)
         return("[ err ] Probleme d'initialisation du pointeur mlx\n");
     if (error == 6)
-        return("[ err ] Probleme d'initialisation de la structure image\n");
+        return("[ err ] Probleme d'initialisation du set image\n");
     if (error == 7)
-        return("[ err ] Probleme d'initialisation de la structure Game data\n");
+        return("[ err ] Probleme screen size \n");
     if (error == 8)
         return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
     return (NULL);
@@ -40,7 +40,7 @@ void	*ft_free_memory(t_data *data, int err)
     char **map;
     if(err != -1)
     {
-        map = data->game_data->map;
+        map = data->map;
         if(map)
         {
             while (*map)
@@ -49,9 +49,9 @@ void	*ft_free_memory(t_data *data, int err)
                 map++;
             }
         }
-        free(data->img);
-        free(data->game_data->map);
-        free(data->game_data);
+        clean_image_memory(data->img_set,IMG_SET);
+        free(data->img_set);
+        free(data->map);
         free(data);
     }
     ft_error_return(err);
@@ -71,15 +71,15 @@ void ft_analsyse_line(char *str)
 	
 }
 
-int ft_is_square(t_game_data *data)
+int ft_is_square(t_data *data)
 {
     int x;
     int y;
 
     if(!data)
         return(1);
-    x = data->dimention.col;
-    y = data->dimention.row;
+    x = data->xy_data.map.col;
+    y = data->xy_data.map.col;
     printf("voici les dim %d et %d\n",x, y);
     if( x - y == 0)
     {
@@ -112,7 +112,7 @@ int ft_is_square(t_game_data *data)
 //     data->dimention.largeur = largeur;
 // }
 
-void    ft_print_map(t_game_data *data)
+void    ft_print_map(t_data *data)
 {
     int i;
     int j;
@@ -121,10 +121,10 @@ void    ft_print_map(t_game_data *data)
     char **map;
 
     i = 0;
-    if(data->dimention.row && data->dimention.col)
+    if(data->xy_data.map.row && data->xy_data.map.col)
     {
-        hauteur = data->dimention.row;
-        largeur = data->dimention.col;
+        hauteur = data->xy_data.map.row;
+        largeur = data->xy_data.map.col;
         map = data->map;
         while (i < hauteur)
         {
@@ -176,8 +176,8 @@ void	exit_game(t_data *data)
 	printf("clean memory...\n");
     if (data->mlx)
     {
-        if(data->img->img)
-            mlx_destroy_image(data->mlx, data->img->img);
+        // if(data->img->img)
+        //     mlx_destroy_image(data->mlx, data->img->img);
         if(data->window)
             mlx_destroy_window(data->mlx, data->window);
         mlx_destroy_display(data->mlx);

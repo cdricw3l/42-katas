@@ -51,7 +51,7 @@ copy:
 	cd .. && cd 42-katas && rm -rf ${NAME}
 	cd ..  
 	cp -rf ${NAME}  ../42-katas/
-	cd 	.. && cd  42-katas &&  git add . && git commit -m ${NAME} && git push 
+	cd 	.. && cd  42-katas &&  git add . && git commit -m ${NAME} && git push origin render
 
 
 libft:
