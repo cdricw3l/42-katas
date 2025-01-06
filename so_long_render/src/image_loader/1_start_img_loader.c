@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 15:36:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 21:57:58 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,5 @@ int	load_images(t_data *data)
 	free(path);
 	if (load)
 		return (error_layer(ERR_IMG_LOADING));
-	
-	
 	return (0);
 }

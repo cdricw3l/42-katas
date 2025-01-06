@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 15:30:53 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:04:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ typedef struct s_border
 t_data	*data_initialisation(char *map_path);
 void    print_map(t_data *data);
 void	exit_game(t_data *data);
+
+int		get_area(t_xy xy);
+t_xy	rescal(t_xy xy, int scal_factor);
+void    print_dimention(t_xy_data xy_arr, char c);
 // void	ft_process_set(t_data *data,char c, int row, int col);
 // void    ft_print_map(t_data *data);
 // void	end_game_menu(t_data *data);

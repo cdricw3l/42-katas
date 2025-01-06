@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 12:04:52 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:12:51 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 #define ERR_NOTINSET 13
 #define ERR_DUPLICATE 14
 #define ERR_FRAME 15 
-#define ERR_ 15 
+#define ERR_VALIDE_WAY 16
+#define ERR_
 #define ERR_OPEN_LOG 16 
 #define ERR_WRITE_LOG 17 
-#define ERR_VALIDE_WAY 4
 #define ERR_SCOPE 16 
 
 

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 00:47:08 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:07:50 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void   print_map(t_data *data)
     char **map;
 
     i = 0;
-	printf("ROZ %d et %d	\n", data->xy_data.map.row , data->xy_data.map.col);
     if(data->xy_data.map.row && data->xy_data.map.col)
     {
         hauteur = data->xy_data.map.row;
@@ -101,6 +100,7 @@ char	**get_map(t_data *data)
 	if (!map)
 		return (NULL);
 	i = _get_map(data->map_name, map);
+	printf("voici get map%d\n", i);
 	if (i == 0)
 		return (NULL);
 	return (map);

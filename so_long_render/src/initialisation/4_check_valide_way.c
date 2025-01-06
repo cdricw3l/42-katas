@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 15:12:31 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:21:26 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 	char	c;
 
 	tab = data->map;
-	h = data->xy_data.exit.row;
-	w = data->xy_data.exit.col;
+	h = data->xy_data.map.row;
+	w = data->xy_data.map.col;
 	c = tab[row][col];
 	if (tab[row][col] == 'C')
 	{
@@ -32,7 +32,7 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 		tab[row][col] = ' ';
 	if(!ft_isset(c," 1X"))
 	{
-		if (col > 1 || row < h || row > 1 || col < w)
+		if (col > 1 || row < h - 1 || row > 1 || col < w - 1)
 		{
 			if(data->count_item > data->check_item)
 			{
@@ -43,7 +43,7 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 			}
 		}
 	}
-	//print_map(data);
+	//ft_print_map(data);
 }
 
 int	check_valide_way(t_data *data)
@@ -60,6 +60,6 @@ int	check_valide_way(t_data *data)
 	fill_arr2(target, data, begin.col, begin.row);
 	//print_map(data);
 	if (data->check_item != data->count_item)
-		return(error_layer(ERR_VALIDE_WAY));
+		return(1);
 	return(0);
 }

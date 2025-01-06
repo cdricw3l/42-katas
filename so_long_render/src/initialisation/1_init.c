@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 03:56:16 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:11:56 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_xy	ft_s_dimention(void)
 	return (dimention);
 }
 
-int	ft_init_game_data_s(t_data *data, t_img ** img_set, char *map_path)
+int	ft_init_game_data_s(t_data *data, t_img **img_set, char *map_path)
 {
 	
 	data->map_name = map_path;
@@ -78,20 +78,7 @@ t_data	*data_initialisation(char *map_path)
 	return (data);
 }
 
-int	get_area(t_xy xy)
-{
-	return (xy.col * xy.row);
-}
 
-t_xy	rescal(t_xy xy, int scal_factor)
-{
-	t_xy new_xy;
-
-	new_xy.col = xy.col * scal_factor;
-	new_xy.row = xy.row * scal_factor;
-	
-	return(new_xy);
-}
 t_data	*initialisation_and_check(char *path)
 {
 	t_data	*data;
@@ -104,10 +91,12 @@ t_data	*initialisation_and_check(char *path)
 	if (!data->map)
 		return (free_memory(data, ERR_GET_MAP));
 	check_param = check_map(data, path);
-	if (check_param || get_area(rescal(data->xy_data.map, TILD_SIZE)) 
-			> get_area(data->xy_data.screen_size))
+	if (check_param || get_area(rescal(data->xy_data.map, TILD_SIZE)) > get_area(data->xy_data.screen_size))
+	{
 		return (free_memory(data, check_param));
+	}
 	if (check_valide_way(data) == 1)
 		return (free_memory(data, ERR_NO_WAY));
+	printf("area %d et %d ", get_area(rescal(data->xy_data.map, TILD_SIZE)) , get_area(data->xy_data.screen_size));
 	return (data);
 }

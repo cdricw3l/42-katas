@@ -18,7 +18,8 @@ SRCS =	src/gnl/get_next_line_utils.c \
 		src/image_loader/2_path_loader.c \
 		src/image_loader/3_image_loader.c \
 		src/image_layer/image_layer.c \
-		src/main.c
+		src/main.c \
+		src/utils.c \
 
 LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 
 #srcs/main.c 
