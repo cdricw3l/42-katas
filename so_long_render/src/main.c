@@ -103,7 +103,7 @@ int	main(int argc, char *argv[])
 			return (error_layer(1));
 		//ft_display_data_info(data); // a suuprimmer pour le rendu
 		start_game(&data);
-		//free_memory(data, 13);
+		free_memory(data, 13);
 		
 	}
 	return (0);
