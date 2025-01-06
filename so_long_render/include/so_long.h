@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 22:50:22 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 23:40:23 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ typedef struct s_border
 } t_border;
 
 
-t_data	*initialisation_and_check(char *path);
 t_data	*data_initialisation(char *map_path);
 void    print_map(t_data *data);
 void	exit_game(t_data *data);

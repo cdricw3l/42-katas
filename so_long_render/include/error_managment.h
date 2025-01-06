@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/05 22:42:57 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 23:48:09 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #define ERR_ALLOC_IMG 8
 #define ERR_GET_IMGPATH 9
 #define ERR_IMG_LOADING 10
-#define ERR_
+#define O_LAYER -1
 
 #define ERR_VALIDE_WAY 4
 #define ERR_OPEN_LOG 16 

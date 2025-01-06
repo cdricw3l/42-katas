@@ -99,14 +99,12 @@ int	main(int argc, char *argv[])
 	else
 	{
 		data = initialisation_and_check(argv[1]);
-		if (data)
-		{		
-			//ft_display_data_info(data); // a suuprimmer pour le rendu
-			start_game(&data);
-			free_memory(data, 13);
-		}
-		else
+		if (!data)
 			return (error_layer(1));
+		//ft_display_data_info(data); // a suuprimmer pour le rendu
+		start_game(&data);
+		//free_memory(data, 13);
+		
 	}
 	return (0);
 }

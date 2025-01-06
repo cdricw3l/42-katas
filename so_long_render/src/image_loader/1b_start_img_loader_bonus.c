@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_start_img_loader_bonus.c                         :+:      :+:    :+:   */
+/*   1b_start_img_loader_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/05 19:31:52 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 23:31:33 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ int	load_images(void *mlx, t_img **img, int img_set)
 	init = init_image(img, img_set);
 	if (init)
 		return (error_layer(ERR_ALLOC_IMG));
-	get_path = load_path(path);
+	get_path = load_path();
 	if (get_path)
 		return (error_layer(ERR_GET_IMGPATH));
 	load = image_loader(path, img, mlx);
 	if (load)
 		return (error_layer(ERR_IMG_LOADING));
+	printf("Image charger avec succes \n");
 	return (0);
 }

@@ -27,14 +27,14 @@ LIB2= -Llibft -lft
 
 MAP=
 
-OBJS = $(SRCS:.c =.o)
-OBJS_TEST = $(SRCS_TEST:.c =.o)
+OBJS = $(SRCS:.c=.o)
+OBJS_TEST = $(SRCS_TEST:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
-	./${NAME} ${MAP}
+	make clean
 
 
 clean:
@@ -79,8 +79,8 @@ test:
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./$(NAME_TEST)
 
-run:
+run: $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
-	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./so_long map/map2.ber
+	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./so_long map/map3.ber
 
-.PHONY: re all clean fclean so_long copy libft test
+.PHONY: re all clean fclean so_long copy libft test run $(NAME) $(NAME_TEST)

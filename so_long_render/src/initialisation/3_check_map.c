@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 21:36:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 01:10:09 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	check_dimentions(t_data *data)
 		return (2);
 	data->xy_data.map.col = j;
 	data->xy_data.map.row = row;
+	printf("ROZ %d et %d	\n", data->xy_data.map.row , data->xy_data.map.col);
+
 	return (0);
 }
 

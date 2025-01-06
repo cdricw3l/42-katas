@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 20:21:30 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 00:50:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_valide_way(t_data *data)
 	int			target;
 	t_xy		begin;
 
-	if (data)
+	if (!data)
 		return(1);
 	tab = data->map;
 	begin = data->xy_data.begin;
