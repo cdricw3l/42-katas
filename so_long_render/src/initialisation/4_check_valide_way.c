@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 22:21:26 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 22:39:41 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 		data->check_item++;
 		tab[row][col] = 'X';
 	}
-	else if (tab[row][col] == '0'|| tab[row][col] == 'E')
+	else if (tab[row][col] == '0'|| tab[row][col] == 'E' || tab[row][col] == '1')
 		tab[row][col] = ' ';
 	if(!ft_isset(c," 1X"))
 	{
-		if (col > 1 || row < h - 1 || row > 1 || col < w - 1)
+		if (col > 2 || row < h - 1 || row > 2 || col < w - 1)
 		{
-			if(data->count_item > data->check_item)
-			{
+			//if(data->count_item > data->check_item)
+			//{
 				fill_arr2(target, data, col, row - 1);
 				fill_arr2(target, data, col, row + 1);
 				fill_arr2(target, data, col - 1, row);
 				fill_arr2(target, data, col + 1, row);
-			}
+			//}
 		}
 	}
-	//ft_print_map(data);
+	print_map(data);
 }
 
 int	check_valide_way(t_data *data)
