@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 01:09:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 03:56:16 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,39 @@ int	ft_init_game_data_s(t_data *data, t_img ** img_set, char *map_path)
 	if(data->xy_data.screen_size.col == 0 
 			|| data->xy_data.screen_size.row == 0)
 		return(1);
-	data->img_set = img_set;
 	return(0);
 }
 
-t_img	**get_image_set(void *mlx)
+t_img	**get_image_set(t_data *data)
 {
-	t_img	**image;
+	t_img	**image_set;
 	int		loading;
-	image = malloc(sizeof(t_img) * IMG_SET_SIZE);
-	if (!image)
+	image_set = malloc(sizeof(t_img *) * IMG_SET_SIZE);
+	if (!image_set)
 		return (NULL);
-	loading = load_images(mlx, image, IMG_SET_SIZE);
+	data->img_set = image_set;
+	loading = load_images(data);
 	if (loading)
 		return (NULL);
-	return (image);
+	return (image_set);
 }
 
 t_data	*data_initialisation(char *map_path)
 {
 	t_data	*data;
-	t_img	**img_set;
 	int		init_result;
 	
-	data = malloc(sizeof(t_data) * 1);
+	data = malloc(sizeof(t_data *) * 1);
 	if (!data)
 		return (NULL);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (free_memory(data, ERR_MLX));
 	data->window = NULL;
-	img_set = get_image_set(data->mlx);
-	if (!img_set)
+	get_image_set(data);
+	if (!data->img_set)
 		return (free_memory(data, ERR_IMG_SET));
-	init_result = ft_init_game_data_s(data, img_set, map_path);
+	init_result = ft_init_game_data_s(data, data->img_set, map_path);
 	if (init_result)
 		return (free_memory(data, ERR_SCREEN));
 	return (data);

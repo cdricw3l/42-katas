@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 23:40:23 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 15:30:53 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "../lib/mlx_linux/mlx.h"
 # include "image_loader.h"
+# include "image_layer.h"
 # include "error_managment.h"
 # include "memory_managment.h"
-# include "hook.h"
+# include "hook_managment.h"
 # include "initialisation.h"
 # include "../libft/libft.h"
 # include "../src/gnl/get_next_line.h"
@@ -63,7 +64,7 @@ typedef struct s_xy_data
 typedef struct s_img
 {
 	char 				*class;
-	char 				*subclass;
+	int 				position;
 	void				*img;
 	int					*addr;
 	int					bit_per_pixel;

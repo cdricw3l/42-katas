@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 01:10:09 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 14:51:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,21 @@ int	check_dimentions(t_data *data)
 		else
 			col = ft_strlen(data->map[i]);
 		if (col != j && j != -1)
-			return (1);
+			return (ERR_LINE_LEN);
 		j = col;
 		i++;
 	}
 	if (is_close(data->map, row, j))
-		return (2);
+		return (ERR_NOTCLOSE);
 	data->xy_data.map.col = j;
 	data->xy_data.map.row = row;
-	printf("ROZ %d et %d	\n", data->xy_data.map.row , data->xy_data.map.col);
 
 	return (0);
 }
 
 void	process_set(t_data *data, char c, int row, int col)
 {
+	
 	if (data)
 	{
 		if (c == 'C')
@@ -99,8 +99,20 @@ void	process_set(t_data *data, char c, int row, int col)
 		}
 		if (c == 'P')
 		{
+			
 			data->xy_data.begin.row = row;
 			data->xy_data.begin.col = col;
+			if(data->xy_data.begin.col > data->xy_data.map.col / 2)
+			{
+				data->char_state = LEFT;
+				printf("state : %d\n",data->char_state);
+			}
+			else
+			{
+				data->char_state = RIGHT;
+				printf("state : %d\n",data->char_state);
+
+			}
 			data->count_begin++;
 		}
 	}
@@ -124,13 +136,13 @@ int	check_map(t_data *data, char *path)
 			if (ft_isset(data->map[i][j], set))
 				process_set(data, data->map[i][j], i, j);
 			else
-				return (2);
+				return (ERR_NOTINSET);
 			j++;
 		}
 		i++;
 	}
 	if (data->count_exit + data->count_begin != 2)
-		return (3);
+		return (ERR_DUPLICATE);
 	data->map_name = path;
 	return (0);
 }

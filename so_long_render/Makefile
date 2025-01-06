@@ -7,7 +7,7 @@ NAME_TEST= so_long_test
 
 SRCS =	src/gnl/get_next_line_utils.c \
 		src/gnl/get_next_line.c \
-		src/hook/hook_manager.c \
+		src/hook_managment/hook_manager.c \
 		src/error_managment/error_layer.c \
 		src/memory_managment/memory_cleaner.c \
 		src/initialisation/1_init.c \
@@ -17,6 +17,7 @@ SRCS =	src/gnl/get_next_line_utils.c \
 		src/image_loader/1_start_img_loader.c \
 		src/image_loader/2_path_loader.c \
 		src/image_loader/3_image_loader.c \
+		src/image_layer/image_layer.c \
 		src/main.c
 
 LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 
@@ -81,6 +82,6 @@ test:
 
 run: $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
-	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./so_long map/map3.ber
+	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./so_long map/map1.ber
 
 .PHONY: re all clean fclean so_long copy libft test run $(NAME) $(NAME_TEST)

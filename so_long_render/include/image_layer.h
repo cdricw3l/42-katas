@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_loader.h                                     :+:      :+:    :+:   */
+/*   image_layer.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 05:12:19 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 03:20:59 by cb               ###   ########.fr       */
+/*   Created: 2025/01/05 19:04:05 by cb                #+#    #+#             */
+/*   Updated: 2025/01/06 13:10:22 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef IMAGE_LOADER_H
-#define IMAGE_LOADER_H
+# ifndef IMAGE_LAYER_H
+#define IMAGE_LAYER_H
 
 #include "so_long.h"
 
-typedef struct s_img t_img;
-typedef struct s_data t_data;
 
-char   **get_image_path_part3(void);
-char   **get_image_path_part2(void);
-char   **get_image_path(void);
-char	**load_path(void);
-int	    load_images(t_data *data);
-int	    image_loader(char **path, t_data *data);
+int    run_image_layer(t_data **data);
+
 
 #endif

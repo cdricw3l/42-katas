@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/05 21:26:53 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 12:05:32 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char *error_return(int error)
 	if (error == ERR_SCREEN)
 		return("[ err ] Probleme screen size \n");
 	if (error == ERR_GET_MAP)
-		return("[ err ] probleme recuperqtion de la map\n");
+		return("[ err ] Map vide ou path incorrect\n");
 	if (error == ERR_CHECK_MAP)
 		return("[ err ] probleme avec les parametre de la map\n");
 	if (error == ERR_NO_WAY)
@@ -36,6 +36,16 @@ char *error_return(int error)
 		return("[ err ] proble de recuperation des path\n");
 	if (error == ERR_IMG_LOADING)
 		return("[ err ] Erreur chargement des images \n");
+	if (error == ERR_LINE_LEN)
+		return("[ err ] Une ligne de la map est de taille differente \n");
+	if (error == ERR_NOTCLOSE)
+		return("[ err ] La map n'est pas close\n");
+	if (error == ERR_NOTINSET)
+		return("[ err ] Un element de la map ne fait pas parti du set\n");
+	if (error == ERR_DUPLICATE)
+		return("[ err ] Deux position de depart ou deux exit sur la map\n");
+	if (error == ERR_FRAME)
+		return("[ err ] probleme creation de la nouvelle frame\n");
 	if (error == 6)
 		return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
 	if (error == 16)

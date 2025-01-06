@@ -24,7 +24,7 @@ void	exit_game(t_data *data)
             mlx_destroy_window(data->mlx, data->window);
         mlx_destroy_display(data->mlx);
     }
-	free_memory(data,0);
+	free_memory(data, 0);
 	printf("END GAME\n");
 	exit (0);
 }
@@ -63,7 +63,7 @@ void	ft_put_wall(t_data *data)
 	int 	w;
 	int		h;
 
-	im = mlx_xpm_file_to_image(data->mlx, "items/wall.xpm", &w, &h);
+	im = data->img_set[2]->img;
 	if(!im)
 	{
 		printf("erreur douverutre de l'item\n");
@@ -83,9 +83,12 @@ void    start_game(t_data **data)
 
         return ;
 	}
-	ft_put_wall(*data);	
+	//ft_put_wall(*data);	
     mlx_hook((*data)->window, 2, 1L<<0 , manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
+	;
+	if(run_image_layer(data) != 0)
+		error_layer(ERR_FRAME);
    	mlx_hook((*data)->window, 17, 1L<<0 , close_windows, (*data));
     mlx_loop((*data)->mlx) ;
 }
@@ -100,10 +103,10 @@ int	main(int argc, char *argv[])
 	{
 		data = initialisation_and_check(argv[1]);
 		if (!data)
-			return (error_layer(1));
+			return (1);
 		//ft_display_data_info(data); // a suuprimmer pour le rendu
 		start_game(&data);
-		free_memory(data, 13);
+		//free_memory(data, 13);
 		
 	}
 	return (0);

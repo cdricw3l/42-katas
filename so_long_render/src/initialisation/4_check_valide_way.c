@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 00:50:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 15:12:31 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	fill_arr2(int target, t_data *data, int col, int row)
 			}
 		}
 	}
-	print_map(data);
+	//print_map(data);
 }
 
 int	check_valide_way(t_data *data)
@@ -58,7 +58,7 @@ int	check_valide_way(t_data *data)
 	begin = data->xy_data.begin;
 	target = tab[begin.row][begin.col];
 	fill_arr2(target, data, begin.col, begin.row);
-	print_map(data);
+	//print_map(data);
 	if (data->check_item != data->count_item)
 		return(error_layer(ERR_VALIDE_WAY));
 	return(0);
