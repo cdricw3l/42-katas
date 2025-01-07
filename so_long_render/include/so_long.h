@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 22:04:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/07 20:37:08 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 #define TILD_SIZE 					128
 # define M_PI						3.14159265358979323846
 
-#define LEFT 1
-#define RIGHT 2
-#define FRONT 3
-#define	FACE  4
+#define LEFT 	1
+#define RIGHT	2
+#define FRONT	3
+#define	FACE 	4
 
 #define	IMG_SET_SIZE 6
 
@@ -63,7 +63,8 @@ typedef struct s_xy_data
 
 typedef struct s_img
 {
-	char 				*class;
+	int 				class;
+	int					subclass;
 	int 				position;
 	void				*img;
 	int					*addr;
@@ -110,6 +111,9 @@ void	exit_game(t_data *data);
 
 int		get_area(t_xy xy);
 t_xy	rescal(t_xy xy, int scal_factor);
+void    print_dimention(t_xy_data xy_arr, char c);
+void    ft_display_data_info(t_data *data);
+t_xy	ft_s_dimention(void);
 void    print_dimention(t_xy_data xy_arr, char c);
 // void	ft_process_set(t_data *data,char c, int row, int col);
 // void    ft_print_map(t_data *data);

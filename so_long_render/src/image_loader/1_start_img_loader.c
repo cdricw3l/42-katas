@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 21:57:58 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 23:53:53 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	init_image(t_data *data)
 		im->bit_per_pixel = 0;
 		im->img = NULL;
 		im->addr = NULL;
-		data->img_set[i] = im;
 		i++;
 	}
 	return (0);

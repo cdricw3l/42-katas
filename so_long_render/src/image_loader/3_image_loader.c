@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 15:33:57 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/06 23:55:51 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	image_loader(char **path, t_data *data)
 	t_img **img;
 
 	i = 0;
+	if(!data->img_set)
+		return(NULL);
 	img = data->img_set;
 	while (i < IMG_SET_SIZE)
 	{	

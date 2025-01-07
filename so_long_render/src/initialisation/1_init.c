@@ -6,22 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 22:11:56 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/07 20:36:16 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/initialisation.h"
 
-t_xy	ft_s_dimention(void)
-{
-	t_xy	dimention;
-
-	dimention.col = 0;
-	dimention.row = 0;
-	return (dimention);
-}
-
-int	ft_init_game_data_s(t_data *data, t_img **img_set, char *map_path)
+static int	ft_init_game_data_s(t_data *data, t_img **img_set, char *map_path)
 {
 	
 	data->map_name = map_path;
@@ -43,7 +34,7 @@ int	ft_init_game_data_s(t_data *data, t_img **img_set, char *map_path)
 	return(0);
 }
 
-t_img	**get_image_set(t_data *data)
+static t_img	**get_image_set(t_data *data)
 {
 	t_img	**image_set;
 	int		loading;
@@ -62,7 +53,7 @@ t_data	*data_initialisation(char *map_path)
 	t_data	*data;
 	int		init_result;
 	
-	data = malloc(sizeof(t_data *) * 1);
+	data = malloc(sizeof(t_data*) * 1);
 	if (!data)
 		return (NULL);
 	data->mlx = mlx_init();
@@ -95,8 +86,8 @@ t_data	*initialisation_and_check(char *path)
 	{
 		return (free_memory(data, check_param));
 	}
-	if (check_valide_way(data) == 1)
-		return (free_memory(data, ERR_NO_WAY));
+	// if (check_valide_way(data) == 1)
+	// 	return (free_memory(data, ERR_NO_WAY));
 	printf("area %d et %d ", get_area(rescal(data->xy_data.map, TILD_SIZE)) , get_area(data->xy_data.screen_size));
 	return (data);
 }

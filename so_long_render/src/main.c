@@ -86,28 +86,28 @@ void    start_game(t_data **data)
 	//ft_put_wall(*data);	
     mlx_hook((*data)->window, 2, 1L<<0 , manage_keyboard, (*data));
     printf("adresse 1: %p et adresse 2: %p\n", (*data)->mlx, (*data)->window);
-	;
+	
 	if(run_image_layer(data) != 0)
 		error_layer(ERR_FRAME);
    	mlx_hook((*data)->window, 17, 1L<<0 , close_windows, (*data));
     mlx_loop((*data)->mlx) ;
 }
 	
-int	main(int argc, char *argv[])
-{
-	t_data		*data;
+// int	main(int argc, char *argv[])
+// {
+// 	t_data		*data;
 
-	if (argc != 2)
-		return (error_layer(0));
-	else
-	{
-		data = initialisation_and_check(argv[1]);
-		if (!data)
-			return (1);
-		//ft_display_data_info(data); // a suuprimmer pour le rendu
-		start_game(&data);
-		//free_memory(data, 13);
+// 	if (argc != 2)
+// 		return (error_layer(0));
+// 	else
+// 	{
+// 		data = initialisation_and_check(argv[1]);
+// 		if (!data)
+// 			return (1);
+// 		//ft_display_data_info(data); // a suuprimmer pour le rendu
+// 		start_game(&data);
+// 		//free_memory(data, 13);
 		
-	}
-	return (0);
-}
+// 	}
+// 	return (0);
+// }
