@@ -35,7 +35,7 @@ OBJS_TEST = $(SRCS_TEST:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
+	$(CC) $(GFLAGS) -fsanitize=address -g $(OBJS) $(LIB) -o $(NAME)
 #make clean
 
 

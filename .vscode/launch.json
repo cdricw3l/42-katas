@@ -2,26 +2,30 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C/C++: Debug active file with gdb",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/test",  // Chemin vers l'exécutable dans le répertoire parent
-            "args": [],  // Arguments que vous pouvez passer à votre programme (optionnel)
-            "stopAtEntry": false,  // Ne pas s'arrêter à l'entrée du programme
-            "cwd": "${workspaceFolder}",  // Répertoire de travail pour le programme, ici c'est le répertoire du projet
+            "program": "${workspaceFolder}/so_long_render/so_long",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,  // Ne pas utiliser de console externe
-            "MIMode": "gdb",  // Utilisation de gdb comme débogueur
-            "miDebuggerPath": "/usr/bin/gdb",  // Le chemin vers gdb (ajustez si nécessaire)
+            "externalConsole": false,
+            "MIMode": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
                 }
-            ],
-            "preLaunchTask": "",  // Si vous compilez manuellement, vous n'avez pas besoin de tâche de pré-lancement
-            "miDebuggerArgs": "-g"
-        }
+            ]
+        },
+
+        
     ]
 }

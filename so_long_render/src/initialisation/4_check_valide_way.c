@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/08 01:02:41 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 01:18:12 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_valide_way(t_data *data)
 		return(1);
 	return(0);
 }
-int main()
+int main(void)
 {
 	void *mlx;
 	t_img *img;
@@ -98,10 +98,10 @@ int main()
 	if(!addr1 || !addr2)
 		return(1);
 	int i = 0;
-	while (i < 100)
+	while (i < 1000)
 	{
-		int j = 100;
-		while (j < 1)
+		int j = 0;
+		while (j < 1000)
 		{
 			ft_put_pixel(new_img,j, i,0xff0000);
 			j++;
