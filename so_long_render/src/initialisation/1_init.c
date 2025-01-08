@@ -6,13 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/07 20:36:16 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 02:00:42 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/initialisation.h"
 
-static int	ft_init_game_data_s(t_data *data, t_img **img_set, char *map_path)
+static int	ft_init_game_data_s(t_data *data, char *map_path)
 {
 	
 	data->map_name = map_path;
@@ -63,7 +63,7 @@ t_data	*data_initialisation(char *map_path)
 	get_image_set(data);
 	if (!data->img_set)
 		return (free_memory(data, ERR_IMG_SET));
-	init_result = ft_init_game_data_s(data, data->img_set, map_path);
+	init_result = ft_init_game_data_s(data, map_path);
 	if (init_result)
 		return (free_memory(data, ERR_SCREEN));
 	return (data);

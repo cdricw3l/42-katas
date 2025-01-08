@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:07:49 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 23:52:44 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 01:58:07 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	clean_image_memory(t_data *data, int index)
     
 	i = 0;
     img = data->img_set;
-	while (i < IMG_SET_SIZE)
+	while (i < index)
 	{
         free(img[i]->img);
 		free(img[i]);

@@ -37,7 +37,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address -g $(OBJS) $(LIB) -o $(NAME)
 #make clean
-
+%.o: %.c
+	$(CC) $(GFLAGS) -fsanitize=address -g -c $< -o $@
 
 clean:
 	rm -f 	src/gnl/get_next_line_utils.o \

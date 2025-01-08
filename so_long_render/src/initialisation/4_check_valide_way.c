@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:18:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/08 01:18:12 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 01:39:26 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,7 @@ int main(void)
 	char *addr2 = mlx_get_data_addr(img->img,&img->bit_per_pixel, &img->line_length, &img->endian);
 	if(!addr1 || !addr2)
 		return(1);
-	int i = 0;
-	while (i < 1000)
-	{
-		int j = 0;
-		while (j < 1000)
-		{
-			ft_put_pixel(new_img,j, i,0xff0000);
-			j++;
-		}
-		i++;
-	}
-	mlx_put_image_to_window(mlx,win,new_img, 0, 0);
-	mlx_loop(mlx);
+	//mlx_loop(mlx);
 	mlx_destroy_image(mlx,img->img);
 	mlx_destroy_image(mlx,new_img);
 	mlx_destroy_window(mlx,win);

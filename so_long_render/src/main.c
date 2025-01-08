@@ -60,8 +60,7 @@ void	_putwall(t_data *data, void *im)
 void	ft_put_wall(t_data *data)
 {
 	void	*im;
-	int 	w;
-	int		h;
+	
 
 	im = data->img_set[2]->img;
 	if(!im)
@@ -70,7 +69,7 @@ void	ft_put_wall(t_data *data)
 		return ;
 	}
 	else
-		printf("push image w %d et h %d sur map %d X %d ...\n", w,h,data->xy_data.map.col,data->xy_data.map.row);
+		printf("push image et h %d sur map %d X ...\n",data->xy_data.map.col,data->xy_data.map.row);
 	_putwall(data, im);
 }
 
