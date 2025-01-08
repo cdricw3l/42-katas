@@ -36,7 +36,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
-	make clean
+#make clean
 
 
 clean:

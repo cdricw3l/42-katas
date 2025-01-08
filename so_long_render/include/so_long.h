@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/07 20:37:08 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 00:50:54 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_img
 	int					subclass;
 	int 				position;
 	void				*img;
-	int					*addr;
+	char				*addr;
 	int					bit_per_pixel;
 	int					line_length;
 	int					endian;
