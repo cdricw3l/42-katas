@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 22:34:59 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 03:01:11 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,19 @@ int	_get_map(char *path, char **map)
 	return (i);
 }
 
-char	**get_map(t_data *data)
+char	**get_map(t_data **data)
 {
 	char	**map;
 	int		i;
 	int		line_count;
 
-	line_count = ft_line_count(data->map_name);
+	line_count = ft_line_count((*data)->map_name);
 	if (line_count == 0)
 		return (NULL);
 	map = malloc(sizeof(char *) * (line_count + 1));
 	if (!map)
 		return (NULL);
-	i = _get_map(data->map_name, map);
+	i = _get_map((*data)->map_name, map);
 	printf("voici get map%d\n", i);
 	if (i == 0)
 		return (NULL);

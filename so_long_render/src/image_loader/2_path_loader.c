@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 05:11:16 by cb                #+#    #+#             */
-/*   Updated: 2025/01/08 02:30:45 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 03:24:01 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	**get_image_path(void)
 {
 	char	**img_path;
 
-	img_path = malloc(sizeof(char *) * IMG_SET_SIZE + 1);
+	img_path = malloc(sizeof(char *) * (IMG_SET_SIZE + 1));
 	if (!img_path)
 		return (NULL);
 	img_path[0] = "tildset/background/grass.xpm";
@@ -25,6 +25,7 @@ char	**get_image_path(void)
 	img_path[3] = "tildset/charactere/Pink_Monster_r.xpm";
 	img_path[4] = "tildset/collectibles/potion.xpm";
 	img_path[5] = "tildset/exit/exit.xpm";
+	img_path[6] = NULL;
 	return (img_path);
 }
 

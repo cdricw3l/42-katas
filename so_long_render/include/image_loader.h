@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 05:12:19 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 03:20:59 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 03:05:59 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char   **get_image_path_part3(void);
 char   **get_image_path_part2(void);
 char   **get_image_path(void);
 char	**load_path(void);
-int	    load_images(t_data *data);
-int	    image_loader(char **path, t_data *data);
+int	    get_image_set(t_data **data);
+int	    image_loader(char **path, t_data **data);
 
 #endif
