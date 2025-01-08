@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/08 02:00:42 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 02:29:04 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_data	*data_initialisation(char *map_path)
 	t_data	*data;
 	int		init_result;
 	
-	data = malloc(sizeof(t_data*) * 1);
+	data = malloc(sizeof(t_data) * 1);
 	if (!data)
 		return (NULL);
 	data->mlx = mlx_init();

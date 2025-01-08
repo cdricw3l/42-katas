@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/so_long_render/so_long",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,

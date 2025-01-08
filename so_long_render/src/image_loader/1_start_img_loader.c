@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/06 23:53:53 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 02:37:24 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	init_image(t_data *data)
 		return (1);
 	while (i < IMG_SET_SIZE)
 	{
-		im = malloc(sizeof(t_img));
+		im = malloc(sizeof(t_img *));
 		if (!im)
 			return (clean_image_memory(data, i));
 		im->endian = 0;

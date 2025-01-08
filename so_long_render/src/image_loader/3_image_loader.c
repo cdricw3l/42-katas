@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/07 21:55:29 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/08 02:35:26 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	image_loader(char **path, t_data *data)
 	if(!data->img_set)
 		return(1);
 	img = data->img_set;
-	while (i < IMG_SET_SIZE)
+	while (i < IMG_SET_SIZE - 1)
 	{	
 		img[i]->img = mlx_xpm_file_to_image(data->mlx, path[i],
 					&(img[i]->width), &(img[i]->height));
