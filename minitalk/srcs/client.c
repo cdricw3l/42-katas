@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:43:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/11 09:47:36 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:04:33 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_handler(int sig, siginfo_t *info, void *context)
 {
 	int	pid;
-
+	
 	pid = info->si_pid;
 	(void)context;
 	if (sig == SIGUSR2)

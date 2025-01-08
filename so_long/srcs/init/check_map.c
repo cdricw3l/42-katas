@@ -6,13 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/31 19:25:36 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/05 06:29:19 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	ft_process_set(t_game_data *data, char c, int row, int col)
+void	ft_process_set(t_data *data, char c, int row, int col)
 {
 	if (data)
 	{
@@ -20,20 +20,20 @@ void	ft_process_set(t_game_data *data, char c, int row, int col)
 			data->count_item++;
 		if (c == 'E')
 		{
-			data->exit_position.col = col;
-			data->exit_position.row = row;
+			data->xy_data.exit.col = col;
+			data->xy_data.exit.row = row;
 			data->count_exit++;
 		}
 		if (c == 'P')
 		{
-			data->begin.row = row;
-			data->begin.col = col;
+			data->xy_data.begin.row = row;
+			data->xy_data.begin.col = col;
 			data->count_begin++;
 		}
 	}
 }
 
-int	ft_check_param(t_game_data *data, char *path)
+int	ft_check_param(t_data *data, char *path)
 {
 	char	*set;
 	int		i;
@@ -62,7 +62,7 @@ int	ft_check_param(t_game_data *data, char *path)
 	return (0);
 }
 
-int	ft_check_dimentions(t_game_data *data)
+int	ft_check_dimentions(t_data *data)
 {
 	int	row;
 	int	col;
@@ -85,8 +85,8 @@ int	ft_check_dimentions(t_game_data *data)
 	}
 	if (ft_is_close(data->map, row, j))
 		return (2);
-	data->dimention.col = j;
-	data->dimention.row = row;
+	data->xy_data.map.col = j;
+	data->xy_data.map.row = row;
 	return (0);
 }
 

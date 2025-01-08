@@ -6,7 +6,11 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2025/01/05 06:11:16 by cb               ###   ########.fr       */
+=======
 /*   Updated: 2025/01/04 22:22:21 by cb               ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +87,37 @@ char	**ft_get_map(char *path,t_dimention *dim)
 	return (map);
 }
 
+<<<<<<< HEAD
+t_data	*initialisation_and_check(char *path)
+=======
 t_data	*ft_init_and_check(char *path)
+>>>>>>> main
 {
 	t_data	*data;
 	int		check_param;
 
-	data = ft_init_data_s();
+	data = data_initialisation(path);
 	if (!data)
+<<<<<<< HEAD
+	{
+		printf("probleme d'initialisation de la structure data\n");
+		return (NULL);
+	}
+	data->map = ft_get_map(path);
+	if (!data->map)
+	{
+		printf("probleme d'initialisation de la map\n");
+		return (ft_free_memory(data, 8)); 					//error
+	}
+	check_param = ft_check_param(data, path);
+	if (check_param)
+	{
+		printf("probleme avec les parametre de la map %d\n", check_param);
+		return (ft_free_memory(data, 9));					//error
+	}
+	if (ft_check_valide_way(data) == 1)
+		return (ft_free_memory(data, 10));					//error
+=======
 		return (ft_free_memory(data, 1));
 	data->game_data->map = ft_get_map(path, &data->screen_size);
 	if (!data->game_data->map)
@@ -99,5 +127,6 @@ t_data	*ft_init_and_check(char *path)
 		return (ft_free_memory(data, 3));
 	if (ft_check_valide_way(data->game_data) == 1)
 		return (ft_free_memory(data, 4));
+>>>>>>> main
 	return (data);
 }
