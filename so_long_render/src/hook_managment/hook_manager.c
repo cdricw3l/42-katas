@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 11:59:04 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 05:57:52 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_update_mouvement(t_data *data, t_data *g, t_xy *begin)
 {
+	(void)data;
 	g->count_mouvement++;
 	if (g->map[begin->row][begin->col] == 'X')
 	{
@@ -29,8 +30,8 @@ void	ft_update_mouvement(t_data *data, t_data *g, t_xy *begin)
 	else
 	{
 		if (g->map[begin->row][begin->col] == 'E')
-			if(g->count_item == 0)
-				exit_game(data);
+			// if(g->count_item == 0)
+			// 	exit_game(data);
 		g->map[begin->row][begin->col] = 'P';
 		printf("Update position : y: %d, x: %d\n", begin->row, begin->col);
 		printf("Nombre de mouvement %d\n", g->count_mouvement);
@@ -85,8 +86,8 @@ void	ft_keycode_counter_handler(t_data *data, int keycode)
 int	manage_keyboard(int keycode, t_data *data)
 {
 	ft_keycode_counter_handler(data, keycode);
-	if (keycode == 65307 || keycode == 64)
-		exit_game(data);
+	// if (keycode == 65307 || keycode == 64)
+	// 	exit_game(data);
 	return (0);
 }
 void	exit_game2(t_data **d)
