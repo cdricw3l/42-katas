@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 18:32:29 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 19:34:31 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,30 +142,46 @@ int unit_test_init_and_clean(void)
 int main(void)
 {
     
-    unit_test_init_and_clean();
+    //unit_test_init_and_clean();
 
-    // t_data *data;
-    // char *dir = "map";
-    // struct dirent *dent;
-    // DIR *j = opendir(dir);
-    // if (j == NULL)
-    // {
-    //    perror(0);
-    //    return(0);
-    // }
-    // printf("hello");
-    // dent = readdir(j);
-    // while (dent != NULL)
-    // {
-    //     printf("%s\n", dent->d_name);
-    //     dent = readdir(j);
+    t_data *data;
 
-    // }
-    // closedir(j);
+
+    data = malloc(sizeof(t_data));
+    assert(data != NULL);
+    char *dir = "map";
+    struct dirent *dent;
+    DIR *j = opendir(dir);
+    if (j == NULL)
+    {
+       perror(0);
+       return(0);
+    }
+    dent = readdir(j);
+    int i = 0;
+    while (dent != NULL)
+    {   
+
+        if(dent->d_name[ft_strlen(dent->d_name) - 1] == 'r')
+        {
+            data->map_name = ft_strjoin("map/",dent->d_name);
+            data->map = get_map(data);
+            printf("iindex de map : %d\n", i);
+            if(data->map == NULL)
+            {
+                error_layer(99);
+                printf("result error: %s\n", data->map_name);
+            }
+            free(data->map_name);
+            assert(data->map != NULL );
+            assert(check_map(data) == 0);
+        }
+        dent = readdir(j);
+        i++;
+    }
+    closedir(j);
     
-    // data = initialisation_and_check("map/map3.ber");
-    // printf("voivci la screen size %d et %d\n", data->xy_data.screen_size.col, data->xy_data.screen_size.row);
-    // assert(data == NULL);
-
+    //printf("voivci la screen size %d et %d\n", data->xy_data.screen_size.col, data->xy_data.screen_size.row);
+    (void)data;
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/09 18:33:02 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 19:31:10 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char *error_return(int error)
 		return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
 	if (error == 0)
 		return("[ clean ]  Structures libéré avec succes\n");
+	if (error == 99)
+		return("[ ERREUR MAP ] Error map\n");
 	if (error == 42)
 		return("[ clean ]  PROGRAMME TERMEINNER AVEC SUCCES\n");
 	return (NULL);
