@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 13:02:08 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 13:10:52 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int dynamique_hook(t_data *d)
     if(im1)
         mlx_put_image_to_window(d->mlx,d->window,im1->img, 10 , 10);
     if(im2)
-        mlx_put_image_to_window(d->mlx,d->window,im2->img,138, 10) ;
+        mlx_put_image_to_window(d->mlx,d->window,im2->img,250, 100) ;
     if(im3)
-        mlx_put_image_to_window(d->mlx,d->window,im3->img,250, 10) ;
+        mlx_put_image_to_window(d->mlx,d->window,im3->img,500, 300) ;
     k++;
     if(k == 14)
     {
