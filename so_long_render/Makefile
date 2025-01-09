@@ -24,7 +24,7 @@ SRCS =	src/gnl/get_next_line_utils.c \
 LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibft -lft
 #srcs/main.c 
 
-SRCS_TEST = src/unit_test.c ${SRCS}
+SRCS_TEST = unit_test/unit_test.c ${SRCS}
 LIB2= -Llibft -lft
 
 MAP=

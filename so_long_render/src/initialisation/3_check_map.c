@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/08 23:02:02 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 17:02:48 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	process_set(t_data *data, char c, int row, int col)
 	}
 }
 
-int	check_map(t_data *data, char *path)
+int	check_map(t_data *data)
 {
 	char	*set;
 	int		i;
@@ -142,7 +142,6 @@ int	check_map(t_data *data, char *path)
 	}
 	if (data->count_exit + data->count_begin != 2)
 		return (ERR_DUPLICATE);
-	data->map_name = path;
 	return (0);
 }
 

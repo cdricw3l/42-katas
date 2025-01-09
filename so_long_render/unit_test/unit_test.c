@@ -6,11 +6,14 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 13:10:52 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 18:32:29 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+#include <dirent.h>
+#include <X11/keysym.h>
 
 int error_layer_test(void)
 {
@@ -31,12 +34,12 @@ int dynamique_hook(t_data *d)
     t_img *im3;
 
     data = d->img_sets;
-    printf("coici k %d et %p \n", k, data);
     // printf("coici k %p \n", data->img_set_global[k]);
     im1 = data->img_set_global[k];
     im2 = data->img_set_left[k];
     im3 = data->img_set_right[k];
     
+    printf("coici k %d et %p , %p, %p \n", k, im1, im2, im3);
     if(im1)
         mlx_put_image_to_window(d->mlx,d->window,im1->img, 10 , 10);
     if(im2)
@@ -53,7 +56,25 @@ int dynamique_hook(t_data *d)
     return (0);
 }
 
-int main(void)
+int ft_close_windows(int keycode, t_data **data)
+{
+    printf("voici le keycode %d\n", keycode);
+	(void)data;
+    if(keycode == 65307 || keycode == 64)
+    {
+        printf("voici %p \n", (*data)->img_sets);
+        printf("data .mlx %p\n", (*data)->map);
+	    mlx_destroy_window((*data)->mlx, (*data)->window);
+        free_memory(data, 42);
+        return(0);
+    }
+    return(1);
+}
+
+
+//test data initialisation and clean;
+
+int unit_test_init_and_clean(void)
 {
     t_data *data;
 
@@ -108,10 +129,43 @@ int main(void)
 
     data->window = mlx_new_window(data->mlx,1920, 1080,"hello");
     assert(data->window != NULL);
-     printf("coici data %p \n", data);
+    data->map_name = "map/map3.ber";
+    data->map = get_map(data);
+    assert(data->map != NULL);
+    printf("coici data %p \n", data->map);
+    mlx_key_hook(data->window,&ft_close_windows, &data);
     mlx_loop_hook(data->mlx,&dynamique_hook, data);
     mlx_loop(data->mlx);
-    // free(data->mlx);
-    // free(data);
+    return(0);    
+}
+
+int main(void)
+{
+    
+    unit_test_init_and_clean();
+
+    // t_data *data;
+    // char *dir = "map";
+    // struct dirent *dent;
+    // DIR *j = opendir(dir);
+    // if (j == NULL)
+    // {
+    //    perror(0);
+    //    return(0);
+    // }
+    // printf("hello");
+    // dent = readdir(j);
+    // while (dent != NULL)
+    // {
+    //     printf("%s\n", dent->d_name);
+    //     dent = readdir(j);
+
+    // }
+    // closedir(j);
+    
+    // data = initialisation_and_check("map/map3.ber");
+    // printf("voivci la screen size %d et %d\n", data->xy_data.screen_size.col, data->xy_data.screen_size.row);
+    // assert(data == NULL);
+
     return (0);
 }

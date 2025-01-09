@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/09 05:48:06 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 17:16:02 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ t_data	*data_initialisation(char *map_path)
 		return (NULL);
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		return (free_memory(data, ERR_MLX));
+		return (free_memory(&data, ERR_MLX));
 	data->window = NULL;
 	if (get_images_sets(data))
-		return (free_memory(data, ERR_IMG_SET));
+		return (free_memory(&data, ERR_IMG_SET));
 	init_result = _init(data, map_path);
 	if (init_result)
-		return (free_memory(data, ERR_SCREEN));
+		return (free_memory(&data, ERR_SCREEN));
 	return (data);
 }
 
@@ -58,6 +58,7 @@ t_data	*data_initialisation(char *map_path)
 t_data	*initialisation_and_check(char *path)
 {
 	t_data	*data;
+
 	int		check_param;
 
 	data = data_initialisation(path);
@@ -65,11 +66,11 @@ t_data	*initialisation_and_check(char *path)
 		return (NULL);
 	data->map = get_map(data);
 	if (!data->map)
-		return (free_memory(data, ERR_GET_MAP));
-	check_param = check_map(data, path);
+		return (free_memory(&data, ERR_GET_MAP));
+	check_param = check_map(data);
 	if (check_param || get_area(rescal(data->xy_data.map, TILD_SIZE)) > get_area(data->xy_data.screen_size))
 	{
-		return (free_memory(data, check_param));
+		return (free_memory(&data, check_param));
 	}
 	// if (check_valide_way(data) == 1)
 	// 	return (free_memory(data, ERR_NO_WAY));
