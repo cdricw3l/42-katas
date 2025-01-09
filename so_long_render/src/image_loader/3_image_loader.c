@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 06:49:55 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 07:32:26 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ char *get_image_class(char *path)
 int	get_image_frame_size(char *path)
 {
 	int frame_size;
-	char *truc_path;
-
-	truc_path = ft_strrchr(ft_strrchr(path, '/') + 1, '_') + 1;
-	frame_size = ft_atoi(truc_path);
-
+	char *truc_path1;
+	
+	truc_path1 = ft_substr(ft_strrchr(path, '.') - 1, 0, 1);
+	frame_size = ft_atoi(truc_path1);
+	printf("%s\n", truc_path1);
 	if(frame_size <= 0)
 		return(0);
 	return (frame_size);
@@ -69,7 +69,7 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 		img_set[i] = malloc(sizeof(t_img));
 		if(!img_set[i])
 			return(clean_img_set(img_set, i));
-		printf("voici le path %s\n ", path[i]);
+		printf("voici le path %s, %d\n ", path[i], i);
 		img_set[i]->img = mlx_xpm_file_to_image(data->mlx, path[i], &img_set[i]->width,&img_set[i]->width);
 		if(!img_set[i]->img)
 			return(clean_img_set(img_set, i));
@@ -79,7 +79,6 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 		img_set[i]->frame_size = get_image_frame_size(path[i]);
 		if(img_set[i]->frame_size == 0)
 			return(clean_img_set(img_set, i));
-		free(path[i]);
 		i++;
 	}
 	free(path);

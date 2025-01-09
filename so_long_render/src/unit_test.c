@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 06:29:43 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 07:23:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,17 @@ int main(void)
     assert(path_l !=NULL);
     assert(path_r !=NULL);
     data->img_sets = malloc(sizeof(t_img_sets));
+
+    int h = get_image_frame_size("../../tildset/number/610_9_1.xpm");
+    printf("voici h %d\n",h);
 	if(!data->img_sets)
 		return(error_layer(ERR_GET_IMGPATH));
     int i = image_loader(data, path_g, path_l, path_r);
     printf("image i %d\n", i);
     assert(i == 0);
-    
+
+    clean_image_memory(data,0);
+    free(data->mlx);
+    free(data);
     return (0);
 }
