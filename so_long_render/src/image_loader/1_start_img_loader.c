@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:56:59 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 06:26:10 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 11:36:30 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 // 	return (0);
 // }
 
+
 int	get_images_sets(t_data *data)
 {
 	int			load;
@@ -63,5 +64,6 @@ int	get_images_sets(t_data *data)
 	load = image_loader(data, path_g, path_l, path_r);
 	if (load)
 		return (error_layer(ERR_IMG_LOADING));
+	free_path_memory(path_g, path_l, path_r);
 	return (0);
 }

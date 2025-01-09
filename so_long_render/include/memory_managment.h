@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/08 22:55:01 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 11:14:19 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_img t_img;
 
 int     clean_image_memory(t_data *data, int index);
 void    *free_memory(t_data *data, int err);
+void	free_path_memory(char **path_g, char **path_l, char **path_r);
 int     error_layer(int err);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 07:32:26 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 11:09:27 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	get_image_frame_size(char *path)
 	truc_path1 = ft_substr(ft_strrchr(path, '.') - 1, 0, 1);
 	frame_size = ft_atoi(truc_path1);
 	printf("%s\n", truc_path1);
+	free(truc_path1);
 	if(frame_size <= 0)
 		return(0);
 	return (frame_size);
@@ -81,7 +82,6 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 			return(clean_img_set(img_set, i));
 		i++;
 	}
-	free(path);
 	return(0);
 }
 

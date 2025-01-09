@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:07:49 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 07:02:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 12:05:52 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ int	clean_image_memory(t_data *data, int index)
     free(data->img_sets->img_set_right);
     free(data->img_sets);
 	return (1);
+}
+
+void	free_path_memory(char **path_g, char **path_l, char **path_r)
+{
+	
+	free(path_g);
+	free(path_l);
+	free(path_r);
+	
 }

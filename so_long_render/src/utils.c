@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:55:17 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 05:56:09 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 11:20:28 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,20 @@ void   print_map(t_data *data)
         }
     }
 	printf("\n");
+}
+
+void print_path(char **path_g, char **path_l, char **path_r)
+{
+	int i;
+
+	i = 0;
+	while (i < SET_SIZE)
+	{
+		printf("[ path-G ] %s\n", path_g[i]);
+		printf("[ path-L ] %s\n", path_l[i]);
+		printf("[ path-R ] %s\n", path_r[i]);
+		i++;
+	}
+	printf("\n");
+	
 }
