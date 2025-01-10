@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/10 13:53:49 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 15:32:20 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,44 @@ int error_layer_test(void)
     return(count); 
 }
 
-void ft_slice_img(t_img img)
+void ft_slice_img(t_img *img)
 {
     printf("voici les info sur l'image: \n");
-    printf(" addresse img %p, bit_px %d, frame size %d \n", img.img, img.bit_per_pixel, img.frame_size);
-    printf(" line len img %d, img class %s, largeur %d \n", img.line_length, img.class, img.width);
+    printf(" addresse img %p, bit_px %d, frame size %d \n", img, img->bit_per_pixel, img->frame_size);
+    printf(" line len img %d, img class %s, largeur %d \n", img->line_length, img->class, img->width);
+}
+
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bit_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
 int dynamique_hook(t_data *d)
 {   
    
     t_img_sets *data;
-    t_img **im1[3];
-    t_img im;
-    int k;
-    int i;
+    t_img *im;
+    t_img *new;
 
     data = d->img_sets;
-
-    printf("coici k %p \n", data->img_set_global[k]);
-    im1[0] = data->img_set_left;
-    im1[1] = data->img_set_right;
-    im1[2] = data->img_set_global;
-    k = 0;
-    while (k < 0)
-    {
-        i = 0;
-        while (i < SET_SIZE)
-        {
-            im = *(t_img *)im1[k];
-            ft_slice_img(im);
-        }
-        
-    }
+    im = data->img_set_left[0];
     
+    new = malloc(sizeof(t_img));
+    ft_slice_img(im);
+    mlx_put_image_to_window(d->mlx,d->window, im->img, 10, 10);
+    if(d->mlx != NULL && (im->width / im->frame_size) != 0 )
+    {
+        new->img = mlx_new_image(d->mlx, 32 , 32);
+        
+        assert(new->img != NULL);
+        assert(new->addr != NULL);
+    }
+    //my_mlx_pixel_put(new,32 , 32,0x00FF0000);
+    //mlx_put_image_to_window(d->mlx, d->window, new, 10,10);
+    sleep(1);
     return (0);
 }
 

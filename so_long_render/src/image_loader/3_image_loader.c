@@ -6,11 +6,12 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/10 13:04:26 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 14:03:25 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
 
 int	clean_img_set(t_img **img_set, int idx)
 {
@@ -36,7 +37,7 @@ char *get_image_class(char *path)
 
 	if(!path || !path[0])
 		return(NULL);
-	if(path[2] == '_')
+	if((ft_strrchr(path, '/') + 1)[2] == '_')
 		len = 2;
 	else
 		len = 3;
@@ -82,6 +83,7 @@ int	push_img_set(t_data *data, t_img **img_set, char **path, int set)
 			return(clean_img_set(img_set, i));
 		if(set >= 0 && set <=2)
 			img_set[i]->set = set;
+		ft_slice_img(img_set[i]);
 		i++;
 	}
 	return(0);
