@@ -5,4 +5,3 @@
 On reconnaît un bon développeur au peu de compilations qu'il effectue pour arriver au résultat voulu. 
 On reconnaît un bon apprenti au grand nombre de compilations qu'il effectue pour arriver au résultat voulu.
 
-![alt text](trames/chuck_flags.jpg)
