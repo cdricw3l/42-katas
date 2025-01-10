@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/08 02:24:18 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 18:16:34 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+#include <assert.h>
+
 
 
 #define MLX_SYNC_IMAGE_WRITABLE		1
@@ -43,7 +45,8 @@
 #define FRONT	3
 #define	FACE 	4
 
-#define	IMG_SET_SIZE 6
+#define	IMG_SET_SIZE 3
+#define	SET_SIZE 14
 
 typedef struct s_xy
 {
@@ -51,6 +54,15 @@ typedef struct s_xy
 	int col;
 
 } t_xy;
+
+typedef struct s_img_sets
+{
+	t_img				**img_set_global;
+	t_img				**img_set_left;
+	t_img				**img_set_right;
+	
+} t_img_sets;
+
 
 typedef struct s_xy_data
 {
@@ -63,9 +75,9 @@ typedef struct s_xy_data
 
 typedef struct s_img
 {
-	int 				class;
+	char 				*class;
 	int					subclass;
-	int 				position;
+	int 				frame_size;
 	void				*img;
 	char				*addr;
 	int					bit_per_pixel;
@@ -89,7 +101,8 @@ typedef struct s_data
 	int					count_exit;
 	int					count_mouvement;
 	t_xy_data			xy_data;
-	t_img				**img_set;
+	t_img_sets			*img_sets;
+	int					img_set_size;
 	
 } t_data ;
 
@@ -115,7 +128,9 @@ void    print_dimention(t_xy_data xy_arr, char c);
 void    ft_display_data_info(t_data *data);
 t_xy	ft_s_dimention(void);
 void    print_dimention(t_xy_data xy_arr, char c);
-void	ft_put_border(t_data *data, t_border b);	
+void	ft_put_border(t_data *data, t_border b);
+void	print_map(t_data *data);
+void 	print_path(char **path_g, char **path_l, char **path_r);
 // void	ft_process_set(t_data *data,char c, int row, int col);
 // void    ft_print_map(t_data *data);
 // void	end_game_menu(t_data *data);

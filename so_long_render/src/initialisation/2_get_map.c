@@ -6,42 +6,13 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/08 03:01:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 19:34:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/initialisation.h"
 
-void   print_map(t_data *data)
-{
-    int i;
-    int j;
-    int hauteur;
-    int largeur;
-    char **map;
-
-    i = 0;
-    if(data->xy_data.map.row && data->xy_data.map.col)
-    {
-        hauteur = data->xy_data.map.row;
-        largeur = data->xy_data.map.col;
-        map = data->map;
-        while (i < hauteur)
-        {
-            j = 0;
-            while(j < largeur)
-            {
-                printf("%c", map[i][j]);
-                j++;
-            }
-            printf("\n");
-            i++;
-        }
-    }
-	printf("\n");
-}
-
-int	ft_line_count(char *path)
+static int	ft_line_count(char *path)
 {
 	int		i;
 	int		fd;
@@ -64,7 +35,7 @@ int	ft_line_count(char *path)
 	return (i);
 }
 
-int	_get_map(char *path, char **map)
+static int	_get_map(char *path, char **map)
 {
 	int		i;
 	int		fd;
@@ -88,19 +59,19 @@ int	_get_map(char *path, char **map)
 	return (i);
 }
 
-char	**get_map(t_data **data)
+char	**get_map(t_data *data)
 {
 	char	**map;
 	int		i;
 	int		line_count;
 
-	line_count = ft_line_count((*data)->map_name);
+	line_count = ft_line_count(data->map_name);
 	if (line_count == 0)
 		return (NULL);
 	map = malloc(sizeof(char *) * (line_count + 1));
 	if (!map)
 		return (NULL);
-	i = _get_map((*data)->map_name, map);
+	i = _get_map(data->map_name, map);
 	printf("voici get map%d\n", i);
 	if (i == 0)
 		return (NULL);

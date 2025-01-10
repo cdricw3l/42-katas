@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/06 12:05:32 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 19:31:10 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ char *error_return(int error)
 		return("[ err ] probleme creation de la nouvelle frame\n");
 	if (error == 6)
 		return("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
-	if (error == 16)
-		return("[ err ] Erreur ouverture file logs\n");
+	if (error == 0)
+		return("[ clean ]  Structures libéré avec succes\n");
+	if (error == 99)
+		return("[ ERREUR MAP ] Error map\n");
+	if (error == 42)
+		return("[ clean ]  PROGRAMME TERMEINNER AVEC SUCCES\n");
 	return (NULL);
 }
 

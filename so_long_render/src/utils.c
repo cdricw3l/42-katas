@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:55:17 by cb                #+#    #+#             */
-/*   Updated: 2025/01/08 02:15:25 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/09 11:20:28 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ void    ft_display_data_info(t_data *data)
 
 }
 
+void    display_image_data(t_img *im)
+{
+    printf("Voici les informations concernant l'image:\n");
+    printf("Dimentions de l'image ... hauteur: %d largeur : %d", im->height, im->width);
+    printf("voici la taile de la frame %d et la classe : %s", im->frame_size, im->class);
+}
+
 t_xy	ft_s_dimention(void)
 {
 	t_xy	dimention;
@@ -99,4 +106,49 @@ void	ft_put_border(t_data *data, t_border b)
 		}
 		i++;
 	}
+}
+
+void   print_map(t_data *data)
+{
+    int i;
+    int j;
+    int hauteur;
+    int largeur;
+    char **map;
+
+    i = 0;
+    if(data->xy_data.map.row && data->xy_data.map.col)
+    {
+        hauteur = data->xy_data.map.row;
+        largeur = data->xy_data.map.col;
+        map = data->map;
+        while (i < hauteur)
+        {
+            j = 0;
+            while(j < largeur)
+            {
+                printf("%c", map[i][j]);
+                j++;
+            }
+            printf("\n");
+            i++;
+        }
+    }
+	printf("\n");
+}
+
+void print_path(char **path_g, char **path_l, char **path_r)
+{
+	int i;
+
+	i = 0;
+	while (i < SET_SIZE)
+	{
+		printf("[ path-G ] %s\n", path_g[i]);
+		printf("[ path-L ] %s\n", path_l[i]);
+		printf("[ path-R ] %s\n", path_r[i]);
+		i++;
+	}
+	printf("\n");
+	
 }

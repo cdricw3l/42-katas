@@ -1,5 +1,5 @@
 CC = gcc 
-GFLAGS= -Werror -Wall -Wextra -I./include
+GFLAGS= -Werror -Wall -Wextra -I./include -g
 
 NAME= so_long
 NAME_TEST= so_long_test
@@ -18,13 +18,13 @@ SRCS =	src/gnl/get_next_line_utils.c \
 		src/image_loader/2_path_loader.c \
 		src/image_loader/3_image_loader.c \
 		src/image_layer/image_layer.c \
-		src/main.c \
 		src/utils.c \
+#src/main.c \
 
-LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft 
+LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibft -lft
 #srcs/main.c 
 
-SRCS_TEST = src/unit_test.c src/error_managment/*.c
+SRCS_TEST = unit_test/unit_test.c ${SRCS}
 LIB2= -Llibft -lft
 
 MAP=
@@ -34,26 +34,15 @@ OBJS_TEST = $(SRCS_TEST:.c=.o)
 
 all: $(NAME)
 
+%.o: %.c
+	$(CC) $(GFLAGS) -c $< -o $@
+
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address -g $(OBJS) $(LIB) -o $(NAME)
-#make clean
-%.o: %.c
-	$(CC) $(GFLAGS) -fsanitize=address -g -c $< -o $@
+
 
 clean:
-	rm -f 	src/gnl/get_next_line_utils.o \
-			src/gnl/get_next_line.o \
-			src/hook/hook_manager.o \
-			src/error_managment/error_layer.o \
-			src/memory_managment/memory_cleaner.o \
-			src/initialisation/1_init.o \
-			src/initialisation/2_get_map.o \
-			src/initialisation/3_check_map.o \
-			src/initialisation/4_check_valide_way.o \
-			src/image_loader/1_start_img_loader.o \
-			src/image_loader/2_path_loader.o \
-			src/image_loader/3_image_loader.o \
-			src/main.o
+	rm -f $(OBJS) $(OBJS_TEST)
 
 fclean: clean
 	rm -f ${NAME}
@@ -78,9 +67,12 @@ libft:
 	rm -rf libft
 	cp -rf ../42-katas/libft .
 
-test:
+testv: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS) $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
-	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./$(NAME_TEST)
+	valgrind --leak-check=full  --leak-resolution=high --track-origins=yes --show-leak-kinds=all --log-file=filename --num-callers=500 -s ./$(NAME_TEST) map/map2.ber
+
+test: $(OBJS) $(OBJS_TEST)
+	$(CC) $(GFLAGS) -fsanitize=address -g $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
 run: $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
