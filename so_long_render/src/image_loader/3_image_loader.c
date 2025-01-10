@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 11:09:27 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 13:04:26 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	get_image_frame_size(char *path)
 	return (frame_size);
 }
 
-int	push_img_set(t_data *data, t_img **img_set, char **path)
+int	push_img_set(t_data *data, t_img **img_set, char **path, int set)
 {
 	int i;
 	
@@ -80,6 +80,8 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 		img_set[i]->frame_size = get_image_frame_size(path[i]);
 		if(img_set[i]->frame_size == 0)
 			return(clean_img_set(img_set, i));
+		if(set >= 0 && set <=2)
+			img_set[i]->set = set;
 		i++;
 	}
 	return(0);
@@ -88,7 +90,7 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 int	image_loader(t_data *data, char **path_g, char **path_l, char **path_r)
 {
 	t_img_sets *img_set;
-
+	
 	printf("voici l'adresse de image set %p\n", data->img_sets);
 	img_set = data->img_sets;
 	img_set->img_set_global = malloc(sizeof(t_img *) * SET_SIZE);
@@ -99,8 +101,8 @@ int	image_loader(t_data *data, char **path_g, char **path_l, char **path_r)
 			|| !img_set->img_set_left
 			|| !img_set->img_set_right)
 		return(1);
-	push_img_set(data,img_set->img_set_global, path_g);
-	push_img_set(data, img_set->img_set_left, path_l);
-	push_img_set(data, img_set->img_set_right, path_r);
+	push_img_set(data,img_set->img_set_global, path_g, 0);
+	push_img_set(data, img_set->img_set_left, path_l, 1);
+	push_img_set(data, img_set->img_set_right, path_r, 2);
 	return (0);
 }

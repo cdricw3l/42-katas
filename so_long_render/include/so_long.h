@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/09 18:16:34 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 12:58:45 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_xy_data
 typedef struct s_img
 {
 	char 				*class;
-	int					subclass;
+	int					set;
 	int 				frame_size;
 	void				*img;
 	char				*addr;

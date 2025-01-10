@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/10 12:00:20 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 13:53:49 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,32 @@ void ft_slice_img(t_img img)
 }
 
 int dynamique_hook(t_data *d)
-{
-    //static int k = 0;
-    // t_img *im1;
-    // t_img *im2;
-    t_img **im3;
+{   
+   
+    t_img_sets *data;
+    t_img **im1[3];
+    t_img im;
+    int k;
+    int i;
 
-    // printf("coici k %p \n", data->img_set_global[k]);
-    // im1 = data->img_set_global;
-    // im2 = data->img_set_left;
-    im3 = d->img_sets->img_set_right;
+    data = d->img_sets;
+
+    printf("coici k %p \n", data->img_set_global[k]);
+    im1[0] = data->img_set_left;
+    im1[1] = data->img_set_right;
+    im1[2] = data->img_set_global;
+    k = 0;
+    while (k < 0)
+    {
+        i = 0;
+        while (i < SET_SIZE)
+        {
+            im = *(t_img *)im1[k];
+            ft_slice_img(im);
+        }
+        
+    }
     
-    t_img monster = *im3[0];
-    ft_slice_img(monster);
-    void *i = mlx_new_image(d->mlx, 128, 128 * monster.frame_size);
-    char *s = ((t_img *)(i))->addr;
-    s = monster.addr;
-    printf(" frame address: %p\n", &monster.addr);
-    mlx_put_image_to_window(d->mlx,d->window, i, 10, 10);
-    sleep(2);
-    //mlx_destroy_image(d->mlx, &monster);
     return (0);
 }
 
@@ -134,7 +140,7 @@ int unit_test_init_and_clean(void)
     assert(data->map != NULL);
     printf("coici data %p \n", data->map);
     mlx_key_hook(data->window,&ft_close_windows, &data);
-    mlx_loop_hook(data->mlx,&dynamique_hook, data);
+    mlx_loop_hook(data->mlx, &dynamique_hook, data);
     mlx_loop(data->mlx);
     return(0);    
 }
