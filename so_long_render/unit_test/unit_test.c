@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/10 02:10:45 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 12:00:20 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int dynamique_hook(t_data *d)
     void *i = mlx_new_image(d->mlx, 128, 128 * monster.frame_size);
     char *s = ((t_img *)(i))->addr;
     s = monster.addr;
-    printf(" %s et %s\n",s, monster.addr);
+    printf(" frame address: %p\n", &monster.addr);
     mlx_put_image_to_window(d->mlx,d->window, i, 10, 10);
     sleep(2);
     //mlx_destroy_image(d->mlx, &monster);
