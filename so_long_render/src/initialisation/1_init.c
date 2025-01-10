@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/09 17:16:02 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 00:39:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ t_data	*initialisation_and_check(char *path)
 	if (!data->map)
 		return (free_memory(&data, ERR_GET_MAP));
 	check_param = check_map(data);
-	if (check_param || get_area(rescal(data->xy_data.map, TILD_SIZE)) > get_area(data->xy_data.screen_size))
-	{
+	if (check_param 
+			|| get_area(rescal(data->xy_data.map, TILD_SIZE)) 
+			> get_area(data->xy_data.screen_size))
 		return (free_memory(&data, check_param));
-	}
 	// if (check_valide_way(data) == 1)
 	// 	return (free_memory(data, ERR_NO_WAY));
 	printf("area %d et %d ", get_area(rescal(data->xy_data.map, TILD_SIZE)) , get_area(data->xy_data.screen_size));

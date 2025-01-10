@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:51:28 by cb                #+#    #+#             */
-/*   Updated: 2025/01/09 19:34:31 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/10 02:10:45 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,34 @@ int error_layer_test(void)
     return(count); 
 }
 
+void ft_slice_img(t_img img)
+{
+    printf("voici les info sur l'image: \n");
+    printf(" addresse img %p, bit_px %d, frame size %d \n", img.img, img.bit_per_pixel, img.frame_size);
+    printf(" line len img %d, img class %s, largeur %d \n", img.line_length, img.class, img.width);
+}
+
 int dynamique_hook(t_data *d)
 {
-    static int k = 0;
-    t_img_sets *data;
-    t_img *im1;
-    t_img *im2;
-    t_img *im3;
+    //static int k = 0;
+    // t_img *im1;
+    // t_img *im2;
+    t_img **im3;
 
-    data = d->img_sets;
     // printf("coici k %p \n", data->img_set_global[k]);
-    im1 = data->img_set_global[k];
-    im2 = data->img_set_left[k];
-    im3 = data->img_set_right[k];
+    // im1 = data->img_set_global;
+    // im2 = data->img_set_left;
+    im3 = d->img_sets->img_set_right;
     
-    printf("coici k %d et %p , %p, %p \n", k, im1, im2, im3);
-    if(im1)
-        mlx_put_image_to_window(d->mlx,d->window,im1->img, 10 , 10);
-    if(im2)
-        mlx_put_image_to_window(d->mlx,d->window,im2->img,250, 100) ;
-    if(im3)
-        mlx_put_image_to_window(d->mlx,d->window,im3->img,500, 300) ;
-    k++;
-    if(k == 14)
-    {
-        printf("retour de k a zero");
-        k = 0;
-    }
-    sleep(1);
+    t_img monster = *im3[0];
+    ft_slice_img(monster);
+    void *i = mlx_new_image(d->mlx, 128, 128 * monster.frame_size);
+    char *s = ((t_img *)(i))->addr;
+    s = monster.addr;
+    printf(" %s et %s\n",s, monster.addr);
+    mlx_put_image_to_window(d->mlx,d->window, i, 10, 10);
+    sleep(2);
+    //mlx_destroy_image(d->mlx, &monster);
     return (0);
 }
 
@@ -142,7 +142,7 @@ int unit_test_init_and_clean(void)
 int main(void)
 {
     
-    //unit_test_init_and_clean();
+    unit_test_init_and_clean();
 
     t_data *data;
 
