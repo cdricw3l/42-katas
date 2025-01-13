@@ -48,7 +48,7 @@ test: $(OBJS) $(OBJS_TEST)
 
 testv: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS)  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
-	valgrind --leak-check=full --leak-resolution=low --track-origins=yes --show-leak-kinds=all --log-file="filename"  --num-callers=500 -s ./$(NAME_TEST) map/map3.ber
+	valgrind --leak-check=full --log-file=filename ./$(NAME_TEST) map/map3.ber
 
 
 
@@ -81,6 +81,6 @@ libft:
 
 run: $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --log-file=filename ./so_long map/map1.ber
+	valgrind --leak-check=full --log-file=filename ./so_long map/map1.ber
 
 .PHONY: re all clean fclean so_long copy libft test run $(NAME) $(NAME_TEST)

@@ -1,61 +1,36 @@
-==714348== Memcheck, a memory error detector
-==714348== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==714348== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==714348== Command: ./so_long_test map/map3.ber
-==714348== Parent PID: 714347
-==714348== 
-==714348== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==714348==    at 0x4AF0864: writev (writev.c:26)
-==714348==    by 0x4BE7ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x4BE7C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x4BE8D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x48CB0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x48D0148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x48D052B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x112C85: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x1129C5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x1124A3: start_game (main.c:21)
-==714348==    by 0x112574: main (main.c:44)
-==714348==  Address 0x4c4519c is 28 bytes inside a block of size 16,384 alloc'd
-==714348==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==714348==    by 0x48BA42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x112776: mlx_init (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x110CD9: data_initialisation (1_init.c:45)
-==714348==    by 0x110D97: initialisation_and_check (1_init.c:61)
-==714348==    by 0x11254A: main (main.c:40)
-==714348==  Uninitialised value was created by a stack allocation
-==714348==    at 0x112B90: mlx_int_anti_resize_win (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348== 
-==714348== 
-==714348== HEAP SUMMARY:
-==714348==     in use at exit: 0 bytes in 0 blocks
-==714348==   total heap usage: 34,315 allocs, 34,315 frees, 2,443,638 bytes allocated
-==714348== 
-==714348== All heap blocks were freed -- no leaks are possible
-==714348== 
-==714348== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==714348== 
-==714348== 1 errors in context 1 of 1:
-==714348== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==714348==    at 0x4AF0864: writev (writev.c:26)
-==714348==    by 0x4BE7ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x4BE7C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x4BE8D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==714348==    by 0x48CB0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x48D0148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x48D052B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x112C85: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x1129C5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x1124A3: start_game (main.c:21)
-==714348==    by 0x112574: main (main.c:44)
-==714348==  Address 0x4c4519c is 28 bytes inside a block of size 16,384 alloc'd
-==714348==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==714348==    by 0x48BA42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==714348==    by 0x112776: mlx_init (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348==    by 0x110CD9: data_initialisation (1_init.c:45)
-==714348==    by 0x110D97: initialisation_and_check (1_init.c:61)
-==714348==    by 0x11254A: main (main.c:40)
-==714348==  Uninitialised value was created by a stack allocation
-==714348==    at 0x112B90: mlx_int_anti_resize_win (in /home/cb/Documents/42K/so_long/so_long_test)
-==714348== 
-==714348== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==719266== Memcheck, a memory error detector
+==719266== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==719266== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==719266== Command: ./so_long_test map/map3.ber
+==719266== Parent PID: 719259
+==719266== 
+==719266== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==719266==    at 0x4AF0864: writev (writev.c:26)
+==719266==    by 0x4BE7ACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==719266==    by 0x4BE7C4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==719266==    by 0x4BE8D7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==719266==    by 0x48CB0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==719266==    by 0x48D0148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==719266==    by 0x48D052B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==719266==    by 0x112C85: mlx_int_wait_first_expose (in /home/cb/Documents/42K/so_long/so_long_test)
+==719266==    by 0x1129C5: mlx_new_window (in /home/cb/Documents/42K/so_long/so_long_test)
+==719266==    by 0x1124A4: start_game (main.c:21)
+==719266==    by 0x112575: main (main.c:44)
+==719266==  Address 0x4c4519c is 28 bytes inside a block of size 16,384 alloc'd
+==719266==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==719266==    by 0x48BA42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==719266==    by 0x112776: mlx_init (in /home/cb/Documents/42K/so_long/so_long_test)
+==719266==    by 0x110CDA: data_initialisation (1_init.c:45)
+==719266==    by 0x110D98: initialisation_and_check (1_init.c:61)
+==719266==    by 0x11254B: main (main.c:40)
+==719266== 
+==719266== 
+==719266== HEAP SUMMARY:
+==719266==     in use at exit: 0 bytes in 0 blocks
+==719266==   total heap usage: 34,315 allocs, 34,315 frees, 2,443,638 bytes allocated
+==719266== 
+==719266== All heap blocks were freed -- no leaks are possible
+==719266== 
+==719266== Use --track-origins=yes to see where uninitialised values come from
+==719266== For lists of detected and suppressed errors, rerun with: -s
+==719266== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

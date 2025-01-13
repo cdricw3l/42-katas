@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 14:10:17 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 14:48:37 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	_init(t_data *data, char *map_path)
 {
 	data->map_name = map_path;
 	data->map = NULL;
+	data->window = NULL;
 	data->count_item = 0;
 	data->check_item = 0;
 	data->count_mouvement = 0;
