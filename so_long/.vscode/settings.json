@@ -1,10 +1,7 @@
 {
     "files.associations": {
+        "initialisation.h": "c",
         "so_long.h": "c",
-        "concepts": "c",
-        "cstdlib": "c",
-        "ft_printf.h": "c",
-        "image_loader.h": "c",
-        "mlx.h": "c"
+        "image_layer.h": "c"
     }
 }

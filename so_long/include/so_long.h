@@ -6,52 +6,52 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/01/05 06:02:56 by cb               ###   ########.fr       */
-=======
-/*   Updated: 2025/01/04 22:15:25 by cb               ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2025/01/13 01:24:11 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
-#define SO_LONG_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-# include "../mlx_linux/mlx.h"
+# include "../lib/mlx_linux/mlx.h"
 # include "image_loader.h"
-//# include "../mlx_linux/mlx_int.h"
+# include "image_layer.h"
+# include "error_managment.h"
+# include "memory_managment.h"
+# include "hook_managment.h"
+# include "initialisation.h"
 # include "../libft/libft.h"
-# include "../gnl/get_next_line.h"
-# include "../printf/ft_printf.h"
-
-
-# include <assert.h>
+# include "../src/gnl/get_next_line.h"
+# include "../lib/printf/ft_printf.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
 
+# define M_PI		3.14159265358979323846
+# define MAX_FD		1048576
+# define TILD_SIZE 	128
+# define SET_SIZE	6
+# define LEFT		1
+# define RIGHT		2
+# define FRONT		3
+# define FACE		4
 
-#define MLX_SYNC_IMAGE_WRITABLE		1
-#define MLX_SYNC_WIN_FLUSH_CMD		2
-#define MLX_SYNC_WIN_CMD_COMPLETED	3
-#define CHECK_LIST_SIZE 			7
-#define MAX_FD 						1048576
-#define TILD_SIZE 					128
-# define M_PI						3.14159265358979323846
+typedef struct s_border
+{
+	t_point	size;
+	t_point	targ;
 
-#define LEFT 1
-#define RIGHT 2
-#define FRONT 3
-#define	FACE  4
-
-#define	IMG_SET	31
+	int		border_size; //epaisseur
+	int		b_color;	// border color;
+	int		r_color;	// remplissage color;
+}	t_border;
 
 typedef struct s_xy
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
-} t_xy;
+}	t_xy;
 
 typedef struct s_xy_data
 {
@@ -60,121 +60,52 @@ typedef struct s_xy_data
 	t_xy			exit;
 	t_xy			screen_size;
 
-} t_xy_data;
+}	t_xy_data;
 
 typedef struct s_img
 {
-	void				*img;
-	int					*addr;
-	int					bit_per_pixel;
-	int					line_length;
-	int					endian;
-	int					width;
-	int					height;
-	
-} t_img ;
+	char	*class;
+	int		set;
+	int		frame_size;
+	void	*img;
+	char	*addr;
+	int		bit_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+
+}	t_img;
 
 typedef struct s_data
 {
-	void				*mlx;
-	void				*window;
-	char				*map_name;
-	char				**map;
-	int					char_state;
-	int					count_item;
-	int					check_item;
-	int					count_begin;
-	int					count_exit;
-	int					count_mouvement;
-	t_xy_data			xy_data;
-	t_img				**img_set;
-	
-} t_data ;
+	void		*mlx;
+	void		*window;
+	char		*map_name;
+	char		**map;
+	int			char_state;
+	int			count_item;
+	int			check_item;
+	int			count_begin;
+	int			count_exit;
+	int			count_mouvement;
+	int			state_game;
+	t_xy_data	xy_data;
+	t_img		**img_set_global;
 
-
-
-
-
-
-typedef struct s_border
-{
-	t_point	size;
-	t_point	targ;
-	
-	int		border_size; //epaisseur
-	int		b_color;	// border color;
-	int		r_color;	// remplissage color;
-	
-} t_border;
-
+}	t_data;
 
 t_data	*initialisation_and_check(char *path);
-t_data	*data_initialisation(char *map_path);
+void	print_map(t_data *data);
 
-<<<<<<< HEAD
-void	*ft_free_memory(t_data *data, int err);
-void	ft_process_set(t_data *data,char c, int row, int col);
-=======
-typedef struct s_game_data
-{
-	char				*map_name;
-	char				**map;
-	int					count_item;
-	int					check_item;
-	int					count_begin;
-	int					count_exit;
-	int					count_mouvement;
-	t_dimention			dimention;
-	t_dimention			begin;
-	t_dimention			exit_position;
-	
-} t_game_data ;
+void	ft_display_data_info(t_data *data);
+void	display_image_data(t_img *im);
+void	print_map(t_data *data);
+void	print_path(char **path_g);
 
-typedef struct s_img
-{
-	void				*img;
-	int					*addr;
-	int					bit_per_pixel;
-	int					line_length;
-	int					endian;
-	int					width;
-	int					height;
-} t_img ;
-
-typedef struct s_data
-{
-	void				*mlx;
-	void				*window;
-	t_img				*img;
-	t_game_data			*game_data;
-	t_dimention			screen_size;
-	
-} t_data;
-
-//##define AREA(data) ((data).col - (data).row)
-// check map
-t_dimention    ft_get_dimentions(int fd, t_data  *img);
-t_data	*ft_init_and_check(char *path);
-t_data	*ft_init_data_s(void);
-void	*ft_free_memory(t_data *data, int err);
-void	ft_process_set(t_game_data *data,char c, int row, int col);
->>>>>>> main
-void	ft_analsyse_line(char *str);
-void    ft_print_map(t_data *data);
-void	end_game_menu(t_data *data);
-void	exit_game(t_data *data);
-void    ft_display_data_info(t_data *data);
-char    *ft_error_return(int error);
-int		ft_arr_len(char **arr);
-int		ft_is_square(t_data *data);
-int		ft_check_param(t_data *data, char *path);
-int		ft_is_close(char **map, int hauteur, int largeur);
-int		ft_check_dimentions(t_data *data);
-int		ft_check_valide_way(t_data *g_data);
-int		ft_close_windows(int keycode, t_data *data);
-int		ft_manage_keyboard(int keycode, t_data *data);
-int		ft_colors(int larg, int lo);
-int		ft_put_img(t_data *data);
-void 	*char_layer(t_data *data, int keycode);
+void	print_dimention(t_xy_data xy_arr, int c);
+t_xy	ft_s_dimention(void);
+t_xy	rescal(t_xy xy, int scal_factor);
+int		get_area(t_xy xy);
 
 #endif
