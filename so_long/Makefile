@@ -1,4 +1,4 @@
-CC = gcc 
+CC = clang
 GFLAGS= -Werror -Wall -Wextra -I./include -g
 
 NAME= so_long
@@ -41,10 +41,10 @@ all: $(NAME)
 	$(CC) $(GFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(GFLAGS) -fsanitize=address -g $(OBJS) $(LIB) -o $(NAME)
+	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
 
-test: $(OBJS) $(OBJS_TEST)
-	$(CC) $(GFLAGS) -fsanitize=address   $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
+test: $(OBJS) 
+	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
 testv: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS)  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)

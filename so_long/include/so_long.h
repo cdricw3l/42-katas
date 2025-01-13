@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 03:06:27 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 00:27:49 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include <X11/keysym.h>
 
 # define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
