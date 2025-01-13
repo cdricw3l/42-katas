@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:07:49 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:11:58 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 04:42:56 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,31 @@ static int	clean_image_memory(t_data **d, t_img **data)
 		free(data[i]);
 		i++;
 	}
+	mlx_destroy_display((*d)->mlx);
 	free(data);
 	return (1);
 }
 
 void	*exit_game(t_data **data, int err)
 {
+	int i;
+
+	i = 0;
 	if (err != -1)
 	{
 		if ((*data)->map)
 		{
-			while (*(*data)->map)
+			while (i <= (*data)->xy_data.map.row)
 			{
-				if (*(*data)->map)
-					free(*(*data)->map);
-				(*data)->map++;
+				if ((*data)->map[i])
+					free((*data)->map[i]);
+				i++;
 			}
 		}
 		if ((*data)->img_set_global)
 			clean_image_memory(data, (*data)->img_set_global);
 	}
-	mlx_destroy_display((*data)->mlx);
+	free((*data)->mlx);
 	error_layer(err);
 	exit(0);
 	return (NULL);

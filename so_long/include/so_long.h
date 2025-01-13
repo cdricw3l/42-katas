@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:40:51 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 01:24:11 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 03:06:27 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
 # define TILD_SIZE 	128
-# define SET_SIZE	6
+# define SET_SIZE	7
 # define LEFT		1
 # define RIGHT		2
 # define FRONT		3

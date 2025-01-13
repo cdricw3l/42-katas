@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 00:23:20 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 00:46:16 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 03:24:31 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ static int	ft_get_img_idx(t_data *data, char c)
 {
 	if (c == '1')
 		return (5);
-	if (c == 'X')
+	else if (c == 'X')
 		return (4);
 	if (c == 'P' && data->char_state == LEFT)
 		return (0);
-	if (c == 'P' && data->char_state == RIGHT)
+	else if (c == 'P' && data->char_state == RIGHT)
 		return (1);
-	if (c == 'E')
-		return (2);
-	return (6);
+	else if (c == 'E')
+	{
+		if(data->count_item > 0)
+			return (2);
+		else
+			return(6);
+	}
+	return (99);
 }
 
 static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
@@ -68,7 +73,7 @@ static t_img	*initial_draw(t_data *data, t_img *new)
 			dest.row = i * TILD_SIZE;
 			dest.col = j * TILD_SIZE;
 			path = ft_get_img_idx(data, data->map[i][j]);
-			if (path > -1 && path < 6)
+			if (path > -1 && path < SET_SIZE)
 				my_mlx_pixel_put(new, data->img_set_global[path], dest);
 			j++;
 		}
