@@ -1,0 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image_layer.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/05 19:04:05 by cb                #+#    #+#             */
+/*   Updated: 2025/01/13 01:14:39 by cb               ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef IMAGE_LAYER_H
+# define IMAGE_LAYER_H
+
+# include "so_long.h"
+
+typedef struct s_data	t_data;
+
+int		run_image_layer(t_data *data);
+t_img	*ft_image_drawer(t_data *data);
+
+#endif
