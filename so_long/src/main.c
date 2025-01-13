@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 23:44:40 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:08:22 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 12:59:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	start_game(t_data *data)
 
 	win.col = data->xy_data.map.col;
 	win.row = data->xy_data.map.row;
-	data->window = mlx_new_window(data->mlx, win.col
-			* TILD_SIZE, win.row
-			* TILD_SIZE, "hello");
+	data->window = mlx_new_window(data->mlx,
+		win.col * TILD_SIZE,
+		win.row * TILD_SIZE, "hello");
 	if (!data->window)
 		exit_game(&data, ERR_WIN);
 	ft_image_drawer(data);

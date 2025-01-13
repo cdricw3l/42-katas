@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/12 23:52:26 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 14:10:17 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	_init(t_data *data, char *map_path)
 	data->xy_data.map = ft_s_dimention();
 	data->xy_data.screen_size = ft_s_dimention();
 	mlx_get_screen_size(data->mlx, &data->xy_data.screen_size.col,
-		&data->xy_data.screen_size.row);
-	if (data->xy_data.screen_size.col == 0
-		|| data->xy_data.screen_size.row == 0)
-		return (1);
-	return (0);
+				&data->xy_data.screen_size.row);
+	if(data->xy_data.screen_size.col == 0 
+			|| data->xy_data.screen_size.row == 0)
+		return(1);
+	return(0);
 }
 
 static t_data	*data_initialisation(char *map_path)
@@ -38,13 +38,12 @@ static t_data	*data_initialisation(char *map_path)
 	t_data	*data;
 	int		init_result;
 
-	data = ft_calloc(1, sizeof(t_data));
+	data = malloc(sizeof(t_data) * 1);
 	if (!data)
 		return (NULL);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (exit_game(&data, ERR_MLX));
-	data->window = NULL;
 	if (start_images_loader(data))
 		return (exit_game(&data, ERR_IMG_SET));
 	init_result = _init(data, map_path);

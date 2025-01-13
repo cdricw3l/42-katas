@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 03:20:55 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 13:14:23 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ static int	clean_img_set(t_img **img_set, int idx)
 static char	*get_image_class(char *path)
 {
 	char	*class;
+	char	*cpy;
 
 	if (!path || !path[0])
 		return (NULL);
-	class = ft_substr(ft_strchr(path, '/') + 1, 0, 1);
+	cpy = ft_strdup(path);
+
+	class = ft_substr(ft_strchr(cpy, '/') + 1, 0, 1);
 	if (!class)
 		return (NULL);
+	free(cpy);
 	return (class);
 }
 
@@ -80,5 +84,6 @@ int	image_loader(t_data *data, char **path_g)
 	r = push_img_set(data, img_set, path_g);
 	if (r != 0)
 		return (1);
+	free(path_g);
 	return (0);
 }

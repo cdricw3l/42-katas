@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 04:34:48 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 12:07:06 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ char	**get_map(t_data *data)
 	i = _get_map(data->map_name, map);
 	if (i == 0)
 		return (NULL);
-	data->map = map;
 	return (map);
 }
