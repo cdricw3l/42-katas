@@ -47,6 +47,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 	}
 	ft_image_drawer(*d);
 	print_map(*d);
+	ft_printf("NOMBRE DE PAS: %d\n",(*d)->count_mouvement);
 }
 
 static int	ft_check_target(t_data **data, char c)
@@ -84,7 +85,6 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 int	manage_keyboard(int keycode, t_data *data)
 {
 	t_xy	*begin;
-	ft_display_data_info (data);
 
 	begin = &data->xy_data.begin;
 	if (keycode == 65363)

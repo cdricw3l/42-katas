@@ -1,36 +1,36 @@
-==55582== Memcheck, a memory error detector
-==55582== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==55582== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==55582== Command: ./so_long_test map/map3.ber
-==55582== Parent PID: 55575
-==55582== 
-==55582== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==55582==    at 0x4AE3864: writev (writev.c:26)
-==55582==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==55582==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==55582==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==55582==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==55582==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==55582==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==55582==    by 0x111E75: mlx_int_wait_first_expose (in /home/cb/code/42-katas/so_long/so_long_test)
-==55582==    by 0x111BB5: mlx_new_window (in /home/cb/code/42-katas/so_long/so_long_test)
-==55582==    by 0x11164C: start_game (main.c:33)
-==55582==    by 0x111748: main (main.c:56)
-==55582==  Address 0x4c3819c is 28 bytes inside a block of size 16,384 alloc'd
-==55582==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55582==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==55582==    by 0x111966: mlx_init (in /home/cb/code/42-katas/so_long/so_long_test)
-==55582==    by 0x10FBD6: _init (1_init.c:19)
-==55582==    by 0x10FD0F: initialisation_and_check (1_init.c:49)
-==55582==    by 0x11171E: main (main.c:52)
-==55582== 
-==55582== 
-==55582== HEAP SUMMARY:
-==55582==     in use at exit: 0 bytes in 0 blocks
-==55582==   total heap usage: 34,444 allocs, 34,444 frees, 2,438,676 bytes allocated
-==55582== 
-==55582== All heap blocks were freed -- no leaks are possible
-==55582== 
-==55582== Use --track-origins=yes to see where uninitialised values come from
-==55582== For lists of detected and suppressed errors, rerun with: -s
-==55582== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==59050== Memcheck, a memory error detector
+==59050== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==59050== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==59050== Command: ./so_long_test map/map3.ber
+==59050== Parent PID: 59043
+==59050== 
+==59050== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==59050==    at 0x4AE3864: writev (writev.c:26)
+==59050==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==59050==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==59050==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==59050==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==59050==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==59050==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==59050==    by 0x111E95: mlx_int_wait_first_expose (in /home/cb/code/42-katas/so_long/so_long_test)
+==59050==    by 0x111BD5: mlx_new_window (in /home/cb/code/42-katas/so_long/so_long_test)
+==59050==    by 0x111660: start_game (main.c:33)
+==59050==    by 0x11175C: main (main.c:56)
+==59050==  Address 0x4c3819c is 28 bytes inside a block of size 16,384 alloc'd
+==59050==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==59050==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==59050==    by 0x111986: mlx_init (in /home/cb/code/42-katas/so_long/so_long_test)
+==59050==    by 0x10FBEA: _init (1_init.c:19)
+==59050==    by 0x10FD23: initialisation_and_check (1_init.c:49)
+==59050==    by 0x111732: main (main.c:52)
+==59050== 
+==59050== 
+==59050== HEAP SUMMARY:
+==59050==     in use at exit: 0 bytes in 0 blocks
+==59050==   total heap usage: 34,458 allocs, 34,458 frees, 2,440,132 bytes allocated
+==59050== 
+==59050== All heap blocks were freed -- no leaks are possible
+==59050== 
+==59050== Use --track-origins=yes to see where uninitialised values come from
+==59050== For lists of detected and suppressed errors, rerun with: -s
+==59050== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
