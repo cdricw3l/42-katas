@@ -1,54 +1,36 @@
-==54042== Memcheck, a memory error detector
-==54042== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==54042== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==54042== Command: ./so_long_test map/map3.ber
-==54042== Parent PID: 54035
-==54042== 
-==54042== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==54042==    at 0x4AE3864: writev (writev.c:26)
-==54042==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==54042==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==54042==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==54042==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==54042==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==54042==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==54042==    by 0x111E45: mlx_int_wait_first_expose (in /home/cb/code/42-katas/so_long/so_long_test)
-==54042==    by 0x111B85: mlx_new_window (in /home/cb/code/42-katas/so_long/so_long_test)
-==54042==    by 0x111615: start_game (main.c:33)
-==54042==    by 0x111711: main (main.c:56)
-==54042==  Address 0x4c3819c is 28 bytes inside a block of size 16,384 alloc'd
-==54042==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==54042==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==54042==    by 0x111936: mlx_init (in /home/cb/code/42-katas/so_long/so_long_test)
-==54042==    by 0x10FB9F: _init (1_init.c:19)
-==54042==    by 0x10FCD8: initialisation_and_check (1_init.c:49)
-==54042==    by 0x1116E7: main (main.c:52)
-==54042== 
-==54042== 
-==54042== HEAP SUMMARY:
-==54042==     in use at exit: 562 bytes in 7 blocks
-==54042==   total heap usage: 34,486 allocs, 34,479 frees, 2,440,860 bytes allocated
-==54042== 
-==54042== 280 (56 direct, 224 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 7
-==54042==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==54042==    by 0x10FDCA: initialisation_and_check (1_init.c:63)
-==54042==    by 0x1116E7: main (main.c:52)
-==54042== 
-==54042== 282 (56 direct, 226 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 7
-==54042==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==54042==    by 0x110AFC: push_img_set (3_image_loader.c:54)
-==54042==    by 0x110DA4: image_loader (3_image_loader.c:84)
-==54042==    by 0x1108BC: start_images_loader (1_start_img_loader.c:29)
-==54042==    by 0x10FDA6: initialisation_and_check (1_init.c:61)
-==54042==    by 0x1116E7: main (main.c:52)
-==54042== 
-==54042== LEAK SUMMARY:
-==54042==    definitely lost: 112 bytes in 2 blocks
-==54042==    indirectly lost: 450 bytes in 5 blocks
-==54042==      possibly lost: 0 bytes in 0 blocks
-==54042==    still reachable: 0 bytes in 0 blocks
-==54042==         suppressed: 0 bytes in 0 blocks
-==54042== 
-==54042== Use --track-origins=yes to see where uninitialised values come from
-==54042== For lists of detected and suppressed errors, rerun with: -s
-==54042== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==55582== Memcheck, a memory error detector
+==55582== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==55582== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==55582== Command: ./so_long_test map/map3.ber
+==55582== Parent PID: 55575
+==55582== 
+==55582== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==55582==    at 0x4AE3864: writev (writev.c:26)
+==55582==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==55582==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==55582==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==55582==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==55582==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==55582==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==55582==    by 0x111E75: mlx_int_wait_first_expose (in /home/cb/code/42-katas/so_long/so_long_test)
+==55582==    by 0x111BB5: mlx_new_window (in /home/cb/code/42-katas/so_long/so_long_test)
+==55582==    by 0x11164C: start_game (main.c:33)
+==55582==    by 0x111748: main (main.c:56)
+==55582==  Address 0x4c3819c is 28 bytes inside a block of size 16,384 alloc'd
+==55582==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==55582==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==55582==    by 0x111966: mlx_init (in /home/cb/code/42-katas/so_long/so_long_test)
+==55582==    by 0x10FBD6: _init (1_init.c:19)
+==55582==    by 0x10FD0F: initialisation_and_check (1_init.c:49)
+==55582==    by 0x11171E: main (main.c:52)
+==55582== 
+==55582== 
+==55582== HEAP SUMMARY:
+==55582==     in use at exit: 0 bytes in 0 blocks
+==55582==   total heap usage: 34,444 allocs, 34,444 frees, 2,438,676 bytes allocated
+==55582== 
+==55582== All heap blocks were freed -- no leaks are possible
+==55582== 
+==55582== Use --track-origins=yes to see where uninitialised values come from
+==55582== For lists of detected and suppressed errors, rerun with: -s
+==55582== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

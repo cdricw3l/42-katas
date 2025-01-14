@@ -26,6 +26,8 @@ static int	clean_image_memory(t_data **d, t_img **data)
 		free(data[i]);
 		i++;
 	}
+	mlx_destroy_image((*d)->mlx, (*d)->frame->img);
+	free((*d)->frame);
 	free(data);
 	return (1);
 }

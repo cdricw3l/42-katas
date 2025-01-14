@@ -17,7 +17,7 @@ int	start_images_loader(t_data *data)
 	int			load;
 	char		**path_g;
 
-	data->img_set_global = calloc(SET_SIZE + 1 ,sizeof(t_img *));
+	data->img_set_global = calloc(SET_SIZE  ,sizeof(t_img *));
 	if (!data->img_set_global)
 		return (error_layer(ERR_GET_IMGPATH));
 	path_g = get_paths();
