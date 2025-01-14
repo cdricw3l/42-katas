@@ -64,41 +64,20 @@ int ft_put_image_on_frame(t_data *data, t_img *im)
     return(0);
 }
 
-int	monster_draw(t_data *data)
+int ft_get_image_on_frame(t_data *data, t_img *new,int path, int offset)
 {
-	static int k = 0;
-    static int f = 0;
-    int path;
-    t_img *new;
-    char	*d;
-	char	*s;
     int i;
     int j;
-    if(k == 10)
-    {
-        k = 0;
-        f++;
-    }
-    new = calloc(1, sizeof(t_img));
-	assert(new);
-    new->img = mlx_new_image(data->mlx, 128, 128);
-    new->addr = mlx_get_data_addr(new->img,&new->bit_per_pixel, &new->line_length, &new->endian);
+    char	*d;
+	char	*s;
+
     i = 0;
-    int v;
-    if(k == 0)
-        v = 0;
-    else
-        v = 128 * k;
-    if(f % 2 == 0)
-        path = 8;
-    else
-        path = 9;
     while (i < 128)
 	{
         j = 0;
 		while (j < 128)
 		{
-			s = data->img_set_global[path]->addr + (j * data->img_set_global[path]->line_length + (i + v)
+			s = data->img_set_global[path]->addr + (j * data->img_set_global[path]->line_length + (i + offset)
 					* (data->img_set_global[path]->bit_per_pixel / 8));
 			d = new->addr + (j
 					* new->line_length + i
@@ -108,12 +87,40 @@ int	monster_draw(t_data *data)
 		}
 		i++;
 	}
-    k++;
-    usleep(100000);
+    return(0);
+}
+
+int	monster_draw(t_data *data)
+{
+	static int k = 0;
+    static int f = 0;
+    int offset;
+    int path;
+    t_img *new;
+
+    if(k == 8)
+    {
+        k = 0;
+        f++;
+    }
+    new = calloc(1, sizeof(t_img));
+    new->img = mlx_new_image(data->mlx, 128, 128);
+    new->addr = mlx_get_data_addr(new->img,&new->bit_per_pixel, &new->line_length, &new->endian);
+    if(k == 0)
+        offset = 0;
+    else
+        offset = 128 * k;
+    if(f % 2 == 0)
+        path = 8;
+    else
+        path = 9;
+    ft_get_image_on_frame(data,new, path);
     ft_put_image_on_frame(data, new);
     mlx_put_image_to_window(data->mlx,data->window,data->frame->img,0,0);
     free(new->img);
     free(new);
+    k++;
+    usleep(100000);
     return(0);
 }
 
