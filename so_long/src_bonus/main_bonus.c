@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long_bonus.h"
+#include "../include/bonus/so_long_bonus.h"
 
 int	close_windows(t_data *data)
 {

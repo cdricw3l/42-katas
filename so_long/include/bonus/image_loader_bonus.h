@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_managment.h                                   :+:      :+:    :+:   */
+/*   image_loader.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 19:04:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/14 01:43:04 by cb               ###   ########.fr       */
+/*   Created: 2025/01/05 05:12:19 by cb                #+#    #+#             */
+/*   Updated: 2025/01/13 01:15:36 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOK_MANAGMENT_H
-# define HOOK_MANAGMENT_H
+#ifndef IMAGE_LOADER_H
+# define IMAGE_LOADER_H
 
 # include "so_long_bonus.h"
 
-int	manage_keyboard(int keycode, t_data *data);
+typedef struct s_img	t_img;
+typedef struct s_data	t_data;
+
+int		start_images_loader(t_data *data);
+int		get_image_frame_size(char *path);
+char	**get_paths(void);
+int		image_loader(t_data *data, char **path_g);
 
 #endif

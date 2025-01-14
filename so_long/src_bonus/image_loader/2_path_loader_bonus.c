@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/bonus/image_layer_bonus.h"
 
 static char	**get_path_g(void)
 {

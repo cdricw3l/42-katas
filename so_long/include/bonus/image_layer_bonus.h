@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_managment.h                                   :+:      :+:    :+:   */
+/*   image_layer.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:04:05 by cb                #+#    #+#             */
-/*   Updated: 2025/01/14 01:43:04 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/13 01:14:39 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOK_MANAGMENT_H
-# define HOOK_MANAGMENT_H
+#ifndef IMAGE_LAYER_H
+# define IMAGE_LAYER_H
 
 # include "so_long_bonus.h"
 
-int	manage_keyboard(int keycode, t_data *data);
+typedef struct s_data	t_data;
+typedef struct s_xy	t_xy;
+
+int		run_image_layer(t_data *data);
+int	    ft_image_drawer(t_data *data);
 
 #endif
