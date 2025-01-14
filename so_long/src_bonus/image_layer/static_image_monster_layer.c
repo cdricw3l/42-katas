@@ -25,15 +25,16 @@ int ft_get_offset(t_data *data, int k, int path)
     else
         return(128 * k);
 }
-int ft_get_path()
+int ft_get_path(int k)
 {
     static int f = 0;
-    
+
+    if(k == 0)
+        f++;
     if(f % 2 == 0)
         return(8);
     else
         return(9);
-    f++;
 }
 
 static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
@@ -129,15 +130,16 @@ int	monster_draw(t_data *data)
     new->addr = mlx_get_data_addr(new->img,&new->bit_per_pixel, &new->line_length, &new->endian);
     if(!new->img)
         return(1);
-    offset = ft_get_offset(data,k++, ft_get_path());
+    offset = ft_get_offset(data, k, ft_get_path(k));
     if(offset == -1)
-        return(1);
-    ft_get_image_on_frame(data,new, ft_get_path(), offset);
+        return(1);    
+    ft_get_image_on_frame(data,new, ft_get_path(k), offset);
     ft_put_image_on_frame(data, new);
     mlx_put_image_to_window(data->mlx,data->window,data->frame->img,0,0);
     mlx_destroy_image(data->mlx, new->img);
     free(new);
     usleep(100000);
+    k++;
     return(0);
 }
 
