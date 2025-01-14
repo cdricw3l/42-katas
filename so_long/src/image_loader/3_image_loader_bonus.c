@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
 static int	clean_img_set(t_img **img_set, int idx)
 {
@@ -67,7 +67,6 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 				&img_set[i]->endian);
 		if (!img_set[i]->addr)
 			return (clean_img_set(img_set, i));
-		printf("voici i %d et l'adresse %p\n", i, data->img_set_global[i]->img);
 		i++;
 	}
 	return (0);

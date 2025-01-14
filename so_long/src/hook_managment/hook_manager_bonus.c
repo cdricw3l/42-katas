@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/hook_managment.h"
+#include "../../include/so_long_bonus.h"
 
 static int	ft_is_keycode_in_set(int keycode)
 {
@@ -35,7 +35,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 		if ((*d)->count_item == 0)
 			(*d)->map[(*d)->xy_data.exit.row][(*d)->xy_data.exit.col] = 'E';
 		(*d)->map[begin->row][begin->col] = 'P';
-		(*d)->map[init.row][init.col] = 'Z';
+		(*d)->map[init.row][init.col] = ' ';
 	}
 	else
 	{
@@ -43,7 +43,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 			if ((*d)->count_item == 0)
 				exit_game(*d, WIN_GAME);
 		(*d)->map[begin->row][begin->col] = 'P';
-		(*d)->map[init.row][init.col] = 'Z';
+		(*d)->map[init.row][init.col] = ' ';
 	}
 	ft_image_drawer(*d);
 	print_map(*d);

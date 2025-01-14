@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+#include <assert.h>
 
 static char	**get_path_g(void)
 {
 	char	**img_path;
 
-	img_path = malloc(sizeof(char *) * (SET_SIZE + 1));
+	img_path = malloc(sizeof(char *) * (SET_SIZE));
 	if (!img_path)
 		return (NULL);
 	img_path[0] = "tildset/hero/1_CL_Pink_Monster_l.xpm";
@@ -26,6 +27,7 @@ static char	**get_path_g(void)
 	img_path[4] = "tildset/collectibles/5_potion.xpm";
 	img_path[5] = "tildset/background/6_wall.xpm";
 	img_path[6] = "tildset/exit/3_exit.xpm";
+	img_path[7] = "tildset/mask/7_mask.xpm";
 	return (img_path);
 }
 

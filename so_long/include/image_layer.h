@@ -16,8 +16,9 @@
 # include "so_long.h"
 
 typedef struct s_data	t_data;
+typedef struct s_xy	t_xy;
 
 int		run_image_layer(t_data *data);
-t_img	*ft_image_drawer(t_data *data);
+int	    ft_image_drawer(t_data *data);
 
 #endif

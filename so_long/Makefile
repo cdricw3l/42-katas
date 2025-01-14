@@ -1,6 +1,6 @@
 CC = gcc
-GFLAGS= -Werror -Wall -Wextra -I./include -g
-
+GFLAGS= -Werror -Wall -Wextra -I./include/ -g
+GFLAGS_BONUS= -Werror -Wall -Wextra -I./include/bonus -g
 NAME= so_long
 NAME_TEST= so_long_test
 
@@ -23,7 +23,22 @@ SRCS =	src/gnl/get_next_line_utils.c \
 		src/utils/xy_utils.c \
 		src/main.c \
 
-SRCS_BONUS=
+SRCS_BONUS = src/gnl/get_next_line_utils.c \
+			src/gnl/get_next_line.c \
+			src/hook_managment/hook_manager_bonus.c \
+			src/exit_managment/error_layer.c \
+			src/exit_managment/memory_cleaner.c \
+			src/initialisation/1_init.c \
+			src/initialisation/2_get_map.c \
+			src/initialisation/3_check_map_bonus.c \
+			src/initialisation/4_check_valide_way_bonus.c \
+			src/image_loader/1_start_img_loader.c \
+			src/image_loader/2_path_loader_bonus.c \
+			src/image_loader/3_image_loader_bonus.c \
+			src/image_layer/image_layer_bonus.c \
+			src/utils/display_utils.c \
+			src/utils/xy_utils.c \
+			src/main_bonus.c \
 
 LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibft -lft -Llib/printf -lftprintf
 #srcs/main.c 
@@ -35,6 +50,7 @@ MAP=
 
 OBJS = $(SRCS:.c=.o)
 OBJS_TEST = $(SRCS_TEST:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -43,6 +59,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
+
+bonus: $(OBJS_BONUS)
+	$(CC) $(GFLAGS_BONUS) -fsanitize=address $(OBJS_BONUS) $(LIB) -o $(NAME)
 
 test: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)

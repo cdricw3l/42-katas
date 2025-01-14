@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   1_init.c                                           :+:      :+:    :+:   */
@@ -16,7 +16,11 @@ static int	_init(t_data *data, char *map_path)
 {
 	data->map_name = map_path;
 	data->map = NULL;
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		exit_game(data, ERR_MLX);
 	data->window = NULL;
+	data->img_set_global = NULL;
 	data->count_item = 0;
 	data->check_item = 0;
 	data->count_mouvement = 0;
@@ -34,42 +38,30 @@ static int	_init(t_data *data, char *map_path)
 	return (0);
 }
 
-static t_data	*data_initialisation(char *map_path)
-{
-	t_data	*data;
-	int		init_result;
-
-	data = malloc(sizeof(t_data) * 1);
-	if (!data)
-		return (NULL);
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return (exit_game(data, ERR_MLX));
-	if (start_images_loader(data))
-		return (exit_game(data, ERR_IMG_SET));
-	init_result = _init(data, map_path);
-	if (init_result)
-		return (exit_game(data, ERR_SCREEN));
-	return (data);
-}
-
 t_data	*initialisation_and_check(char *path)
 {
 	t_data	*data;
 	int		check_param;
 
-	data = data_initialisation(path);
+	data = calloc(1, sizeof(t_data));
 	if (!data)
 		return (NULL);
+	if (_init(data, path) == 1)
+		exit_game(data, ERR_SCREEN);
 	data->map = get_map(data);
 	if (!data->map)
-		return (exit_game(data, ERR_GET_MAP));
+		exit_game(data, ERR_GET_MAP);
 	check_param = check_map(data);
 	if (check_param
 		|| get_area(rescal(data->xy_data.map, TILD_SIZE))
 		> get_area(data->xy_data.screen_size))
-		return (exit_game(data, check_param));
+		exit_game(data, check_param);
 	if (check_valide_way(data) != 0)
-		return (exit_game(data, ERR_NO_WAY));
+		exit_game(data, ERR_NO_WAY);
+	if (start_images_loader(data))
+		exit_game(data, ERR_IMG_SET);
+	data->frame = calloc(1,sizeof(t_img));
+	if(data->frame == NULL)
+		exit_game(data, ERR_FRAME);
 	return (data);
 }
