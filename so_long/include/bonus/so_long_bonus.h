@@ -13,14 +13,14 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/mlx_linux/mlx.h"
+# include "../../lib/mlx_linux/mlx.h"
 # include "image_loader_bonus.h"
 # include "image_layer_bonus.h"
 # include "error_managment_bonus.h"
 # include "memory_managment_bonus.h"
 # include "hook_managment_bonus.h"
 # include "initialisation_bonus.h"
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include "../../src_bonus/gnl/get_next_line_bonus.h"
 # include "../../lib/printf/ft_printf.h"
 # include <stdio.h>
@@ -31,11 +31,9 @@
 # define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
 # define TILD_SIZE 	128
-# define SET_SIZE	8
+# define SET_SIZE	10
 # define LEFT		1
 # define RIGHT		2
-# define FRONT		3
-# define FACE		4
 
 typedef struct s_border
 {

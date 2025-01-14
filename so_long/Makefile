@@ -39,6 +39,7 @@ SRCS_BONUS= src_bonus/gnl/get_next_line_utils_bonus.c \
 			src_bonus/image_loader/2_path_loader_bonus.c \
 			src_bonus/image_loader/3_image_loader_bonus.c \
 			src_bonus/image_layer/image_layer_bonus.c \
+			src_bonus/image_layer/static_image_monster_layer.c \
 			src_bonus/utils/display_utils_bonus.c \
 			src_bonus/utils/xy_utils_bonus.c \
 			src_bonus/main_bonus.c \
@@ -64,6 +65,8 @@ bonus: $(OBJS_BONUS)
 
 test: $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) $(LIB) -o $(NAME_TEST)
+t: 
+	$(CC) $(GFLAGS) -fsanitize=address  src_bonus/test.c $(LIB) -o $(NAME_TEST)
 
 testv: $(OBJS) 
 	$(CC) $(GFLAGS)  $(OBJS) $(LIB) -o $(NAME_TEST)

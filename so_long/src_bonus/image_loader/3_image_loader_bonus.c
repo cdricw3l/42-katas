@@ -49,7 +49,7 @@ int	push_img_set(t_data *data, t_img **img_set, char **path)
 	int	i;
 
 	i = 0;
-	while (i < SET_SIZE)
+	while (i < 10)
 	{
 		img_set[i] = calloc(1, sizeof(t_img));
 		if (!img_set[i])

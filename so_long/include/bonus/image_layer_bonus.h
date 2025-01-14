@@ -20,5 +20,6 @@ typedef struct s_xy	t_xy;
 
 int		run_image_layer(t_data *data);
 int	    ft_image_drawer(t_data *data);
+int	    monster_draw(t_data *data);
 
 #endif

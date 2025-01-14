@@ -27,6 +27,8 @@ static char	**get_path_g(void)
 	img_path[5] = "tildset/background/6_wall.xpm";
 	img_path[6] = "tildset/exit/3_exit.xpm";
 	img_path[7] = "tildset/mask/7_mask.xpm";
+	img_path[8] = "tildset/monster/43_Dude_Monster_Jump_8_left.xpm";
+	img_path[9] = "tildset/monster/43_Dude_Monster_Jump_8_right.xpm";
 	return (img_path);
 }
 
