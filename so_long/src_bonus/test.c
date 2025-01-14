@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include "../include/bonus/so_long_bonus.h"
+#include <signal.h>
 #include <assert.h>
+# include <stdlib.h>
+# include <signal.h>
 
 typedef struct s_frame
 {
@@ -66,9 +69,9 @@ int ft_print_frame(t_frame *frame)
     int i;
     int j;
 
-    if(k > 3)
+    if(k == 8)
     {
-        return (1);
+        k = 0;
     }
     new = calloc(1, sizeof(t_img));
 	assert(new);
@@ -80,14 +83,16 @@ int ft_print_frame(t_frame *frame)
         v = 0;
     else
         v = 128 * k;
-    display_image_data(frame->im);
+    printf("\n--- Debug Image Source ---\n");
+    printf("line_length: %d\n", frame->im->line_length);
+    printf("bit_per_pixel: %d\n", frame->im->bit_per_pixel);
+    printf("width: %d, height: %d\n", frame->im->width, frame->im->height);
     while (i < 128)
 	{
         j = 0;
 		while (j < 128)
 		{
-            printf("voici %d et v %d \n",k, v);
-			s = frame->im->addr + ((j + v) * frame->im->line_length + (i + k)
+			s = frame->im->addr + (j * frame->im->line_length + (i + v)
 					* (frame->im->bit_per_pixel / 8));
 			d = new->addr + (j
 					* new->line_length + i
@@ -98,12 +103,8 @@ int ft_print_frame(t_frame *frame)
 		i++;
 	}
     k++;
-    sleep(1);
-    void *n = mlx_new_window(frame->mlx,128,128,"few");
-    mlx_put_image_to_window(frame->mlx ,n,new->img,0, 0);
-    free(new->img);
-    free(new);
-    sleep(1);
+    usleep(100000);
+    mlx_put_image_to_window(frame->mlx,frame->win,new->img,0,0);
     return(0);
 }
 
