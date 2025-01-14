@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:45:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 01:04:31 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:27:23 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,28 +113,3 @@ char	*get_next_line(int fd)
 	free(buffer);
 	return (line);
 }
-
-// int main(void)
-// {
-// 	int fd1;
-// 	int fd2;
-
-// 	fd1 = open("file1.txt",O_RDONLY);
-// 	if(fd1 == -1)
-// 	{
-// 		printf("erreur\n");
-// 		return (-1);
-// 	}
-// 	fd2 = open("file2.txt",O_RDONLY);
-// 	if(fd2 == -1)
-// 	{
-// 		printf("erreur\n");
-// 		return (-1);
-// 	}
-// 	printf("%s\n", get_next_line(fd1));
-// 	printf("%s\n", get_next_line(fd2));
-// 	printf("%s\n", get_next_line(fd1));
-// 	printf("%s\n", get_next_line(fd2));
-// 	printf("%s\n", get_next_line(fd1));
-// 	return(0);
-// }

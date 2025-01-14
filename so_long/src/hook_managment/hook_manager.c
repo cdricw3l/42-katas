@@ -6,11 +6,12 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 01:08:06 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:47:02 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/hook_managment.h"
+#include <assert.h>
 
 static int	ft_is_keycode_in_set(int keycode)
 {
@@ -41,7 +42,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 	{
 		if ((*d)->map[begin->row][begin->col] == 'E')
 			if ((*d)->count_item == 0)
-				exit_game(d, WIN_GAME);
+				exit_game(*d, WIN_GAME);
 		(*d)->map[begin->row][begin->col] = 'P';
 		(*d)->map[init.row][init.col] = ' ';
 	}
@@ -64,6 +65,8 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 
 	i.row = b->row;
 	i.col = b->col;
+	assert((*d)->map != NULL);
+
 	if (key == XK_a || key == XK_Left)
 		if (ft_check_target(d, (*d)->map[b->row][b->col - 1]))
 			b->col -= 1;
@@ -80,17 +83,18 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 		ft_update_mouvement(d, b, i);
 }
 
-int	manage_keyboard(int keycode, t_data **data)
+int	manage_keyboard(int keycode, t_data *data)
 {
 	t_xy	*begin;
+	ft_display_data_info (data);
 
-	begin = &(*data)->xy_data.begin;
+	begin = &data->xy_data.begin;
 	if (keycode == 65363)
-		(*data)->char_state = RIGHT;
+		data->char_state = RIGHT;
 	if (keycode == 65361)
-		(*data)->char_state = LEFT;
+		data->char_state = LEFT;
 	if (!ft_is_keycode_in_set(keycode))
-		ft_update_position(data, keycode, begin);
+		ft_update_position(&data, keycode, begin);
 	if (keycode == XK_Escape || keycode == 79933840)
 		exit_game(data, 76);
 	return (0);

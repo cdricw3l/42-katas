@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:08:25 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 00:13:57 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:39:30 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void	display_image_data(t_img *im)
 {
-	printf("Voici les informations concernant l'image:\n");
-	printf("Dimentions de l'image ... hauteur: %d largeur : %d",
+	ft_printf("Voici les informations concernant l'image:");
+	ft_printf("Dimentions de l'image ... hauteur: %d largeur : %d",
 		im->height, im->width);
-	printf("voici la taile de la frame %d et la classe : %s",
+	ft_printf("voici la taile de la frame %d et la classe : %s",
 		im->frame_size, im->class);
 }
 
 void	ft_display_data_info(t_data *data)
 {
-	printf("Contenu de la structure data: 🤙🤙🤙\n\n");
-	printf("Nom de la map: %s \n\n",
+	ft_printf("Contenu de la structure data: 🤙🤙🤙\n\n");
+	ft_printf("Nom de la map: %s\n\n",
 		data->map_name);
-	printf("Dimention de la map: \n");
-	printf("Hauteur: %d \nlargeur: %d\n\n",
+	ft_printf("Dimention de la map: \n");
+	ft_printf("Hauteur: %d \nlargeur: %d\n\n",
 		data->xy_data.map.row, data->xy_data.map.col);
-	printf("Position de depart du personnage\n");
-	printf("Hauteur: %d\nlargeur: %d\n\n",
+	ft_printf("Position de depart du personnage\n");
+	ft_printf("Hauteur: %d\nlargeur: %d\n\n",
 		data->xy_data.begin.row, data->xy_data.begin.col);
-	printf("Nombre d'item: \n");
-	printf("Nombre d'item sur la map: %d\n\n",
+	ft_printf("Nombre d'item: \n");
+	ft_printf("Nombre d'item sur la map: %d\n\n",
 		data->count_item);
-	printf("Check list value: \n");
-	printf("Affichage de la map: \n\n");
+	ft_printf("Check list value: \n");
+	ft_printf("Affichage de la map: \n\n");
 	print_map(data);
 }
 
@@ -59,14 +59,14 @@ void	print_map(t_data *data)
 			j = 0;
 			while (j < largeur)
 			{
-				printf("%c", map[i][j]);
+				ft_printf("%c", map[i][j]);
 				j++;
 			}
 			i++;
-			printf("\n");
+			ft_printf("\n");
 		}
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void	print_path(char **path_g)
@@ -76,8 +76,8 @@ void	print_path(char **path_g)
 	i = 0;
 	while (i < SET_SIZE)
 	{
-		printf("[ path-G ] %s\n", path_g[i]);
+		ft_printf(" ==> [ path-G ] %s\n", path_g[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }

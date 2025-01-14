@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 00:23:20 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 12:11:35 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 00:39:38 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	ft_get_img_idx(t_data *data, char c)
 		return (1);
 	else if (c == 'E')
 	{
-		if(data->count_item > 0)
+		if (data->count_item > 0)
 			return (2);
 		else
-			return(6);
+			return (6);
 	}
 	return (99);
 }

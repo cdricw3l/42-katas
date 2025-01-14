@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 13:14:23 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 00:41:13 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static char	*get_image_class(char *path)
 	if (!path || !path[0])
 		return (NULL);
 	cpy = ft_strdup(path);
-
 	class = ft_substr(ft_strchr(cpy, '/') + 1, 0, 1);
 	if (!class)
 		return (NULL);

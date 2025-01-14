@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/01 17:14:03 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:10:45 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+
+typedef struct s_point
+{
+	int	row;
+	int	col;
+
+}	t_point;
 
 //Partie 1
 int		ft_isalpha(int c);
@@ -80,20 +87,11 @@ void	ft_swap_ptr(void *p1, void *p2, int size);
 void	ft_bubble_sort(void *arr, int nb, int t,
 			int (*cmp)(void *p1, void *p2));
 int		ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
-void	ft_generate_number(int *arr, int size);
 void	ft_print_bit_8(int n);
 void	ft_print_bit_16(int n);
 void	ft_print_bit_32(int n);
 void	ft_print_bit_64(int n);
 int		ft_index_of(int *arr, int len, int n);
-void 	ft_generate_number(int *arr, int size);
 int		ft_get_max_value(int *arr, int size);
-
-typedef struct s_point
-{
-	int	row;
-	int	col;
-	
-} t_point;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:12:48 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 00:16:52 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:25:16 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	print_dimention(t_xy_data xy_arr, int c)
 		xy = xy_arr.map;
 	else if (c == 4)
 		xy = xy_arr.screen_size;
-	printf("[ data ] coordonees de la structure: col: %d row: %d\n",
-		xy.col, xy.row);
+	ft_printf(" ==> [ data ] xy: row: %d col: %d\n",
+		xy.row, xy.col);
 }
 
 t_xy	rescal(t_xy xy, int scal_factor)

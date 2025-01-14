@@ -6,11 +6,17 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 23:44:40 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 12:59:14 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:41:10 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	close_windows(t_data *data)
+{
+	exit_game(&data, 0);
+	return (0);
+}
 
 static void	start_game(t_data *data)
 {
@@ -19,13 +25,13 @@ static void	start_game(t_data *data)
 	win.col = data->xy_data.map.col;
 	win.row = data->xy_data.map.row;
 	data->window = mlx_new_window(data->mlx,
-		win.col * TILD_SIZE,
-		win.row * TILD_SIZE, "hello");
+			win.col * TILD_SIZE,
+			win.row * TILD_SIZE, "so long");
 	if (!data->window)
 		exit_game(&data, ERR_WIN);
 	ft_image_drawer(data);
-	mlx_hook(data->window, 2, 1L << 0, manage_keyboard, &data);
-   	//mlx_hook(data->window, 17, 1L<<0 ,close_windows, data);
+	mlx_hook(data->window, 2, 1L << 0, manage_keyboard, data);
+	//mlx_hook(data->window, 17, 1L << 0, close_windows, data);
 	mlx_loop(data->mlx);
 }
 

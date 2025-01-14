@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 14:48:37 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:37:00 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int	_init(t_data *data, char *map_path)
 	data->xy_data.map = ft_s_dimention();
 	data->xy_data.screen_size = ft_s_dimention();
 	mlx_get_screen_size(data->mlx, &data->xy_data.screen_size.col,
-				&data->xy_data.screen_size.row);
-	if(data->xy_data.screen_size.col == 0 
-			|| data->xy_data.screen_size.row == 0)
-		return(1);
-	return(0);
+		&data->xy_data.screen_size.row);
+	if (data->xy_data.screen_size.col == 0
+		|| data->xy_data.screen_size.row == 0)
+		return (1);
+	return (0);
 }
 
 static t_data	*data_initialisation(char *map_path)
@@ -73,5 +73,3 @@ t_data	*initialisation_and_check(char *path)
 		return (exit_game(&data, ERR_NO_WAY));
 	return (data);
 }
-
-// revoir message erreur

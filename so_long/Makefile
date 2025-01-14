@@ -3,7 +3,6 @@ GFLAGS= -Werror -Wall -Wextra -I./include -g
 
 NAME= so_long
 NAME_TEST= so_long_test
-#srcs/hook/manage_hook.c \
 
 COM=
 
@@ -24,7 +23,9 @@ SRCS =	src/gnl/get_next_line_utils.c \
 		src/utils/xy_utils.c \
 		src/main.c \
 
-LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibft -lft
+SRCS_BONUS=
+
+LIB= -Llib/mlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibft -lft -Llib/printf -lftprintf
 #srcs/main.c 
 
 SRCS_TEST =  ${SRCS}
@@ -43,14 +44,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
 
-test: $(OBJS) 
+test: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 
 testv: $(OBJS) $(OBJS_TEST)
 	$(CC) $(GFLAGS)  $(OBJS_TEST) $(LIB) -o $(NAME_TEST)
 	valgrind --leak-check=full --log-file=filename ./$(NAME_TEST) map/map3.ber
-
-
 
 clean:
 	rm -f $(OBJS) 
@@ -65,22 +64,5 @@ gdev:
 	git add .
 	git commit -m ${COM}
 	git push
-
-copy:
-	cd .. && cd 42-katas && rm -rf ${NAME}
-	cd ..  
-	cp -rf ${NAME}  ../42-katas/
-	cd 	.. && cd  42-katas &&  git add . && git commit -m ${NAME} && git push 
-
-
-libft:
-	rm -rf libft
-	cp -rf ../42-katas/libft .
-
-
-
-run: $(OBJS)
-	$(CC) $(GFLAGS) $(OBJS) $(LIB) -o $(NAME)
-	valgrind --leak-check=full --log-file=filename ./so_long map/map1.ber
 
 .PHONY: re all clean fclean so_long copy libft test run $(NAME) $(NAME_TEST)

@@ -6,7 +6,7 @@
 /*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 08:43:22 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/13 01:02:17 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/14 01:13:14 by cb               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	error_layer(int err)
 	else
 		error_msg = error_return_2(err);
 	if (error_msg)
-		printf("%s\n", error_msg);
+		ft_printf("%s\n", error_msg);
 	if (err != ERR_OPEN_LOG && err != ERR_WRITE_LOG)
 	{
 		fd = open("src/exit_managment/log/log", O_APPEND
