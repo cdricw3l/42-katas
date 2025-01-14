@@ -28,7 +28,6 @@
 # include <math.h>
 # include <X11/keysym.h>
 
-# define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
 # define TILD_SIZE 	128
 # define SET_SIZE	8

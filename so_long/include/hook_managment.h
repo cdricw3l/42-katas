@@ -13,7 +13,7 @@
 #ifndef HOOK_MANAGMENT_H
 # define HOOK_MANAGMENT_H
 
-# include "so_long_bonus.h"
+# include "so_long.h"
 
 int	manage_keyboard(int keycode, t_data *data);
 
