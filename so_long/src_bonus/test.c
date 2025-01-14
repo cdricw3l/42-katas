@@ -48,26 +48,47 @@ typedef struct s_frame
 // 	}
 // }
 
+void	display_image_data(t_img *im)
+{
+	ft_printf("Voici les informations concernant l'image:");
+	ft_printf("Dimentions de l'image ... hauteur: %d largeur : %d",
+		im->height, im->width);
+	ft_printf("voici la taile de la frame %d et la classe : %s",
+		im->frame_size, im->class);
+}
+
 int ft_print_frame(t_frame *frame)
 {
+    static int k = 0;
     t_img *new;
     char	*d;
 	char	*s;
     int i;
     int j;
 
+    if(k > 3)
+    {
+        return (1);
+    }
     new = calloc(1, sizeof(t_img));
 	assert(new);
     new->img = mlx_new_image(frame->mlx, 128, 128);
     new->addr = mlx_get_data_addr(new->img,&new->bit_per_pixel, &new->line_length, &new->endian);
     i = 0;
-    while (i < 10)
+    int v;
+    if(k == 0)
+        v = 0;
+    else
+        v = 128 * k;
+    display_image_data(frame->im);
+    while (i < 128)
 	{
-		j = 0;
-		while (j < 10)
+        j = 0;
+		while (j < 128)
 		{
-			s = frame->im->addr + (j * frame->im->line_length + i
-					*(frame->im->bit_per_pixel / 8));
+            printf("voici %d et v %d \n",k, v);
+			s = frame->im->addr + ((j + v) * frame->im->line_length + (i + k)
+					* (frame->im->bit_per_pixel / 8));
 			d = new->addr + (j
 					* new->line_length + i
 					* (new->bit_per_pixel / 8));
@@ -76,7 +97,13 @@ int ft_print_frame(t_frame *frame)
 		}
 		i++;
 	}
-    mlx_put_image_to_window(frame->mlx ,frame->win,new->img,0, 0);
+    k++;
+    sleep(1);
+    void *n = mlx_new_window(frame->mlx,128,128,"few");
+    mlx_put_image_to_window(frame->mlx ,n,new->img,0, 0);
+    free(new->img);
+    free(new);
+    sleep(1);
     return(0);
 }
 
