@@ -1,5 +1,5 @@
 NAME= so_long
-NAME= so_long_bonus
+NAME_BONUS= so_long_bonus
 NAME_TEST= so_long_test
 
 CC = gcc
@@ -61,7 +61,11 @@ $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) $(LIB) -o $(NAME)
 
 bonus: $(OBJS_BONUS)
-	$(CC) $(GFLAGS_BONUS) -fsanitize=address $(OBJS_BONUS) $(LIB) -o $(NAME)
+	$(CC) $(GFLAGS_BONUS) -fsanitize=address $(OBJS_BONUS) $(LIB) -o $(NAME_BONUS)
+
+bonusv: $(OBJS_BONUS)
+	$(CC) $(GFLAGS_BONUS) $(OBJS_BONUS) $(LIB) -o $(NAME_BONUS)
+	valgrind --leak-check=full --log-file=filename ./$(NAME_BONUS) map/bonus_map/map2_bonus.ber
 
 test: $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) $(LIB) -o $(NAME_TEST)
