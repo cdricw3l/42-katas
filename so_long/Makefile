@@ -1,4 +1,4 @@
-CC = clang
+CC = gcc
 GFLAGS= -Werror -Wall -Wextra -I./include -g
 
 NAME= so_long

@@ -54,6 +54,7 @@ void	*exit_game(t_data *data, int err)
 		mlx_destroy_window(data->mlx, data->window);
 	if(data->mlx != NULL)
 		mlx_destroy_display(data->mlx);
+	free(data->mlx);
 	free(data);
 	error_layer(err);
 	exit(0);
