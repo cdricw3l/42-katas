@@ -11,53 +11,22 @@
 /* ************************************************************************** */
 
 #include "../../include/bonus/image_layer_bonus.h"
+#include <assert.h>
 
-// static int	ft_get_first_frame_idx(t_data *data, char c)
-// {
-// 	if (c == '1')
-// 		return (5);
-// 	else if (c == 'X')
-// 		return (4);
-// 	if (c == 'P' && data->char_state == LEFT)
-// 		return (0);
-// 	else if (c == 'P' && data->char_state == RIGHT)
-// 		return (1);
-// 	else if (c == 'E')
-// 		return (2);
-// 	return (99);
-// }
-
-// static int	ft_get_frame_idx(t_data *data, char c)
-// {
-	
-// 	if (c == 'P' && data->char_state == LEFT)
-// 		return (0);
-// 	if (c == 'P' && data->char_state == RIGHT)
-// 		return (1);
-// 	if (c == 'Z')
-// 		return (7);
-// 	if (c == 'E')
-// 	{
-// 		if (data->count_item == 0)
-// 			return (6);
-// 	}
-// 	return (99);
-// }
-
-static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf, int offset)
+static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
 {
 	char	*d;
 	char	*s;
 	int		i;
 	int		j;
-    (void)offset;
+
 	i = 0;
 	while (i < TILD_SIZE)
 	{
 		j = 0;
 		while (j < TILD_SIZE)
 		{
-			s = src->addr + ((j) * src->line_length + i
+			s = src->addr + (j * src->line_length + i
 					*(src->bit_per_pixel / 8));
 			d = dst->addr + ((j + (xyf.row))
 					*dst->line_length + (i + (xyf.col))
@@ -67,42 +36,84 @@ static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf, int offset)
 		}
 		i++;
 	}
+
+}
+
+int ft_put_image_on_frame(t_data *data, t_img *im)
+{
+    int i;
+    int j;
+    t_xy	dest;
+
+    i = 0;
+    while (i < data->xy_data.map.row)
+	{
+		j = 0;
+		while (j < data->xy_data.map.col)
+		{
+            dest.row = i * TILD_SIZE;
+			dest.col = j * TILD_SIZE;
+			if(data->map[i][j] == 'M')
+                my_mlx_pixel_put(data->frame, im, dest);
+			j++;
+		}
+		i++;
+	}
+    
+
+    return(0);
 }
 
 int	monster_draw(t_data *data)
 {
-	int		i;
-	int		j;
-	int     path;
-	t_xy	dest;
-
-	i = 0;
-    int o = 0;
-    while (o < 8)
+	static int k = 0;
+    static int f = 0;
+    int path;
+    t_img *new;
+    char	*d;
+	char	*s;
+    int i;
+    int j;
+    if(k == 10)
     {
-        while (i < data->xy_data.map.row)
-        {
-            j = 0;
-            while (j < data->xy_data.map.col)
-            {
-                if(data->map[i][j] == 'M')
-                {
-                    dest.row = i * TILD_SIZE;
-                    dest.col = j * TILD_SIZE;
-
-                }
-                if(data->char_state == LEFT)
-                    path = 9;
-                else if(data->state_game == 1)
-                    path = 10;
-                my_mlx_pixel_put(data->frame, data->img_set_global[path], dest, o++);
-                j++;
-            }
-            i++;
-        }
-        mlx_put_image_to_window(data->mlx, data->window, data->frame->img, 0, 0);
-        o++;
+        k = 0;
+        f++;
     }
-	return (0);
+    new = calloc(1, sizeof(t_img));
+	assert(new);
+    new->img = mlx_new_image(data->mlx, 128, 128);
+    new->addr = mlx_get_data_addr(new->img,&new->bit_per_pixel, &new->line_length, &new->endian);
+    i = 0;
+    int v;
+    if(k == 0)
+        v = 0;
+    else
+        v = 128 * k;
+    if(f % 2 == 0)
+        path = 8;
+    else
+        path = 9;
+    while (i < 128)
+	{
+        j = 0;
+		while (j < 128)
+		{
+			s = data->img_set_global[path]->addr + (j * data->img_set_global[path]->line_length + (i + v)
+					* (data->img_set_global[path]->bit_per_pixel / 8));
+			d = new->addr + (j
+					* new->line_length + i
+					* (new->bit_per_pixel / 8));
+			*(unsigned int *)d = *(unsigned int *)s;
+			j++;
+		}
+		i++;
+	}
+    k++;
+    usleep(100000);
+    ft_put_image_on_frame(data, new);
+    mlx_put_image_to_window(data->mlx,data->window,data->frame->img,0,0);
+    free(new->img);
+    free(new);
+    return(0);
 }
 

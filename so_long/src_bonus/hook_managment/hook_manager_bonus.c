@@ -52,7 +52,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 
 static int	ft_check_target(t_data **data, char c)
 {
-	if (c != '1' && c != 'E')
+	if (c != '1' && c != 'E' && c != 'M')
 		return (1);
 	if (c == 'E' && (*data)->count_item == 0)
 		return (1);

@@ -18,7 +18,7 @@ static int	ft_get_first_frame_idx(t_data *data, char c)
 		return (5);
 	else if (c == 'X')
 		return (4);
-	if (c == 'P' && data->char_state == LEFT)
+	else if (c == 'P' && data->char_state == LEFT)
 		return (0);
 	else if (c == 'P' && data->char_state == RIGHT)
 		return (1);

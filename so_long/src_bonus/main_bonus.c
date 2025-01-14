@@ -36,9 +36,9 @@ void	start_game(t_data *data)
 	if (!data->window)
 		exit_game(data, ERR_WIN);
 	ft_image_drawer(data);
-	mlx_loop_hook(data->mlx, monster_draw,data);
 	mlx_hook(data->window, 2, 1L << 0, manage_keyboard, data);
-	mlx_hook(data->window, 17, 1L << 0, close_windows, data);
+	mlx_loop_hook(data->mlx, monster_draw, data);
+	//mlx_hook(data->window, 17, 1L << 0, close_windows, data);
 	mlx_loop(data->mlx);
 }
 

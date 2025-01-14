@@ -60,6 +60,8 @@ void	display_image_data(t_img *im)
 		im->frame_size, im->class);
 }
 
+
+
 int ft_print_frame(t_frame *frame)
 {
     static int k = 0;
@@ -83,10 +85,7 @@ int ft_print_frame(t_frame *frame)
         v = 0;
     else
         v = 128 * k;
-    printf("\n--- Debug Image Source ---\n");
-    printf("line_length: %d\n", frame->im->line_length);
-    printf("bit_per_pixel: %d\n", frame->im->bit_per_pixel);
-    printf("width: %d, height: %d\n", frame->im->width, frame->im->height);
+    
     while (i < 128)
 	{
         j = 0;
