@@ -1,36 +1,15 @@
-==40676== Memcheck, a memory error detector
-==40676== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==40676== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==40676== Command: ./so_long_bonus map/bonus_map/map2_bonus.ber
-==40676== Parent PID: 40672
-==40676== 
-==40676== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==40676==    at 0x4AE3864: writev (writev.c:26)
-==40676==    by 0x4BDAACA: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==40676==    by 0x4BDAC4E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==40676==    by 0x4BDBD7E: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==40676==    by 0x48BE0B8: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==40676==    by 0x48C3148: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==40676==    by 0x48C352B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==40676==    by 0x113415: mlx_int_wait_first_expose (in /home/cb/code/42-katas/so_long/so_long_bonus)
-==40676==    by 0x113145: mlx_new_window (in /home/cb/code/42-katas/so_long/so_long_bonus)
-==40676==    by 0x112BB0: start_game (main_bonus.c:33)
-==40676==    by 0x112CC9: main (main_bonus.c:57)
-==40676==  Address 0x4c3819c is 28 bytes inside a block of size 16,384 alloc'd
-==40676==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==40676==    by 0x48AD42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==40676==    by 0x112EF6: mlx_init (in /home/cb/code/42-katas/so_long/so_long_bonus)
-==40676==    by 0x110C10: _init (1_init_bonus.c:19)
-==40676==    by 0x110D49: initialisation_and_check (1_init_bonus.c:49)
-==40676==    by 0x112C9F: main (main_bonus.c:53)
-==40676== 
-==40676== 
-==40676== HEAP SUMMARY:
-==40676==     in use at exit: 0 bytes in 0 blocks
-==40676==   total heap usage: 50,583 allocs, 50,583 frees, 3,364,533 bytes allocated
-==40676== 
-==40676== All heap blocks were freed -- no leaks are possible
-==40676== 
-==40676== Use --track-origins=yes to see where uninitialised values come from
-==40676== For lists of detected and suppressed errors, rerun with: -s
-==40676== ERROR SUMMARY: 14 errors from 1 contexts (suppressed: 0 from 0)
+==78881== Memcheck, a memory error detector
+==78881== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==78881== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==78881== Command: ./so_long_test map/standard_map/map3.ber
+==78881== Parent PID: 78877
+==78881== 
+==78881== 
+==78881== HEAP SUMMARY:
+==78881==     in use at exit: 0 bytes in 0 blocks
+==78881==   total heap usage: 34,478 allocs, 34,478 frees, 2,439,560 bytes allocated
+==78881== 
+==78881== All heap blocks were freed -- no leaks are possible
+==78881== 
+==78881== For lists of detected and suppressed errors, rerun with: -s
+==78881== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -123,8 +123,10 @@ int	main(void)
     frame->im->addr = mlx_get_data_addr(frame->im->img,&frame->im->bit_per_pixel, &frame->im->line_length, &frame->im->endian);
     frame->frame_size = 8;
     frame->win = mlx_new_window(frame->mlx,frame->im->width,frame->im->height, "hello");
-    mlx_put_image_to_window(frame->mlx ,frame->win,frame->im->img,0, 0);
-    mlx_loop_hook(frame->mlx, ft_print_frame, frame);
+    mlx_string_put(frame->mlx,frame->win,100,100,0xFFFFFF,"couter 10");
+    
+    // mlx_put_image_to_window(frame->mlx ,frame->win,frame->im->img,0, 0);
+    // mlx_loop_hook(frame->mlx, ft_print_frame, frame);
     mlx_loop(frame->mlx);
 	return (0);
 }

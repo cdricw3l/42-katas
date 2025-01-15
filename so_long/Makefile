@@ -70,11 +70,11 @@ bonusv: $(OBJS_BONUS)
 test: $(OBJS)
 	$(CC) $(GFLAGS) -fsanitize=address  $(OBJS) $(LIB) -o $(NAME_TEST)
 t: 
-	$(CC) $(GFLAGS) -fsanitize=address  src_bonus/test.c $(LIB) -o $(NAME_TEST)
+	$(CC) $(GFLAGS)   src_bonus/test.c $(LIB) -o $(NAME_TEST)
 
 testv: $(OBJS) 
 	$(CC) $(GFLAGS)  $(OBJS) $(LIB) -o $(NAME_TEST)
-	valgrind --leak-check=full --log-file=filename ./$(NAME_TEST) map/map3.ber
+	valgrind --leak-check=full --log-file=filename ./$(NAME_TEST) map/standard_map/map3.ber
 
 clean:
 	rm -f $(OBJS) $(OBJS_BONUS)

@@ -47,7 +47,6 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 	}
 	ft_image_drawer(*d);
 	print_map(*d);
-	ft_printf("NOMBRE DE PAS: %d\n",(*d)->count_mouvement);
 }
 
 static int	ft_check_target(t_data **data, char c)
