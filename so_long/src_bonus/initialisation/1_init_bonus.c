@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   1_init.c                                           :+:      :+:    :+:   */
@@ -60,8 +60,8 @@ t_data	*initialisation_and_check(char *path)
 		exit_game(data, ERR_NO_WAY);
 	if (start_images_loader(data))
 		exit_game(data, ERR_IMG_SET);
-	data->frame = calloc(1,sizeof(t_img));
-	if(data->frame == NULL)
+	data->frame = calloc(1, sizeof(t_img));
+	if (data->frame == NULL)
 		exit_game(data, ERR_FRAME);
 	return (data);
 }

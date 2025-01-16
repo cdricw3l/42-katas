@@ -40,6 +40,7 @@
 # define ERR_WIN 21
 # define WIN_GAME 22
 # define ERR_ALLOC_DATA 23
+# define ERR_DRAW 23
 
 
 int	error_layer(int err);

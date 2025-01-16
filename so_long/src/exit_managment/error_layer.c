@@ -34,6 +34,8 @@ char	*error_return_2(int error)
 		return ("[ clean ]  PROGRAMME TERMEINNER AVEC SUCCES\n");
 	if (error == ERR_ALLOC_DATA)
 		return ("[ err ] Aucune map passée en paramètre");
+	if (error == ERR_DRAW)
+		return ("[ err ] Probleme avec la fonction de dessin");
 	return (NULL);
 }
 

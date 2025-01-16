@@ -80,12 +80,3 @@ int	image_loader(t_data *data, char **path_g)
 	free(path_g);
 	return (0);
 }
-
-/*
-	simulation d'une erreur d'alloc
-	if (i == 4)
-	{
-		free(data->img_set_global[i]);
-		return (clean_img_set(&data, i, path));
-	}
-*/

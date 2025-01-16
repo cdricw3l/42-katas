@@ -14,8 +14,6 @@
 
 char	*error_return_2(int error)
 {
-	if (error == 0)
-		return ("[ clean ]  Structures libéré avec succes\n");
 	if (error == ERR_LINE_LEN)
 		return ("[ err ] Une ligne de la map est de taille differente \n");
 	if (error == ERR_NOTCLOSE)
@@ -28,14 +26,16 @@ char	*error_return_2(int error)
 		return ("[ err ] probleme creation de la nouvelle frame\n");
 	if (error == ERR_WIN)
 		return ("[ err ] Erreur d'initialisation de la mlx ou de la fenetre");
-	if (error == 99)
-		return ("[ ERREUR MAP ] Error map\n");
 	if (error == ERR_NO_ITEM)
 		return ("[ clean ]  Pas d'item du la carte\n");
 	if (error == ERR_SIZE)
 		return ("[ clean ]  La map n'est pas a la bonne dimention\n");
 	if (error == WIN_GAME)
 		return ("[ clean ]  PROGRAMME TERMEINNER AVEC SUCCES\n");
+	if (error == ERR_ALLOC_DATA)
+		return ("[ err ] Aucune map passée en paramètre");
+	if (error == ERR_DRAW)
+		return ("[ err ] Probleme avec la fonction de dessin");
 	return (NULL);
 }
 

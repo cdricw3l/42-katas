@@ -28,6 +28,7 @@ static int	ft_is_keycode_in_set(int keycode)
 
 static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 {
+
 	(*d)->count_mouvement++;
 	if ((*d)->map[begin->row][begin->col] == 'X')
 	{
@@ -45,7 +46,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 		(*d)->map[begin->row][begin->col] = 'P';
 		(*d)->map[init.row][init.col] = 'Z';
 	}
-	ft_image_drawer(*d);
+	ft_image_drawer((*d));
 	print_map(*d);
 }
 
@@ -86,13 +87,22 @@ int	manage_keyboard(int keycode, t_data *data)
 	t_xy	*begin;
 
 	begin = &data->xy_data.begin;
-	if (keycode == 65363)
+	if (keycode == 65363 || keycode == XK_d)
 		data->char_state = RIGHT;
-	if (keycode == 65361)
+	if (keycode == 65361 || keycode == XK_a)
 		data->char_state = LEFT;
 	if (!ft_is_keycode_in_set(keycode))
 		ft_update_position(&data, keycode, begin);
 	if (keycode == XK_Escape || keycode == 79933840)
 		exit_game(data, 76);
+
+	if (keycode == XK_i || keycode == 79933840)
+	{
+		t_xy des;
+
+		des.col = 3;
+		des.row = 3;
+		frame_layer(data, data->img_set_global[8], des, 8);
+	}
 	return (0);
 }

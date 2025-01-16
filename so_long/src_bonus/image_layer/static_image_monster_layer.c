@@ -144,6 +144,7 @@ int	monster_draw(t_data *data)
     if(k == 8)
         k = 0;
     new = init_new_img(data, TILD_SIZE, TILD_SIZE);
+
     if(!new || !data || !data->frame || !data->img_set_global)
         return(1);
     path = ft_get_path(k++);

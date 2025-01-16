@@ -28,7 +28,7 @@ static int	ft_is_keycode_in_set(int keycode)
 
 static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 {
-	int	px_draw;
+	int px_draw;
 
 	(*d)->count_mouvement++;
 	if ((*d)->map[begin->row][begin->col] == 'X')
@@ -47,8 +47,8 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 		(*d)->map[begin->row][begin->col] = 'P';
 		(*d)->map[init.row][init.col] = 'Z';
 	}
-	px_draw = ft_image_drawer((*d));
-	if (px_draw == 0)
+	px_draw  = ft_image_drawer((*d));
+	if(px_draw == 0)
 		exit_game((*d), ERR_CHECK_MAP);
 	print_map(*d);
 	ft_printf("NOMBRE DE PAS: %d\n", (*d)->count_mouvement);
@@ -92,7 +92,7 @@ int	manage_keyboard(int keycode, t_data *data)
 	begin = &data->xy_data.begin;
 	if (keycode == 65363 || keycode == XK_d)
 		data->char_state = RIGHT;
-	if (keycode == 65361 || keycode == XK_a)
+	if (keycode == 65361 || keycode == XK_a )
 		data->char_state = LEFT;
 	if (!ft_is_keycode_in_set(keycode))
 		ft_update_position(&data, keycode, begin);

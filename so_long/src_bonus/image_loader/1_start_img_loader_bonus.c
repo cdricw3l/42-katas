@@ -22,10 +22,7 @@ int	start_images_loader(t_data *data)
 		return (error_layer(ERR_GET_IMGPATH));
 	path_g = get_paths();
 	if (!path_g)
-	{
-		free(data->img_set_global);
 		return (error_layer(ERR_GET_IMGPATH));
-	}
 	load = image_loader(data, path_g);
 	if (load)
 		return (error_layer(ERR_IMG_LOADING));
