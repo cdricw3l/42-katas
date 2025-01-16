@@ -36,6 +36,8 @@ static int	clean_img_set(t_data **data, int idx, char **path)
 	}
 	if (path)
 		free(path);
+	if( i == idx)
+		ft_printf("[ cleanner ] Memory image is clean\n");
 	return (1);
 }
 
@@ -63,7 +65,7 @@ int	push_img_set(t_data *data, char **path)
 			return (clean_img_set(&data, i, path));
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int	image_loader(t_data *data, char **path_g)
@@ -75,7 +77,7 @@ int	image_loader(t_data *data, char **path_g)
 	if (!img_set)
 		return (1);
 	r = push_img_set(data, path_g);
-	if (r != 0)
+	if (r != SET_SIZE)
 		return (1);
 	free(path_g);
 	return (0);

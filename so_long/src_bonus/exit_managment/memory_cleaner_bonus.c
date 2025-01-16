@@ -31,6 +31,7 @@ static int	clean_image_memory(t_data **d, t_img **data)
 		mlx_destroy_image((*d)->mlx, (*d)->frame->img);
 	if ((*d)->frame && (*d)->frame)
 		free((*d)->frame);
+
 	return (1);
 }
 

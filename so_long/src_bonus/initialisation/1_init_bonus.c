@@ -15,6 +15,7 @@
 static int	_init(t_data *data, char *map_path)
 {
 	data->map_name = map_path;
+	data->life = LIFE;
 	data->map = NULL;
 	data->mlx = mlx_init();
 	if (!data->mlx)

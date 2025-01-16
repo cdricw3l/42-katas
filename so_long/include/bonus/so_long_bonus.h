@@ -31,9 +31,16 @@
 # define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
 # define TILD_SIZE 	128
-# define SET_SIZE	12
+# define SET_SIZE	18
 # define LEFT		1
 # define RIGHT		2
+
+# define MAP	3
+# define BEGIN	1
+# define EXIT	2
+# define SCREEN	4
+
+# define LIFE	4
 
 typedef struct s_border
 {
@@ -83,6 +90,7 @@ typedef struct s_data
 	char		*map_name;
 	char		**map;
 	int			char_state;
+	int			life;
 	int			count_item;
 	int			check_item;
 	int			count_begin;

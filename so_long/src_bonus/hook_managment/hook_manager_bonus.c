@@ -59,6 +59,64 @@ static int	ft_check_target(t_data **data, char c)
 	return (0);
 }
 
+int ft_fight_checker(t_data *data)
+{
+	int col;
+	int row;
+
+	col = data->xy_data.begin.col;
+	row = data->xy_data.begin.row;
+	print_dimention(data->xy_data, BEGIN);
+	if(data->map[row][col - 1] == 'M' || data->map[row][col + 1]  == 'M')
+	{
+		ft_printf(" => FIGHT!!!\n");
+		return(1);
+	}
+	else	
+		return(0);
+}
+
+void ft_fight(t_data *data, t_xy m_1, t_xy m_2)
+{
+	while (ft_fight_checker(data) && data->life > 0)
+	{
+		if(data->map[m_1.row][m_1.col] == 'M')
+		{
+			frame_layer(data,data->img_set_global[12], m_1, 6);
+			frame_layer(data,data->img_set_global[14], data->xy_data.begin, 4);
+			data->life--;
+
+		}
+		if(data->map[m_2.row][m_2.col] == 'M')
+		{
+
+			frame_layer(data,data->img_set_global[14], data->xy_data.begin, 4);
+			frame_layer(data,data->img_set_global[13], m_2, 6);
+			data->life--;
+		}
+		if(data->life  == 0)
+			frame_layer(data,data->img_set_global[17], data->xy_data.begin, 8);
+		//mlx_hook(data->window, 2, 1L << 0, manage_keyboard, data);
+		//mlx_loop(data->mlx);
+	}
+}
+
+int ft_fight_layer(t_data *data)
+{
+	t_xy monster_1;
+	t_xy monster_2;
+
+	monster_1.col = data->xy_data.begin.col - 1;
+	monster_1.row = data->xy_data.begin.row;
+	monster_2.col = data->xy_data.begin.col + 1;
+	monster_2.row = data->xy_data.begin.row;
+	
+	ft_fight(data,monster_1,monster_2);
+	printf("voici TA LIFE  %d\n", data->life);
+	
+	return(data->life);
+}
+
 static void	ft_update_position(t_data **d, int key, t_xy *b)
 {
 	t_xy	i;
@@ -80,6 +138,10 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 			b->row -= 1;
 	if (i.row != b->row || i.col != b->col)
 		ft_update_mouvement(d, b, i);
+	if(ft_fight_checker(*d) == 1)
+		ft_fight_layer(*d);
+	else
+		ft_printf("PAS de danger pierro la lune \n");
 }
 
 int	manage_keyboard(int keycode, t_data *data)
@@ -105,7 +167,7 @@ int	manage_keyboard(int keycode, t_data *data)
 		if(data->char_state == LEFT)
 			frame_layer(data, data->img_set_global[10], des, 6);
 		else
-			frame_layer(data, data->img_set_global[11], des, 6);
+			frame_layer(data, data->img_set_global[13], des, 6);
 	}
 	return (0);
 }

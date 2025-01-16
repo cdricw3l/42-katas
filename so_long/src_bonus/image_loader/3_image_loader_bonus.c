@@ -34,8 +34,10 @@ static int	clean_img_set(t_data **data, int idx, char **path)
 		free((*data)->img_set_global);
 		(*data)->img_set_global = NULL;
 	}
-	if (path)
+	if(path)
 		free(path);
+	if( i == idx)
+		ft_printf("[ cleanner ] Memory image is clean\n");
 	return (0);
 }
 
@@ -46,8 +48,6 @@ int	push_img_set(t_data *data, char **path)
 	i = 0;
 	while (i < SET_SIZE)
 	{
-		if(i == 3)
-			return (clean_img_set(&data, i, path));
 		data->img_set_global[i] = malloc(sizeof(t_img) * 1);
 		if (!data->img_set_global[i])
 			return (clean_img_set(&data, i, path));
@@ -79,8 +79,7 @@ int	image_loader(t_data *data, char **path_g)
 	r = push_img_set(data, path_g);
 	if (r != SET_SIZE)
 		return (1);
-	
-	free(path_g);
-	printf("voici r %d\n", r);
+	else
+		free(path_g);
 	return (0);
 }
