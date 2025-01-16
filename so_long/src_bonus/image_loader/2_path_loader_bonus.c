@@ -37,6 +37,7 @@ static char	**get_path_g(void)
 	img_path[15] = "tildset/hero/34_Pink_Monster_Hurt_4_right.xpm";
 	img_path[16] = "tildset/hero/33_Pink_Monster_Death_8_left.xpm";
 	img_path[17] = "tildset/hero/33_Pink_Monster_Death_8_right.xpm";
+	img_path[18] = "tildset/background/6_wall_life.xpm";
 	return (img_path);
 }
 

@@ -33,6 +33,8 @@ static int	ft_get_first_frame_idx(t_data *data, char c)
 		return (1);
 	else if (c == 'E')
 		return (2);
+	else if (c == 'L')
+		return (18);
 	return (99);
 }
 

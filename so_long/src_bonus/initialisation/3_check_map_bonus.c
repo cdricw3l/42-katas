@@ -104,6 +104,8 @@ void	process_set(t_data *data, char c, int row, int col)
 				data->char_state = RIGHT;
 			data->count_begin++;
 		}
+		if(row == 0 && col > (data->xy_data.map.col - 1) - LIFE)
+			data->map[row][col] = 'L';
 	}
 }
 

@@ -31,7 +31,7 @@
 # define M_PI		3.14159265358979323846
 # define MAX_FD		1048576
 # define TILD_SIZE 	128
-# define SET_SIZE	18
+# define SET_SIZE	19
 # define LEFT		1
 # define RIGHT		2
 
