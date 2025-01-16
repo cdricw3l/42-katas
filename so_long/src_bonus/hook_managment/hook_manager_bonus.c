@@ -48,6 +48,7 @@ static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 		(*d)->map[init.row][init.col] = 'Z';
 	}
 	ft_image_drawer((*d));
+	(*d)->map[init.row][init.col] = '0';
 	print_map(*d);
 }
 

@@ -114,6 +114,7 @@ int	ft_image_drawer(t_data *data)
 	int		draw_return;
 
 	size = data->xy_data.map;
+	//premier frame
 	if (!data->frame->img)
 	{
 		data->frame->img = mlx_new_image(data->mlx, (size.col * TILD_SIZE),
