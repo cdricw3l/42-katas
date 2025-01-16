@@ -37,3 +37,9 @@ char	**get_paths(void)
 	paths = get_path_g();
 	return (paths);
 }
+
+	/*
+		simulation d'une erreur;
+		free(paths);
+		paths = NULL;
+	*/

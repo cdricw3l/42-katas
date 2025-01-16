@@ -64,7 +64,6 @@ typedef struct s_xy_data
 
 typedef struct s_img
 {
-	char	*class;
 	int		set;
 	int		frame_size;
 	void	*img;

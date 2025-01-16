@@ -12,62 +12,55 @@
 
 #include "../../include/so_long.h"
 
-static int	clean_img_set(t_img **img_set, int idx)
+static int	clean_img_set(t_data **data, int idx, char **path)
 {
 	int	i;
 
 	i = 0;
-	if (img_set)
+	if ((*data)->img_set_global)
 	{
 		while (i < idx)
 		{
-			if (img_set[i])
-				free(img_set[i++]);
+			if ((*data)->img_set_global[i])
+			{
+				if ((*data)->img_set_global[i]->img)
+					mlx_destroy_image((*data)->mlx,
+						(*data)->img_set_global[i]->img);
+				free((*data)->img_set_global[i]);
+				(*data)->img_set_global[i] = NULL;
+			}
+			i++;
 		}
-		free(img_set);
+		free((*data)->img_set_global);
+		(*data)->img_set_global = NULL;
 	}
+	if (path)
+		free(path);
 	return (1);
 }
 
-static char	*get_image_class(char *path)
-{
-	char	*class;
-	char	*cpy;
-
-	if (!path || !path[0])
-		return (NULL);
-	cpy = ft_strdup(path);
-	class = ft_substr(ft_strchr(cpy, '/') + 1, 0, 1);
-	if (!class)
-		return (NULL);
-	free(cpy);
-	return (class);
-}
-
-int	push_img_set(t_data *data, t_img **img_set, char **path)
+int	push_img_set(t_data *data, char **path)
 {
 	int	i;
 
 	i = 0;
 	while (i < SET_SIZE)
 	{
-		img_set[i] = calloc(1, sizeof(t_img));
-		if (!img_set[i])
-			return (clean_img_set(img_set, i));
-		img_set[i]->img = mlx_xpm_file_to_image(data->mlx, path[i],
-				&img_set[i]->width, &img_set[i]->height);
-		if (!img_set[i]->img)
-			return (clean_img_set(img_set, i));
-		img_set[i]->class = get_image_class(path[i]);
-		if (!img_set[i]->class)
-			return (clean_img_set(img_set, i));
-		img_set[i]->addr = mlx_get_data_addr(img_set[i]->img,
-				&img_set[i]->bit_per_pixel,
-				&img_set[i]->line_length,
-				&img_set[i]->endian);
-		if (!img_set[i]->addr)
-			return (clean_img_set(img_set, i));
-		printf("voici i %d et l'adresse %p\n", i, data->img_set_global[i]->img);
+		data->img_set_global[i] = malloc(sizeof(t_img) * 1);
+		if (!data->img_set_global[i])
+			return (clean_img_set(&data, i, path));
+		data->img_set_global[i]->img = mlx_xpm_file_to_image(data->mlx, path[i],
+				&data->img_set_global[i]->width,
+				&data->img_set_global[i]->height);
+		if (!data->img_set_global[i]->img)
+			return (clean_img_set(&data, i, path));
+		data->img_set_global[i]->addr
+			= mlx_get_data_addr(data->img_set_global[i]->img,
+				&data->img_set_global[i]->bit_per_pixel,
+				&data->img_set_global[i]->line_length,
+				&data->img_set_global[i]->endian);
+		if (!data->img_set_global[i]->addr)
+			return (clean_img_set(&data, i, path));
 		i++;
 	}
 	return (0);
@@ -81,9 +74,18 @@ int	image_loader(t_data *data, char **path_g)
 	img_set = data->img_set_global;
 	if (!img_set)
 		return (1);
-	r = push_img_set(data, img_set, path_g);
+	r = push_img_set(data, path_g);
 	if (r != 0)
 		return (1);
 	free(path_g);
 	return (0);
 }
+
+/*
+	simulation d'une erreur d'alloc
+	if (i == 4)
+	{
+		free(data->img_set_global[i]);
+		return (clean_img_set(&data, i, path));
+	}
+*/

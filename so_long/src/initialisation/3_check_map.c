@@ -79,7 +79,6 @@ int	check_dimentions(t_data *data)
 	if (is_close(data->map, row, j))
 		return (ERR_NOTCLOSE);
 	data->xy_data.map.col = j;
-	data->xy_data.map.row = row;
 	return (0);
 }
 

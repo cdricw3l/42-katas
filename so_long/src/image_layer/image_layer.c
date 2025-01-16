@@ -29,7 +29,6 @@ static int	ft_get_first_frame_idx(t_data *data, char c)
 
 static int	ft_get_frame_idx(t_data *data, char c)
 {
-	
 	if (c == 'P' && data->char_state == LEFT)
 		return (0);
 	if (c == 'P' && data->char_state == RIGHT)
@@ -44,7 +43,7 @@ static int	ft_get_frame_idx(t_data *data, char c)
 	return (99);
 }
 
-static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
+static int	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
 {
 	char	*d;
 	char	*s;
@@ -67,6 +66,7 @@ static void	my_mlx_pixel_put(t_img *dst, t_img *src, t_xy xyf)
 		}
 		i++;
 	}
+	return (i * j);
 }
 
 static int	_draw(t_data *data)
@@ -84,9 +84,9 @@ static int	_draw(t_data *data)
 		{
 			dest.row = i * TILD_SIZE;
 			dest.col = j * TILD_SIZE;
-			if(data->state_game == 0)
+			if (data->state_game == 0)
 				path = ft_get_first_frame_idx(data, data->map[i][j]);
-			else if(data->state_game == 1)
+			else if (data->state_game == 1)
 				path = ft_get_frame_idx(data, data->map[i][j]);
 			if (path > -1 && path < SET_SIZE)
 				my_mlx_pixel_put(data->frame, data->img_set_global[path], dest);
@@ -94,30 +94,33 @@ static int	_draw(t_data *data)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(data->mlx, data->window, data->frame->img, 0, 0);
-	return (0);
+	return (i * j);
 }
 
 int	ft_image_drawer(t_data *data)
 {
 	t_xy	size;
 	int		draw_return;
+
 	size = data->xy_data.map;
-	if(!data->frame->img)
+	if (!data->frame->img)
 	{
 		data->frame->img = mlx_new_image(data->mlx, (size.col * TILD_SIZE),
-			(size.row * TILD_SIZE));
+				(size.row * TILD_SIZE));
 		if (!data->frame->img)
-			return (1);
+			return (0);
 		data->frame->addr = mlx_get_data_addr(data->frame->img,
-			&data->frame->bit_per_pixel, &data->frame->line_length,
-			&data->frame->endian);
+				&data->frame->bit_per_pixel, &data->frame->line_length,
+				&data->frame->endian);
 		if (!data->frame->addr)
-			return (1);
+			return (0);
 	}
 	draw_return = _draw(data);
-	if(draw_return == 1)
-		return(1);
-	data->state_game = 1;
-	return (0);
+	if (draw_return > 0)
+		mlx_put_image_to_window(data->mlx,
+			data->window,
+			data->frame->img, 0, 0);
+	else
+		return (0);
+	return (1);
 }

@@ -39,6 +39,8 @@
 # define ERR_NO_ITEM 20
 # define ERR_WIN 21
 # define WIN_GAME 22
+# define ERR_ALLOC_DATA 23
+
 
 int	error_layer(int err);
 

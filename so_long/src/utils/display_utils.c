@@ -17,8 +17,8 @@ void	display_image_data(t_img *im)
 	ft_printf("Voici les informations concernant l'image:");
 	ft_printf("Dimentions de l'image ... hauteur: %d largeur : %d",
 		im->height, im->width);
-	ft_printf("voici la taile de la frame %d et la classe : %s",
-		im->frame_size, im->class);
+	ft_printf("voici la taile de la frame %d ",
+		im->frame_size);
 }
 
 void	ft_display_data_info(t_data *data)

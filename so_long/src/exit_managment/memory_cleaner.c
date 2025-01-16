@@ -21,44 +21,42 @@ static int	clean_image_memory(t_data **d, t_img **data)
 		return (1);
 	while (i < SET_SIZE)
 	{
-		mlx_destroy_image((*d)->mlx, data[i]->img);
-		free(data[i]->class);
-		free(data[i]);
+		if (data != NULL && data[i] != NULL)
+		{
+			mlx_destroy_image((*d)->mlx, data[i]->img);
+			free(data[i]);
+		}
 		i++;
 	}
-	mlx_destroy_image((*d)->mlx, (*d)->frame->img);
-	free((*d)->frame);
 	free(data);
+	if ((*d)->frame && (*d)->frame->img)
+		mlx_destroy_image((*d)->mlx, (*d)->frame->img);
+	if ((*d)->frame && (*d)->frame)
+		free((*d)->frame);
 	return (1);
 }
 
 void	*exit_game(t_data *data, int err)
 {
 	int	i;
-	
+
 	i = 0;
-	if (err != -1)
+	while (i <= data->xy_data.map.row)
 	{
-		if (data->map)
-		{
-			while (i <= data->xy_data.map.row)
-			{
-				if (data->map[i])
-					free(data->map[i]);
-				i++;
-			}
-			free(data->map);
-		}
-		if (data->img_set_global)
-			clean_image_memory(&data, data->img_set_global);
+		if (data->map && data->map[i])
+			free(data->map[i]);
+		i++;
 	}
-	if(data->window != NULL)
+	if (data->map)
+		free(data->map);
+	if (data->img_set_global)
+		clean_image_memory(&data, data->img_set_global);
+	if (data->window != NULL)
 		mlx_destroy_window(data->mlx, data->window);
-	if(data->mlx != NULL)
+	if (data->mlx != NULL)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free(data);
 	error_layer(err);
 	exit(0);
-	return (NULL);
 }

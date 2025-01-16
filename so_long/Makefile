@@ -74,7 +74,7 @@ t:
 
 testv: $(OBJS) 
 	$(CC) $(GFLAGS)  $(OBJS) $(LIB) -o $(NAME_TEST)
-	valgrind --leak-check=full --log-file=filename ./$(NAME_TEST) map/standard_map/map3.ber
+	valgrind --leak-check=full --log-file=filename  -s ./$(NAME_TEST) map/standard_map/map3.ber
 
 clean:
 	rm -f $(OBJS) $(OBJS_BONUS)

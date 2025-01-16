@@ -87,9 +87,14 @@ int	check_valide_way(t_data *data)
 	ft_clean_arr(tmp, data->xy_data.map.row);
 	if (data->check_item != data->count_item)
 		return (1);
-	printf("data %d\n", data->count_exit);
 	if (data->count_exit != 0)
 		return (2);
 	print_map(data);
 	return (0);
 }
+
+	/* 
+		//simulation d'une erreur d'alloc
+		ft_clean_arr(tmp, data->xy_data.map.row);
+		tmp = NULL; 
+	*/

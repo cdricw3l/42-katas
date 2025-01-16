@@ -66,6 +66,7 @@ char	**get_map(t_data *data)
 	int		line_count;
 
 	line_count = ft_line_count(data->map_name);
+	data->xy_data.map.row = line_count;
 	if (line_count == 0)
 		return (NULL);
 	map = calloc((line_count + 1), sizeof(char *));
@@ -76,3 +77,7 @@ char	**get_map(t_data *data)
 		return (NULL);
 	return (map);
 }
+
+	/* //simulation d'une erreur d'alloc
+	free(map);
+	map = NULL; */
