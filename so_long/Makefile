@@ -31,6 +31,7 @@ SRCS_BONUS= src_bonus/gnl/get_next_line_utils_bonus.c \
 			src_bonus/hook_managment/hook_manager_bonus.c \
 			src_bonus/hook_managment/fight.c \
 			src_bonus/hook_managment/counter.c \
+			src_bonus/hook_managment/push_obj.c \
 			src_bonus/exit_managment/error_layer_bonus.c \
 			src_bonus/exit_managment/memory_cleaner_bonus.c \
 			src_bonus/initialisation/1_init_bonus.c \

@@ -103,15 +103,6 @@ int	manage_keyboard(int keycode, t_data *data)
 		exit_game(data, 76);
 
 	if (keycode == XK_i || keycode == 79933840)
-	{
-		t_xy des;
-
-		des.col = data->xy_data.begin.col;
-		des.row = data->xy_data.begin.row;
-		if(data->char_state == LEFT)
-			frame_layer(data, data->img_set_global[10], des, 6);
-		else
-			frame_layer(data, data->img_set_global[13], des, 6);
-	}
+		ft_push_object(data);
 	return (0);
 }

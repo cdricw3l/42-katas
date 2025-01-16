@@ -20,5 +20,5 @@ int     ft_fight_checker(t_data *data);
 int     ft_fight_layer(t_data *data);
 void    ft_increase_counter_life(t_data *data);
 void    ft_decrease_counter_life(t_data *data);
-
+int     ft_push_object(t_data *data);
 #endif
