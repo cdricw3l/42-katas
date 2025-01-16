@@ -52,9 +52,14 @@ void ft_fight(t_data *data, t_xy m)
 		}
 		print_map(data);
         ft_decrease_counter_life(data);
-		if(data->life  == 0)
-			frame_layer(data,data->img_set_global[17], data->xy_data.begin, 8);
-		mlx_loop(data->mlx);
+		if(data->life == 0)
+		{
+			if(data->char_state == LEFT)
+				frame_layer(data,data->img_set_global[16], data->xy_data.begin, 8);
+			else
+				frame_layer(data,data->img_set_global[17], data->xy_data.begin, 8);
+		}
+		//mlx_loop(data->mlx);
 	}
 }
 
