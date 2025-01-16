@@ -46,6 +46,8 @@ int	push_img_set(t_data *data, char **path)
 	i = 0;
 	while (i < SET_SIZE)
 	{
+		if(i == 3)
+			return (clean_img_set(&data, i, path));
 		data->img_set_global[i] = malloc(sizeof(t_img) * 1);
 		if (!data->img_set_global[i])
 			return (clean_img_set(&data, i, path));
@@ -75,9 +77,10 @@ int	image_loader(t_data *data, char **path_g)
 	if (!img_set)
 		return (1);
 	r = push_img_set(data, path_g);
-	free(path_g);
 	if (r != SET_SIZE)
 		return (1);
+	
+	free(path_g);
 	printf("voici r %d\n", r);
 	return (0);
 }
