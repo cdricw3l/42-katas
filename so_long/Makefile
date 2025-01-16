@@ -39,6 +39,7 @@ SRCS_BONUS= src_bonus/gnl/get_next_line_utils_bonus.c \
 			src_bonus/image_loader/2_path_loader_bonus.c \
 			src_bonus/image_loader/3_image_loader_bonus.c \
 			src_bonus/image_layer/image_layer_bonus.c \
+			src_bonus/image_layer/frame_layer.c \
 			src_bonus/image_layer/static_image_monster_layer.c \
 			src_bonus/utils/display_utils_bonus.c \
 			src_bonus/utils/xy_utils_bonus.c \

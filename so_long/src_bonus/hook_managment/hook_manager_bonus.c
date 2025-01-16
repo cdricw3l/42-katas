@@ -100,9 +100,12 @@ int	manage_keyboard(int keycode, t_data *data)
 	{
 		t_xy des;
 
-		des.col = 3;
-		des.row = 3;
-		frame_layer(data, data->img_set_global[8], des, 8);
+		des.col = data->xy_data.begin.col;
+		des.row = data->xy_data.begin.row;
+		if(data->char_state == LEFT)
+			frame_layer(data, data->img_set_global[10], des, 6);
+		else
+			frame_layer(data, data->img_set_global[11], des, 6);
 	}
 	return (0);
 }

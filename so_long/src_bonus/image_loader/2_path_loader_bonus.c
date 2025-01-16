@@ -29,6 +29,8 @@ static char	**get_path_g(void)
 	img_path[7] = "tildset/mask/7_mask.xpm";
 	img_path[8] = "tildset/monster/43_Dude_Monster_Jump_8_left.xpm";
 	img_path[9] = "tildset/monster/43_Dude_Monster_Jump_8_right.xpm";
+	img_path[10] = "tildset/hero/36_Pink_Monster_Push_6_left.xpm";
+	img_path[11] = "tildset/hero/36_Pink_Monster_Push_6_right.xpm";
 	return (img_path);
 }
 

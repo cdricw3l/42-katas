@@ -36,7 +36,7 @@ static int	clean_img_set(t_data **data, int idx, char **path)
 	}
 	if (path)
 		free(path);
-	return (1);
+	return (0);
 }
 
 int	push_img_set(t_data *data, char **path)
@@ -63,7 +63,7 @@ int	push_img_set(t_data *data, char **path)
 			return (clean_img_set(&data, i, path));
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int	image_loader(t_data *data, char **path_g)
@@ -75,8 +75,9 @@ int	image_loader(t_data *data, char **path_g)
 	if (!img_set)
 		return (1);
 	r = push_img_set(data, path_g);
-	if (r != 0)
-		return (1);
 	free(path_g);
+	if (r != SET_SIZE)
+		return (1);
+	printf("voici r %d\n", r);
 	return (0);
 }
