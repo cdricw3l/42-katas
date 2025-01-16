@@ -1,15 +1,15 @@
-==255978== Memcheck, a memory error detector
-==255978== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==255978== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==255978== Command: ./so_long_bonus map/bonus_map/map2_bonus.ber
-==255978== Parent PID: 255907
-==255978== 
-==255978== 
-==255978== HEAP SUMMARY:
-==255978==     in use at exit: 0 bytes in 0 blocks
-==255978==   total heap usage: 99,898 allocs, 99,898 frees, 6,956,302 bytes allocated
-==255978== 
-==255978== All heap blocks were freed -- no leaks are possible
-==255978== 
-==255978== For lists of detected and suppressed errors, rerun with: -s
-==255978== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==260237== Memcheck, a memory error detector
+==260237== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==260237== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==260237== Command: ./so_long_bonus map/bonus_map/map2_bonus.ber
+==260237== Parent PID: 260233
+==260237== 
+==260237== 
+==260237== HEAP SUMMARY:
+==260237==     in use at exit: 0 bytes in 0 blocks
+==260237==   total heap usage: 100,044 allocs, 100,044 frees, 6,962,858 bytes allocated
+==260237== 
+==260237== All heap blocks were freed -- no leaks are possible
+==260237== 
+==260237== For lists of detected and suppressed errors, rerun with: -s
+==260237== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
