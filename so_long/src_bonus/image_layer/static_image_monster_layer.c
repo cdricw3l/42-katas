@@ -158,7 +158,7 @@ int	monster_draw(t_data *data)
     mlx_put_image_to_window(data->mlx,data->window,data->frame->img,0,0);
     mlx_destroy_image(data->mlx, new->img);
     free(new);
-    usleep(80000);
+    usleep(100000);
     return(0);
 }
 
