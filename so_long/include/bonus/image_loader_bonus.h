@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_loader.h                                     :+:      :+:    :+:   */
+/*   image_loader_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 05:12:19 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:15:36 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:56:11 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGE_LOADER_H
-# define IMAGE_LOADER_H
+#ifndef IMAGE_LOADER_BONUS_H
+# define IMAGE_LOADER_BONUS_H
 
 # include "so_long_bonus.h"
 

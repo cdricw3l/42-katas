@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialisation.h                                   :+:      :+:    :+:   */
+/*   initialisation_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:16:34 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:57:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITIALISATION_H
-# define INITIALISATION_H
+#ifndef INITIALISATION_BONUS_H
+# define INITIALISATION_BONUS_H
 
 # include "so_long_bonus.h"
 

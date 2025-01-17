@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_manager.c                                     :+:      :+:    :+:   */
+/*   hook_manager_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/01/14 01:47:02 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:37:13 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	ft_is_keycode_in_set(int keycode)
 
 static void	ft_update_mouvement(t_data **d, t_xy *begin, t_xy init)
 {
-
 	(*d)->count_mouvement++;
 	if ((*d)->map[begin->row][begin->col] == 'X')
 	{
@@ -67,7 +66,6 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 
 	i.row = b->row;
 	i.col = b->col;
-
 	if (key == XK_a || key == XK_Left)
 		if (ft_check_target(d, (*d)->map[b->row][b->col - 1]))
 			b->col -= 1;
@@ -82,7 +80,7 @@ static void	ft_update_position(t_data **d, int key, t_xy *b)
 			b->row -= 1;
 	if (i.row != b->row || i.col != b->col)
 		ft_update_mouvement(d, b, i);
-	if(ft_fight_checker(*d) == 1)
+	if (ft_fight_checker(*d) == 1)
 		ft_fight_layer(*d);
 	else
 		ft_printf("PAS de danger pierro la lune \n");
@@ -101,7 +99,6 @@ int	manage_keyboard(int keycode, t_data *data)
 		ft_update_position(&data, keycode, begin);
 	if (keycode == XK_Escape || keycode == 79933840)
 		exit_game(data, 76);
-
 	if (keycode == XK_i || keycode == 79933840)
 		ft_push_object(data);
 	return (0);

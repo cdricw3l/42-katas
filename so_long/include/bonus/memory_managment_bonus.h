@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_managment.h                                 :+:      :+:    :+:   */
+/*   memory_managment_bonus.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 00:45:09 by cb                #+#    #+#             */
-/*   Updated: 2025/01/14 01:45:12 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:55:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMORY_MANAGMENT_H
-# define MEMORY_MANAGMENT_H
+#ifndef MEMORY_MANAGMENT_BONUS_H
+# define MEMORY_MANAGMENT_BONUS_H
 
 # include "so_long_bonus.h"
 

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_managment.h                                  :+:      :+:    :+:   */
+/*   error_managment_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:13:51 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:57:55 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MANAGMENT_H
-# define ERROR_MANAGMENT_H
+#ifndef ERROR_MANAGMENT_BONUS_H
+# define ERROR_MANAGMENT_BONUS_H
 
 # include "so_long_bonus.h"
-
 
 # define O_LAYER -1
 # define ERR_NO_MAP 0

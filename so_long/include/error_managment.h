@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_managment.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 15:13:54 by cb                #+#    #+#             */
-/*   Updated: 2025/01/13 01:13:51 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:54:31 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@
 # define WIN_GAME 22
 # define ERR_ALLOC_DATA 23
 # define ERR_DRAW 23
-
 
 int	error_layer(int err);
 

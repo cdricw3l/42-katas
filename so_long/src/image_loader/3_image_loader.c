@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_image_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cb <cb@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:23:15 by cb                #+#    #+#             */
-/*   Updated: 2025/01/14 00:41:13 by cb               ###   ########.fr       */
+/*   Updated: 2025/01/17 05:33:57 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	clean_img_set(t_data **data, int idx, char **path)
 	}
 	if (path)
 		free(path);
-	if( i == idx)
+	if (i == idx)
 		ft_printf("[ cleanner ] Memory image is clean\n");
 	return (1);
 }
