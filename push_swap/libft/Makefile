@@ -43,13 +43,13 @@ SRCS=	ft_putchar_fd.c \
 		ft_cmp_int.c \
 		ft_swap_ptr.c \
 		ft_is_sort.c \
-		ft_random_int.c \
 		ft_isset.c \
 		ft_print_bit_8.c \
 		ft_print_bit_16.c \
 		ft_print_bit_32.c \
 		ft_print_bit_64.c \
 		ft_index_of.c \
+		ft_get_max_value.c \
 
 BONUS=	ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
@@ -94,4 +94,9 @@ test: r
 t:  test
 	./${NAME_TEST}
 
-.phony: clean fclean re all bonus
+gdev:
+	cd .. && git add .
+	git commit -m $(NAME)/$(DATE) 
+	git push
+
+.phony: clean fclean re all bonus gdev

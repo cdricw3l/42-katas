@@ -6,7 +6,7 @@ OBJS=$(SRCS:.c=.o)
 NAME=push_swap
 DATE=$(shell date | sed 's/ /_/g')
 
-all: $(NAME)
+all: lib libft-update $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) ${LIB} -o $(NAME)

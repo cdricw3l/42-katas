@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_get_max_value.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 12:13:14 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/16 21:49:22 by cw3l             ###   ########.fr       */
+/*   Created: 2024/12/14 11:59:12 by cbouhadr          #+#    #+#             */
+/*   Updated: 2024/12/14 11:59:33 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_get_max_value(int *arr, int size)
 {
-	size_t	i;
+	int	i;
+	int	high;
 
-	i = 0;
-	if (!b && len == 0)
-		return (NULL);
-	while (i < len)
+	i = 1;
+	high = arr[0];
+	while (i < size)
 	{
-		((unsigned char *)b)[i] = (unsigned char)c;
+		if (arr[i] > high)
+			high = arr[i];
 		i++;
 	}
-	return (b);
+	return (high);
 }
