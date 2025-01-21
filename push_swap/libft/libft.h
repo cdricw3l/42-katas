@@ -80,13 +80,12 @@ void	ft_swap_ptr(void *p1, void *p2, int size);
 void	ft_bubble_sort(void *arr, int nb, int t,
 			int (*cmp)(void *p1, void *p2));
 int		ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
-void	ft_generate_number(int *arr, int size);
+int 	*ft_generate_number(int size);
 void	ft_print_bit_8(int n);
 void	ft_print_bit_16(int n);
 void	ft_print_bit_32(int n);
 void	ft_print_bit_64(int n);
 int		ft_index_of(int *arr, int len, int n);
-void 	ft_generate_number(int *arr, int size);
 int		ft_get_max_value(int *arr, int size);
 
 #endif

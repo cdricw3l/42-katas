@@ -17,11 +17,18 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-typedef struct s_num_lst
+
+
+#define PRINT_INT(msg) printf("%d ", msg)
+#define PRINT_2INT(msg1, msg2) printf("%d - %d\n", msg1, msg2)
+#define PRINT_CHAR(msg) printf("%c", msg)
+
+typedef struct s_pile
 {
-    int     value;
-    void    *next;
-} t_num_lst;
+    int    *arr;
+    int     len;
+    
+} t_pile;
 
 
 int     ft_validation_arg(char **argv);
@@ -30,24 +37,25 @@ int     ft_are_space(char *str);
 int     number_of_int(char **argv);
 void    ft_fill_process(char **argv, int *arr);
 int     *ft_parsing(char **argv, int len);
-void    ft_print_arr(int *arr);
+void    ft_print_arr(int *arr, int len);
 int     get_high(int *arr, int size);
 int     get_low(int *arr, int size);
 int     ft_print_error();
 int     get_low_idx(int *arr, int size);
 void    ft_two_or_tree_args(int *arr, int len);
 int     ft_size_of_array(int *arr);
+void    ft_get_stack_data(t_pile *stack);
 //instruction
-void    ft_swap(int *stack, int  a, int b, char c);
+void    ft_swap(int *stack, int pile);
 
 // rotate >>
-void	ft_rotate(int *stack, char c);
+void	ft_rotate(int *stack, int len ,char c);
 // reverse rotate <<
-void	ft_reverse_rotate(int *stack, char c);
+void	ft_reverse_rotate(int *stack, int len, char c);
 void	ft_push_a(int *dest, int *src);
-void	ft_push_b(int *dest, int *src);
+void	ft_push_b(int *dest, int *src, int len);
 void	ft_qsort_int(int *base, int low, int high);
-int     ft_find_cible(int arr[], int pivot, int len);
-
+int        ft_find_cible(int arr[], int pivot, int len);
+int	    ft_clean_memory(t_pile **stack_a, t_pile **stack_b);
 
 #endif

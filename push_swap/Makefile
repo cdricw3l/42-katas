@@ -1,12 +1,12 @@
-CC=cc
+CC= gcc
 GFLAGS= -Wall -Werror -Wextra -fsanitize=address -g 
-LIB= -L./libft -lft -L./libftprintf -lftprintf 
+LIB= -Llibft -lft -Llibftprintf -lftprintf 
 SRCS=$(wildcard srcs/*.c)
 OBJS=$(SRCS:.c=.o)
 NAME=push_swap
 DATE=$(shell date | sed 's/ /_/g')
 
-all: lib libft-update $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) ${LIB} -o $(NAME)
@@ -45,7 +45,7 @@ copy-swap:
 #$(CC) $(GFLAGS) test/$(testunit).c -Llib -lft -lftprintf -o $(testunit) 
 
 test:
-	$(CC) $(GFLAGS) test/*.c srcs/push_swap_utils.c -Llib -lft -lftprintf -o test/test
+	$(CC) $(GFLAGS) test/*.c srcs/* ${LIB}  -o test/test
 	
 check:
 	test/checker_Mac42 $(ARGS) 

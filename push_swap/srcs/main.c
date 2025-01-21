@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <limits.h>
 
 int	ft_init_progr(char **argv, int **arr)
 {
@@ -32,7 +33,7 @@ int	ft_init_progr(char **argv, int **arr)
 
 
 
-void	ft_push_swap(int *a, int len)
+/* void	ft_push_swap(int *a, int len)
 {
 	int	*b;
 	int value_max;
@@ -83,7 +84,8 @@ void	ft_push_swap(int *a, int len)
 	}
 	ft_print_arr(a);
 	(void)value_max;
-}
+	free(b);
+} */
 
 // int	main(int argc, char **argv)
 // {
@@ -92,22 +94,61 @@ void	ft_push_swap(int *a, int len)
 // 	int	tx;
 
 // 	arr = NULL;
-// 	// if (argc < 2)
-// 	// 	return (ft_print_error());
-// 	// len = number_of_int(&argv[1]);
-// 	// tx = ft_init_progr(&argv[1], &arr);
-// 	// if (tx == -1)
-// 	// 	return (ft_print_error());
-// 	// else
-// 	// {
-// 	// 	if (len == 2 || len == 3)
-// 	// 		ft_two_or_tree_args(arr, len);
-// 	// 	else
-// 	// 		ft_push_swap(arr, len);
-// 	// }
+// 	/* if (argc < 2)
+// 		return (ft_print_error());
+// 	len = number_of_int(&argv[1]);
+// 	tx = ft_init_progr(&argv[1], &arr);
+// 	if (tx == -1)
+// 		return (ft_print_error());
+// 	else
+// 	{TRUMP
+// 		if (len == 2 || len == 3)
+// 			ft_two_or_tree_args(arr, len);
+// 		else
+// 			ft_push_swap(arr, len);
+// 	} */
 
-// 	int tab[] = {2, 5, 7, 9, 3, 1, 4, 6, '\0'};
-// 	ft_print_arr(tab);
-// 	ft_push_swap(tab, 9);
+// 	int tab[] = {9, 7, 10, 4, 6};
+// 	int tab2[5];
+// 	int i;
+// 	int j;
+
+// 	len = sizeof(tab) / sizeof(tab[0]);
+
+
+// 	j = 8;
+// 	while (j >= 0)
+// 	{
+// 		printf("Voici le bit %d : ", j);
+// 		int i = 0;
+// 		while (i < 5)
+// 		{
+// 			char bit  = ((tab[i] >> j) & 1) + '0';
+// 			if(bit == '1')
+// 				printf("%c & %d\n ", bit, tab[i]);
+// 				ft_push_b(tab2, tab);
+// 			len--;
+// 			i++;
+// 		}
+// 		printf("\n");
+// 		j--;
+// 	}
+// 	printf("\n");
+	
+// 	ft_print_arr(tab2, 5);
+// 	j = 8;
+// 	while (j >= 0)
+// 	{
+// 		printf("Voici le bit %d : ", j);
+// 		int i = 0;
+// 		while (i < 5)
+// 		{
+// 			char bit  = ((tab2[i] >> j) & 1) + '0';
+// 			printf("%c ", bit);
+// 			i++;
+// 		}
+// 		printf("\n");
+// 		j--;
+// 	}
 // 	return (0);
 // }

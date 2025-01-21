@@ -27,12 +27,16 @@ static int ft_is_used(int *arr, int len, int value)
 }
 
 
-void ft_generate_number(int *arr, int size)
+int *ft_generate_number(int size)
 {
     int i;
     int random_num;
+    int *arr;
 
     i = 0;
+    arr = ft_calloc(size, sizeof(int));
+    if(!arr)
+        return(NULL);
     while (i < size)
     {
        random_num =  random() % size + 1;
@@ -42,5 +46,5 @@ void ft_generate_number(int *arr, int size)
             i++;
        }
     }
-    
+    return(arr);
 }

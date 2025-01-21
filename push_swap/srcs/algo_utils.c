@@ -195,36 +195,36 @@ void ft_radix_sort(int *arr, int len)
 // }
 
 
-int main(void)
-{
-	int arr[] = {5, 9, 7, 1, 3, '\0'};
-	//int value_max;
-	//int value_min;
-	//int pivot;
-//
-	//int len = sizeof(arr) / sizeof(arr[0]);
-	//ft_generate_number(arr, 10);
-	ft_print_arr(arr);
+// int main(void)
+// {
+// 	int arr[] = {5, 9, 7, 1, 3, '\0'};
+// 	//int value_max;
+// 	//int value_min;
+// 	//int pivot;
+// //
+// 	//int len = sizeof(arr) / sizeof(arr[0]);
+// 	//ft_generate_number(arr, 10);
+// 	ft_print_arr(arr);
 
-	ft_qsort_int(arr, 0, 5);
-	ft_print_arr(arr);
-	// value_min =  get_low(arr, len);
-	// value_max =  get_high(arr, len);
-	// pivot = (value_max - value_min) / 2;
+// 	ft_qsort_int(arr, 0, 5);
+// 	ft_print_arr(arr);
+// 	// value_min =  get_low(arr, len);
+// 	// value_max =  get_high(arr, len);
+// 	// pivot = (value_max - value_min) / 2;
 
-	// printf("voici valeur low: %d. Voici valeur max %d et le nombre d'element %d et le pivot %d\n", value_min, value_max, 10, pivot);
-	// int i= ft_find_cible(arr, pivot,len);
-	// printf("voici l'index1 %d\n", i);
-	// printf("arr[i] %d\n", arr[i]);
-	// int j = ft_find_cible(arr, arr[i],len);
-	// printf("voici l'index1 %d\n", j);
-	// printf("arr[i] %d\n", arr[j]);
-	// int k = ft_find_cible(arr, arr[j],len);
-	// printf("voici l'index1 %d\n", k);
-	// printf("arr[i] %d\n", arr[k]);
-	// int l = ft_find_cible(arr, arr[k],len);
-	// printf("voici l'index1 %d\n", l);
-	// printf("arr[i] %d\n", arr[l]);
+// 	// printf("voici valeur low: %d. Voici valeur max %d et le nombre d'element %d et le pivot %d\n", value_min, value_max, 10, pivot);
+// 	// int i= ft_find_cible(arr, pivot,len);
+// 	// printf("voici l'index1 %d\n", i);
+// 	// printf("arr[i] %d\n", arr[i]);
+// 	// int j = ft_find_cible(arr, arr[i],len);
+// 	// printf("voici l'index1 %d\n", j);
+// 	// printf("arr[i] %d\n", arr[j]);
+// 	// int k = ft_find_cible(arr, arr[j],len);
+// 	// printf("voici l'index1 %d\n", k);
+// 	// printf("arr[i] %d\n", arr[k]);
+// 	// int l = ft_find_cible(arr, arr[k],len);
+// 	// printf("voici l'index1 %d\n", l);
+// 	// printf("arr[i] %d\n", arr[l]);
 
-	return (0);
-}
+// 	return (0);
+// }

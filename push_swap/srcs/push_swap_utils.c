@@ -134,12 +134,12 @@ int ft_validation_arg(char **argv)
 	return (0);  
 }
 
-void    ft_print_arr(int *arr)
+void    ft_print_arr(int *arr, int len)
 {
 	int i;
 
 	i = 0;
-	while (arr && arr[i] != '\0')
+	while (i < len)
 		printf(" %d", arr[i++]);
 	printf("\n");
 }
@@ -153,7 +153,7 @@ int ft_print_error()
 void    ft_two_args(int *arr)
 {
 	if(arr[0] > arr[1])
-		ft_swap(arr, 0, 1, 'a');
+		ft_swap(arr, 1);
 }
 
 void    ft_two_or_tree_args(int *arr, int len)
@@ -161,18 +161,18 @@ void    ft_two_or_tree_args(int *arr, int len)
 	if (len == 2)
 	{
 		if(arr[0] > arr[1])
-			ft_swap(arr, 0, 1, 'a');
+			ft_swap(arr, 1);
 	} 
 	else if(len == 3)
 	{
 		if(arr[0] > arr[1])
-			ft_swap(arr, 0, 1, 'a');
+			ft_swap(arr,  1);
 		if(arr[2] < arr[0])
-			ft_rotate(arr, 'a');
+			ft_rotate(arr, len,'a');
 		if(arr[1] > arr[2])
 		{
-			ft_reverse_rotate(arr, 'a');
-			ft_swap(arr, 0, 1, 'a');
+			ft_reverse_rotate(arr, len ,'a');
+			ft_swap(arr, 1);
 		}
 	}
 }
@@ -185,5 +185,51 @@ int ft_size_of_array(int *arr)
 	while (arr[i])
 		i++;
 	return (i);
+}
 
+void ft_get_stack_data(t_pile *stack)
+{
+	int i;
+
+	i = 0;
+	ft_printf("[ ADDR ] ==> %p/n", stack);
+	ft_printf("[ ARR SIZE ] ==> %d/n", stack->len);
+	while (i < stack->len)
+	{
+		ft_printf("[ INT N°%d ] ==> %d bit format: ",
+				i, stack->arr[i]);
+		ft_print_bit_16(stack->arr[i]);
+		i++;
+	}
+}
+
+
+
+
+int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
+{
+	ft_printf("Start clean fonction\n");
+	if (stack_a)
+	{
+		if ((*stack_a)->arr)
+		{
+			free((*stack_a)->arr);
+			free(*stack_a);
+			ft_printf("Stack A clean\n");
+		}
+	}
+	else
+		return(1);
+	if (stack_b)
+	{
+		if ((*stack_b)->arr)
+		{
+			free((*stack_b)->arr);
+			free(*stack_b);
+			ft_printf("Stack B clean\n");
+		}
+	}
+	else
+		return(1);
+	return (0);
 }

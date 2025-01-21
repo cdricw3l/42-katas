@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
-#include "../include/test.h"
+// #include "../include/libft.h"
+// #include "../include/test.h"
 
-int    main()
-{
-    validation_arg_unit();
-    return (0);
-}
+// int    main()
+// {
+//     validation_arg_unit();
+//     return (0);
+// }

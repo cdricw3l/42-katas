@@ -12,16 +12,16 @@
 
 #include "../include/push_swap.h"
 
-void	ft_swap(int *stack, int a, int b, char c)
+void	ft_swap(int *stack, int pile)
 {
 	int	tmp;
 
 	if (stack)
 	{
-		tmp = stack[a];
-		stack[a] = stack[b];
-		stack[b] = tmp;
-		if (c == 'a')
+		tmp = stack[0];
+		stack[0] = stack[1];
+		stack[1] = tmp;
+		if (pile == 1)
 			write(1, "sa", 2);
 		else
 			write(1, "sb", 2);
@@ -29,20 +29,17 @@ void	ft_swap(int *stack, int a, int b, char c)
 	}
 }
 
-void	ft_reverse_rotate(int *stack, char c)
+void	ft_reverse_rotate(int *stack, int len ,char c)
 {
 	int	tmp;
 	int	i;
-	int	len;
 	//int	j;
 
-	len = ft_size_of_array(stack) - 1;
-	//j = len;
 	if (stack)
 	{
 		i = 0;
 		tmp = stack[0];
-		while (i < len)
+		while (i < len - 1)
 		{
 			stack[i] = stack[i + 1];
 			i++;
@@ -56,24 +53,20 @@ void	ft_reverse_rotate(int *stack, char c)
 	}
 }
 
-void	ft_rotate(int *stack, char c)
+void	ft_rotate(int *stack, int len,char c)
 {
 	int	tmp;
-	int	len;
-	int	j;
 
-	len = ft_size_of_array(stack) - 1;
-	j = len;
 	if (stack)
 	{
-		tmp = stack[len];
+		tmp = stack[len - 1];
+		
 		while (len > 0)
 		{
-			stack[len] = stack[len - 1];
+			stack[len - 1] = stack[len - 2];
 			len--;
 		}
-		stack[len] = tmp;
-		stack[j + 1] = '\0';
+		stack[0] = tmp;
 		if (c == 'a')
 			write(1, "ra", 3);
 		else
@@ -101,22 +94,20 @@ void	ft_push_a(int *dest, int *src)
 	}
 }
 
-void	ft_push_b(int *dest, int *src)
+void	ft_push_b(int *dest, int *src, int len)
 {
 	int	len_dst;
 	int	len_src;
 
 	len_dst = ft_size_of_array(dest);
-	len_src = ft_size_of_array(src);
+	len_src = len;
 	if (len_src > 0)
 	{
 		ft_memmove(dest + 1, dest, len_dst * 4);
 		dest[0] = src[0];
 		ft_memmove(src, src + 1, (len_src - 1) * 4);
-		dest[len_dst + 1] = '\0';
-		src[len_src - 1] = '\0';
-		write(1, "pb", 2);
-		write(1, "\n", 2);
+		//write(1, "pb", 2);
+		//write(1, "\n", 2);
 	}
 }
 
