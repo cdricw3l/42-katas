@@ -84,12 +84,12 @@ void	ft_push(t_pile **dest, t_pile **src)
 	if((*src)->len > 0)
 	{
 		(*src)->len--;
-		ft_memmove((*src), (*src) + 1, (*src)->len * sizeof(int));
+		ft_memmove((*src)->arr , (*src)->arr + 1, (*src)->len * sizeof(int));
 		printf("mois\n");
 	}
 	if((*dest)->len > 0)
 	{
-		ft_memmove((*dest) + 1, (*dest), (*dest)->len * sizeof(int));
+		ft_memmove((*dest)->arr + 1, (*dest)->arr, (*dest)->len * sizeof(int));
 	}
 	(*dest)->len++;
 	(*dest)->arr[0] = value;
