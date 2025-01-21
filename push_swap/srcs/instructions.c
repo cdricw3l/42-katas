@@ -53,26 +53,28 @@ void	ft_reverse_rotate(int *stack, int len ,char c)
 	}
 }
 
-void	ft_rotate(int *stack, int len,char c)
+int	ft_rotate(t_pile *stack)
 {
 	int	tmp;
+	int len;
 
-	if (stack)
+	if (!stack || !stack->arr)
+		return(1);
+	len = stack->len - 1;
+	assert(len == 4);
+	tmp = stack->arr[len];
+	while (len > 0)
 	{
-		tmp = stack[len - 1];
-		
-		while (len > 0)
-		{
-			stack[len - 1] = stack[len - 2];
-			len--;
-		}
-		stack[0] = tmp;
-		if (c == 'a')
-			write(1, "ra", 3);
-		else
-			write(1, "rb", 3);
-		write(1, "\n", 2);
+		stack->arr[len] = stack->arr[len - 1];
+		len--;
 	}
+	stack->arr[0] = tmp;
+	if (stack->stack_name == 'a')
+		write(1, "ra", 3);
+	else
+		write(1, "rb", 3);
+	write(1, "\n", 2);
+	return(0);
 }
 
 void	ft_push_a(int *dest, int *src)
@@ -106,6 +108,7 @@ void	ft_push_b(int *dest, int *src, int len)
 		ft_memmove(dest + 1, dest, len_dst * 4);
 		dest[0] = src[0];
 		ft_memmove(src, src + 1, (len_src - 1) * 4);
+
 		//write(1, "pb", 2);
 		//write(1, "\n", 2);
 	}

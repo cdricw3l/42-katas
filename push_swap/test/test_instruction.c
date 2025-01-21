@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <assert.h>
 
 int *ft_reverse_arr(int *arr, int len)
 {
@@ -33,7 +32,7 @@ int *ft_reverse_arr(int *arr, int len)
     return(rev_arr);
 }
 
-t_pile *ft_new_stack(int len)
+t_pile *ft_new_stack(int len, char name)
 {
     t_pile *new_s;
 
@@ -44,6 +43,7 @@ t_pile *ft_new_stack(int len)
     if(!new_s || !new_s->arr)
         return(NULL);
     new_s->len = len;
+    new_s->stack_name = name;
     return(new_s);
 }
 int ft_test_push(void)
@@ -52,12 +52,21 @@ int ft_test_push(void)
     t_pile *stack_a;
     t_pile *stack_b;
 
-    stack_a = ft_new_stack(5);
-    stack_b = ft_new_stack(5);
+    stack_a = ft_new_stack(5, 97);
+    stack_b = ft_new_stack(5, 98);
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
+
+    // ft_get_stack_data(stack_a);
+    // ft_get_stack_data(stack_b);
+
+    int g = ft_generate_number(stack_a->arr, stack_a->len);
+    assert(g == 0);
     ft_get_stack_data(stack_a);
-    ft_get_stack_data(stack_b);
+    free(stack_a->arr);
+    stack_a->arr = NULL;
+    ft_rotate(stack_a);
+    ft_get_stack_data(stack_a);
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }

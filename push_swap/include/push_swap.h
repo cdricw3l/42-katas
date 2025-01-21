@@ -16,6 +16,8 @@
 #include "../libftprintf/include/ft_printf.h"
 #include "../libft/libft.h"
 #include <stdio.h>
+#include <assert.h>
+
 
 
 
@@ -25,6 +27,7 @@
 
 typedef struct s_pile
 {
+    char    stack_name;
     int    *arr;
     int     len;
     
@@ -49,7 +52,7 @@ void    ft_get_stack_data(t_pile *stack);
 void    ft_swap(int *stack, int pile);
 
 // rotate >>
-void	ft_rotate(int *stack, int len ,char c);
+int	ft_rotate(t_pile *stack);
 // reverse rotate <<
 void	ft_reverse_rotate(int *stack, int len, char c);
 void	ft_push_a(int *dest, int *src);
