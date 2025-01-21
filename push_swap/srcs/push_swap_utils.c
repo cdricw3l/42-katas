@@ -194,24 +194,30 @@ void ft_get_stack_data(t_pile *stack)
 	i = 0;
 	if (stack)
 	{
-		ft_printf("[ NAME ] %c\n", stack->stack_name);
+		ft_printf("====== stack %c info ======\n",stack->stack_name);
+		ft_printf("[ NAME ] %c\n" ,stack->stack_name);
 		ft_printf("[ ADDR ] %p\n", stack);
 		ft_printf("[ ARR SIZE ] %d\n", stack->len);
 		ft_printf("[ Nb MOVE ] %d\n", stack->mvm_counter);
 		ft_printf("[ ADDR ARR] %p\n", stack->arr);
+		ft_printf("\n");
 		if(stack->arr)
 		{
 			while (i < stack->len)
 			{
-				ft_printf("[ INT N°%d ] ==> %d bit format: ",
-						i, stack->arr[i]);
-				ft_print_bit_16(stack->arr[i]);
+				if(i < stack->len)
+				{
+					ft_printf("[ INT N°%d ] ==> %d : ", i, stack->arr[i]);
+					ft_print_bit_16(stack->arr[i]);
+				}
+				ft_printf("\n");
 				i++;
 			}
 		}
 		ft_printf("\n");
 	}
 }
+
 void ft_get_cpm_data(t_pile *stack_1, t_pile *stack_2)
 {
 	int i;
@@ -219,26 +225,22 @@ void ft_get_cpm_data(t_pile *stack_1, t_pile *stack_2)
 	i = 0;
 	if (stack_1 && stack_2)
 	{
-		ft_printf("[ NAME ] %c 			[ NAME ] %c\n", 
-				stack_1->stack_name, stack_2->stack_name);
-		ft_printf("[ ADDR ] %p			[ ADDR ] %p\n",
-				stack_1, stack_2);
-		ft_printf("[ ARR SIZE ] %d						[ ARR SIZE ] %d\n",
-				stack_1->len, stack_2->len);
-		ft_printf("[ Nb MOVE ] %d						[ Nb MOVE ] %d\n",
-				stack_1->mvm_counter, stack_2->mvm_counter);
-		ft_printf("[ ADDR ARR] %p						[ ADDR ARR] %p\n",
-				stack_1->arr,stack_2->arr);
+		ft_printf("====== stack %c info ======",stack_1->stack_name);
+		ft_printf("[ NAME ] %c " ,stack_1->stack_name);
+		ft_printf("[ ADDR ] %p\n", stack_1);
+		ft_printf("[ ARR SIZE ]%d\n", stack_1->len);
+		ft_printf("[ Nb MOVE ] %d\n", stack_1->mvm_counter);
+		ft_printf("[ ADDR ARR] %p\n", stack_1->arr);
+		ft_printf("\n");
 		if(stack_1->arr)
 		{
 			while (i < stack_1->len)
 			{
-				ft_printf("[ INT N°%d ] ==> %d bit format: ",
-						i, stack_1->arr[i]);
-				ft_print_bit_16(stack_1->arr[i]);
-				ft_printf("						[ INT N°%d ] ==> %d bit format: ",
-						i, stack_2->arr[i]);
-				ft_print_bit_16(stack_1->arr[i]);
+				if(i < stack_1->len)
+				{
+					ft_printf("[ INT N°%d ] ==> %d : ", i, stack_1->arr[i]);
+					ft_print_bit_16(stack_1->arr[i]);
+				}
 				ft_printf("\n");
 				i++;
 			}

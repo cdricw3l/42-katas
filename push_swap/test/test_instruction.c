@@ -52,25 +52,28 @@ int ft_test_push(void)
     
     t_pile *stack_a;
     t_pile *stack_b;
+    int n;
 
-    stack_a = ft_new_stack(5,5,97);
-    stack_b = ft_new_stack(5,0,98);
+    n = 5;
+    stack_a = ft_new_stack(n, n, 97);
+    stack_b = ft_new_stack(n, 0, 98);
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
-
-    // ft_get_stack_data(stack_a);
-    //ft_get_stack_data(stack_b);
-
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
-
-
     while (stack_a->len > 0)
     {
         ft_push(&stack_b, &stack_a);
-        ft_get_cpm_data(stack_a, stack_b);
     }
-        
+    ft_get_stack_data(stack_a);
+    ft_get_stack_data(stack_b);
+    while (stack_b->len > 0)
+    {
+        ft_push(&stack_a, &stack_b);
+    }
+    ft_get_stack_data(stack_a);
+    ft_get_stack_data(stack_b);
+    assert(stack_a->mvm_counter + stack_b->mvm_counter == n * 2);
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }

@@ -70,22 +70,19 @@ int	ft_rotate(t_pile *stack)
 	return (0);
 }
 
-void	ft_push(t_pile **dest, t_pile **src)
+int	ft_push(t_pile **dest, t_pile **src)
 {
-
 	int value;
 
-	// if (!dest || !src ||!dest->arr || !src->arr)
-	// 	return ;
-
+	if(!dest || !src)
+		return (1);
 	if((*src)->len == 0)
-		return ;
+		return (1);
 	value = (*src)->arr[0];
 	if((*src)->len > 0)
 	{
 		(*src)->len--;
 		ft_memmove((*src)->arr , (*src)->arr + 1, (*src)->len * sizeof(int));
-		printf("mois\n");
 	}
 	if((*dest)->len > 0)
 	{
@@ -93,24 +90,8 @@ void	ft_push(t_pile **dest, t_pile **src)
 	}
 	(*dest)->len++;
 	(*dest)->arr[0] = value;
-}
-
-void	ft_push_b(int *dest, int *src, int len)
-{
-	int	len_dst;
-	int	len_src;
-
-	len_dst = ft_size_of_array(dest);
-	len_src = len;
-	if (len_src > 0)
-	{
-		ft_memmove(dest + 1, dest, len_dst * 4);
-		dest[0] = src[0];
-		ft_memmove(src, src + 1, (len_src - 1) * 4);
-
-		//write(1, "pb", 2);
-		//write(1, "\n", 2);
-	}
+	(*src)->mvm_counter++;
+	return(0);
 }
 
 // int main(void)
