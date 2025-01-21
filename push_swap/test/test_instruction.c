@@ -44,6 +44,7 @@ t_pile *ft_new_stack(int len, char name)
         return(NULL);
     new_s->len = len;
     new_s->stack_name = name;
+    new_s->mvm_counter = 0;
     return(new_s);
 }
 int ft_test_push(void)
@@ -62,11 +63,15 @@ int ft_test_push(void)
 
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
+
     ft_get_stack_data(stack_a);
-    free(stack_a->arr);
-    stack_a->arr = NULL;
+
     ft_rotate(stack_a);
+    
     ft_get_stack_data(stack_a);
+    ft_reverse_rotate(stack_a);
+    ft_get_stack_data(stack_a);
+    
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }

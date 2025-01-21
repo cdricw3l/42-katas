@@ -30,6 +30,7 @@ typedef struct s_pile
     char    stack_name;
     int    *arr;
     int     len;
+    int     mvm_counter;
     
 } t_pile;
 
@@ -54,7 +55,7 @@ void    ft_swap(int *stack, int pile);
 // rotate >>
 int	ft_rotate(t_pile *stack);
 // reverse rotate <<
-void	ft_reverse_rotate(int *stack, int len, char c);
+int	ft_reverse_rotate(t_pile *stack);
 void	ft_push_a(int *dest, int *src);
 void	ft_push_b(int *dest, int *src, int len);
 void	ft_qsort_int(int *base, int low, int high);

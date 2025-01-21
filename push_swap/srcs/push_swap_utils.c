@@ -192,20 +192,24 @@ void ft_get_stack_data(t_pile *stack)
 	int i;
 
 	i = 0;
-	ft_printf("[ NAME ] %c\n", stack->stack_name);
-	ft_printf("[ ADDR ] %p\n", stack);
-	ft_printf("[ ARR SIZE ] %d\n", stack->len);
-	if(stack->arr)
+	if (stack)
 	{
-		while (i < stack->len)
+		ft_printf("[ NAME ] %c\n", stack->stack_name);
+		ft_printf("[ ADDR ] %p\n", stack);
+		ft_printf("[ ARR SIZE ] %d\n", stack->len);
+		ft_printf("[ Nb MOVE ] %d\n", stack->mvm_counter);
+		if(stack->arr)
 		{
-			ft_printf("[ INT N°%d ] ==> %d bit format: ",
-					i, stack->arr[i]);
-			ft_print_bit_16(stack->arr[i]);
-			i++;
+			while (i < stack->len)
+			{
+				ft_printf("[ INT N°%d ] ==> %d bit format: ",
+						i, stack->arr[i]);
+				ft_print_bit_16(stack->arr[i]);
+				i++;
+			}
 		}
+		ft_printf("\n");
 	}
-	ft_printf("\n");
 }
 
 
@@ -214,23 +218,19 @@ void ft_get_stack_data(t_pile *stack)
 int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
 {
 	ft_printf("Start clean fonction\n");
-	if (stack_a)
+	if (*stack_a)
 	{
 		if ((*stack_a)->arr)
 			free((*stack_a)->arr);
 		free(*stack_a);
 		ft_printf("Stack A clean\n");
 	}
-	else
-		return(1);
-	if (stack_b)
+	if (*stack_b)
 	{
 		if ((*stack_b)->arr)
 			free((*stack_b)->arr);
 		free(*stack_b);
 		ft_printf("Stack B clean\n");
 	}
-	else
-		return(1);
 	return (0);
 }
