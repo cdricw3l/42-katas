@@ -66,12 +66,13 @@ int ft_test_push(void)
 
     ft_get_stack_data(stack_a);
 
-    ft_push(&stack_b, &stack_a);
-	printf("addet %d\n", stack_a->len);
-
-    //ft_get_stack_data(stack_b);
-    ft_get_stack_data(stack_a);
-
+    while (stack_a->len > 0)
+    {
+        ft_push(&stack_b, &stack_a);
+        ft_get_stack_data(stack_a);
+        ft_get_stack_data(stack_b);
+    }
+        
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }
