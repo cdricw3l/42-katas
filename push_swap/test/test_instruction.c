@@ -64,13 +64,11 @@ int ft_test_push(void)
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
 
-    ft_get_stack_data(stack_a);
 
     while (stack_a->len > 0)
     {
         ft_push(&stack_b, &stack_a);
-        ft_get_stack_data(stack_a);
-        ft_get_stack_data(stack_b);
+        ft_get_cpm_data(stack_a, stack_b);
     }
         
     ft_clean_memory(&stack_a, &stack_b);

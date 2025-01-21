@@ -24,5 +24,4 @@ void	ft_print_bit_16(int n)
 		write(1, &c, 1);
 		bit--;
 	}
-	write(1, "\n", 1);
 }

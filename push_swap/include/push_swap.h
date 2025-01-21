@@ -61,5 +61,6 @@ void	ft_push_b(int *dest, int *src, int len);
 void	ft_qsort_int(int *base, int low, int high);
 int        ft_find_cible(int arr[], int pivot, int len);
 int	    ft_clean_memory(t_pile **stack_a, t_pile **stack_b);
+void    ft_get_cpm_data(t_pile *stack_1, t_pile *stack_2);
 
 #endif

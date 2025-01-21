@@ -212,6 +212,40 @@ void ft_get_stack_data(t_pile *stack)
 		ft_printf("\n");
 	}
 }
+void ft_get_cpm_data(t_pile *stack_1, t_pile *stack_2)
+{
+	int i;
+
+	i = 0;
+	if (stack_1 && stack_2)
+	{
+		ft_printf("[ NAME ] %c 			[ NAME ] %c\n", 
+				stack_1->stack_name, stack_2->stack_name);
+		ft_printf("[ ADDR ] %p			[ ADDR ] %p\n",
+				stack_1, stack_2);
+		ft_printf("[ ARR SIZE ] %d						[ ARR SIZE ] %d\n",
+				stack_1->len, stack_2->len);
+		ft_printf("[ Nb MOVE ] %d						[ Nb MOVE ] %d\n",
+				stack_1->mvm_counter, stack_2->mvm_counter);
+		ft_printf("[ ADDR ARR] %p						[ ADDR ARR] %p\n",
+				stack_1->arr,stack_2->arr);
+		if(stack_1->arr)
+		{
+			while (i < stack_1->len)
+			{
+				ft_printf("[ INT N°%d ] ==> %d bit format: ",
+						i, stack_1->arr[i]);
+				ft_print_bit_16(stack_1->arr[i]);
+				ft_printf("						[ INT N°%d ] ==> %d bit format: ",
+						i, stack_2->arr[i]);
+				ft_print_bit_16(stack_1->arr[i]);
+				ft_printf("\n");
+				i++;
+			}
+		}
+		ft_printf("\n");
+	}
+}
 
 
 
