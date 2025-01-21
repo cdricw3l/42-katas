@@ -12,23 +12,23 @@
 
 #include "../include/push_swap.h"
 
-void	ft_swap(int *stack, int pile)
+int	ft_swap(t_pile *stack)
 {
 	int	tmp;
 
-	if (stack)
-	{
-		tmp = stack[0];
-		stack[0] = stack[1];
-		stack[1] = tmp;
-		if (pile == 1)
-			write(1, "sa", 2);
-		else
-			write(1, "sb", 2);
-		write(1, "\n", 2);
-	}
+	if (!stack || !stack->arr)
+		return (1);
+	tmp = stack->arr[0];
+	stack->arr[0] = stack->arr[1];
+	stack->arr[1] = tmp;
+	if (stack->stack_name == 97)
+		write(1, "sa", 2);
+	else
+		write(1, "sb", 2);
+	stack->mvm_counter+=1;
+	write(1, "\n", 2);
+	return (0);
 }
-
 
 int	ft_reverse_rotate(t_pile *stack)
 {
@@ -36,7 +36,7 @@ int	ft_reverse_rotate(t_pile *stack)
 	int len;
 
 	if (!stack || !stack->arr)
-		return(1);
+		return (1);
 	len = stack->len - 1;
 	tmp = stack->arr[0];
 	ft_memmove(stack->arr, stack->arr + 1, len * sizeof(int));
@@ -47,7 +47,7 @@ int	ft_reverse_rotate(t_pile *stack)
 		write(1, "rrb", 3);
 	write(1, "\n", 2);
 	stack->mvm_counter+=1;
-	return(0);
+	return (0);
 }
 
 int	ft_rotate(t_pile *stack)
@@ -56,7 +56,7 @@ int	ft_rotate(t_pile *stack)
 	int len;
 
 	if (!stack || !stack->arr)
-		return(1);
+		return (1);
 	len = stack->len - 1;
 	tmp = stack->arr[len];
 	ft_memmove(stack->arr + 1, stack->arr, len * sizeof(int));
@@ -67,26 +67,32 @@ int	ft_rotate(t_pile *stack)
 		write(1, "rb", 3);
 	write(1, "\n", 2);
 	stack->mvm_counter+=1;
-	return(0);
+	return (0);
 }
 
-void	ft_push_a(int *dest, int *src)
+void	ft_push(t_pile **dest, t_pile **src)
 {
-	int	len_dst;
-	int	len_src;
 
-	len_dst = ft_size_of_array(dest);
-	len_src = ft_size_of_array(src);
-	if (len_src > 0)
+	int value;
+
+	// if (!dest || !src ||!dest->arr || !src->arr)
+	// 	return ;
+
+	if((*src)->len == 0)
+		return ;
+	value = (*src)->arr[0];
+	if((*src)->len > 0)
 	{
-		ft_memmove(dest + 1, dest, len_dst * sizeof(int));
-		dest[0] = src[0];
-		ft_memmove(src, src + 1, (len_src - 1) * sizeof(int));
-		dest[len_dst + 1] = '\0';
-		src[len_src - 1] = '\0';
-		write(1, "pa", 2);
-		write(1, "\n", 2);
+		(*src)->len--;
+		ft_memmove((*src), (*src) + 1, (*src)->len * sizeof(int));
+		printf("mois\n");
 	}
+	if((*dest)->len > 0)
+	{
+		ft_memmove((*dest) + 1, (*dest), (*dest)->len * sizeof(int));
+	}
+	(*dest)->len++;
+	(*dest)->arr[0] = value;
 }
 
 void	ft_push_b(int *dest, int *src, int len)

@@ -150,11 +150,11 @@ int ft_print_error()
 	return (1);
 }
 
-void    ft_two_args(int *arr)
-{
-	if(arr[0] > arr[1])
-		ft_swap(arr, 1);
-}
+// void    ft_two_args(int *arr)
+// {
+// 	if(arr[0] > arr[1])
+// 		ft_swap(arr, 1);
+// }
 
 // void    ft_two_or_tree_args(int *arr, int len)
 // {
@@ -198,6 +198,7 @@ void ft_get_stack_data(t_pile *stack)
 		ft_printf("[ ADDR ] %p\n", stack);
 		ft_printf("[ ARR SIZE ] %d\n", stack->len);
 		ft_printf("[ Nb MOVE ] %d\n", stack->mvm_counter);
+		ft_printf("[ ADDR ARR] %p\n", stack->arr);
 		if(stack->arr)
 		{
 			while (i < stack->len)

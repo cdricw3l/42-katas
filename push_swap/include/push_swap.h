@@ -50,13 +50,13 @@ void    ft_two_or_tree_args(int *arr, int len);
 int     ft_size_of_array(int *arr);
 void    ft_get_stack_data(t_pile *stack);
 //instruction
-void    ft_swap(int *stack, int pile);
+int    ft_swap(t_pile *stack);
 
 // rotate >>
 int	ft_rotate(t_pile *stack);
 // reverse rotate <<
 int	ft_reverse_rotate(t_pile *stack);
-void	ft_push_a(int *dest, int *src);
+void	ft_push(t_pile **dest, t_pile **src);
 void	ft_push_b(int *dest, int *src, int len);
 void	ft_qsort_int(int *base, int low, int high);
 int        ft_find_cible(int arr[], int pivot, int len);

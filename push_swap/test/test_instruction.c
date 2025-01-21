@@ -32,16 +32,16 @@ int *ft_reverse_arr(int *arr, int len)
     return(rev_arr);
 }
 
-t_pile *ft_new_stack(int len, char name)
+t_pile *ft_new_stack(int size, int len, char name)
 {
     t_pile *new_s;
 
-    if(len == 0)
-        return(NULL);
-    new_s = ft_calloc(len, sizeof(t_pile *));
-    new_s->arr = ft_calloc(len, sizeof(int));
-    if(!new_s || !new_s->arr)
-        return(NULL);
+    new_s = ft_calloc(1, sizeof(t_pile));
+    if (!new_s)
+            return(NULL);
+    new_s->arr = ft_calloc(size, sizeof(int));
+    if (!new_s->arr)
+        return (NULL);
     new_s->len = len;
     new_s->stack_name = name;
     new_s->mvm_counter = 0;
@@ -53,25 +53,25 @@ int ft_test_push(void)
     t_pile *stack_a;
     t_pile *stack_b;
 
-    stack_a = ft_new_stack(5, 97);
-    stack_b = ft_new_stack(5, 98);
+    stack_a = ft_new_stack(5,5,97);
+    stack_b = ft_new_stack(5,0,98);
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
 
     // ft_get_stack_data(stack_a);
-    // ft_get_stack_data(stack_b);
+    //ft_get_stack_data(stack_b);
 
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
 
     ft_get_stack_data(stack_a);
 
-    ft_rotate(stack_a);
-    
-    ft_get_stack_data(stack_a);
-    ft_reverse_rotate(stack_a);
-    ft_get_stack_data(stack_a);
-    
+    ft_push(&stack_b, &stack_a);
+	printf("addet %d\n", stack_a->len);
+
+    ft_get_stack_data(stack_b);
+   // ft_get_stack_data(stack_a);
+
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }
