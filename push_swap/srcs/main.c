@@ -13,16 +13,14 @@
 #include "../include/push_swap.h"
 #include <limits.h>
 
-int	ft_init_progr(char **argv, int **arr)
+static int	ft_init_progr(char **argv, t_pile *stack, int len)
 {
-	int	len;
 	int	rep;
 
 	if (!ft_validation_arg(&argv[1]))
 	{
-		len = number_of_int(argv);
-		*arr = ft_parsing(&argv[0], len);
-		rep = ft_check_repetition(*arr, len);
+		ft_parsing(&argv[0], stack);
+		rep = ft_check_repetition(stack);
 		if (rep == -1)
 			return (-1);
 		else
@@ -31,6 +29,22 @@ int	ft_init_progr(char **argv, int **arr)
 	return (-1);
 }
 
+t_pile *ft_new_stack(int size, int len, char name)
+{
+    t_pile *new_s;
+
+    new_s = ft_calloc(1, sizeof(t_pile));
+    if (!new_s)
+            return(NULL);
+    new_s->arr = ft_calloc(size, sizeof(int));
+    if (!new_s->arr)
+        return (NULL);
+	
+    new_s->len = len;
+    new_s->stack_name = name;
+    new_s->mvm_counter = 0;
+    return(new_s);
+}
 
 
 /* void	ft_push_swap(int *a, int len)
@@ -87,68 +101,36 @@ int	ft_init_progr(char **argv, int **arr)
 	free(b);
 } */
 
-// int	main(int argc, char **argv)
-// {
-// 	int	len;
-// 	int	*arr;
-// 	int	tx;
+int	main(int argc, char **argv)
+{
+	int	len;
+	int	*arr;
+	int	tx;
+	t_pile *stack_a;
+    t_pile *stack_b;
 
-// 	arr = NULL;
-// 	/* if (argc < 2)
-// 		return (ft_print_error());
-// 	len = number_of_int(&argv[1]);
-// 	tx = ft_init_progr(&argv[1], &arr);
-// 	if (tx == -1)
-// 		return (ft_print_error());
-// 	else
-// 	{TRUMP
-// 		if (len == 2 || len == 3)
-// 			ft_two_or_tree_args(arr, len);
-// 		else
-// 			ft_push_swap(arr, len);
-// 	} */
-
-// 	int tab[] = {9, 7, 10, 4, 6};
-// 	int tab2[5];
-// 	int i;
-// 	int j;
-
-// 	len = sizeof(tab) / sizeof(tab[0]);
-
-
-// 	j = 8;
-// 	while (j >= 0)
-// 	{
-// 		printf("Voici le bit %d : ", j);
-// 		int i = 0;
-// 		while (i < 5)
-// 		{
-// 			char bit  = ((tab[i] >> j) & 1) + '0';
-// 			if(bit == '1')
-// 				printf("%c & %d\n ", bit, tab[i]);
-// 				ft_push_b(tab2, tab);
-// 			len--;
-// 			i++;
-// 		}
-// 		printf("\n");
-// 		j--;
-// 	}
-// 	printf("\n");
-	
-// 	ft_print_arr(tab2, 5);
-// 	j = 8;
-// 	while (j >= 0)
-// 	{
-// 		printf("Voici le bit %d : ", j);
-// 		int i = 0;
-// 		while (i < 5)
-// 		{
-// 			char bit  = ((tab2[i] >> j) & 1) + '0';
-// 			printf("%c ", bit);
-// 			i++;
-// 		}
-// 		printf("\n");
-// 		j--;
-// 	}
-// 	return (0);
-// }
+	arr = NULL;
+	if (argc < 2)
+		return (ft_print_error());
+	len = number_of_int(&argv[1]);
+	if(len == 0)
+		return(1);
+	stack_a = ft_new_stack(len, len, 97);
+    stack_b = ft_new_stack(len, 0, 98);
+	if(!stack_a->arr || !stack_b->arr)
+		return(ft_clean_memory(&stack_a, &stack_b));
+	tx = ft_init_progr(&argv[1], stack_a, len);
+	if (tx == -1)
+		return (ft_print_error());
+	else
+	{
+		ft_print_arr(stack_a->arr, stack_a->len);
+		if (len == 2 || len == 3)
+			ft_two_or_tree_args(stack_a);
+		else
+			return(0);
+		ft_print_arr(stack_a->arr, stack_a->len);
+		return(ft_clean_memory(&stack_a, &stack_b));
+	} 
+	return (0);
+}

@@ -17,6 +17,8 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 #include <assert.h>
+#include <limits.h>
+
 
 
 
@@ -36,21 +38,21 @@ typedef struct s_pile
 
 
 int     ft_validation_arg(char **argv);
-int     ft_check_repetition(int *arr, int len);
+int     ft_check_repetition(t_pile *stack);
 int     ft_are_space(char *str);
 int     number_of_int(char **argv);
 void    ft_fill_process(char **argv, int *arr);
-int     *ft_parsing(char **argv, int len);
+int     ft_parsing(char **argv, t_pile *stack);
 void    ft_print_arr(int *arr, int len);
 int     get_high(int *arr, int size);
 int     get_low(int *arr, int size);
 int     ft_print_error();
 int     get_low_idx(int *arr, int size);
-void    ft_two_or_tree_args(int *arr, int len);
+void    ft_two_or_tree_args(t_pile *stack);
 int     ft_size_of_array(int *arr);
 void    ft_get_stack_data(t_pile *stack);
 void	ft_qsort_int(int *base, int low, int high);
-int       ft_find_cible(int arr[], int pivot, int len);
+int      ft_find_cible(int arr[], int pivot, int len);
 
 //instruction
 

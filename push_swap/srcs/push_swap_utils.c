@@ -41,15 +41,33 @@ void	ft_fill_process(char **argv, int *arr)
 	*arr = '\0';
 }
 
-int	*ft_parsing(char **argv, int len)
+int	ft_parsing(char **argv, t_pile *stack)
 {
-	int	*arr;
+	char	**split;
+	int		i;
 
-	arr = malloc(sizeof(int) * (len + 1));
-	if (!arr)
-		return (NULL);
-	ft_fill_process(argv, arr);
-	return (arr);
+	i = 0;
+	while (*argv)
+	{
+		if (ft_are_space(*argv))
+		{
+			split = ft_split(*argv, 32);
+			while (*split)
+			{
+				stack->arr[i] = ft_atoi(*split);
+				free(*split);
+				split++;
+				i++;
+			}
+		}
+		else
+		{
+			stack->arr[i] = ft_atoi(*argv);
+			i++;
+		}
+		argv++;
+	}
+	return (0);
 }
 
 int	number_of_int(char **argv)
@@ -89,7 +107,7 @@ int	ft_are_space(char *str)
 	return (0);
 }
 
-int	ft_check_repetition(int *arr, int len)
+int	ft_check_repetition(t_pile *stack)
 {
 	int	i;
 	int	j;
@@ -97,16 +115,16 @@ int	ft_check_repetition(int *arr, int len)
 
 	i = 0;
 	tx = 0;
-	while (i < len)
+	while (i < stack->len - 1)
 	{
 		j = i + 1;
-		if(arr[i] == arr[j])
+		if(stack->arr[i] == stack->arr[j])
 			return (-1);
-		if(arr[i] < arr[j])
+		if(stack->arr[i] < stack->arr[j])
 			tx++;
 		i++;
 	}
-	tx = (100 * tx) / (len - 1) ;
+	tx = (100 * tx) / (stack->len - 1) ;
 	return (tx);
 }
 
@@ -150,32 +168,27 @@ int ft_print_error()
 	return (1);
 }
 
-// void    ft_two_args(int *arr)
-// {
-// 	if(arr[0] > arr[1])
-// 		ft_swap(arr, 1);
-// }
 
-// void    ft_two_or_tree_args(int *arr, int len)
-// {
-// 	if (len == 2)
-// 	{
-// 		if(arr[0] > arr[1])
-// 			ft_swap(arr, 1);
-// 	} 
-// 	else if(len == 3)
-// 	{
-// 		if(arr[0] > arr[1])
-// 			ft_swap(arr,  1);
-// 		if(arr[2] < arr[0])
-// 			ft_rotate(arr, len,'a');
-// 		if(arr[1] > arr[2])
-// 		{
-// 			ft_reverse_rotate(arr, len ,'a');
-// 			ft_swap(arr, 1);
-// 		}
-// 	}
-// }
+void    ft_two_or_tree_args(t_pile *stack_a)
+{
+	if (stack_a->len == 2)
+	{
+		if (stack_a->arr[0] > stack_a->arr[1])
+			ft_swap(stack_a);
+	} 
+	else if (stack_a->len == 3)
+	{
+		if (stack_a->arr[0] > stack_a->arr[1])
+			ft_swap(stack_a);
+		if (stack_a->arr[2] < stack_a->arr[0])
+			ft_reverse_rotate(stack_a);
+		if (stack_a->arr[1] > stack_a->arr[2])
+		{
+			ft_reverse_rotate(stack_a);
+			ft_swap(stack_a);
+		}
+	}
+}
 
 int ft_size_of_array(int *arr)
 {
@@ -255,14 +268,14 @@ int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
 	ft_printf("Start clean fonction\n");
 	if (*stack_a)
 	{
-		if ((*stack_a)->arr)
+		//if ((*stack_a)->arr)
 			free((*stack_a)->arr);
 		free(*stack_a);
 		ft_printf("Stack A clean\n");
 	}
 	if (*stack_b)
 	{
-		if ((*stack_b)->arr)
+		//if ((*stack_b)->arr)
 			free((*stack_b)->arr);
 		free(*stack_b);
 		ft_printf("Stack B clean\n");

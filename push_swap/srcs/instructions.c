@@ -30,7 +30,7 @@ int	ft_swap(t_pile *stack)
 	return (0);
 }
 
-int	ft_reverse_rotate(t_pile *stack)
+int	ft_rotate(t_pile *stack)
 {
 	int	tmp;
 	int len;
@@ -42,15 +42,15 @@ int	ft_reverse_rotate(t_pile *stack)
 	ft_memmove(stack->arr, stack->arr + 1, len * sizeof(int));
 	stack->arr[len] = tmp;
 	if (stack->stack_name == 'a')
-		write(1, "rra", 3);
+		write(1, "ra", 3);
 	else
-		write(1, "rrb", 3);
+		write(1, "rb", 3);
 	write(1, "\n", 2);
 	stack->mvm_counter+=1;
 	return (0);
 }
 
-int	ft_rotate(t_pile *stack)
+int	ft_reverse_rotate(t_pile *stack)
 {
 	int	tmp;
 	int len;
@@ -62,9 +62,9 @@ int	ft_rotate(t_pile *stack)
 	ft_memmove(stack->arr + 1, stack->arr, len * sizeof(int));
 	stack->arr[0] = tmp;
 	if (stack->stack_name == 'a')
-		write(1, "ra", 3);
+		write(1, "rra", 3);
 	else
-		write(1, "rb", 3);
+		write(1, "rrb", 3);
 	write(1, "\n", 2);
 	stack->mvm_counter+=1;
 	return (0);

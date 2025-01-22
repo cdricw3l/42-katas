@@ -21,6 +21,11 @@ int	ft_cmp_int(void *p1, void *p2)
 	return (v1 - v2);
 }
 
+int ft_get_index(int n)
+{
+	
+}
+
 int	get_high(int *arr, int size)
 {
 	int	i;

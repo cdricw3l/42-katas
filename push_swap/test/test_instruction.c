@@ -67,10 +67,36 @@ int ft_test_push(void)
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }
+int ft_get_index(int n, int *arr, int len)
+{
+    int i;
+    int next;
+    int prev;
+
+    i = 0;
+    next = 0;
+    prev = INT_MIN;
+    while (i < len)
+    {
+        if( n < 0)
+        {
+
+            if(arr[i] < n && arr[i] > prev)
+            {
+                prev = i;
+                return(prev + 1);
+            }
+        }
+        i++;
+    }
+    
+}
 
 int main(void)
 {
    
     ft_test_push();
+
+    
     return(0);
 }
