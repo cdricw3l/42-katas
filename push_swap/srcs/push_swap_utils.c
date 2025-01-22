@@ -220,7 +220,34 @@ void ft_get_stack_data(t_pile *stack)
 
 int		ft_get_n_byte(int n, int byte)
 {
-	return ((n >> (byte - 1)) & 1);
+	return ((n >> (byte)) & 1);
+}
+
+int ft_get_byte_max(int *arr, int len)
+{
+	int i;
+	int j;
+	int bit;
+
+	i = 31;
+	if(!arr || len == 0)
+		return(-1);
+	while (i > 0)
+	{
+		j = 0;
+		while (j < len)
+		{
+			bit = (arr[j] >> i) & 1;
+			if(bit == 1)
+			{
+				printf(" %d\n", arr[j]);
+				return (i);
+			}
+			j++;
+		}
+		i--;		
+	}
+	return(-1);
 }
 
 int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)

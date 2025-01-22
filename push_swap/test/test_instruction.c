@@ -63,8 +63,7 @@ int ft_test_push(void)
     assert(g == 0);
     
     ft_get_stack_data(stack_a);
-
-    printf("byte 1 %d\n",ft_get_n_byte(stack_a->arr[0], 0));
+    stack_a->arr[0] = __INT32_MAX__;
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }

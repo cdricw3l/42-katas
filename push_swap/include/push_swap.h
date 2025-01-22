@@ -62,5 +62,6 @@ int	    ft_push(t_pile **dest, t_pile **src);
 int	    ft_clean_memory(t_pile **stack_a, t_pile **stack_b);
 //utils
 int		ft_get_n_byte(int n, int byte);
+int     ft_get_byte_max(int *arr, int len);
 
 #endif
