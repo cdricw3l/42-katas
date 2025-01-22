@@ -218,39 +218,10 @@ void ft_get_stack_data(t_pile *stack)
 	}
 }
 
-void ft_get_cpm_data(t_pile *stack_1, t_pile *stack_2)
+int		ft_get_n_byte(int n, int byte)
 {
-	int i;
-
-	i = 0;
-	if (stack_1 && stack_2)
-	{
-		ft_printf("====== stack %c info ======",stack_1->stack_name);
-		ft_printf("[ NAME ] %c " ,stack_1->stack_name);
-		ft_printf("[ ADDR ] %p\n", stack_1);
-		ft_printf("[ ARR SIZE ]%d\n", stack_1->len);
-		ft_printf("[ Nb MOVE ] %d\n", stack_1->mvm_counter);
-		ft_printf("[ ADDR ARR] %p\n", stack_1->arr);
-		ft_printf("\n");
-		if(stack_1->arr)
-		{
-			while (i < stack_1->len)
-			{
-				if(i < stack_1->len)
-				{
-					ft_printf("[ INT N°%d ] ==> %d : ", i, stack_1->arr[i]);
-					ft_print_bit_16(stack_1->arr[i]);
-				}
-				ft_printf("\n");
-				i++;
-			}
-		}
-		ft_printf("\n");
-	}
+	return ((n >> (byte - 1)) & 1);
 }
-
-
-
 
 int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
 {

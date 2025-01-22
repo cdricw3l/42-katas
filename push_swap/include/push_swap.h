@@ -60,5 +60,7 @@ int	    ft_reverse_rotate(t_pile *stack);
 int	    ft_push(t_pile **dest, t_pile **src);
 //memory
 int	    ft_clean_memory(t_pile **stack_a, t_pile **stack_b);
+//utils
+int		ft_get_n_byte(int n, int byte);
 
 #endif

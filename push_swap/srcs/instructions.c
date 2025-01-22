@@ -94,6 +94,8 @@ int	ft_push(t_pile **dest, t_pile **src)
 	return(0);
 }
 
+
+
 // int main(void)
 // {
 // 	int tab1[8] = {9, 7, 5, 3, 1, 4, 6, '\0'};

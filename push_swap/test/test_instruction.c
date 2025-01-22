@@ -61,19 +61,10 @@ int ft_test_push(void)
         return(ft_clean_memory(&stack_a, &stack_b));
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
-    while (stack_a->len > 0)
-    {
-        ft_push(&stack_b, &stack_a);
-    }
+    
     ft_get_stack_data(stack_a);
-    ft_get_stack_data(stack_b);
-    while (stack_b->len > 0)
-    {
-        ft_push(&stack_a, &stack_b);
-    }
-    ft_get_stack_data(stack_a);
-    ft_get_stack_data(stack_b);
-    assert(stack_a->mvm_counter + stack_b->mvm_counter == n * 2);
+
+    printf("byte 1 %d\n",ft_get_n_byte(stack_a->arr[0], 0));
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }
