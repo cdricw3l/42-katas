@@ -87,7 +87,7 @@ void ft_five_arg(t_pile *stack_a, t_pile *stack_b)
     ft_two_or_tree_args(stack_a);
     ft_get_stack_data(stack_a);
     i = 0;
-    while (i <= stack_b->len)
+    while (i < stack_b->len)
     {
         int position = ft_get_index(stack_b->arr[i], stack_a);
        // printf("voici position %d de %d \n", position, stack_b->arr[i]);
