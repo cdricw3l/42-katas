@@ -32,21 +32,27 @@ int *ft_reverse_arr(int *arr, int len)
     return(rev_arr);
 }
 
-t_pile *ft_new_stack(int size, int len, char name)
-{
-    t_pile *new_s;
 
-    new_s = ft_calloc(1, sizeof(t_pile));
-    if (!new_s)
-            return(NULL);
-    new_s->arr = ft_calloc(size, sizeof(int));
-    if (!new_s->arr)
-        return (NULL);
-    new_s->len = len;
-    new_s->stack_name = name;
-    new_s->mvm_counter = 0;
-    return(new_s);
+
+int ft_get_index(int n, int *arr, int len)
+{
+    int i;
+    int prev;
+
+    i = 0;
+    prev = INT_MIN;
+    while (i < len)
+    {
+        if(arr[i] < n && arr[i] > prev)
+        {
+            prev = i;
+            return(prev + 1);
+        }
+        i++;
+    }
+    return (0);
 }
+
 int ft_test_push(void)
 {
     
@@ -63,33 +69,8 @@ int ft_test_push(void)
     assert(g == 0);
     
     ft_get_stack_data(stack_a);
-    stack_a->arr[0] = __INT32_MAX__;
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
-}
-int ft_get_index(int n, int *arr, int len)
-{
-    int i;
-    int next;
-    int prev;
-
-    i = 0;
-    next = 0;
-    prev = INT_MIN;
-    while (i < len)
-    {
-        if( n < 0)
-        {
-
-            if(arr[i] < n && arr[i] > prev)
-            {
-                prev = i;
-                return(prev + 1);
-            }
-        }
-        i++;
-    }
-    
 }
 
 int main(void)

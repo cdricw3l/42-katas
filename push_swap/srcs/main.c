@@ -13,21 +13,21 @@
 #include "../include/push_swap.h"
 #include <limits.h>
 
-static int	ft_init_progr(char **argv, t_pile *stack, int len)
-{
-	int	rep;
+// static int	ft_init_progr(char **argv, t_pile *stack)
+// {
+// 	int	rep;
 
-	if (!ft_validation_arg(&argv[1]))
-	{
-		ft_parsing(&argv[0], stack);
-		rep = ft_check_repetition(stack);
-		if (rep == -1)
-			return (-1);
-		else
-			return (rep);
-	}
-	return (-1);
-}
+// 	if (!ft_validation_arg(&argv[1]))
+// 	{
+// 		ft_parsing(&argv[0], stack);
+// 		rep = ft_check_repetition(stack);
+// 		if (rep == -1)
+// 			return (-1);
+// 		else
+// 			return (rep);
+// 	}
+// 	return (-1);
+// }
 
 t_pile *ft_new_stack(int size, int len, char name)
 {
@@ -101,36 +101,36 @@ t_pile *ft_new_stack(int size, int len, char name)
 	free(b);
 } */
 
-int	main(int argc, char **argv)
-{
-	int	len;
-	int	*arr;
-	int	tx;
-	t_pile *stack_a;
-    t_pile *stack_b;
+// int	main(int argc, char **argv)
+// {
+// 	int	len;
+// 	int	*arr;
+// 	int	tx;
+// 	t_pile *stack_a;
+//     t_pile *stack_b;
 
-	arr = NULL;
-	if (argc < 2)
-		return (ft_print_error());
-	len = number_of_int(&argv[1]);
-	if(len == 0)
-		return(1);
-	stack_a = ft_new_stack(len, len, 97);
-    stack_b = ft_new_stack(len, 0, 98);
-	if(!stack_a->arr || !stack_b->arr)
-		return(ft_clean_memory(&stack_a, &stack_b));
-	tx = ft_init_progr(&argv[1], stack_a, len);
-	if (tx == -1)
-		return (ft_print_error());
-	else
-	{
-		ft_print_arr(stack_a->arr, stack_a->len);
-		if (len == 2 || len == 3)
-			ft_two_or_tree_args(stack_a);
-		else
-			return(0);
-		ft_print_arr(stack_a->arr, stack_a->len);
-		return(ft_clean_memory(&stack_a, &stack_b));
-	} 
-	return (0);
-}
+// 	arr = NULL;
+// 	if (argc < 2)
+// 		return (ft_print_error());
+// 	len = number_of_int(&argv[1]);
+// 	if(len == 0)
+// 		return(1);
+// 	stack_a = ft_new_stack(len, len, 97);
+//     stack_b = ft_new_stack(len, 0, 98);
+// 	if(!stack_a->arr || !stack_b->arr)
+// 		return(ft_clean_memory(&stack_a, &stack_b));
+// 	tx = ft_init_progr(&argv[1], stack_a, len);
+// 	if (tx == -1)
+// 		return (ft_print_error());
+// 	else
+// 	{
+// 		ft_print_arr(stack_a->arr, stack_a->len);
+// 		if (len == 2 || len == 3)
+// 			ft_two_or_tree_args(stack_a);
+// 		else
+// 			return(0);
+// 		ft_print_arr(stack_a->arr, stack_a->len);
+// 		return(ft_clean_memory(&stack_a, &stack_b));
+// 	} 
+// 	return (0);
+// }
