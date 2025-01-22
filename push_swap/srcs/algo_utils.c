@@ -54,6 +54,26 @@ int	get_low(int *arr, int size)
 	}
 	return (low);
 }
+int	get_low_idx(int *arr, int size)
+{
+	int	i;
+	int	low_value;
+	int	low_idx;
+
+	i = 1;
+	low_value = arr[0];
+	low_idx = 0;
+	while (i < size)
+	{
+		if (arr[i] < low_value)
+		{
+			low_value = arr[i];
+			low_idx = i;
+		}
+		i++;
+	}
+	return (low_idx);
+}
 
 void	ft_quick_swap(int *arr, int a, int b)
 {

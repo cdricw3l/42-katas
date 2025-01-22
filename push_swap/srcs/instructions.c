@@ -85,12 +85,16 @@ int	ft_push(t_pile **dest, t_pile **src)
 		ft_memmove((*src)->arr , (*src)->arr + 1, (*src)->len * sizeof(int));
 	}
 	if((*dest)->len > 0)
-	{
 		ft_memmove((*dest)->arr + 1, (*dest)->arr, (*dest)->len * sizeof(int));
-	}
 	(*dest)->len++;
 	(*dest)->arr[0] = value;
 	(*src)->mvm_counter++;
+	if ((*dest)->stack_name == 'a')
+		write(1, "pa", 2);
+	else
+		write(1, "pb", 2);
+	write(1, "\n", 2);
+	(*dest)->mvm_counter+=1;
 	return(0);
 }
 

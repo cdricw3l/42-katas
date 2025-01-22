@@ -32,25 +32,77 @@ int *ft_reverse_arr(int *arr, int len)
     return(rev_arr);
 }
 
+void ft_return_to_zero(t_pile *stack)
+{
+    int i;
 
+    i = get_low_idx(stack->arr, stack->len);
+    printf("voici l'index %d\n", i);
+    if(i > stack->len / 2)
+    {
 
-int ft_get_index(int n, int *arr, int len)
+        while (stack->len - i > 0)
+        {
+            ft_reverse_rotate(stack);
+            i++;
+        }
+    }
+    else
+    {
+        while (i > 0)
+        {
+            ft_rotate(stack);
+            i--;
+        } 
+    }
+}
+
+int ft_get_index(int n, t_pile *stack)
 {
     int i;
     int prev;
 
     i = 0;
     prev = INT_MIN;
-    while (i < len)
+    while (i < stack->len)
     {
-        if(arr[i] < n && arr[i] > prev)
+        if(stack->arr[i] < n && stack->arr[i] > prev)
         {
             prev = i;
-            return(prev + 1);
+            return(prev);
         }
         i++;
     }
     return (0);
+}
+
+void ft_five_arg(t_pile *stack_a, t_pile *stack_b)
+{
+    int i;
+
+    ft_push(&stack_b, &stack_a);
+    ft_push(&stack_b, &stack_a);
+   // printf("voici stack b len %d\n", stack_b->len); 
+    ft_two_or_tree_args(stack_b);
+    ft_two_or_tree_args(stack_a);
+    ft_get_stack_data(stack_a);
+    i = 0;
+    while (i <= stack_b->len)
+    {
+        int position = ft_get_index(stack_b->arr[i], stack_a);
+       // printf("voici position %d de %d \n", position, stack_b->arr[i]);
+        while (position + 1 > 0)
+        {
+            ft_rotate(stack_a);
+            ft_get_stack_data(stack_a);
+            position--;
+        }
+       // printf("push\n");
+        ft_push(&stack_a, &stack_b);
+        i++;
+    }
+    ft_return_to_zero(stack_a);
+    ft_get_stack_data(stack_a);
 }
 
 int ft_test_push(void)
@@ -67,8 +119,13 @@ int ft_test_push(void)
         return(ft_clean_memory(&stack_a, &stack_b));
     int g = ft_generate_number(stack_a->arr, stack_a->len);
     assert(g == 0);
+
     
     ft_get_stack_data(stack_a);
+    int dex = ft_get_index(3, stack_b);
+    printf("voici la position de 3 %d\n", dex);
+
+    ft_five_arg(stack_a, stack_b);
     ft_clean_memory(&stack_a, &stack_b);
     return(0);
 }

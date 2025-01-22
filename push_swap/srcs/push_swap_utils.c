@@ -268,14 +268,14 @@ int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
 	ft_printf("Start clean fonction\n");
 	if (*stack_a)
 	{
-		//if ((*stack_a)->arr)
+		if ((*stack_a)->arr)
 			free((*stack_a)->arr);
 		free(*stack_a);
 		ft_printf("Stack A clean\n");
 	}
 	if (*stack_b)
 	{
-		//if ((*stack_b)->arr)
+		if ((*stack_b)->arr)
 			free((*stack_b)->arr);
 		free(*stack_b);
 		ft_printf("Stack B clean\n");
