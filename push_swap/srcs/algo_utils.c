@@ -12,6 +12,76 @@
 
 #include "../include/push_swap.h"
 
+void optimised_rotation(t_pile *stack_a, int index)
+{
+    int i;
+
+    i = 0;
+	ft_get_stack_data(stack_a);
+    if(index > stack_a->len / 2)
+    {
+        while (i < stack_a->len - index)
+        {
+            ft_reverse_rotate(stack_a);
+            i++;
+        }
+    }
+    else
+    {
+        while (i < index)
+        {
+            ft_rotate(stack_a);
+            i++;
+        } 
+    }
+	ft_get_stack_data(stack_a);
+}
+
+void ft_return_to_zero(t_pile *stack)
+{
+    int i;
+
+    i = ft_get_lowest_idx(stack->arr, stack->len);
+    if(i > stack->len / 2)
+    {
+
+        while (stack->len - i > 0)
+        {
+            ft_reverse_rotate(stack);
+            i++;
+        }
+    }
+    else
+    {
+        while (i > 0)
+        {
+            ft_rotate(stack);
+            i--;
+        } 
+    }
+}
+
+int *ft_reverse_arr(int *arr, int len)
+{
+    int i;
+    int j;
+    int *rev_arr;
+    
+    i = 0;
+    j = len;
+    rev_arr = calloc(len, sizeof(int));
+    if(!rev_arr)
+        return(NULL);
+    while (i < len)
+    {
+        rev_arr[i] = arr[j - 1];
+        j--;
+        i++;
+    }
+    return(rev_arr);
+}
+
+
 int	ft_cmp_int(void *p1, void *p2)
 {
 	int	v1;
@@ -19,81 +89,6 @@ int	ft_cmp_int(void *p1, void *p2)
 	v1 = *(int *)(p1);
 	v2 = *(int *)(p2);
 	return (v1 - v2);
-}
-
-
-
-int	get_high(int *arr, int size)
-{
-	int	i;
-	int	high;
-
-	i = 1;
-	high = arr[0];
-	while (i < size)
-	{
-		if (arr[i] > high)
-			high = arr[i];
-		i++;
-	}
-	return (high);
-}
-
-int	get_low(int *arr, int size)
-{
-	int	i;
-	int	low;
-
-	i = 1;
-	low = arr[0];
-	while (i < size)
-	{
-		if (arr[i] < low)
-			low = arr[i];
-		i++;
-	}
-	return (low);
-}
-int	ft_get_low_idx(int *arr, int size)
-{
-	int	i;
-	int	low_value;
-	int	low_idx;
-
-	i = 1;
-	low_value = arr[0];
-	low_idx = INT_MIN;
-	while (i < size)
-	{
-		if (arr[i] < low_value)
-		{
-			low_value = arr[i];
-			low_idx = i;
-		}
-		i++;
-	}
-	return (low_idx);
-}
-
-int	get_max_idx(int *arr, int size)
-{
-	int	i;
-	int	high_value;
-	int	high_idx;
-
-	i = 1;
-	high_value = arr[0];
-	high_idx = INT_MIN;
-	while (i < size)
-	{
-		if (arr[i] > high_value)
-		{
-			high_value = arr[i];
-			high_idx = i;
-		}
-		i++;
-	}
-	return (high_idx);
 }
 
 void	ft_quick_swap(int *arr, int a, int b)
