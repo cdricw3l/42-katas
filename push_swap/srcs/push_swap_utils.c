@@ -178,14 +178,14 @@ void    ft_two_or_tree_args(t_pile *stack_a)
 	} 
 	else if (stack_a->len == 3)
 	{
-		if (stack_a->arr[0] > stack_a->arr[1])
+		if(stack_a->arr[0] > stack_a->arr[1] && stack_a->arr[0] > stack_a->arr[2])
+			ft_rotate(stack_a);
+		else if (stack_a->arr[0] > stack_a->arr[1] && stack_a->arr[0] < stack_a->arr[2])
 			ft_swap(stack_a);
-		if (stack_a->arr[2] < stack_a->arr[0])
-			ft_reverse_rotate(stack_a);
-		if (stack_a->arr[1] > stack_a->arr[2])
+		if (stack_a->arr[0] > stack_a->arr[1] && stack_a->arr[1] > stack_a->arr[2])
 		{
-			ft_reverse_rotate(stack_a);
 			ft_swap(stack_a);
+			ft_reverse_rotate(stack_a);
 		}
 	}
 }

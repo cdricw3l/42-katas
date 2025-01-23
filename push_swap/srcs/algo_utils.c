@@ -54,7 +54,7 @@ int	get_low(int *arr, int size)
 	}
 	return (low);
 }
-int	get_low_idx(int *arr, int size)
+int	ft_get_low_idx(int *arr, int size)
 {
 	int	i;
 	int	low_value;
@@ -62,7 +62,7 @@ int	get_low_idx(int *arr, int size)
 
 	i = 1;
 	low_value = arr[0];
-	low_idx = 0;
+	low_idx = INT_MIN;
 	while (i < size)
 	{
 		if (arr[i] < low_value)
@@ -73,6 +73,27 @@ int	get_low_idx(int *arr, int size)
 		i++;
 	}
 	return (low_idx);
+}
+
+int	get_max_idx(int *arr, int size)
+{
+	int	i;
+	int	high_value;
+	int	high_idx;
+
+	i = 1;
+	high_value = arr[0];
+	high_idx = INT_MIN;
+	while (i < size)
+	{
+		if (arr[i] > high_value)
+		{
+			high_value = arr[i];
+			high_idx = i;
+		}
+		i++;
+	}
+	return (high_idx);
 }
 
 void	ft_quick_swap(int *arr, int a, int b)

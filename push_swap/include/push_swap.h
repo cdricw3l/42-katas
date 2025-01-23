@@ -47,7 +47,7 @@ void    ft_print_arr(int *arr, int len);
 int     get_high(int *arr, int size);
 int     get_low(int *arr, int size);
 int     ft_print_error();
-int     get_low_idx(int *arr, int size);
+int     ft_get_low_idx(int *arr, int size);
 void    ft_two_or_tree_args(t_pile *stack);
 int     ft_size_of_array(int *arr);
 void    ft_get_stack_data(t_pile *stack);
