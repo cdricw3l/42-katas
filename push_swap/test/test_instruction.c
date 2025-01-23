@@ -24,10 +24,22 @@ int ft_test_push(void)
     stack_b = ft_new_stack(n, 0, 98);
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
-    int g = ft_generate_number(stack_a->arr, stack_a->len);
-    assert(g == 0);
+    /* int g = ft_generate_number(stack_a->arr, stack_a->len);
+    assert(g == 0); */
+    /* stack_a->arr[0] = 3;
+    stack_a->arr[1] = 5;
+    stack_a->arr[2] = 2;
+    stack_a->arr[3] = 1;
+    stack_a->arr[4] = 4; */
+   /*  stack_a->arr[0] = -11;
+    stack_a->arr[1] = -22;
+    stack_a->arr[2] = -3;
+    stack_a->arr[3] = -54;
+    stack_a->arr[4] = 5; */
     ft_get_stack_data(stack_a);
     ft_five_value(stack_a, stack_b);
+    ft_get_stack_data(stack_a);
+    ft_get_stack_data(stack_b);
     assert(ft_is_sort(stack_a->arr, 5, 4, ft_cmp_int) == 0);
     ft_clean_memory(&stack_a, &stack_b);
     return(0);

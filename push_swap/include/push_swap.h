@@ -81,6 +81,7 @@ int     ft_get_highest_value(int *arr, int size);
 int     ft_get_lowest_value(int *arr, int size);
 int     ft_get_highest_idx(int *arr, int size);
 int     ft_get_lowest_idx(int *arr, int size);
+int	    ft_get_target_idx(int *arr, int size, int n);
 
 void    ft_print_arr(int *arr, int len);
 int     ft_print_error();

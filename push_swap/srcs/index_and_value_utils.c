@@ -54,6 +54,27 @@ int	ft_get_lowest_idx(int *arr, int size)
 	return (low_idx);
 }
 
+int	ft_get_target_idx(int *arr, int size, int n)
+{
+	int	i;
+	int	target_idx;
+	int	target_value;
+
+	i = 1;
+	target_idx = 0;
+	target_value = INT_MAX;
+	while (i < size)
+	{
+		if (arr[i] > n && arr[i] < target_value)
+		{
+			target_idx = i;
+			target_value = arr[i];
+		}
+		i++;
+	}
+	return (target_idx);
+}
+
 int	ft_get_lowest_value(int *arr, int size)
 {
 	int	i;

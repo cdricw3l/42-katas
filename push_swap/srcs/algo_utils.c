@@ -17,7 +17,6 @@ void optimised_rotation(t_pile *stack_a, int index)
     int i;
 
     i = 0;
-	ft_get_stack_data(stack_a);
     if(index > stack_a->len / 2)
     {
         while (i < stack_a->len - index)
@@ -34,7 +33,6 @@ void optimised_rotation(t_pile *stack_a, int index)
             i++;
         } 
     }
-	ft_get_stack_data(stack_a);
 }
 
 void ft_return_to_zero(t_pile *stack)

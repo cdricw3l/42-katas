@@ -53,7 +53,6 @@ void    ft_tree_values(t_pile *stack_a)
 			ft_swap(stack_a);
 		}
 	}
-	ft_get_stack_data(stack_a);
 }
 void ft_five_value(t_pile *stack_a, t_pile *stack_b)
 {
@@ -76,7 +75,5 @@ void ft_five_value(t_pile *stack_a, t_pile *stack_b)
         {
             ft_push(&stack_a, &stack_b);
         }
-        ft_get_stack_data(stack_a);
-        ft_get_stack_data(stack_b);
     }
 }
