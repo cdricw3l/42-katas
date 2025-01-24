@@ -145,28 +145,28 @@ int	ft_partition_middle_pivot(int *arr, int low, int high)
 	return (i);
 }
 
-int	ft_partition_custome(t_pile *src, t_pile *dest,int low, int high)
-{
-	int	pivot;
-	int	i;
-	int	j;
-	int	idx_pivot;
+// int	ft_partition_custome(t_pile *src, t_pile *dest, int low, int high)
+// {
+// 	int	pivot;
+// 	int	i;
+// 	int	j;
+// 	int	idx_pivot;
 
-	idx_pivot = (src->len - 1) / 2;
-	pivot = src->arr[idx_pivot];
-	i = low;
-	j = high - 1;
-	while (i < j)
-	{
-		while(arr[i] < pivot)
-			i++;
-		while(arr[j] > pivot)
-			j--;
-		if(arr[i] > arr[j])
-			ft_quick_swap(arr, i, j);
-	}
-	return (i);
-}
+// 	idx_pivot = (src->len - 1) / 2;
+// 	pivot = src->arr[idx_pivot];
+// 	i = 0;
+// 	j = src->len - 1;
+// 	while (i < j)
+// 	{
+// 		while(arr[i] < pivot)
+// 			i++;
+// 		while(arr[j] > pivot)
+// 			j--;
+// 		if(arr[i] > arr[j])
+// 			ft_quick_swap(arr, i, j);
+// 	}
+// 	return (i);
+// }
 
 void	ft_qsort_int(int *base, int low, int high)
 {

@@ -12,6 +12,12 @@
 
 #include "../include/push_swap.h"
 
+int ft_get_median_value(int *arr, int len)
+{
+    ft_print_arr(arr, len);
+    return(0);
+}
+
 int ft_test_push(void)
 {
     
@@ -25,6 +31,7 @@ int ft_test_push(void)
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
     int g = ft_generate_number(stack_a->arr, stack_a->len);
+    ft_get_median_value(stack_a->arr, stack_a->len);
     assert(g == 0);
     ft_get_stack_data(stack_a);
     /* stack_a->arr[0] = 3;
