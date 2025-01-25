@@ -402,7 +402,7 @@ int *ft_frequence_arr(t_pile *stack)
     if(!arr)
         return(NULL);
     unit_max = ft_get_biggest_unit(stack->arr, stack->len);
-
+    (void)i;
     printf("voici la plus grande unité %d\n", unit_max);
     /* while (unit_max > 0)
     {
