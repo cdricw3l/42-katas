@@ -21,12 +21,12 @@ int	ft_swap(t_pile *stack)
 	tmp = stack->arr[0];
 	stack->arr[0] = stack->arr[1];
 	stack->arr[1] = tmp;
-	/* if (stack->stack_name == 97)
-		write(1, "sa", 2);
-	else
-		write(1, "sb", 2);
-	stack->mvm_counter+=1;
-	write(1, "\n", 2); */
+	// if (stack->stack_name == 97)
+	// 	write(1, "sa", 2);
+	// else
+	// 	write(1, "sb", 2);
+	// stack->mvm_counter+=1;
+	// write(1, "\n", 2);
 	return (0);
 }
 
@@ -41,11 +41,11 @@ int	ft_rotate(t_pile *stack)
 	tmp = stack->arr[0];
 	ft_memmove(stack->arr, stack->arr + 1, len * sizeof(int));
 	stack->arr[len] = tmp;
-	/* if (stack->stack_name == 'a')
-		write(1, "ra", 3);
-	else
-		write(1, "rb", 3);
-	write(1, "\n", 2); */
+	// if (stack->stack_name == 'a')
+	// 	write(1, "ra", 3);
+	// else
+	// 	write(1, "rb", 3);
+	// write(1, "\n", 2);
 	stack->mvm_counter+=1;
 	return (0);
 }
@@ -61,11 +61,11 @@ int	ft_reverse_rotate(t_pile *stack)
 	tmp = stack->arr[len];
 	ft_memmove(stack->arr + 1, stack->arr, len * sizeof(int));
 	stack->arr[0] = tmp;
-	/* if (stack->stack_name == 'a')
-		write(1, "rra", 3);
-	else
-		write(1, "rrb", 3);
-	write(1, "\n", 2); */
+	// if (stack->stack_name == 'a')
+	// 	write(1, "rra", 3);
+	// else
+	// 	write(1, "rrb", 3);
+	// write(1, "\n", 2);
 	stack->mvm_counter+=1;
 	return (0);
 }
@@ -88,11 +88,11 @@ int	ft_push(t_pile **dest, t_pile **src)
 		ft_memmove((*dest)->arr + 1, (*dest)->arr, (*dest)->len * sizeof(int));
 	(*dest)->len++;
 	(*dest)->arr[0] = value;
-	/* if ((*dest)->stack_name == 'a')
-		write(1, "pa", 2);
-	else
-		write(1, "pb", 2);
-	write(1, "\n", 2); */
+	// if ((*dest)->stack_name == 'a')
+	// 	write(1, "pa", 2);
+	// else
+	// 	write(1, "pb", 2);
+	// write(1, "\n", 2);
 	(*dest)->mvm_counter+=1;
 	return(0);
 }

@@ -64,7 +64,11 @@ void    ft_return_to_max(t_pile *stack);
 void    ft_two_values(t_pile *stack_a);
 void    ft_tree_values(t_pile *stack_a);
 void    ft_five_value(t_pile *stack_a, t_pile *stack_b);
-
+void    ft_fill_pill_a(t_pile *stack_a, t_pile *stack_b);
+void    ft_fill_pill_b(t_pile *stack_b, t_pile *stack_a);
+int     ft_get_the_cost(t_pile *dst, t_pile *src, int n);
+int     get_optimised_cost(int len, int idx);
+int     ft_get_target_idx2(t_pile *stack, int n);
 //memory
 
 int	    ft_clean_memory(t_pile **stack_a, t_pile **stack_b);

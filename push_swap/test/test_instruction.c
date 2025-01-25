@@ -117,14 +117,14 @@ void process(t_pile *a, t_pile *b)
     
 }
 
-int get_optimised_cost(int len, int idx)
+/* int get_optimised_cost(int len, int idx)
 {
     if(idx > (len) / 2)
         return(len - idx);
     return(idx);
-}
+} */
 
-int ft_get_target_idx2(t_pile *stack, int n)
+/* int ft_get_target_idx2(t_pile *stack, int n)
 {
     int i;
     int prev_int;
@@ -147,8 +147,8 @@ int ft_get_target_idx2(t_pile *stack, int n)
         return(ft_get_highest_idx(stack->arr, stack->len));
     }
     return(prev_idx);
-}
-int ft_get_the_cost(t_pile *dst, t_pile *src, int n)
+} */
+/* int ft_get_the_cost(t_pile *dst, t_pile *src, int n)
 {
     int dest_cost;
     int src_cost;
@@ -164,7 +164,7 @@ int ft_get_the_cost(t_pile *dst, t_pile *src, int n)
     // ft_get_stack_data(src);
 
     return(dest_cost + src_cost);
-}
+} */
 
 int ft_test_cost(void)
 {
@@ -255,19 +255,19 @@ int ft_test_rotation(void)
     int best_cost_idx;
     int best_cost;
 
-    n = 100;
-    stack_a = ft_new_stack(n, 100, 97);
+    n = 15;
+    stack_a = ft_new_stack(n, n, 97);
     stack_b = ft_new_stack(n, 0, 98);
     if(!stack_a || !stack_b)
         return(ft_clean_memory(&stack_a, &stack_b));
     int g = ft_generate_number(stack_a->arr, stack_a->len);
         assert(g == 0);
+    assert(ft_is_rsort(stack_a->arr, stack_a->len, 4, ft_cmp_int) == 1);
 
     ft_push(&stack_b, &stack_a);
     ft_push(&stack_b, &stack_a);
     best_cost_idx = 0;
     best_cost = 0;
-    ft_get_stack_data(stack_b);
     ft_get_stack_data(stack_a);
     while (stack_a->len > 0)
     {
@@ -281,18 +281,19 @@ int ft_test_rotation(void)
         }
         int taret_idx = ft_get_target_idx2(stack_b, stack_a->arr[best_cost_idx]);
         
-        printf("voici la cible == 1  %d\n",stack_a->arr[best_cost_idx]);
+        //printf("voici la cible == 1  %d\n",stack_a->arr[best_cost_idx]);
         optimised_rotation(stack_a, best_cost_idx);
-        printf("voici la cible == 2 %d\n",stack_a->arr[0]);
+        //printf("voici la cible == 2 %d\n",stack_a->arr[0]);
         optimised_rotation(stack_b, taret_idx);
         ft_push(&stack_b, &stack_a);
-        printf("voici la cible == 3 %d\n",stack_b->arr[0]);
+        //printf("voici la cible == 3 %d\n",stack_b->arr[0]);
         assert(stack_a->arr[0] ==  stack_a->arr[best_cost_idx]);
+        ft_get_stack_data(stack_b);
     }
     ft_return_to_max(stack_b);
     assert(ft_is_rsort(stack_b->arr, stack_b->len, 4, ft_cmp_int) == 0);
-    ft_get_stack_data(stack_b);
-    ft_get_stack_data(stack_a);
+    // ft_get_stack_data(stack_b);
+    // ft_get_stack_data(stack_a);
     ft_clean_memory(&stack_a, &stack_b);
     
     return(0);
@@ -370,9 +371,34 @@ int ft_test_push(void)
 int main(void)
 {
     //ft_test_cost();
-    ft_test_rotation();
+    //ft_test_rotation();
     //ft_test_push();
 
+    t_pile *stack_a;
+    t_pile *stack_b;
+    int n;
     
+
+    n = 10;
+    stack_a = ft_new_stack(n, n, 97);
+    stack_b = ft_new_stack(n, 0, 98);
+    if(!stack_a || !stack_b)
+        return(ft_clean_memory(&stack_a, &stack_b));
+    int g = ft_generate_number(stack_a->arr, stack_a->len);
+        assert(g == 0);
+    assert(ft_is_rsort(stack_a->arr, stack_a->len, 4, ft_cmp_int) == 1);
+    ft_fill_pill_b(stack_b,stack_a);
+	//ft_five_value(stack_a, stack_b);
+
+    printf("fin du traitement de 1\n");
+    ft_get_stack_data(stack_b);
+    ft_tree_values(stack_a);
+    ft_fill_pill_a(stack_a, stack_b);
+    ft_get_stack_data(stack_a);
+    printf("==>> voici le nombre de mouvement %d\n", stack_a->mvm_counter + stack_b->mvm_counter);
+    //ft_return_to_zero(stack_a);
+    assert(ft_is_sort(stack_a->arr,n,sizeof(int), ft_cmp_int) == 0);
+    ft_clean_memory(&stack_a, &stack_b);
+
     return(0);
 }
