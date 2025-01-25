@@ -368,6 +368,51 @@ int ft_test_push(void)
     return(0);
 }
 
+int ft_get_biggest_unit(int *arr, int len)
+{
+    int i;
+    int n;
+    int unit;
+    int max_unit;
+
+    i = 0;
+    unit = 0;
+    max_unit = 0;
+    while (i < len)
+    {
+        n = arr[i];
+        while (n / 10 > 0)
+            unit++;
+        if(unit > max_unit)
+            max_unit = unit;
+      
+        i++;
+    }
+    return(max_unit);
+}
+
+int *ft_frequence_arr(t_pile *stack)
+{
+    int i;
+    int *arr;
+    int unit_max;
+
+    i = 0;
+    arr = calloc(10, sizeof(int));
+    if(!arr)
+        return(NULL);
+    unit_max = ft_get_biggest_unit(stack->arr, stack->len);
+
+    printf("voici la plus grande unité %d\n", unit_max);
+    /* while (unit_max > 0)
+    {
+
+    }
+     */
+    return(NULL);
+    
+}
+
 int main(void)
 {
     //ft_test_cost();
@@ -382,22 +427,22 @@ int main(void)
     n = 10;
     stack_a = ft_new_stack(n, n, 97);
     stack_b = ft_new_stack(n, 0, 98);
-    if(!stack_a || !stack_b)
-        return(ft_clean_memory(&stack_a, &stack_b));
-    int g = ft_generate_number(stack_a->arr, stack_a->len);
-        assert(g == 0);
-    assert(ft_is_rsort(stack_a->arr, stack_a->len, 4, ft_cmp_int) == 1);
-    ft_fill_pill_b(stack_b,stack_a);
-	//ft_five_value(stack_a, stack_b);
+    
+    stack_a->arr[0] = 9;
+    stack_a->arr[1] = 19;
+    stack_a->arr[2] = 223;
+    stack_a->arr[3] = 8;
+    stack_a->arr[4] = 409;
+    stack_a->arr[5] = 2221;
+    stack_a->arr[6] = 29;
+    stack_a->arr[7] = 887;
+    stack_a->arr[8] = 87;
+    stack_a->arr[9] = 1;
 
-    printf("fin du traitement de 1\n");
-    ft_get_stack_data(stack_b);
-    ft_tree_values(stack_a);
-    ft_fill_pill_a(stack_a, stack_b);
-    ft_get_stack_data(stack_a);
-    printf("==>> voici le nombre de mouvement %d\n", stack_a->mvm_counter + stack_b->mvm_counter);
-    //ft_return_to_zero(stack_a);
-    assert(ft_is_sort(stack_a->arr,n,sizeof(int), ft_cmp_int) == 0);
+
+    ft_frequence_arr(stack_a);
+
+
     ft_clean_memory(&stack_a, &stack_b);
 
     return(0);
