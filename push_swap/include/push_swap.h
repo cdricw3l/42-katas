@@ -58,8 +58,9 @@ int	    ft_push(t_pile **dest, t_pile **src);
 
 //algo
 
-void    optimised_rotation(t_pile *stack_a, int index);
+int    optimised_rotation(t_pile *stack_a, int index);
 void    ft_return_to_zero(t_pile *stack);
+void    ft_return_to_max(t_pile *stack);
 void    ft_two_values(t_pile *stack_a);
 void    ft_tree_values(t_pile *stack_a);
 void    ft_five_value(t_pile *stack_a, t_pile *stack_b);

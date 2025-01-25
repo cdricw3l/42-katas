@@ -20,7 +20,7 @@ int	ft_get_highest_idx(int *arr, int size)
 
 	i = 1;
 	high_value = arr[0];
-	high_idx = INT_MIN;
+	high_idx = 0;
 	while (i < size)
 	{
 		if (arr[i] > high_value)

@@ -43,6 +43,7 @@ SRCS=	ft_putchar_fd.c \
 		ft_cmp_int.c \
 		ft_swap_ptr.c \
 		ft_is_sort.c \
+		ft_is_rsort.c \
 		ft_isset.c \
 		ft_print_bit_8.c \
 		ft_print_bit_16.c \

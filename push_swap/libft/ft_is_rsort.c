@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2))
+int	ft_is_rsort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2))
 {
 	int	i;
 	int	j;
@@ -25,7 +25,7 @@ int	ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2))
 	while (i < (nb * t) - t)
 	{
 		j = i + t;
-		if (cmp(&tmp[i], &tmp[j]) > 0)
+		if (cmp(&tmp[i], &tmp[j]) < 0)
 			return (1);
 		i += t;
 	}

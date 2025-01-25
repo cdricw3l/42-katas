@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void optimised_rotation(t_pile *stack_a, int index)
+int optimised_rotation(t_pile *stack_a, int index)
 {
     int i;
 
@@ -33,6 +33,7 @@ void optimised_rotation(t_pile *stack_a, int index)
             i++;
         } 
     }
+	return (i);
 }
 
 void ft_return_to_zero(t_pile *stack)
@@ -40,6 +41,30 @@ void ft_return_to_zero(t_pile *stack)
     int i;
 
     i = ft_get_lowest_idx(stack->arr, stack->len);
+    if(i > stack->len / 2)
+    {
+
+        while (stack->len - i > 0)
+        {
+            ft_reverse_rotate(stack);
+            i++;
+        }
+    }
+    else
+    {
+        while (i > 0)
+        {
+            ft_rotate(stack);
+            i--;
+        } 
+    }
+}
+
+void ft_return_to_max(t_pile *stack)
+{
+    int i;
+
+    i = ft_get_highest_idx(stack->arr, stack->len);
     if(i > stack->len / 2)
     {
 
@@ -145,28 +170,7 @@ int	ft_partition_middle_pivot(int *arr, int low, int high)
 	return (i);
 }
 
-// int	ft_partition_custome(t_pile *src, t_pile *dest, int low, int high)
-// {
-// 	int	pivot;
-// 	int	i;
-// 	int	j;
-// 	int	idx_pivot;
 
-// 	idx_pivot = (src->len - 1) / 2;
-// 	pivot = src->arr[idx_pivot];
-// 	i = 0;
-// 	j = src->len - 1;
-// 	while (i < j)
-// 	{
-// 		while(arr[i] < pivot)
-// 			i++;
-// 		while(arr[j] > pivot)
-// 			j--;
-// 		if(arr[i] > arr[j])
-// 			ft_quick_swap(arr, i, j);
-// 	}
-// 	return (i);
-// }
 
 void	ft_qsort_int(int *base, int low, int high)
 {

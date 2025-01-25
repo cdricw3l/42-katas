@@ -80,6 +80,7 @@ void	ft_swap_ptr(void *p1, void *p2, int size);
 void	ft_bubble_sort(void *arr, int nb, int t,
 			int (*cmp)(void *p1, void *p2));
 int		ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
+int		ft_is_rsort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
 int 	ft_generate_number(int *arr, int size);
 void	ft_print_bit_8(int n);
 void	ft_print_bit_16(int n);
