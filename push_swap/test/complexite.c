@@ -25,7 +25,7 @@ static void ft_bublesort(t_pile *stack)
         j = 0;
         while (j <= stack->len)
         {
-            if(stack->arr[0] < stack->arr[1])
+            if(stack->arr[0] > stack->arr[1])
                 ft_swap(stack);
             ft_rotate(stack, BY_PASS_OFF);
             j++;
