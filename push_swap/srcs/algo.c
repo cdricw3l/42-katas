@@ -29,7 +29,7 @@ void    ft_tree_values(t_pile *stack_a)
 				&& stack_a->arr[1] > stack_a->arr[2]
 				&& stack_a->arr[0] < stack_a->arr[2])
 		{
-			ft_reverse_rotate(stack_a);
+			ft_reverse_rotate(stack_a, BY_PASS_OFF);
 			ft_swap(stack_a);
 
 		}
@@ -40,16 +40,16 @@ void    ft_tree_values(t_pile *stack_a)
 		else if (stack_a->arr[1] > stack_a->arr[0] 
 				&& stack_a->arr[1] > stack_a->arr[2]
 				&& stack_a->arr[0] > stack_a->arr[2])
-			ft_reverse_rotate(stack_a);
+			ft_reverse_rotate(stack_a, BY_PASS_OFF);
 		else if (stack_a->arr[1] < stack_a->arr[0] 
 				&& stack_a->arr[1] < stack_a->arr[2]
 				&& stack_a->arr[0] > stack_a->arr[2])
-			ft_rotate(stack_a);
+			ft_rotate(stack_a, BY_PASS_OFF);
 		else if (stack_a->arr[1] < stack_a->arr[0] 
 				&& stack_a->arr[1] > stack_a->arr[2]
 				&& stack_a->arr[0] > stack_a->arr[2])
 		{
-			ft_rotate(stack_a);
+			ft_rotate(stack_a, BY_PASS_OFF);
 			ft_swap(stack_a);
 		}
 	}

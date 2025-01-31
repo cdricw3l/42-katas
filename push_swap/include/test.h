@@ -13,10 +13,11 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "../include/ft_printf.h"
-#include "../include/libft.h"
+#include "push_swap.h"
 
-int validation_arg_unit();
+#define BY_PASS 1
+
+int rotation_test(void);
 
 
 #endif

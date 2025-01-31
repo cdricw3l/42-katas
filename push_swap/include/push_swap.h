@@ -20,12 +20,11 @@
 #include <limits.h>
 
 
-
-
-
 #define PRINT_INT(msg) printf("%d ", msg)
 #define PRINT_2INT(msg1, msg2) printf("%d - %d\n", msg1, msg2)
 #define PRINT_CHAR(msg) printf("%c", msg)
+#define BY_PASS_OFF 0
+#define BY_PASS_ON 1
 
 typedef struct s_pile
 {
@@ -52,9 +51,11 @@ int	    ft_get_number_of_int(char **argv);
 //instruction
 
 int     ft_swap(t_pile *stack);
-int	    ft_rotate(t_pile *stack);
-int	    ft_reverse_rotate(t_pile *stack);
+int	    ft_rotate(t_pile *stack, int bypass);
+int	    ft_reverse_rotate(t_pile *stack, int bypass);
 int	    ft_push(t_pile **dest, t_pile **src);
+int     ft_rr(t_pile *stack_a, t_pile *stack_b);
+int     ft_rrr(t_pile *stack_a, t_pile *stack_b);
 
 //algo
 

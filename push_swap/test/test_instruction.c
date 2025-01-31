@@ -413,39 +413,39 @@ int *ft_frequence_arr(t_pile *stack, int u)
     return(arr);
 }
 
-int main(void)
-{
-    //ft_test_cost();
-    //ft_test_rotation();
-    //ft_test_push();
+// int main(void)
+// {
+//     //ft_test_cost();
+//     //ft_test_rotation();
+//     //ft_test_push();
 
-    int n;    
-    int unit_max;
-    t_pile *stack_a;
-    t_pile *stack_b;
+//     int n;    
+//     int unit_max;
+//     t_pile *stack_a;
+//     t_pile *stack_b;
 
-    n = 10;
-    stack_a = ft_new_stack(n, n, 97);
-    stack_b = ft_new_stack(n, 0, 98);
+//     n = 10;
+//     stack_a = ft_new_stack(n, n, 97);
+//     stack_b = ft_new_stack(n, 0, 98);
     
-    stack_a->arr[0] = 9;
-    stack_a->arr[1] = 19;
-    stack_a->arr[2] = 223;
-    stack_a->arr[3] = 8;
-    stack_a->arr[4] = 409;
-    stack_a->arr[5] = 22211;
-    stack_a->arr[6] = 29;
-    stack_a->arr[7] = 887;
-    stack_a->arr[8] = 87;
-    stack_a->arr[9] = 1;
+//     stack_a->arr[0] = 9;
+//     stack_a->arr[1] = 19;
+//     stack_a->arr[2] = 223;
+//     stack_a->arr[3] = 8;
+//     stack_a->arr[4] = 409;
+//     stack_a->arr[5] = 22211;
+//     stack_a->arr[6] = 29;
+//     stack_a->arr[7] = 887;
+//     stack_a->arr[8] = 87;
+//     stack_a->arr[9] = 1;
 
-    unit_max = ft_get_biggest_unit(stack_a->arr, stack_a->len);
-    (void)unit_max;
-    int *arr = ft_frequence_arr(stack_a, 1);
-    ft_print_arr(arr, 10);
+//     unit_max = ft_get_biggest_unit(stack_a->arr, stack_a->len);
+//     (void)unit_max;
+//     int *arr = ft_frequence_arr(stack_a, 1);
+//     ft_print_arr(arr, 10);
     
-    free(arr);
+//     free(arr);
 
-    ft_clean_memory(&stack_a, &stack_b);
-    return(0);
-}
+//     ft_clean_memory(&stack_a, &stack_b);
+//     return(0);
+// }

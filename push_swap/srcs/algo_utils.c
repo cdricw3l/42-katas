@@ -21,7 +21,7 @@ int optimised_rotation(t_pile *stack_a, int index)
     {
         while (i < stack_a->len - index)
         {
-            ft_reverse_rotate(stack_a);
+            ft_reverse_rotate(stack_a, BY_PASS_OFF);
             i++;
         }
     }
@@ -29,7 +29,7 @@ int optimised_rotation(t_pile *stack_a, int index)
     {
         while (i < index)
         {
-            ft_rotate(stack_a);
+            ft_rotate(stack_a, BY_PASS_OFF);
             i++;
         } 
     }
@@ -46,7 +46,7 @@ void ft_return_to_zero(t_pile *stack)
 
         while (stack->len - i > 0)
         {
-            ft_reverse_rotate(stack);
+            ft_reverse_rotate(stack, BY_PASS_OFF);
             i++;
         }
     }
@@ -54,7 +54,7 @@ void ft_return_to_zero(t_pile *stack)
     {
         while (i > 0)
         {
-            ft_rotate(stack);
+            ft_rotate(stack,BY_PASS_OFF);
             i--;
         } 
     }
@@ -70,7 +70,7 @@ void ft_return_to_max(t_pile *stack)
 
         while (stack->len - i > 0)
         {
-            ft_reverse_rotate(stack);
+            ft_reverse_rotate(stack, BY_PASS_OFF);
             i++;
         }
     }
@@ -78,7 +78,7 @@ void ft_return_to_max(t_pile *stack)
     {
         while (i > 0)
         {
-            ft_rotate(stack);
+            ft_rotate(stack, BY_PASS_OFF);
             i--;
         } 
     }
