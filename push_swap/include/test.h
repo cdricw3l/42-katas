@@ -15,9 +15,10 @@
 
 #include "push_swap.h"
 
-#define BY_PASS 1
+#define BY_PASS     1
+#define BUBBLE_SORT 1
 
-int rotation_test(void);
-
+int     rotation_test(void);
+void    complexité_test(t_pile *stack, int algo);
 
 #endif

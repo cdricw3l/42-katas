@@ -14,7 +14,7 @@
 
 int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
 {
-	ft_printf("Start clean fonction\n");
+	ft_printf("\n Clean memory\n");
 	if (*stack_a)
 	{
 		if ((*stack_a)->arr)

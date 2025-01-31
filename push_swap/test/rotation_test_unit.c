@@ -69,7 +69,7 @@ int rotation_test(void)
 	assert(stack_a->arr[0] == start_point_a);
 	assert(stack_b->arr[0] == start_point_b);
 	assert(ft_reverse_rotate(NULL, BY_PASS_OFF) == 1);
-	printf("====> Fonction rerverse rotate Ok\n\n");	
+	printf("====> Fonction reverse rotate Ok\n\n");	
 	
 	i = 0;
 	while (i < 10)
@@ -118,11 +118,11 @@ int rotation_test(void)
 	assert(stack_b->arr[0] == start_point_b);
     assert(ft_rr(NULL, NULL) == 1);
 
+	stack_a->mvm_counter = 0;
 	printf("====> Fonction rrr Ok\n\n");	
 	printf("====> Test de la fonction rr: stack a len: %d\n\n", stack_a->mvm_counter);	
 
 	i = 0;
-	stack_a->mvm_counter = 0;
 	while (i < 10)
 	{
 		/* 
