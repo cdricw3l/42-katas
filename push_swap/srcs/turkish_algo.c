@@ -49,16 +49,8 @@ int ft_get_the_cost(t_pile *dst, t_pile *src, int n)
     int dest_cost;
     int src_cost;
 
-
-    //printf("voici higherst %d et idx %d\n", ft_get_highest_idx(dst->arr, dst->len),ft_index_of(src->arr, src->len, n) );
-
     dest_cost = get_optimised_cost(dst->len,ft_get_target_idx2(dst, n));
-    //printf("dest cost = %d\n", dest_cost);
     src_cost = get_optimised_cost(src->len,ft_index_of(src->arr, src->len, n));
-
-    // ft_get_stack_data(dst);
-    // ft_get_stack_data(src);
-
     return(dest_cost + src_cost);
 }
 
@@ -87,9 +79,13 @@ void ft_fill_pill_b(t_pile *stack_b, t_pile *stack_a)
             i++;
         }
         taret_idx = ft_get_target_idx2(stack_b, stack_a->arr[best_cost_idx]);
-        //printf("target  index %d , best cost%d\n", best_cost_idx, taret_idx);
-        optimised_rotation(stack_a, best_cost_idx);
-        optimised_rotation(stack_b, taret_idx);
+        if(taret_idx == best_cost_idx)
+            optimised_double_rotation(stack_a, stack_b);
+        else
+        {
+            optimised_rotation(stack_a, best_cost_idx);
+            optimised_rotation(stack_b, taret_idx);
+        }
         ft_push(&stack_b, &stack_a);
     }
     

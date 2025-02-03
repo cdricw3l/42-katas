@@ -36,6 +36,30 @@ int optimised_rotation(t_pile *stack_a, int index)
 	return (i);
 }
 
+int optimised_double_rotation(t_pile *stack_a, t_pile *stack_b ,int index)
+{
+    int i;
+
+    i = 0;
+    if(index > stack_a->len / 2)
+    {
+        while (i < stack_a->len - index)
+        {
+            ft_rrr(stack_a, stack_b);
+            i++;
+        }
+    }
+    else
+    {
+        while (i < index)
+        {
+            ft_rr(stack_a, stack_b);
+            i++;
+        } 
+    }
+	return (i);
+}
+
 void ft_return_to_zero(t_pile *stack)
 {
     int i;
