@@ -80,7 +80,7 @@ void ft_fill_pill_b(t_pile *stack_b, t_pile *stack_a)
         }
         taret_idx = ft_get_target_idx2(stack_b, stack_a->arr[best_cost_idx]);
         if(taret_idx == best_cost_idx)
-            optimised_double_rotation(stack_a, stack_b);
+            optimised_double_rotation(stack_a, stack_b, taret_idx);
         else
         {
             optimised_rotation(stack_a, best_cost_idx);

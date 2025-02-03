@@ -50,8 +50,12 @@ int main(void)
 
 
     ft_fill_pill_b(stack_b, stack_a);
-    
-    ft_tree_values(stack_a);
+    //ft_tree_values(stack_a);
+
+    ft_print_arr(stack_a->arr, stack_a->len);
+    ft_print_arr(stack_b->arr, stack_b->len);
+
+    optimised_double_rotation(stack_a, stack_b, 2);
     ft_print_arr(stack_a->arr, stack_a->len);
     ft_print_arr(stack_b->arr, stack_b->len);
     //ft_fill_pill_a(stack_a, stack_b);
