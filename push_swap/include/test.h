@@ -21,4 +21,5 @@
 int     rotation_test(void);
 void    complexité_test(t_pile *stack, int algo);
 
+
 #endif

@@ -48,10 +48,14 @@ int main(void)
     (void)start_point_a;
     (void)start_point_b;
 
-    ft_print_arr(stack_a->arr,stack_a->len);
-	ft_print_arr(stack_b->arr,stack_b->len);
 
-    complexité_test(stack_a ,BUBBLE_SORT);
+    ft_fill_pill_b(stack_b, stack_a);
+    
+    ft_tree_values(stack_a);
+    ft_print_arr(stack_a->arr, stack_a->len);
+    ft_print_arr(stack_b->arr, stack_b->len);
+    //ft_fill_pill_a(stack_a, stack_b);
+	// ft_print_arr(stack_b->arr,stack_b->len);
 
     ft_clean_memory(&stack_a, &stack_b);
 

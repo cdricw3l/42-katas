@@ -41,7 +41,7 @@ int	ft_rotate(t_pile *stack, int bypass)
 	tmp = stack->arr[0];
 	ft_memmove(stack->arr, stack->arr + 1, len * sizeof(int));
 	stack->arr[len] = tmp;
-	if(bypass != BY_PASS_OFF)
+	if(bypass != BY_PASS_ON)
 	{
 		if (stack->stack_name == 'a')
 			write(1, "ra", 3);
@@ -64,7 +64,7 @@ int	ft_reverse_rotate(t_pile *stack, int bypass)
 	tmp = stack->arr[len];
 	ft_memmove(stack->arr + 1, stack->arr, len * sizeof(int));
 	stack->arr[0] = tmp;
-	if(bypass != BY_PASS_OFF)
+	if(bypass != BY_PASS_ON)
 	{
 		if (stack->stack_name == 'a')
 			write(1, "rra", 3);

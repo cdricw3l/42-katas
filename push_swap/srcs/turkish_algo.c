@@ -74,11 +74,11 @@ void ft_fill_pill_b(t_pile *stack_b, t_pile *stack_a)
 	    ft_push(&stack_b, &stack_a);
         ft_push(&stack_b, &stack_a);
     }
-	best_cost_idx = 0;
-    best_cost = 0;
 	while (stack_a->len > 3)
     {
         i = 0;
+	    best_cost_idx = 0;
+        best_cost = ft_get_the_cost(stack_b, stack_a, stack_a->arr[0]);
         while (i < stack_a->len)
         {
             int cost = ft_get_the_cost(stack_b, stack_a, stack_a->arr[i]);
@@ -87,10 +87,10 @@ void ft_fill_pill_b(t_pile *stack_b, t_pile *stack_a)
             i++;
         }
         taret_idx = ft_get_target_idx2(stack_b, stack_a->arr[best_cost_idx]);
+        //printf("target  index %d , best cost%d\n", best_cost_idx, taret_idx);
         optimised_rotation(stack_a, best_cost_idx);
         optimised_rotation(stack_b, taret_idx);
         ft_push(&stack_b, &stack_a);
-        assert(stack_a->arr[0] ==  stack_a->arr[best_cost_idx]);
     }
     
 }
