@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:14:58 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 06:01:58 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 06:03:36 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int main(void)
     int n;
 	t_pile *stack_a;
     t_pile *stack_b;
-
 
     n = 10;
     stack_a = ft_new_stack(n, n, 97);
@@ -51,8 +50,6 @@ int main(void)
     stack_b->arr[8] = 87;
     stack_b->arr[9] = 1;
 
-
-    
     optimised_rotation(stack_a, 3);
     assert(stack_a->mvm_counter == 3);
     optimised_rotation(stack_a, 6);
@@ -79,8 +76,10 @@ int main(void)
 	ft_print_arr(stack_a->arr,stack_a->len);
 	ft_print_arr(stack_b->arr,stack_b->len);
     assert(stack_a->mvm_counter == 7 && stack_b->mvm_counter  == 0);
+    
+    optimised_double_rotation(stack_a, stack_b, 2);
+    assert(stack_a->mvm_counter == 7 + 2 && stack_b->mvm_counter  == 0);
     ft_clean_memory(&stack_a, &stack_b);
-
 
     return(0);
 }
