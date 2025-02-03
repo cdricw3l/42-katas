@@ -58,7 +58,7 @@ int     ft_rr(t_pile *stack_a, t_pile *stack_b);
 int     ft_rrr(t_pile *stack_a, t_pile *stack_b);
 
 //algo
-
+void    ft_testpush(t_pile *stack_b, t_pile *stack_a);
 int     optimised_rotation(t_pile *stack_a, int index);
 int     optimised_double_rotation(t_pile *stack_a, t_pile *stack_b ,int index);
 void    ft_return_to_zero(t_pile *stack);

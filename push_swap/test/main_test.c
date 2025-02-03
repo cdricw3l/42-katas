@@ -26,20 +26,20 @@ int main(void)
 	int start_point_a;
 	int start_point_b;
 
-    n = 10;
+    n = 500;
     stack_a = ft_new_stack(n, n, 97);
     stack_b = ft_new_stack(n, 0, 98);
-
-    stack_a->arr[0] = 9;
-    stack_a->arr[1] = 19;
-    stack_a->arr[2] = 223;
-    stack_a->arr[3] = 8;
-    stack_a->arr[4] = 409;
-    stack_a->arr[5] = 22211;
-    stack_a->arr[6] = 29;
-    stack_a->arr[7] = 887;
-    stack_a->arr[8] = 87;
-    stack_a->arr[9] = 1;
+    ft_generate_number(stack_a->arr, 500);
+    // stack_a->arr[0] = 9;
+    // stack_a->arr[1] = 19;
+    // stack_a->arr[2] = 223;
+    // stack_a->arr[3] = 8;
+    // stack_a->arr[4] = 409;
+    // stack_a->arr[5] = 22211;
+    // stack_a->arr[6] = 29;
+    // stack_a->arr[7] = 887;
+    // stack_a->arr[8] = 87;
+    // stack_a->arr[9] = 1;
 
 
     start_point_a = stack_a->arr[0];
@@ -50,14 +50,13 @@ int main(void)
 
 
     ft_fill_pill_b(stack_b, stack_a);
+    ft_fill_pill_b(stack_a, stack_b);
+    printf("voci le ombre de mouve %d et %d\n", stack_b->mvm_counter, stack_a->mvm_counter);
     //ft_tree_values(stack_a);
-
     ft_print_arr(stack_a->arr, stack_a->len);
     ft_print_arr(stack_b->arr, stack_b->len);
 
-    optimised_double_rotation(stack_a, stack_b, 2);
-    ft_print_arr(stack_a->arr, stack_a->len);
-    ft_print_arr(stack_b->arr, stack_b->len);
+
     //ft_fill_pill_a(stack_a, stack_b);
 	// ft_print_arr(stack_b->arr,stack_b->len);
 
