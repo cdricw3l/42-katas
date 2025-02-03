@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:53:35 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/10/12 17:15:22 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:01:37 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_free(char **p, size_t index)
 
 static void	check_alloc(char **ptr, size_t j)
 {
-	if (!*ptr[j])
+	if (!ptr[j])
 		ft_free(ptr, j);
 }
 

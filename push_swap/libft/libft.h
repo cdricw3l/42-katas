@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:34:03 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/20 08:45:24 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:38:46 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,8 @@ void	ft_swap_ptr(void *p1, void *p2, int len);
 int		ft_cmp_char(void *p1, void *p2);
 int		ft_cmp_int(void *p1, void *p2);
 void	ft_swap_ptr(void *p1, void *p2, int size);
-void	ft_bubble_sort(void *arr, int nb, int t,
-			int (*cmp)(void *p1, void *p2));
 int		ft_is_sort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
 int		ft_is_rsort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2));
-int 	ft_generate_number(int *arr, int size);
 void	ft_print_bit_8(int n);
 void	ft_print_bit_16(int n);
 void	ft_print_bit_32(int n);

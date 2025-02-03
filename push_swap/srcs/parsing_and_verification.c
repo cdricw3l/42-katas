@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_and_verification.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/15 12:53:06 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 16:28:41 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int ft_validation_arg(char **argv)
+int	ft_validation_arg(char **argv)
 {
-	char *tmp;
-	int digits;
-	
+	char	*tmp;
+	int		digits;
+
 	while (*argv)
 	{
 		tmp = *argv;
 		digits = 0;
 		while (*tmp)
 		{
-			if(!ft_isdigit(*tmp) && *tmp != 32 && *tmp != 45)
-				return(1);
-			if(ft_isdigit(*tmp))
+			if (!ft_isdigit(*tmp) && *tmp != 32 && *tmp != 45)
+				return (1);
+			if (ft_isdigit(*tmp))
 				digits++;
 			tmp++;
 		}
@@ -33,39 +33,39 @@ int ft_validation_arg(char **argv)
 			return (1);
 		argv++;
 	}
-	return (0);  
+	return (0);
 }
 
-int	ft_parsing(char **argv, t_pile *stack)
+int	ft_parsing(char **argv, t_stack *stack)
 {
 	char	**split;
 	int		i;
+	int		j;
 
 	i = 0;
 	while (*argv)
 	{
 		if (ft_find_space(*argv))
 		{
+			j = 0;
 			split = ft_split(*argv, 32);
-			while (*split)
+			while (split[j])
 			{
-				stack->arr[i] = ft_atoi(*split);
-				free(*split);
-				split++;
+				stack->arr[i] = ft_atoi(split[j]);
+				free(split[j]);
 				i++;
-			}
+				j++;
+			}	
+			free(split);
 		}
 		else
-		{
-			stack->arr[i] = ft_atoi(*argv);
-			i++;
-		}
+			stack->arr[i++] = ft_atoi(*argv);
 		argv++;
 	}
 	return (0);
 }
 
-int	ft_check_repetition(t_pile *stack)
+int	ft_check_repetition(t_stack *stack)
 {
 	int	i;
 	int	j;
@@ -76,19 +76,24 @@ int	ft_check_repetition(t_pile *stack)
 	while (i < stack->len - 1)
 	{
 		j = i + 1;
-		if(stack->arr[i] == stack->arr[j])
+		if (stack->arr[i] == stack->arr[j])
 			return (-1);
-		if(stack->arr[i] < stack->arr[j])
+		else if (stack->arr[i] > INT_MAX || stack->arr[j] > INT_MAX)
+			return (-1);
+		else if (stack->arr[i] < INT_MIN || stack->arr[j] < INT_MIN)
+			return (-1);
+		if (stack->arr[i] < stack->arr[j])
 			tx++;
 		i++;
 	}
-	tx = (100 * tx) / (stack->len - 1) ;
+	tx = (100 * tx) / (stack->len - 1);
 	return (tx);
 }
 
 int	ft_get_number_of_int(char **argv)
 {
 	int		i;
+	int		j;
 	int		count;
 	char	**split;
 
@@ -99,15 +104,28 @@ int	ft_get_number_of_int(char **argv)
 		if (ft_find_space(argv[i]))
 		{
 			split = ft_split(argv[i], 32);
-			while (*split)
+			j = 0;
+			while (split[j])
 			{
 				count++;
-				split++;
+				free(split[j++]);
 			}
+			free(split);
 		}
 		else
 			count++;
 		i++;
 	}
 	return (count);
+}
+
+int	ft_find_space(char *str)
+{
+	while (*str)
+	{
+		if (*str == 32)
+			return (1);
+		str++;
+	}
+	return (0);
 }

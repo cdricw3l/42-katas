@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   ft_is_rsort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:26:40 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/11/27 14:41:11 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:40:31 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_is_rsort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2))
 {
-	int	i;
-	int	j;
-	unsigned char *tmp;
-	
-	if(!arr || nb < 2)
-		return(-1);
+	int				i;
+	int				j;
+	unsigned char	*tmp;
+
+	if (!arr || nb < 2)
+		return (-1);
 	i = 0;
 	tmp = (unsigned char *)arr;
 	while (i < (nb * t) - t)
@@ -31,4 +31,3 @@ int	ft_is_rsort(void *arr, int nb, int t, int (*cmp)(void *p1, void *p2))
 	}
 	return (0);
 }
-

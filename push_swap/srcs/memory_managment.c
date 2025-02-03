@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_utils.c                                       :+:      :+:    :+:   */
+/*   memory_managment.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:29:02 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/15 12:51:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 15:58:52 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_clean_memory(t_pile **stack_a, t_pile **stack_b)
+int	ft_clean_memory(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("\n Clean memory\n");
 	if (*stack_a)
 	{
 		if ((*stack_a)->arr)
 			free((*stack_a)->arr);
 		free(*stack_a);
-		ft_printf("Stack A clean\n");
 	}
-
 	if (*stack_b)
 	{
 		if ((*stack_b)->arr)
 			free((*stack_b)->arr);
 		free(*stack_b);
-		ft_printf("Stack B clean\n");
 	}
 	return (0);
 }

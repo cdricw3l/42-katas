@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_utils.c                                       :+:      :+:    :+:   */
+/*   index_and_value_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:29:02 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/12/15 12:51:00 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 15:31:59 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,67 +52,4 @@ int	ft_get_lowest_idx(int *arr, int size)
 		i++;
 	}
 	return (low_idx);
-}
-
-int	ft_get_target_idx(int *arr, int size, int n)
-{
-	int	i;
-	int	target_idx;
-	int	target_value;
-
-	i = 1;
-	target_idx = 0;
-	target_value = INT_MAX;
-	while (i < size)
-	{
-		if (arr[i] > n && arr[i] < target_value)
-		{
-			target_idx = i;
-			target_value = arr[i];
-		}
-		i++;
-	}
-	return (target_idx);
-}
-
-int	ft_get_lowest_value(int *arr, int size)
-{
-	int	i;
-	int	low;
-
-	i = 1;
-	low = arr[0];
-	while (i < size)
-	{
-		if (arr[i] < low)
-			low = arr[i];
-		i++;
-	}
-	return (low);
-}
-
-int	ft_get_highest_value(int *arr, int size)
-{
-	int	i;
-	int	high;
-
-	i = 1;
-	high = arr[0];
-	while (i < size)
-	{
-		if (arr[i] > high)
-			high = arr[i];
-		i++;
-	}
-	return (high);
-}
-int	ft_find_space(char *str)
-{
-	while (*str)
-	{
-		if (*str == 32)
-			return (1);
-		str++;
-	}
-	return (0);
 }

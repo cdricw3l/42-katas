@@ -51,7 +51,6 @@ SRCS=	ft_putchar_fd.c \
 		ft_print_bit_64.c \
 		ft_index_of.c \
 		ft_get_max_value.c \
-		ft_generate_number.c \
 
 BONUS=	ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
@@ -85,16 +84,6 @@ fclean: clean
 	rm -f ${NAME} 
 
 re: fclean ${NAME}
-
-# test
-r:
-	rm -f ${NAME_TEST}
-
-test: r
-	${CC} ${CFLAGS} *.c -o ${NAME_TEST}
-
-t:  test
-	./${NAME_TEST}
 
 gdev:
 	cd .. && git add .

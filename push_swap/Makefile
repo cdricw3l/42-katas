@@ -1,5 +1,5 @@
 CC= gcc
-GFLAGS= -Wall -Werror -Wextra -fsanitize=address -g 
+GFLAGS= -Wall -Werror -Wextra
 LIB= -Llibft -lft -Llibftprintf -lftprintf 
 SRCS=$(wildcard srcs/*.c)
 OBJS=$(SRCS:.c=.o)
@@ -8,7 +8,12 @@ DATE=$(shell date | sed 's/ /_/g')
 
 all: $(NAME)
 
+%.o: %.c
+	$(CC) $(GFLAGS) -c $< -o $@
+
 $(NAME): $(OBJS)
+	cd libft && make bonus
+	cd ..
 	$(CC) $(GFLAGS) $(OBJS) ${LIB} -o $(NAME)
 
 clean:
@@ -18,8 +23,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	cd test && rm -rf test.dSYM
-	cd test && rm -rf test
 
 re: fclean all
 
@@ -36,14 +39,7 @@ libft-update:
 	rm -rf libft
 	cp -r ../libft .
 	cd libft && make bonus && make clean
-
-copy-swap:
-	cd .. && cd 42-katas && rm -rf push_swap
-	cd .. && cp -rf push_swap 42-katas
 	
-#### test ###
-#$(CC) $(GFLAGS) test/$(testunit).c -Llib -lft -lftprintf -o $(testunit) 
-
 test:
 	$(CC) $(GFLAGS) test/*.c srcs/* ${LIB}  -o test/test
 	

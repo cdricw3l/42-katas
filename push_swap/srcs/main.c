@@ -3,134 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2024/12/15 12:53:06 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 18:09:56 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <limits.h>
 
-// static int	ft_init_progr(char **argv, t_pile *stack)
-// {
-// 	int	rep;
-
-// 	if (!ft_validation_arg(&argv[1]))
-// 	{
-// 		ft_parsing(&argv[0], stack);
-// 		rep = ft_check_repetition(stack);
-// 		if (rep == -1)
-// 			return (-1);
-// 		else
-// 			return (rep);
-// 	}
-// 	return (-1);
-// }
-
-t_pile *ft_new_stack(int size, int len, char name)
+int	ft_is_sort_2(int *arr, int nb)
 {
-    t_pile *new_s;
+	int	i;
+	int	j;
 
-    new_s = ft_calloc(1, sizeof(t_pile));
-    if (!new_s)
-            return(NULL);
-    new_s->arr = ft_calloc(size, sizeof(int));
-    if (!new_s->arr)
-        return (NULL);
-	
-    new_s->len = len;
-    new_s->stack_name = name;
-    new_s->mvm_counter = 0;
-    return(new_s);
+	if (!arr || nb < 2)
+		return (-1);
+	i = 0;
+	while (i < nb - 1)
+	{
+		j = i + 1;
+		if (arr[i] > arr[j])
+			return (1);
+		i ++;
+	}
+	return (0);
 }
 
-
-/* void	ft_push_swap(int *a, int len)
+static int	ft_init_progr(char **argv, t_stack *stack)
 {
-	int	*b;
-	int value_max;
-	int value_min;
-	int pivot;
-	printf("voici la len %d\n", len);
-	b = malloc(sizeof(int) * (len + 1));
-	if (!b)
-		return ;
-	b[0] = '\0';
-	
-	while (ft_size_of_array(a) > 3)
+	int	rep;
+
+	if (!ft_validation_arg(&argv[1]))
 	{
-		value_min =  get_low(a, len);
-		value_max =  get_high(a, len);
-		pivot = value_min;
-		while (ft_find_cible(a, pivot, len) != -1 && ft_size_of_array(a) > 3)
+		ft_parsing(&argv[0], stack);
+		rep = ft_check_repetition(stack);
+		if (rep == -1)
+			return (-1);
+		else if (stack->len < 2)
 		{
-			int i = ft_find_cible(a, pivot, len);
-			if(i > len + 1 / 2)
-			{
-				int j = len - i - 1;
-				while ( j != 0)
-				{
-					ft_rotate(a, 'a');
-					j--;
-				}
-			}
-			else
-			{
-				while ( i != 0)
-				{
-					ft_reverse_rotate(a, 'a');
-					i--;
-				}
-				
-			}
-			pivot = a[i];
-			ft_push_b(b, a);
+			ft_printf("ERREUR\n");
+			return (-1);
 		}
+		else
+			return (rep);
 	}
-	ft_two_or_tree_args(a, 3);
-	int i = 0;
-	while (b[i])
-	{
-		ft_push_b(a, b);
-		i++;
-	}
-	ft_print_arr(a);
-	(void)value_max;
-	free(b);
-} */
+	return (-1);
+}
 
-// int	main(int argc, char **argv)
-// {
-// 	int	len;
-// 	int	*arr;
-// 	int	tx;
-// 	t_pile *stack_a;
-//     t_pile *stack_b;
+static t_stack	*ft_new_stack(int size, int len, char name)
+{
+	t_stack	*new_s;
 
-// 	arr = NULL;
-// 	if (argc < 2)
-// 		return (ft_print_error());
-// 	len = number_of_int(&argv[1]);
-// 	if(len == 0)
-// 		return(1);
-// 	stack_a = ft_new_stack(len, len, 97);
-//     stack_b = ft_new_stack(len, 0, 98);
-// 	if(!stack_a->arr || !stack_b->arr)
-// 		return(ft_clean_memory(&stack_a, &stack_b));
-// 	tx = ft_init_progr(&argv[1], stack_a, len);
-// 	if (tx == -1)
-// 		return (ft_print_error());
-// 	else
-// 	{
-// 		ft_print_arr(stack_a->arr, stack_a->len);
-// 		if (len == 2 || len == 3)
-// 			ft_two_or_tree_args(stack_a);
-// 		else
-// 			return(0);
-// 		ft_print_arr(stack_a->arr, stack_a->len);
-// 		return(ft_clean_memory(&stack_a, &stack_b));
-// 	} 
-// 	return (0);
-// }
+	new_s = ft_calloc(1, sizeof(t_stack));
+	if (!new_s)
+		return (NULL);
+	new_s->arr = ft_calloc(size, sizeof(int));
+	if (!new_s->arr)
+		return (NULL);
+	new_s->len = len;
+	new_s->stack_name = name;
+	new_s->mvm_counter = 0;
+	return (new_s);
+}
+
+static void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b, int len)
+{
+	if (len == 2)
+		ft_two_values(stack_a);
+	else if (len == 3)
+		ft_tree_values(stack_a);
+	else if (len == 5)
+		ft_five_values(stack_a, stack_b);
+	else
+		ft_turkish_algo(stack_a, stack_b);
+	ft_clean_memory(&stack_a, &stack_b);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_b;
+	t_stack	*stack_a;
+	int		len;
+	int		tx;
+
+	if (argc < 2)
+		return (1);
+	len = ft_get_number_of_int(&argv[1]);
+	if (len == 0)
+		return (1);
+	stack_a = ft_new_stack(len, len, 97);
+	stack_b = ft_new_stack(len, 0, 98);
+	if (!stack_a->arr || !stack_b->arr)
+		return (ft_clean_memory(&stack_a, &stack_b));
+	tx = ft_init_progr(&argv[1], stack_a);
+	if (tx == -1)
+		return (ft_print_error());
+	else if (!ft_is_sort_2(stack_a->arr, stack_a->len))
+		return (0);
+	else
+		ft_sort_stack(stack_a, stack_b, len);
+	return (0);
+}
