@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:14:58 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 06:03:36 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/02/03 06:07:37 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int main(void)
     optimised_double_rotation(stack_a, stack_b, 2);
     assert(stack_a->mvm_counter == 7 + 2 && stack_b->mvm_counter  == 0);
     ft_clean_memory(&stack_a, &stack_b);
+
+    
 
     return(0);
 }
