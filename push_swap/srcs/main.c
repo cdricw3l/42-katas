@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 18:09:56 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:30:27 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ static int	ft_init_progr(char **argv, t_stack *stack)
 	if (!ft_validation_arg(&argv[1]))
 	{
 		ft_parsing(&argv[0], stack);
+		if (stack->len < 2)
+			return (-1);
 		rep = ft_check_repetition(stack);
 		if (rep == -1)
 			return (-1);
 		else if (stack->len < 2)
-		{
-			ft_printf("ERREUR\n");
 			return (-1);
-		}
 		else
 			return (rep);
 	}
@@ -98,9 +97,12 @@ int	main(int argc, char **argv)
 		return (ft_clean_memory(&stack_a, &stack_b));
 	tx = ft_init_progr(&argv[1], stack_a);
 	if (tx == -1)
-		return (ft_print_error());
-	else if (!ft_is_sort_2(stack_a->arr, stack_a->len))
-		return (0);
+	{
+		ft_print_error();
+		return (ft_clean_memory(&stack_a, &stack_b));
+	}
+	if (!ft_is_sort_2(stack_a->arr, stack_a->len))
+		return (ft_clean_memory(&stack_a, &stack_b));
 	else
 		ft_sort_stack(stack_a, stack_b, len);
 	return (0);

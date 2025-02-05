@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 06:10:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 17:29:24 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:33:41 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	fill_arr_b(t_stack *stack_a, t_stack *stack_b)
 	{
 		best = ft_best_cost(stack_a, stack_b);
 		target_idx = ft_get_target_idx(stack_b, stack_a->arr[best]);
-		if (target_idx == best)
+		if (target_idx == best && stack_a->len == stack_b->len)
 			optimised_double_rotation(stack_a, stack_b, target_idx);
 		else
 		{

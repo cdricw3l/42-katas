@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:18:47 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/10/10 16:34:48 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:28:26 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_atoi(const char *str)
 {
 	size_t	i;
 	size_t	is_neg;
-	int		result;
+	double	result;
 
 	i = 0;
 	is_neg = 0;

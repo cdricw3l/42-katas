@@ -19,6 +19,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -rf *.out
 	rm -rf *.dSYM
+	rm -f filename
 	cd srcs && rm -f *.o
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:56:20 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 16:26:36 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:18:22 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ int		ft_get_highest_idx(int *arr, int size);
 int		ft_get_lowest_idx(int *arr, int size);
 int		ft_get_target_idx(t_stack *stack, int n);
 int		ft_print_error(void);
+int		ft_is_bigger_than_intmax(char *argv);
+int		ft_is_less_than_intmin(char *argv);
 
 #endif

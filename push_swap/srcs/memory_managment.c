@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:29:02 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/03 15:58:52 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:02:35 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_clean_memory(t_stack **stack_a, t_stack **stack_b)
 	if (*stack_a)
 	{
 		if ((*stack_a)->arr)
+		{
 			free((*stack_a)->arr);
+		}
 		free(*stack_a);
 	}
 	if (*stack_b)

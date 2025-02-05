@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 08:27:27 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/03 18:10:49 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:31:10 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_rotate(t_stack *stack, int bypass)
 			write(1, "ra", 2);
 		else
 			write(1, "rb", 2);
-		write(1, "\n", 1);			
+		write(1, "\n", 1);
 		stack->mvm_counter += 1;
 	}
 	return (0);

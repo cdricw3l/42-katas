@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:53:07 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/03 16:28:41 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:29:55 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_validation_arg(char **argv)
 	{
 		tmp = *argv;
 		digits = 0;
+		if (ft_is_bigger_than_intmax(*argv) || ft_is_less_than_intmin(*argv))
+			return (1);
 		while (*tmp)
 		{
 			if (!ft_isdigit(*tmp) && *tmp != 32 && *tmp != 45)
@@ -76,14 +78,14 @@ int	ft_check_repetition(t_stack *stack)
 	while (i < stack->len - 1)
 	{
 		j = i + 1;
-		if (stack->arr[i] == stack->arr[j])
-			return (-1);
-		else if (stack->arr[i] > INT_MAX || stack->arr[j] > INT_MAX)
-			return (-1);
-		else if (stack->arr[i] < INT_MIN || stack->arr[j] < INT_MIN)
-			return (-1);
-		if (stack->arr[i] < stack->arr[j])
-			tx++;
+		while (j < stack->len)
+		{
+			if (stack->arr[i] == stack->arr[j])
+				return (-1);
+			if (stack->arr[i] < stack->arr[j])
+				tx++;
+			j++;
+		}
 		i++;
 	}
 	tx = (100 * tx) / (stack->len - 1);
@@ -117,15 +119,4 @@ int	ft_get_number_of_int(char **argv)
 		i++;
 	}
 	return (count);
-}
-
-int	ft_find_space(char *str)
-{
-	while (*str)
-	{
-		if (*str == 32)
-			return (1);
-		str++;
-	}
-	return (0);
 }
