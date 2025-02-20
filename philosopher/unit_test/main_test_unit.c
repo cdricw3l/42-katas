@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_unit.c                                        :+:      :+:    :+:   */
+/*   main_test_unit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:22:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/18 15:37:22 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:00:38 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void test_atoi_long(void)
     ld = ft_atoi_long("2147483647");
     assert(ld == INT_MAX);
     ld = ft_atoi_long("9223372036854775807");
-    assert(ld == LONG_MAX);
+    assert(ld == -1);
     ld = ft_atoi_long(NULL);
     assert(ld == -1);
     ld = ft_atoi_long("-10");
@@ -52,19 +52,19 @@ void test_isdigit(void)
     TEST_SUCCES;
 }
 
-long *test_ft_init_arr(char **argv, int argc)
+int *test_ft_init_arr(char **argv, int argc)
 {
     TEST_START;
-    long *arr;
+    int *arr;
 
     assert(argc == 4);
     arr = ft_init_arr_arg(argv, argc);
    
     assert(arr != NULL);
-    assert(arr[0] == (long)5);
-    assert(arr[1] == (long)4000);
-    assert(arr[2] == (long)4000);
-    assert(arr[3] == (long)4000);
+    assert(arr[0] == (int)5);
+    assert(arr[1] == (int)4000);
+    assert(arr[2] == (int)4000);
+    assert(arr[3] == (int)4000);
     
     TEST_SUCCES;
     return(arr);
@@ -72,12 +72,14 @@ long *test_ft_init_arr(char **argv, int argc)
 
 int	main(int argc, char **argv)
 {
-    long *arr;
-
+    int *arr;
+    int network_status;
     test_isdigit();
 	test_atoi_long();
     arr = test_ft_init_arr(&argv[1], argc - 1);
-    ft_print_arr_long(arr, argc - 1); 
-
+    ft_print_arr_int(arr, argc - 1);
+    printf("START NETWORK CREATION\n");
+    network_status = ft_create_petri_network(arr[0]);
+    assert(network_status != -1);
 	return(0);
 }
