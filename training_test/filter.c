@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -34,16 +34,17 @@ int main(int argc, char **argv)
     b_read = -1;
     while (b_read != 0)
     {
-        b_read = read(stdin, buffer, BUFFER_SIZE);
+        b_read = read(0, buffer, BUFFER_SIZE);
         if(b_read == -1)
         {
             free(buffer);
             perror("Error: ");
             return(-1);
         }
-        buffer[b_read] = '\0';
-        printf("%s", buffer);
+        if(buffer[0] != 10)
+            printf("%c\n", buffer[0]);
     }
     free(buffer);
+    (void) argv;
     return(0);
 }

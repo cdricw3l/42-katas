@@ -13,6 +13,9 @@ si p1 = 2, p2 = 0, p3 = 0:
 
 M0 = [2 , 0, 0].
 
+Ensuite on decrit la matrice d'entré W-  (consomation de jeton en entré).
+Puis la matrice de sortie W+ (production en sortie).
+
 il y a autant de colonne dans la matrice, qu'il y à de transition dans le reseau.
 
 Il y a autant de lignes, qu'il y a de place dans le reseau.
