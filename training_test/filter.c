@@ -25,7 +25,7 @@ int ft_strlen(char *str)
     i = 0;
     if(!str)
         return(0);
-    while(!str)
+    while(str[i])
         i++;
     return(i);
 }
@@ -36,11 +36,9 @@ char *ft_strjoin(char *str, char c)
     int str_len;
     int i;
 
-    if(!str)
-        str_len = 0;
-    else
-        str_len = ft_strlen(str);
-    new_str = malloc(sizeof(char *) * (str_len + 2));
+    
+    str_len = ft_strlen(str);
+    new_str = malloc(sizeof(char) * (str_len + 2));
     if(!new_str)
         return(NULL);
     i = 0;
@@ -51,6 +49,8 @@ char *ft_strjoin(char *str, char c)
     }
     new_str[i++] = c;
     new_str[i] = '\0';
+    if(str)
+        free(str);
     return(new_str);    
 }
 
@@ -76,20 +76,36 @@ int main(int argc, char **argv)
         if(b_read == -1)
         {
             free(buffer);
+            if(line)
+                free(line);
+            printf("quidddddddd\n");
             perror("Error: ");
             return(-1);
         }
+        buffer[BUFFER_SIZE]= '\0';
         if(buffer[0] != 10)
         {
             line = ft_strjoin(line, buffer[0]);
-            if(line)
+            if(!line)
             {
-                printf("line ajouté\n");
+                perror("Err: ");
+                free(buffer);
             }
         }
         else if(buffer[0] == 10)
-            printf("line : %s\n", line);
+        {
+            printf("%s\n", line);
+            free(line);
+            line = NULL;
+        }
+        else if(buffer[0] == EOF)
+        {
+            free(line);
+            line = NULL;
+        }
     }
+    if(line)
+        free(line);
     free(buffer);
     (void) argv;
     return(0);
