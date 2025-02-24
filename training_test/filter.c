@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUFFER_SIZE 1
+#define BUFFER_SIZE 2
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -54,59 +54,66 @@ char *ft_strjoin(char *str, char c)
     return(new_str);    
 }
 
-int main(int argc, char **argv)
+char *ft_fgets(char *buffer, int fd)
 {
-    char *buffer;
     int b_read;
-    char *line;
 
-    if(argc < 2 || argc > 2)
-        return(-1);
-    buffer = malloc(sizeof(char *) * (BUFFER_SIZE + 1));
-    if(!buffer)
-    {
-        perror("Error :");
-        return (-1);
-    }
-    b_read = -1;
-    line = NULL;
-    while (b_read != 0)
-    {
-        b_read = read(0, buffer, BUFFER_SIZE);
-        if(b_read == -1)
-        {
-            free(buffer);
-            if(line)
-                free(line);
-            printf("quidddddddd\n");
-            perror("Error: ");
-            return(-1);
-        }
-        buffer[BUFFER_SIZE]= '\0';
-        if(buffer[0] != 10)
-        {
-            line = ft_strjoin(line, buffer[0]);
-            if(!line)
-            {
-                perror("Err: ");
-                free(buffer);
-            }
-        }
-        else if(buffer[0] == 10)
-        {
-            printf("%s\n", line);
-            free(line);
-            line = NULL;
-        }
-        else if(buffer[0] == EOF)
-        {
-            free(line);
-            line = NULL;
-        }
-    }
-    if(line)
-        free(line);
-    free(buffer);
-    (void) argv;
-    return(0);
+    b_read = read(fd, buffer, BUFFER_SIZE - 1);
+    if(b_read == -1)
+        return(NULL);
+    printf("voici buffer 0 %d\n", buffer[0]);
+    if(buffer[0] == 0)
+        return(NULL);
+    buffer[b_read] = '\0';
+
+    return(buffer);
 }
+
+int main() {
+    char buffer[BUFFER_SIZE];
+
+    printf("Tapez plusieurs lignes puis appuyez sur Entrée :\n");
+
+    // while (fgets(buffer,BUFFER_SIZE, stdin) != NULL) {
+       
+    //     printf("%s", buffer);
+    // }
+
+    while (ft_fgets(buffer,0) != NULL) {
+        printf("%s", buffer);
+    }
+
+
+    return 0;
+}
+
+// int main(int argc, char **argv)
+// {
+//     char *buffer;
+//     char *line;
+
+//     if(argc < 2 || argc > 2)
+//         return(-1);
+//     buffer = malloc(sizeof(char *) * (BUFFER_SIZE + 1));
+//     if(!buffer)
+//     {
+//         perror("Error :");
+//         return (-1);
+//     }
+//     line = NULL;
+//     while (fgets(buffer, BUFFER_SIZE ,stdin) != NULL)
+//     {
+//         line = ft_strjoin(line, buffer[0]);
+//         if(buffer[0]== 10)
+//         {
+//             printf("%s", line);
+//             free(line);
+//             line = NULL;
+//         }
+
+//     }
+
+//     free(buffer);
+//     (void) argv;
+//     return(0);
+// }

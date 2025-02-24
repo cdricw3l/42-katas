@@ -1,39 +1,15 @@
-==151616== Memcheck, a memory error detector
-==151616== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==151616== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
-==151616== Command: ./filter test
-==151616== Parent PID: 41594
-==151616== 
-==151616== Invalid read of size 1
-==151616==    at 0x484FFB6: strlen (vg_replace_strmem.c:505)
-==151616==    by 0x48F4BFC: puts (ioputs.c:35)
-==151616==    by 0x109400: main (in /home/cc/Documents/42KTA/training_test/filter)
-==151616==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==151616== 
-==151616== 
-==151616== Process terminating with default action of signal 11 (SIGSEGV)
-==151616==  Access not within mapped region at address 0x0
-==151616==    at 0x484FFB6: strlen (vg_replace_strmem.c:505)
-==151616==    by 0x48F4BFC: puts (ioputs.c:35)
-==151616==    by 0x109400: main (in /home/cc/Documents/42KTA/training_test/filter)
-==151616==  If you believe this happened as a result of a stack
-==151616==  overflow in your program's main thread (unlikely but
-==151616==  possible), you can try to increase the size of the
-==151616==  main thread stack using the --main-stacksize= flag.
-==151616==  The main thread stack size used in this run was 8388608.
-==151616== 
-==151616== HEAP SUMMARY:
-==151616==     in use at exit: 1,040 bytes in 2 blocks
-==151616==   total heap usage: 16 allocs, 14 frees, 1,135 bytes allocated
-==151616== 
-==151616== LEAK SUMMARY:
-==151616==    definitely lost: 0 bytes in 0 blocks
-==151616==    indirectly lost: 0 bytes in 0 blocks
-==151616==      possibly lost: 0 bytes in 0 blocks
-==151616==    still reachable: 1,040 bytes in 2 blocks
-==151616==         suppressed: 0 bytes in 0 blocks
-==151616== Reachable blocks (those to which a pointer was found) are not shown.
-==151616== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==151616== 
-==151616== For lists of detected and suppressed errors, rerun with: -s
-==151616== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==193342== Memcheck, a memory error detector
+==193342== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==193342== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
+==193342== Command: ./filter test
+==193342== Parent PID: 151644
+==193342== 
+==193342== 
+==193342== HEAP SUMMARY:
+==193342==     in use at exit: 0 bytes in 0 blocks
+==193342==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+==193342== 
+==193342== All heap blocks were freed -- no leaks are possible
+==193342== 
+==193342== For lists of detected and suppressed errors, rerun with: -s
+==193342== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
