@@ -18,10 +18,47 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    if(!str)
+        return(0);
+    while(!str)
+        i++;
+    return(i);
+}
+
+char *ft_strjoin(char *str, char c)
+{
+    char *new_str;
+    int str_len;
+    int i;
+
+    if(!str)
+        str_len = 0;
+    else
+        str_len = ft_strlen(str);
+    new_str = malloc(sizeof(char *) * (str_len + 2));
+    if(!new_str)
+        return(NULL);
+    i = 0;
+    while (i < str_len)
+    {
+        new_str[i] = str[i];
+        i++;
+    }
+    new_str[i++] = c;
+    new_str[i] = '\0';
+    return(new_str);    
+}
+
 int main(int argc, char **argv)
 {
     char *buffer;
     int b_read;
+    char *line;
 
     if(argc < 2 || argc > 2)
         return(-1);
@@ -32,6 +69,7 @@ int main(int argc, char **argv)
         return (-1);
     }
     b_read = -1;
+    line = NULL;
     while (b_read != 0)
     {
         b_read = read(0, buffer, BUFFER_SIZE);
@@ -42,7 +80,15 @@ int main(int argc, char **argv)
             return(-1);
         }
         if(buffer[0] != 10)
-            printf("%c\n", buffer[0]);
+        {
+            line = ft_strjoin(line, buffer[0]);
+            if(line)
+            {
+                printf("line ajouté\n");
+            }
+        }
+        else if(buffer[0] == 10)
+            printf("line : %s\n", line);
     }
     free(buffer);
     (void) argv;
