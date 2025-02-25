@@ -1,10 +1,10 @@
 CC=gcc
 GFLAGS= -Werror -Wall -Wextra  
 SRCS= $(wildcard *.c)
-OBJS= $(SRCS: *.c=.o)
+OBJS= $(SRCS:.c=.o)
 NAME= filter
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) 
 	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 
 run:

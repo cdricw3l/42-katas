@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:45:21 by cbouhadr          #+#    #+#             */
-/*   Updated: 2024/11/19 17:10:49 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2024/11/10 13:32:23 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_traitement(int fd, char *buff, char *line, char **stach);
+char	*read_traitement(int fd, char *buff, char *line, char **stach);
 
-static char	*clean(char **old_ptr, char *new)
+char	*clean(char **old_ptr, char *new)
 {
 	free (*old_ptr);
 	*old_ptr = new;
 	return (*old_ptr);
 }
 
-static char	*ft_process(int fd, char *buff, char *line, char **stach)
+char	*ft_process(int fd, char *buff, char *line, char **stach)
 {
 	line = clean(&line, ft_strjoin(line, buff));
 	if (!line)
@@ -31,7 +31,7 @@ static char	*ft_process(int fd, char *buff, char *line, char **stach)
 	return (line);
 }
 
-static char	*read_traitement(int fd, char *buff, char *line, char **stach)
+char	*read_traitement(int fd, char *buff, char *line, char **stach)
 {
 	char	*t;
 	char	*tmp;
@@ -58,7 +58,7 @@ static char	*read_traitement(int fd, char *buff, char *line, char **stach)
 	return (line);
 }
 
-static char	*ft_stach_processing(char **stach, char **line)
+char	*ft_stach_processing(char **stach, char **line)
 {
 	char	*tmp1;
 	int		idx_return;
@@ -89,9 +89,9 @@ char	*get_next_line(int fd)
 {
 	char		*buffer;
 	char		*line;
-	static char	*stach[FD_LIMITS];
+	static char	*stach[200];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_LIMITS)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
@@ -113,27 +113,27 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main(void)
-{
-	int fd1;
-	int fd2;
+// int main(void)
+// {
+// 	int fd1;
+// 	int fd2;
 
-	fd1 = open("file1.txt",O_RDONLY);
-	if(fd1 == -1)
-	{
-		printf("erreur\n");
-		return (-1);
-	}
-	fd2 = open("file2.txt",O_RDONLY);
-	if(fd2 == -1)
-	{
-		printf("erreur\n");
-		return (-1);
-	}
-	printf("%s\n", get_next_line(fd1));
-	printf("%s\n", get_next_line(fd2));
-	printf("%s\n", get_next_line(fd1));
-	printf("%s\n", get_next_line(fd2));
-	printf("%s\n", get_next_line(fd1));
-	return(0);
-}
+// 	fd1 = open("file1.txt",O_RDONLY);
+// 	if(fd1 == -1)
+// 	{
+// 		printf("erreur\n");
+// 		return (-1);
+// 	}
+// 	fd2 = open("file2.txt",O_RDONLY);
+// 	if(fd2 == -1)
+// 	{
+// 		printf("erreur\n");
+// 		return (-1);
+// 	}
+// 	printf("%s\n", get_next_line(fd1));
+// 	printf("%s\n", get_next_line(fd2));
+// 	printf("%s\n", get_next_line(fd1));
+// 	printf("%s\n", get_next_line(fd2));
+// 	printf("%s\n", get_next_line(fd1));
+// 	return(0);
+// }

@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUFFER_SIZE 2
+#define BUFFER_SIZE 10
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+//#include "get_next_line/get/get_next_line.h"
 
 int ft_strlen(char *str)
 {
@@ -30,15 +31,17 @@ int ft_strlen(char *str)
     return(i);
 }
 
-char *ft_strjoin(char *str, char c)
+
+
+char *ft_strjoin(char *str, char buffer[3])
 {
     char *new_str;
     int str_len;
     int i;
-
+    int j;
     
     str_len = ft_strlen(str);
-    new_str = malloc(sizeof(char) * (str_len + 2));
+    new_str = malloc(sizeof(char) * (str_len + 3));
     if(!new_str)
         return(NULL);
     i = 0;
@@ -47,43 +50,74 @@ char *ft_strjoin(char *str, char c)
         new_str[i] = str[i];
         i++;
     }
-    new_str[i++] = c;
+    j = 0;
+    while (j < 2)
+    {
+        new_str[i++] = buffer[j++];
+    }
     new_str[i] = '\0';
     if(str)
         free(str);
     return(new_str);    
 }
 
-char *ft_fgets(char *buffer, int fd)
+int ft_double_n(char buffer[3])
 {
-    int b_read;
+    if(buffer[0] == 10 && buffer[1] == 10)
+        return(1);
+    return(0);
 
-    b_read = read(fd, buffer, BUFFER_SIZE - 1);
-    if(b_read == -1)
-        return(NULL);
-    printf("voici buffer 0 %d\n", buffer[0]);
-    if(buffer[0] == 0)
-        return(NULL);
-    buffer[b_read] = '\0';
-
-    return(buffer);
 }
+// char *get_next_line(char *buffer, int fd)
+// {
+//     char buffer[3];
+//     char *line;
+//     int b_read;
+
+//     b_read = -1;
+//     line = NULL;
+
+//     while ( (b_read = read(0, buffer, 2)) >= 0)
+//     {
+//         if(b_read == -1)
+//             return(NULL);
+//         if(!ft_double_n(buffer))
+//         {
+//             line = ft_strjoin(line, buffer);
+//             printf("passage a\n");
+//         }
+//         if(ft_double_n(buffer))
+//         {
+            
+//             line = ft_strjoin(line, buffer);
+//             printf("passage b\n");
+//             return(line);
+//         }
+//         int c;
+//         c = 0;
+//         c+=b_read;
+//         printf("b read %d\n", c);
+
+//     }
+//     printf("fin de  passage\n");
+//     return(NULL);
+// }
 
 int main() {
-    char buffer[BUFFER_SIZE];
+    // char buffer[BUFFER_SIZE];
+    char line[2];
 
-    printf("Tapez plusieurs lignes puis appuyez sur Entrée :\n");
+    printf("Tapez plusieurs lisagnes puis appuyez sur Entrée :\n");
 
     // while (fgets(buffer,BUFFER_SIZE, stdin) != NULL) {
        
     //     printf("%s", buffer);
     // }
-
-    while (ft_fgets(buffer,0) != NULL) {
-        printf("%s", buffer);
+    while (fgets(line,2,stdin) != NULL) {
+        
+        
+        printf("%s", line);
     }
-
-
     return 0;
 }
 
@@ -117,3 +151,8 @@ int main() {
 //     (void) argv;
 //     return(0);
 // }
+
+
+// ddd
+// ffff
+// hhhh
