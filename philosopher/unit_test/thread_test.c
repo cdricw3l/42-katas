@@ -23,7 +23,7 @@ void *ft_factoriel(void *p)
 }
 #define THREAD 16
 
-void       *ft_clean_memory(pthread_mutex_t **arr, int idx)
+void       *ft_clean_memory(void **arr, int idx)
 {
     int i;
 
@@ -110,5 +110,9 @@ int main()
         printf("error\n");
         return(-1);
     }
+    ft_clean_memory(master_data->forks, 5);
+    ft_clean_memory(master_data->philosophes, 5);
+    ft_clean_memory(master_data->threads, 5);
+    free(master_data);
     return(0);
 }
