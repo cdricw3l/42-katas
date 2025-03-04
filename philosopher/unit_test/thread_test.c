@@ -31,11 +31,13 @@ void       *ft_clean_memory(void **arr, int idx)
     TEST_START;
     while(i < idx)
     {
-        free(arr[i]);
+        if(arr[i])
+            free(arr[i]);
+        printf("voici i %d\n", i);
         i++;
     }
-    free(arr);
     TEST_SUCCES;
+    free(arr);
     return(NULL);
 }
 pthread_mutex_t **ft_init_mutex(int p)
@@ -53,9 +55,9 @@ pthread_mutex_t **ft_init_mutex(int p)
     {
         mutex_arr[i] = malloc(sizeof(pthread_mutex_t));
         if(!mutex_arr[i])
-            return(ft_clean_memory(mutex_arr, i));
+            return(ft_clean_memory((void **)mutex_arr, i));
         if(pthread_mutex_init(mutex_arr[i], NULL) != 0)
-            return(ft_clean_memory(mutex_arr, i));
+            return(ft_clean_memory((void **)mutex_arr, i));
         i++;
     }
     TEST_SUCCES;
@@ -69,16 +71,16 @@ t_thread_managment_data *_init_thread_data_struc(int arr[5])
     tmd = malloc(sizeof(t_thread_managment_data));
     if(!tmd)
         return(NULL);
-    tmd->philosophes = malloc(sizeof(t_philosophe *));
+    tmd->philosophes = malloc(sizeof(t_philosophe *) * arr[0]);
     if(!tmd->philosophes)
         return(NULL);
-    tmd->threads = malloc(sizeof(pthread_t *));
+    tmd->threads = malloc(sizeof(pthread_t *) * arr[0]);
     if(!tmd->threads)
     {
         free(tmd->philosophes);
         return(NULL);
     }
-    tmd->forks = malloc(sizeof(pthread_mutex_t *));
+    tmd->forks = malloc(sizeof(pthread_mutex_t *) * arr[0]);
     if(!tmd->forks)
     {
         free(tmd->philosophes);
@@ -110,9 +112,12 @@ int main()
         printf("error\n");
         return(-1);
     }
-    ft_clean_memory(master_data->forks, 5);
-    ft_clean_memory(master_data->philosophes, 5);
-    ft_clean_memory(master_data->threads, 5);
+    // ft_clean_memory((void **)master_data->forks, 5);
+    // ft_clean_memory((void **)master_data->philosophes, 5);
+    // ft_clean_memory((void **)master_data->threads, 5);
+    free(master_data->forks);
+    free(master_data->philosophes);
+    free(master_data->threads);
     free(master_data);
     return(0);
 }
