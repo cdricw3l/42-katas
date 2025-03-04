@@ -48,3 +48,42 @@ int ft_memcpy(void *src, void *dst, int len)
 	}
 	return(i);
 }
+
+void       *ft_clean_memory(void **arr, int idx)
+{
+    int i;
+
+    i = 0;
+    TEST_START;
+    while(i < idx)
+    {
+        if(arr[i])
+            free(arr[i]);
+        printf("voici i %d\n", i);
+        i++;
+    }
+    TEST_SUCCES;
+    free(arr);
+    return(NULL);
+}
+int ft_clean_tmd(t_thread_managment_data *tmd, int idx)
+{
+	int i;
+
+	i = 0;
+	while (i < idx)
+	{
+		if(tmd->philosophes[i])
+			free(tmd->philosophes[i]);
+		if(tmd->threads[i])
+			free(tmd->threads[i]);
+		if(tmd->forks[i])
+			free(tmd->forks[i]);
+		i++;
+	}
+	free(tmd->forks);
+	free(tmd->philosophes);
+	free(tmd->threads);
+	free(tmd);
+	return(-1);
+}

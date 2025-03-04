@@ -75,5 +75,6 @@ int     ft_atoi_long(char *argv);
 int     *ft_init_arr_arg(char **argv, int argc);
 int     ft_isdigit(char c);
 int     ft_memcpy(void *src, void *dst, int len);
-
+int ft_clean_tmd(t_thread_managment_data *tmd, int idx);
+void       *ft_clean_memory(void **arr, int idx);
 #endif

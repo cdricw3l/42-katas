@@ -23,51 +23,36 @@ void *ft_factoriel(void *p)
 }
 #define THREAD 16
 
-void       *ft_clean_memory(void **arr, int idx)
-{
-    int i;
 
-    i = 0;
-    TEST_START;
-    while(i < idx)
-    {
-        if(arr[i])
-            free(arr[i]);
-        printf("voici i %d\n", i);
-        i++;
-    }
-    TEST_SUCCES;
-    free(arr);
-    return(NULL);
-}
-pthread_mutex_t **ft_init_mutex(int p)
-{
-    pthread_mutex_t **mutex_arr;
-    int i;
+// pthread_mutex_t **ft_init_mutex(int p)
+// {
+//     pthread_mutex_t **mutex_arr;
+//     int i;
 
-    TEST_START
+//     TEST_START
 
-    mutex_arr = malloc(sizeof(pthread_mutex_t *) * p);
-    if(!mutex_arr)
-        return(NULL);
-    i = 0;
-    while (i < p)
-    {
-        mutex_arr[i] = malloc(sizeof(pthread_mutex_t));
-        if(!mutex_arr[i])
-            return(ft_clean_memory((void **)mutex_arr, i));
-        if(pthread_mutex_init(mutex_arr[i], NULL) != 0)
-            return(ft_clean_memory((void **)mutex_arr, i));
-        i++;
-    }
-    TEST_SUCCES;
-    return(mutex_arr);
-}
+//     mutex_arr = malloc(sizeof(pthread_mutex_t *) * p);
+//     if(!mutex_arr)
+//         return(NULL);
+//     i = 0;
+//     while (i < p)
+//     {
+//         mutex_arr[i] = malloc(sizeof(pthread_mutex_t));
+//         if(!mutex_arr[i])
+//             return(ft_clean_memory((void **)mutex_arr, i));
+//         if(pthread_mutex_init(mutex_arr[i], NULL) != 0)
+//             return(ft_clean_memory((void **)mutex_arr, i));
+//         i++;
+//     }
+//     TEST_SUCCES;
+//     return(mutex_arr);
+// }
 
 t_thread_managment_data *_init_thread_data_struc(int arr[5])
 {
     t_thread_managment_data *tmd;
     
+    TEST_START;
     tmd = malloc(sizeof(t_thread_managment_data));
     if(!tmd)
         return(NULL);
@@ -87,18 +72,40 @@ t_thread_managment_data *_init_thread_data_struc(int arr[5])
         free(tmd->threads);
         return(NULL);
     }
-    // if(ft_create_thread_data(tmd->philosophes, tmd->threads, tmd->forks)
-    //         == -1);
-    //     return(NULL);
     if(ft_memcpy(arr, tmd->time_data, 5 * sizeof(int)) != 5 * sizeof(int))
         return(NULL);
-
+    TEST_SUCCES;
     return(tmd);
+}
+
+int ft_create_thread_data(t_thread_managment_data *tmd)
+{
+    int i;
+    int idx;
+
+    i = 0;
+    idx = 5;
+    TEST_START;
+    while (i < tmd->time_data[0])
+    {
+        tmd->threads[i] = malloc(sizeof(pthread_t) * tmd->time_data[0]);
+        if(!tmd->threads[i])
+            return(ft_clean_tmd(tmd, idx));
+        tmd->philosophes[i] = malloc(sizeof(t_philosophe) * tmd->time_data[0]);
+        if(!tmd->philosophes[i])
+            return(ft_clean_tmd(tmd, idx));
+        tmd->forks[i] = malloc(sizeof(pthread_mutex_t) * tmd->time_data[0]);
+        if(!tmd->forks[i])
+            return(ft_clean_tmd(tmd, idx));
+        i++;
+    }
+    TEST_SUCCES;
+    return(0);
 }
 
 int main()
 {
-    t_thread_managment_data *master_data;
+    t_thread_managment_data *tmd;
     int arr[5];
     
     arr[0] = 5;
@@ -106,18 +113,14 @@ int main()
     arr[2] = 4000;
     arr[3] = 4000;
     arr[4] = 0;
-    master_data = _init_thread_data_struc(arr);
-    if(!master_data)
+    tmd = _init_thread_data_struc(arr);
+    if(!tmd)
     {
         printf("error\n");
         return(-1);
     }
-    // ft_clean_memory((void **)master_data->forks, 5);
-    // ft_clean_memory((void **)master_data->philosophes, 5);
-    // ft_clean_memory((void **)master_data->threads, 5);
-    free(master_data->forks);
-    free(master_data->philosophes);
-    free(master_data->threads);
-    free(master_data);
+    if(ft_create_thread_data(tmd) == -1)
+        return(1);
+    ft_clean_tmd(tmd, 5);
     return(0);
 }
