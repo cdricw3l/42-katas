@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/20 10:58:16 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:14:41 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,30 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "petri.h"
+
+
+typedef struct s_philosophe
+{
+    int rang;
+    int state;
+    int **fork;
+    
+} t_philosophe ;
+
+typedef struct s_thread_manager
+{
+    pthread_t   **thread;
+    pthread_mutex_t **arr_mutex;
+    t_philosophe **philosophes;
+    
+} t_thread_manager;
+
+typedef struct s_thread_data
+{
+    t_philosophe *philo;
+    pthread_mutex_t **arr_mutex;
+    
+} p_thread_data;
 
 
 #define DEBUGG printf("DEBUGG\n");
