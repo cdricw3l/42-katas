@@ -13,4 +13,5 @@ Appris à gpt : On y met le doigt, et on ne sait pas quand on en ressort pétri.
 
 
 
-## katas 2 : craker le code de la sape.
+## katas 2 : Un codeur sachant saper ...
+
