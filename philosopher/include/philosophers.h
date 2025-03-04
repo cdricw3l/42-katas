@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/20 10:58:16 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:16:05 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,25 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "petri.h"
+
+typedef struct s_thread_data
+{
+    int ttd;
+    int tte;
+    int tts;
+    
+} s_thread_data;
+
+
+typedef struct s_thread_managment_data
+{
+    int counter;
+    
+    pthread_mutex_t **forks;
+    pthread_t **thread;
+    s_thread_data data;
+
+}   t_thread_data;
 
 
 #define DEBUGG printf("DEBUGG\n");
