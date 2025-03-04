@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/04 11:16:05 by cbouhadr         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/04 15:14:41 by cw3l             ###   ########.fr       */
+>>>>>>> d45aa1faa8b5846874cf2d2f4ddffe9f110822d7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +44,30 @@ typedef struct s_thread_managment_data
     s_thread_data data;
 
 }   t_thread_data;
+
+
+typedef struct s_philosophe
+{
+    int rang;
+    int state;
+    int **fork;
+    
+} t_philosophe ;
+
+typedef struct s_thread_manager
+{
+    pthread_t   **thread;
+    pthread_mutex_t **arr_mutex;
+    t_philosophe **philosophes;
+    
+} t_thread_manager;
+
+typedef struct s_thread_data
+{
+    t_philosophe *philo;
+    pthread_mutex_t **arr_mutex;
+    
+} p_thread_data;
 
 
 #define DEBUGG printf("DEBUGG\n");
