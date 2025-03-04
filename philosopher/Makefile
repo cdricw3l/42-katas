@@ -21,8 +21,8 @@ v:$(OBJS)
 	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 
 test: $(OBJS_TEST)
-	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) -o test_unit 
-#valgrind --leak-check=full --log-file=filename  -s 
+	$(CC) $(GFLAGS)  $(OBJS_TEST) -o test_unit 
+	valgrind --leak-check=full --log-file=filename  -s ./test_unit
 	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
 
 clean:

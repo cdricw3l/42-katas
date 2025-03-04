@@ -86,3 +86,19 @@ int	*ft_init_arr_arg(char **argv, int len)
 	}
 	return (arr);
 }
+
+int ft_memcpy(void *src, void *dst, int len)
+{
+	unsigned char *arr_s;
+	unsigned char *arr_d;
+	int  i;
+
+	arr_s = (unsigned char *)src;
+	arr_d = (unsigned char *)dst;
+	while (i < len)
+	{
+		arr_d[i] = arr_s[i];
+		i++;
+	}
+	return(i);
+}

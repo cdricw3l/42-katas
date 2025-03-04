@@ -62,13 +62,53 @@ pthread_mutex_t **ft_init_mutex(int p)
     return(mutex_arr);
 }
 
+t_thread_managment_data *_init_thread_data_struc(int arr[5])
+{
+    t_thread_managment_data *tmd;
+    
+    tmd = malloc(sizeof(t_thread_managment_data));
+    if(!tmd)
+        return(NULL);
+    tmd->philosophes = malloc(sizeof(t_philosophe *));
+    if(!tmd->philosophes)
+        return(NULL);
+    tmd->threads = malloc(sizeof(pthread_t *));
+    if(!tmd->threads)
+    {
+        free(tmd->philosophes);
+        return(NULL);
+    }
+    tmd->forks = malloc(sizeof(pthread_mutex_t *));
+    if(!tmd->forks)
+    {
+        free(tmd->philosophes);
+        free(tmd->threads);
+        return(NULL);
+    }
+    // if(ft_create_thread_data(tmd->philosophes, tmd->threads, tmd->forks)
+    //         == -1);
+    //     return(NULL);
+    if(ft_memcpy(arr, tmd->time_data, 5 * sizeof(int)) != 5 * sizeof(int))
+        return(NULL);
+
+    return(tmd);
+}
+
 int main()
 {
-    pthread_mutex_t **mutexs;
-    int p = 5;
-
-
-    mutexs = ft_init_mutex(p);
-    assert(mutexs);
+    t_thread_managment_data *master_data;
+    int arr[5];
+    
+    arr[0] = 5;
+    arr[1] = 4000;
+    arr[2] = 4000;
+    arr[3] = 4000;
+    arr[4] = 0;
+    master_data = _init_thread_data_struc(arr);
+    if(!master_data)
+    {
+        printf("error\n");
+        return(-1);
+    }
     return(0);
 }

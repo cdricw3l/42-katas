@@ -1,16 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   petri.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/04 11:16:05 by cbouhadr         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/04 15:14:41 by cw3l             ###   ########.fr       */
->>>>>>> d45aa1faa8b5846874cf2d2f4ddffe9f110822d7
+/*   Created: 2025/02/20 09:36:39 by cbouhadr          #+#    #+#             */
+/*   Updated: 2025/02/20 10:53:15 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +22,6 @@
 #include <limits.h>
 #include "petri.h"
 
-typedef struct s_thread_data
-{
-    int ttd;
-    int tte;
-    int tts;
-    
-} s_thread_data;
-
-
-typedef struct s_thread_managment_data
-{
-    int counter;
-    
-    pthread_mutex_t **forks;
-    pthread_t **thread;
-    s_thread_data data;
-
-}   t_thread_data;
-
-
 typedef struct s_philosophe
 {
     int rang;
@@ -54,16 +30,33 @@ typedef struct s_philosophe
     
 } t_philosophe ;
 
+
+typedef struct s_thread_managment_data
+{
+    int counter;
+    
+    int time_data[5];
+    pthread_mutex_t **forks;
+    pthread_t **threads;
+    t_philosophe **philosophes;
+
+}   t_thread_managment_data;
+
+
+
+
+
 typedef struct s_thread_manager
 {
     pthread_t   **thread;
     pthread_mutex_t **arr_mutex;
-    t_philosophe **philosophes;
     
 } t_thread_manager;
 
+
 typedef struct s_thread_data
 {
+    int *counter;
     t_philosophe *philo;
     pthread_mutex_t **arr_mutex;
     
@@ -81,5 +74,6 @@ void	ft_print_arr_str(char **arr, int len);
 int     ft_atoi_long(char *argv);
 int     *ft_init_arr_arg(char **argv, int argc);
 int     ft_isdigit(char c);
+int     ft_memcpy(void *src, void *dst, int len);
 
 #endif

@@ -32,3 +32,19 @@ void	ft_print_arr_str(char **arr, int len)
 	printf("\n");
 	
 }
+int ft_memcpy(void *src, void *dst, int len)
+{
+	unsigned char *arr_s;
+	unsigned char *arr_d;
+	int  i;
+
+	i = 0;
+	arr_s = (unsigned char *)src;
+	arr_d = (unsigned char *)dst;
+	while (i < len)
+	{
+		arr_d[i] = arr_s[i];
+		i++;
+	}
+	return(i);
+}

@@ -1,54 +1,24 @@
-==1117773== Memcheck, a memory error detector
-==1117773== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1117773== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==1117773== Command: ./test_unit 5 4000 4000 4000
-==1117773== Parent PID: 1117761
-==1117773== 
-==1117773== Conditional jump or move depends on uninitialised value(s)
-==1117773==    at 0x1099E2: ft_add_node (petri_network_test.c:48)
-==1117773==    by 0x109AB3: ft_init_nodes_network (petri_network_test.c:81)
-==1117773==    by 0x109AEB: ft_create_petri_network (petri_network_test.c:94)
-==1117773==    by 0x10992A: main (main_test_unit.c:82)
-==1117773== 
-==1117773== 
-==1117773== HEAP SUMMARY:
-==1117773==     in use at exit: 152 bytes in 7 blocks
-==1117773==   total heap usage: 8 allocs, 1 frees, 1,176 bytes allocated
-==1117773== 
-==1117773== 24 bytes in 1 blocks are definitely lost in loss record 2 of 4
-==1117773==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1117773==    by 0x1092D0: ft_init_arr_arg (argument_managment_test.c:46)
-==1117773==    by 0x10978C: test_ft_init_arr (main_test_unit.c:61)
-==1117773==    by 0x1098F6: main (main_test_unit.c:79)
-==1117773== 
-==1117773== 32 (8 direct, 24 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 4
-==1117773==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1117773==    by 0x109A5E: ft_init_nodes_network (petri_network_test.c:69)
-==1117773==    by 0x109AEB: ft_create_petri_network (petri_network_test.c:94)
-==1117773==    by 0x10992A: main (main_test_unit.c:82)
-==1117773== 
-==1117773== 96 bytes in 4 blocks are definitely lost in loss record 4 of 4
-==1117773==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1117773==    by 0x10997E: ft_new_p_node (petri_network_test.c:34)
-==1117773==    by 0x109A7F: ft_init_nodes_network (petri_network_test.c:74)
-==1117773==    by 0x109AEB: ft_create_petri_network (petri_network_test.c:94)
-==1117773==    by 0x10992A: main (main_test_unit.c:82)
-==1117773== 
-==1117773== LEAK SUMMARY:
-==1117773==    definitely lost: 128 bytes in 6 blocks
-==1117773==    indirectly lost: 24 bytes in 1 blocks
-==1117773==      possibly lost: 0 bytes in 0 blocks
-==1117773==    still reachable: 0 bytes in 0 blocks
-==1117773==         suppressed: 0 bytes in 0 blocks
-==1117773== 
-==1117773== Use --track-origins=yes to see where uninitialised values come from
-==1117773== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
-==1117773== 
-==1117773== 1 errors in context 1 of 4:
-==1117773== Conditional jump or move depends on uninitialised value(s)
-==1117773==    at 0x1099E2: ft_add_node (petri_network_test.c:48)
-==1117773==    by 0x109AB3: ft_init_nodes_network (petri_network_test.c:81)
-==1117773==    by 0x109AEB: ft_create_petri_network (petri_network_test.c:94)
-==1117773==    by 0x10992A: main (main_test_unit.c:82)
-==1117773== 
-==1117773== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
+==278958== Memcheck, a memory error detector
+==278958== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==278958== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
+==278958== Command: ./test_unit
+==278958== Parent PID: 278944
+==278958== 
+==278958== 
+==278958== HEAP SUMMARY:
+==278958==     in use at exit: 72 bytes in 4 blocks
+==278958==   total heap usage: 5 allocs, 1 frees, 1,096 bytes allocated
+==278958== 
+==278958== 72 (48 direct, 24 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 4
+==278958==    at 0x484680F: malloc (vg_replace_malloc.c:446)
+==278958==    by 0x109CD0: _init_thread_data_struc (thread_test.c:69)
+==278958==    by 0x109E0B: main (thread_test.c:107)
+==278958== 
+==278958== LEAK SUMMARY:
+==278958==    definitely lost: 48 bytes in 1 blocks
+==278958==    indirectly lost: 24 bytes in 3 blocks
+==278958==      possibly lost: 0 bytes in 0 blocks
+==278958==    still reachable: 0 bytes in 0 blocks
+==278958==         suppressed: 0 bytes in 0 blocks
+==278958== 
+==278958== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
