@@ -23,7 +23,7 @@
 #define DEBUGG printf("DEBUGG\n");
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
-#define N 4
+#define N 5
 
 void *ft_clean_memory(char **arr, int idx)
 {
@@ -214,16 +214,8 @@ int main() {
     ft_bzero(mat, n);
 
     assert(mat[0][0] == 0);
-
-    
     ft_nqueen(0, mat, N, &counter, result);
     printf("voici le nombre de solution %d\n", counter);
-    
-
-
-
-
-
     ft_clean_memory(result, 500);
     return(0);
 
