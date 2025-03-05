@@ -8,7 +8,7 @@ $(NAME): $(OBJS)
 	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 
 run:
-	valgrind --leak-check=full  --log-file="filename.txt" ./$(NAME) test
+	valgrind --leak-check=full  --log-file="filename.txt" -s ./$(NAME) test
 
 clean:
 	rm -f *.o 

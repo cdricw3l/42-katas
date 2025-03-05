@@ -20,180 +20,178 @@
 #include <assert.h>
 //#include "get_next_line/get/get_next_line.h"
 
+#define DEBUGG printf("DEBUGG\n");
+#define TEST_START printf("Initiating function test: %s\n", __func__);
+#define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 
-typedef struct s_node
-{
-    int value;
-    void **arr_node;
-    void *next;
-
-}t_node;
-
-int ft_strlen(char *str)
+void *ft_clean_memory(char **arr, int idx)
 {
     int i;
 
     i = 0;
-    if(!str)
-        return(0);
-    while (str[i])
+    if(!arr)
+        return(NULL);
+    while (i < idx)
+    {
+        if(arr[i])
+            free(arr[i]);
         i++;
-    return(i);
-}
-
-void ft_display_node_data(t_node *node)
-{
-    if(node)
-    {
-        printf("Valeur du noeud: %c\n", node->value);
-        printf("Adresse du noeud: %p\n", node);
-        if(node->next)
-            printf("Adresse du prochain noeud: %p\n", node->next);
-        else
-            printf("Dernier noeud de la liste\n");
-        printf("\n");
-
     }
-}
-
-void    ft_display_lst_data(t_node **lst)
-{
-    t_node *first_node;
-
-    if(!lst || !*lst)
-        return ;
-    first_node = *lst;
-    while (first_node)
-    {
-        ft_display_node_data(first_node);
-        first_node = first_node->next;
-    }
+    free(arr);
+    return(NULL);
     
 }
 
-t_node *ft_get_last_node(t_node **lst_node)
+char **ft_result_arr(int n)
 {
-    t_node *first_node;
-
-    if (!lst_node || !*lst_node)
-        return(NULL);
-    first_node = *lst_node;
-    while (first_node->next)
-        first_node = first_node->next;
-    return(first_node);
-}
-
-void ft_add_back_node(t_node **lst_node, t_node *new_node)
-{
-    t_node *last_node;
-
-    if(!lst_node)
-        return ;
-    if (!*lst_node)
-    {
-        *lst_node = new_node;
-    }
-    else
-    {
-        last_node = ft_get_last_node(lst_node);
-        if(last_node)
-            last_node->next = new_node;
-    }
-}
-
-t_node *ft_new_node(int value, int k)
-{
-    t_node *node;
-
-    node = malloc(sizeof(t_node));
-    if (!node)
-        return(NULL);
-    node->value = value;
-    node->arr_node = malloc(sizeof(t_node *) * (k - 1));
-    if(!node->arr_node)
-        return(NULL);
-    node->next = NULL;
-    return(node);
-}
-
-void    ft_clean_lst(t_node **lst, int idx)
-{
+    char **res;
     int i;
 
+    TEST_START;
+    if(n <= 0)
+        return(NULL);
+    res =  malloc(sizeof(char *) * 500);
+    if(!res)
+        return(NULL);
     i = 0;
-    while (i <= idx)
+    while (i < 500)
     {
-        free(lst[i]->arr_node);
-        free(lst[i]);
+        res[i] = malloc(sizeof(char) * (n + 1));
+        if(!res[i])
+            return(ft_clean_memory(res, i));
         i++;
     }
-    free(lst);
+    TEST_SUCCES;
+    return(res);
 }
 
-int ft_create_first_couch(t_node **lst, char *str, int strlen, int k)
+void ft_bzero(int arr[4][4], int n)
 {
     int i;
-    t_node *node;
+    int j;
 
-    if (!lst)
-        return(-1);
+    TEST_START;
     i = 0;
-    while (str[i])
+    while(i < n)
     {
-        node = ft_new_node(str[i], k);
-        if(!node)
+        j = 0;
+        while(j < n)
         {
-            ft_clean_lst(lst, i);
-            return(-1);
+            arr[i][j] = 0;
+            j++;
         }
-        ft_add_back_node(lst, node);
         i++;
     }
-    return(0);
+    TEST_SUCCES;
 }
 
-t_node **create_tree(char *str)
+void ft_print_arr(int arr[4][4], int n)
 {
-    t_node **start_lst;
-    int n;
-    int k;
+    int i;
+    int j;
 
-    start_lst = malloc(sizeof(t_node *));
-    if(!start_lst)
-        return(NULL);
-    n = ft_strlen(str);
-    k = n;
-    assert(ft_create_first_couch(start_lst,str, n, k) > -1);
-
-    return(start_lst);
+    i = 0;
+    while(i < n)
+    {
+        j = 0;
+        while(j < n)
+        {
+            printf("%d ", arr[i][j]);
+            j++;
+        }
+        printf("\n");
+        i++;
+    }
+    printf("\n");
 }
 
+void ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
+{
 
+
+    if(row < 0 || row > n - 1 || col < 0 || col > n - 1)
+        return ;
+
+    if(mat[row][col] != 0)
+        return;
+
+    if(mat[row][col] == 0)
+    {
+        mat[row][col] = 1;
+       
+    }
+
+    ft_is_diag_safe(mat, n , row - 1, col - 1);
+    ft_is_diag_safe(mat, n , row - 1, col + 1);
+    if(row > 0)
+        ft_is_diag_safe(mat, n , row + 1 , col - 1);
+    if(row > 0)
+        ft_is_diag_safe(mat, n , row + 1, col + 1);
+}
+
+int issafe(int mat[4][4], int n ,int row, int col)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (i < n)
+    {
+        if(mat[row][i] == 1)
+            return(0);
+        if(mat[j][col] == 1)
+            return(0);
+        i++;
+        j++;
+    }
+    // if(!ft_is_diag_safe(mat,n, row, col))
+    //     return(0);
+    return(1);
+}
+
+int ft_nqueen(int row,int mat[4][4], int n)
+{
+    int i;
+
+    i = 0;
+    if(row == n - 1)
+        return(1);
+    while (i < n)
+    {
+        if(issafe(mat, n,row, i))
+        {
+            mat[row][i] = 1;
+            if(ft_nqueen(row + 1, mat, n))
+                return(1);
+            mat[row][i] = 0;
+        }
+    }
+}
 
 int main() {
     
-    char txt[] = "abcde";
-    
-    t_node *new = ft_new_node(txt[0],4);
-    // assert(new->value == 97);
-    t_node *last_node = ft_get_last_node(&new);
-    // assert(last_node->value == 97);
-    // ft_add_back_node(&new, ft_new_node(txt[1]));
-    // last_node = ft_get_last_node(&new);
-    // assert(last_node->value == 98);
-    // ft_add_back_node(&new, ft_new_node(txt[2]));
-    // last_node = ft_get_last_node(&new);
-    // assert(last_node->value == 99);
-    //ft_display_node_data(new);
+    int n;
+    int mat[4][4];
+    char **result;
+    int i;
+
+    i = 0;
+    n = 4;
+    result = ft_result_arr(n);
+    if(!result)
+        return(-1);
+    ft_bzero(mat, n);
+
+    assert(mat[0][0] == 0);
+
+    ft_print_arr(mat, n);
+    ft_is_diag_safe(mat, n, 2, 2);
+    ft_print_arr(mat,n);
 
 
-    t_node **lst =  create_tree(txt);
-    ft_display_lst_data(lst);
-    (*lst)->arr_node[0] = new;
-    assert((*lst)->arr_node[0] == new);
-    printf("voici la'adresse %p \n", (*lst)->arr_node[0]);
 
-
+    ft_clean_memory(result, 500);
     return(0);
 
 }
