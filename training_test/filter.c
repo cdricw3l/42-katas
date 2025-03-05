@@ -105,28 +105,54 @@ void ft_print_arr(int arr[4][4], int n)
     printf("\n");
 }
 
-void ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
-{
+// void ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
+// {
 
 
-    if(row < 0 || row > n - 1 || col < 0 || col > n - 1)
-        return ;
+//     if(row < 0 || row > n - 1 || col < 0 || col > n - 1)
+//         return ;
 
-    if(mat[row][col] != 0)
-        return;
+//     if(mat[row][col] != 0)
+//         return;
 
-    if(mat[row][col] == 0)
-    {
-        mat[row][col] = 1;
+//     if(mat[row][col] == 0)
+//     {
+//         mat[row][col] = 1;
        
-    }
+//     }
 
-    ft_is_diag_safe(mat, n , row - 1, col - 1);
-    ft_is_diag_safe(mat, n , row - 1, col + 1);
-    if(row > 0)
-        ft_is_diag_safe(mat, n , row + 1 , col - 1);
-    if(row > 0)
-        ft_is_diag_safe(mat, n , row + 1, col + 1);
+//     ft_is_diag_safe(mat, n , row - 1, col - 1);
+//     ft_is_diag_safe(mat, n , row - 1, col + 1);
+//     if(row > 0)
+//         ft_is_diag_safe(mat, n , row + 1 , col - 1);
+//     if(row > 0)
+//         ft_is_diag_safe(mat, n , row + 1, col + 1);
+// }
+
+int ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
+{
+    int i;
+    int j;
+
+    i = row;
+    j = col;
+    while (i - 1 >= 0 && j - 1 >= 0)
+    {
+        if(mat[i - 1][j - 1] == 1)
+            return (0);
+        i--;
+        j--;
+    }
+    i = row;
+    j = col;
+    while (i - 1 >= 0 && j + 1 < n)
+    {
+        if(mat[i - 1][j + 1] == 1)
+            return (0);
+        i--;
+        j++;
+    }
+    return(1);
 }
 
 int issafe(int mat[4][4], int n ,int row, int col)
@@ -145,8 +171,8 @@ int issafe(int mat[4][4], int n ,int row, int col)
         i++;
         j++;
     }
-    // if(!ft_is_diag_safe(mat,n, row, col))
-    //     return(0);
+    if(!ft_is_diag_safe(mat,n, row, col))
+        return(0);
     return(1);
 }
 
@@ -185,8 +211,14 @@ int main() {
 
     assert(mat[0][0] == 0);
 
+    mat[0][3] = 1;
+    
     ft_print_arr(mat, n);
-    ft_is_diag_safe(mat, n, 2, 2);
+
+    int k = issafe(mat, n, 1, 0);
+
+    printf("voici k %d\n\n", k);
+
     ft_print_arr(mat,n);
 
 
