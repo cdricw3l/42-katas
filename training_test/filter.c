@@ -181,7 +181,7 @@ int ft_nqueen(int row,int mat[4][4], int n)
     int i;
 
     i = 0;
-    if(row == n - 1)
+    if(row == n)
         return(1);
     while (i < n)
     {
@@ -192,7 +192,9 @@ int ft_nqueen(int row,int mat[4][4], int n)
                 return(1);
             mat[row][i] = 0;
         }
+        i++;
     }
+    return(0);
 }
 
 int main() {
@@ -211,15 +213,16 @@ int main() {
 
     assert(mat[0][0] == 0);
 
-    mat[0][3] = 1;
     
-    ft_print_arr(mat, n);
 
-    int k = issafe(mat, n, 1, 0);
+    while (ft_nqueen(0, mat, 4))
+    {
+        ft_print_arr(mat,n);
+        printf("\n");
+    }
+    
 
-    printf("voici k %d\n\n", k);
 
-    ft_print_arr(mat,n);
 
 
 
