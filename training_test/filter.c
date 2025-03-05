@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:53:10 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/22 20:17:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/05 14:05:21 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 
-void *ft_clean_memory(char **arr, int idx)
+void *ft_clean_memory(void **arr, int idx)
 {
     int i;
 
@@ -58,14 +58,14 @@ char **ft_result_arr(int n)
     {
         res[i] = malloc(sizeof(char) * (n + 1));
         if(!res[i])
-            return(ft_clean_memory(res, i));
+            return(ft_clean_memory((void **)res, i));
         i++;
     }
     TEST_SUCCES;
     return(res);
 }
 
-void ft_bzero(int arr[4][4], int n)
+void ft_bzero(int **arr, int n)
 {
     int i;
     int j;
@@ -85,7 +85,7 @@ void ft_bzero(int arr[4][4], int n)
     TEST_SUCCES;
 }
 
-void ft_print_arr(int arr[4][4], int n)
+void ft_print_arr(int **arr, int n)
 {
     int i;
     int j;
@@ -129,7 +129,7 @@ void ft_print_arr(int arr[4][4], int n)
 //         ft_is_diag_safe(mat, n , row + 1, col + 1);
 // }
 
-int ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
+int ft_is_diag_safe(int **mat, int n ,int row, int col)
 {
     int i;
     int j;
@@ -155,7 +155,7 @@ int ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
     return(1);
 }
 
-int issafe(int mat[4][4], int n ,int row, int col)
+int issafe(int **mat, int n ,int row, int col)
 {
     int i;
     int j;
@@ -176,7 +176,7 @@ int issafe(int mat[4][4], int n ,int row, int col)
     return(1);
 }
 
-int ft_nqueen(int row,int mat[4][4], int n)
+int ft_nqueen(int row,int **mat, int n)
 {
     int i;
 
@@ -197,36 +197,53 @@ int ft_nqueen(int row,int mat[4][4], int n)
     return(0);
 }
 
-int main() {
+int **ft_create_mat(int n)
+{
+    int **mat;
+    int i;
+
+    TEST_START;
+    mat = malloc(sizeof(int *) * n);
+    if(!mat)
+        return(NULL);
+    i =  0;
+    while(i < n)
+    {
+        mat[i] = malloc(sizeof(int) * n);
+        if(!mat[i])
+            return(ft_clean_memory((void **)mat, i));
+        i++;
+    }
+    TEST_SUCCES;
+    return(mat);
+}
+
+int main(int argc, char **argv) {
     
     int n;
-    int mat[4][4];
+
+    n = atoi(argv[1]);
+    
+    int **mat;
     char **result;
     int i;
 
     i = 0;
-    n = 4;
     result = ft_result_arr(n);
-    if(!result)
+    mat = ft_create_mat(n);
+    if(!result || !mat)
         return(-1);
     ft_bzero(mat, n);
-
+    ft_print_arr(mat,n);
     assert(mat[0][0] == 0);
-
     
-
-    while (ft_nqueen(0, mat, 4))
+    while (ft_nqueen(0, mat, n))
     {
         ft_print_arr(mat,n);
         printf("\n");
     }
     
-
-
-
-
-
-    ft_clean_memory(result, 500);
+    ft_clean_memory((void **)result, 500);
     return(0);
 
 }
