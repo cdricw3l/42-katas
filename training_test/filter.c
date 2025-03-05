@@ -23,6 +23,7 @@
 #define DEBUGG printf("DEBUGG\n");
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
+#define N 4
 
 void *ft_clean_memory(char **arr, int idx)
 {
@@ -65,7 +66,7 @@ char **ft_result_arr(int n)
     return(res);
 }
 
-void ft_bzero(int arr[4][4], int n)
+void ft_bzero(int arr[N][N], int n)
 {
     int i;
     int j;
@@ -85,7 +86,7 @@ void ft_bzero(int arr[4][4], int n)
     TEST_SUCCES;
 }
 
-void ft_print_arr(int arr[4][4], int n)
+void ft_print_arr(int arr[N][N], int n)
 {
     int i;
     int j;
@@ -105,31 +106,7 @@ void ft_print_arr(int arr[4][4], int n)
     printf("\n");
 }
 
-// void ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
-// {
-
-
-//     if(row < 0 || row > n - 1 || col < 0 || col > n - 1)
-//         return ;
-
-//     if(mat[row][col] != 0)
-//         return;
-
-//     if(mat[row][col] == 0)
-//     {
-//         mat[row][col] = 1;
-       
-//     }
-
-//     ft_is_diag_safe(mat, n , row - 1, col - 1);
-//     ft_is_diag_safe(mat, n , row - 1, col + 1);
-//     if(row > 0)
-//         ft_is_diag_safe(mat, n , row + 1 , col - 1);
-//     if(row > 0)
-//         ft_is_diag_safe(mat, n , row + 1, col + 1);
-// }
-
-int ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
+int ft_is_diag_safe(int mat[N][N], int n ,int row, int col)
 {
     int i;
     int j;
@@ -155,7 +132,7 @@ int ft_is_diag_safe(int mat[4][4], int n ,int row, int col)
     return(1);
 }
 
-int issafe(int mat[4][4], int n ,int row, int col)
+int issafe(int mat[N][N], int n ,int row, int col)
 {
     int i;
     int j;
@@ -176,36 +153,61 @@ int issafe(int mat[4][4], int n ,int row, int col)
     return(1);
 }
 
-int ft_nqueen(int row,int mat[4][4], int n)
+void ft_print_result(int mat[N][N], char **result, int idx)
+{
+    int i;
+    int j;
+    int k;
+
+    i = 0;
+    while (i < N)
+    {
+        j = 0;
+        while (j < N)
+        {
+            if(mat[j][i] == 1)
+                printf(" %d ", j + 1);
+            j++;            
+        }
+        i++;
+    }
+    printf("\n");
+}
+
+void ft_nqueen(int row, int mat[N][N], int n, int *counter, char **result)
 {
     int i;
 
     i = 0;
     if(row == n)
-        return(1);
+    {
+        ft_print_result(mat, result, *counter);
+        (*counter)++;
+        return ;
+    }
     while (i < n)
     {
         if(issafe(mat, n,row, i))
         {
             mat[row][i] = 1;
-            if(ft_nqueen(row + 1, mat, n))
-                return(1);
+            ft_nqueen(row + 1, mat, n, counter, result);
             mat[row][i] = 0;
         }
         i++;
     }
-    return(0);
 }
 
 int main() {
     
     int n;
-    int mat[4][4];
+    int counter;
+    int mat[N][N];
     char **result;
     int i;
 
     i = 0;
-    n = 4;
+    n = N;
+    counter = 0;
     result = ft_result_arr(n);
     if(!result)
         return(-1);
@@ -214,12 +216,8 @@ int main() {
     assert(mat[0][0] == 0);
 
     
-
-    while (ft_nqueen(0, mat, 4))
-    {
-        ft_print_arr(mat,n);
-        printf("\n");
-    }
+    ft_nqueen(0, mat, N, &counter, result);
+    printf("voici le nombre de solution %d\n", counter);
     
 
 
