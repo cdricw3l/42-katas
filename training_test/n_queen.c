@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef N
+#define N 4
+#endif
+
 #define BUFFER_SIZE 10
 
 #include <unistd.h>
@@ -23,7 +27,6 @@
 #define DEBUGG printf("DEBUGG\n");
 #define TEST_START printf("Initiating function test: %s\n", __func__);
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
-#define N 5
 
 void *ft_clean_memory(char **arr, int idx)
 {
@@ -66,45 +69,27 @@ char **ft_result_arr(int n)
     return(res);
 }
 
-void ft_bzero(int arr[N][N], int n)
-{
-    int i;
-    int j;
 
-    TEST_START;
-    i = 0;
-    while(i < n)
-    {
-        j = 0;
-        while(j < n)
-        {
-            arr[i][j] = 0;
-            j++;
-        }
-        i++;
-    }
-    TEST_SUCCES;
-}
 
-void ft_print_arr(int arr[N][N], int n)
-{
-    int i;
-    int j;
+// void ft_print_arr(int arr[N][N], int n)
+// {
+//     int i;
+//     int j;
 
-    i = 0;
-    while(i < n)
-    {
-        j = 0;
-        while(j < n)
-        {
-            printf("%d ", arr[i][j]);
-            j++;
-        }
-        printf("\n");
-        i++;
-    }
-    printf("\n");
-}
+//     i = 0;
+//     while(i < n)
+//     {
+//         j = 0;
+//         while(j < n)
+//         {
+//             printf("%d ", arr[i][j]);
+//             j++;
+//         }
+//         printf("\n");
+//         i++;
+//     }
+//     printf("\n");
+// }
 
 int ft_is_diag_safe(int mat[N][N], int n ,int row, int col)
 {
@@ -197,26 +182,24 @@ void ft_nqueen(int row, int mat[N][N], int n, int *counter, char **result)
     }
 }
 
-int main() {
+// int main() {
     
-    int n;
-    int counter;
-    int mat[N][N];
-    char **result;
-    int i;
+//     int n;
+//     int counter;
+//     int mat[N][N] ={0};
+//     char **result;
+//     int i;
 
-    i = 0;
-    n = N;
-    counter = 0;
-    result = ft_result_arr(n);
-    if(!result)
-        return(-1);
-    ft_bzero(mat, n);
+//     i = 0;
+//     n = N;
+//     counter = 0;
+//     result = ft_result_arr(n);
+//     if(!result)
+//         return(-1);
+//     assert(mat[0][0] == 0);
+//     ft_nqueen(0, mat, N, &counter, result);
+//     printf("voici le nombre de solution %d\n", counter);
+//     ft_clean_memory(result, 500);
+//     return(0);
 
-    assert(mat[0][0] == 0);
-    ft_nqueen(0, mat, N, &counter, result);
-    printf("voici le nombre de solution %d\n", counter);
-    ft_clean_memory(result, 500);
-    return(0);
-
-}
+// }
