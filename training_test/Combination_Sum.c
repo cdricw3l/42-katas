@@ -55,6 +55,24 @@ int *ft_push(int **arr, int len,int n)
     free(*arr);
     return(new_arr);
 }
+int *ft_pop(int **arr, int len)
+{
+    int *new_arr;
+    int i;
+    int j;
+
+    new_arr = malloc(sizeof(int) * (len));
+    if(!new_arr)
+        return(NULL);
+    i = 1;
+    if(!(*arr))
+        return(NULL);
+    j = 0;
+    while (j < len)
+        new_arr[j++] = (*arr)[i++];
+    free(*arr);
+    return(new_arr);
+}
 int main()
 {
     int arr[] = {2, 4, 6, 8};
@@ -64,6 +82,10 @@ int main()
     arr2 = ft_push(&arr2, 0, 10);
     ft_print_arr(arr2, 1);
     arr2 = ft_push(&arr2, 1, 190);
+    ft_print_arr(arr2, 2);
+    arr2 = ft_push(&arr2, 2, 170);
+    ft_print_arr(arr2, 3);
+    arr2 = ft_pop(&arr2, 3);
     ft_print_arr(arr2, 2);
     free(arr2);
     return(0);

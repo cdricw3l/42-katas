@@ -1,14 +1,33 @@
-==129606== Memcheck, a memory error detector
-==129606== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==129606== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
-==129606== Command: ./filter test
-==129606== Parent PID: 129605
-==129606== 
-==129606== 
-==129606== HEAP SUMMARY:
-==129606==     in use at exit: 0 bytes in 0 blocks
-==129606==   total heap usage: 3 allocs, 3 frees, 1,036 bytes allocated
-==129606== 
-==129606== All heap blocks were freed -- no leaks are possible
-==129606== 
-==129606== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==140868== Memcheck, a memory error detector
+==140868== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==140868== Using Valgrind-3.25.0.GIT and LibVEX; rerun with -h for copyright info
+==140868== Command: ./filter test
+==140868== Parent PID: 140867
+==140868== 
+==140868== Invalid read of size 4
+==140868==    at 0x1093AA: ft_pop (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==    by 0x1094A2: main (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==  Address 0x4a8252c is 0 bytes after a block of size 12 alloc'd
+==140868==    at 0x484680F: malloc (vg_replace_malloc.c:446)
+==140868==    by 0x109273: ft_push (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==    by 0x10947C: main (in /home/cc/Documents/42KTA/training_test/filter)
+==140868== 
+==140868== 
+==140868== HEAP SUMMARY:
+==140868==     in use at exit: 0 bytes in 0 blocks
+==140868==   total heap usage: 5 allocs, 5 frees, 1,060 bytes allocated
+==140868== 
+==140868== All heap blocks were freed -- no leaks are possible
+==140868== 
+==140868== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==140868== 
+==140868== 1 errors in context 1 of 1:
+==140868== Invalid read of size 4
+==140868==    at 0x1093AA: ft_pop (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==    by 0x1094A2: main (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==  Address 0x4a8252c is 0 bytes after a block of size 12 alloc'd
+==140868==    at 0x484680F: malloc (vg_replace_malloc.c:446)
+==140868==    by 0x109273: ft_push (in /home/cc/Documents/42KTA/training_test/filter)
+==140868==    by 0x10947C: main (in /home/cc/Documents/42KTA/training_test/filter)
+==140868== 
+==140868== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
