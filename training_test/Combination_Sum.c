@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filter.c                                           :+:      :+:    :+:   */
+/*   Combination_Sum.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:53:10 by cw3l              #+#    #+#             */
-/*   Updated: 2025/02/22 20:17:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/06 16:43:37 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,26 @@ int *ft_pop(int **arr, int len)
     free(*arr);
     return(new_arr);
 }
+
+
+void conbine(int arr,int len, int target, int idx)
+{
+    if(target == 0)
+    {
+        printf("combinaison trouve\n");
+    }
+    if(target < 0 || idx >= len)
+        return ;
+    
+}
+
 int main()
 {
     int arr[] = {2, 4, 6, 8};
     int *arr2 = NULL;
     int target = 8;
 
-    arr2 = ft_push(&arr2, 0, 10);
-    ft_print_arr(arr2, 1);
-    arr2 = ft_push(&arr2, 1, 190);
-    ft_print_arr(arr2, 2);
-    arr2 = ft_push(&arr2, 2, 170);
-    ft_print_arr(arr2, 3);
-    arr2 = ft_pop(&arr2, 3);
-    ft_print_arr(arr2, 2);
+    
     free(arr2);
     return(0);
 }
