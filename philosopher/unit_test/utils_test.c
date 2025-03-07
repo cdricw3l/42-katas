@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 16:51:31 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:29:08 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	ft_printm(int **arr, int row, int col)
 	int j;
 
 	i = 0;
+	if(!arr)
+	{
+		perror("Arg NULL");
+		return ;
+	}
 	while(i < row)
 	{
 		j = 0;
@@ -64,11 +69,9 @@ int ft_memcpy(void *src, void *dst, int size)
 	d = (unsigned char *)dst;
 	while (i  < size)
 	{
-		printf("voici size %d\n", i);
 		d[i] = s[i];
 		i++;
 	}
-	DEBUGG;
 	return(i);
 	
 }

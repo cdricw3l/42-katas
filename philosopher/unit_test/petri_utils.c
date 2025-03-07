@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   petri_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 17:13:20 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:31:49 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/petri_utils.h"
+#include "../include/petri_network.h"
 #include "../include/philosophers.h"
 
 void *ft_clean_petri_network_mem(t_petri_network *network)
@@ -48,7 +48,6 @@ void    *ft_clean_matrice_mem(int **M, int idx)
     int i;
 
     i = 0;
-    DEBUGG;
     while(i < idx)
     {
         free(M[i]);
@@ -96,6 +95,7 @@ int  *ft_create_transitions(int T)
 int **ft_copy_matrice(int **M_in, int P, int T)
 {
     int i;
+    int r;
     int **M;
 
     M = malloc(sizeof(int *) * P);
@@ -107,11 +107,12 @@ int **ft_copy_matrice(int **M_in, int P, int T)
         M[i] = malloc(sizeof(int) * T);
         if(!M[i])
             return(ft_clean_matrice_mem(M, i));
-        if(ft_memcpy(M_in[i], M[i], sizeof(int) * T) != T)
+        r = ft_memcpy(M_in[i], M[i], sizeof(int) * T);
+        if(r / sizeof(r) != T)
         {
+            perror("Err ft_copy_matrice");
             return(ft_clean_matrice_mem(M, i));
         }
-        
         i++;
     }
     return(M);

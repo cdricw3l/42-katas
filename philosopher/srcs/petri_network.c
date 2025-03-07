@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   petri_network.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:13:53 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 17:15:46 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:21:27 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void    *ft_clean_matrice_mem(int **M, int idx)
     int i;
 
     i = 0;
-    DEBUGG;
     while(i < idx)
     {
         free(M[i]);

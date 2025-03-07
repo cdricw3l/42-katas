@@ -1,7 +1,7 @@
 CC= gcc
 NAME= philo
 DATE=$(shell date | sed 's/ /_/g')
-GFLAGS= -Werror -Wextra -Wall -g 
+GFLAGS= -Werror -Wextra -Wall -fsanitize=address -g 
 SRCS= $(wildcard srcs/*.c)
 OBJS= $(SRCS:*.c=.o)
 SRCS_TEST= $(wildcard unit_test/*.c)
@@ -22,7 +22,8 @@ v:$(OBJS)
 
 test: $(OBJS_TEST)
 	$(CC) $(GFLAGS) $(OBJS_TEST) -o test_unit 
-	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+#valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	./test_unit
 
 clean:
 	rm -f test_unit
