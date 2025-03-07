@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   petri_network.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 17:16:36 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:57:42 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_petri_network
 
 int                 *ft_create_place(int P, int *M_0);
 int                 *ft_create_transitions(int T);
-int                 **ft_copy_matrice(int **M_in, int P, int T);
+int                 **ft_copy_matrice(void **M_in, int P, int T);
 void                *ft_clean_matrice_mem(int **M, int idx);
 t_petri_network     *ft_create_network(int *PT, int *M_0, int **M_in, int **M_out);
 

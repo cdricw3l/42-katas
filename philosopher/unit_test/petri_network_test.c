@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 19:35:59 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/07 19:54:19 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,14 @@
 
 int	main(void)
 {   
-    int P = 5;
-    int T = 10;
-    int i;
-    int j;
+    int P = 4;
+    int T = 3;
     
-    int **arr;
+    int **M_plus;
+    int arr2[4][3] = {{0,1,2}, {3,4,5}, {6,7,8}, {9,10,11}};
     
-    arr = malloc(sizeof(int *) * P);
-    if(!arr)
-        return(1);
-    i = 0;
-    while (i < P)
-    {
-        arr[i] = malloc(sizeof(int) * T);
-        if(!arr[i])
-        {
-            perror("Err ");
-            return(((long)ft_clean_matrice_mem(arr, i)));
-        }
-        j = 0;
-        while (j < T)
-        {
-            arr[i][j] = j;
-            j++;
-        }
-        i++;
-    }
+    M_plus = ft_copy_matrice(&arr2,P, T);
     
-    int **cpy = ft_copy_matrice(NULL, P, T);
-    ft_printm(cpy, P, T);
+    ft_printm(M_plus, P, T);
 	return(0);
 }
