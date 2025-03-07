@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/20 11:00:11 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:51:31 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,58 +32,43 @@ void	ft_print_arr_str(char **arr, int len)
 	printf("\n");
 	
 }
-int ft_memcpy(void *src, void *dst, int len)
-{
-	unsigned char *arr_s;
-	unsigned char *arr_d;
-	int  i;
 
-	i = 0;
-	arr_s = (unsigned char *)src;
-	arr_d = (unsigned char *)dst;
-	while (i < len)
-	{
-		arr_d[i] = arr_s[i];
-		i++;
-	}
-	return(i);
-}
-
-void       *ft_clean_memory(void **arr, int idx)
-{
-    int i;
-
-    i = 0;
-    TEST_START;
-    while(i < idx)
-    {
-        if(arr[i])
-            free(arr[i]);
-        printf("voici i %d\n", i);
-        i++;
-    }
-    TEST_SUCCES;
-    free(arr);
-    return(NULL);
-}
-int ft_clean_tmd(t_thread_managment_data *tmd, int idx)
+void	ft_printm(int **arr, int row, int col)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (i < idx)
+	while(i < row)
 	{
-		if(tmd->philosophes[i])
-			free(tmd->philosophes[i]);
-		if(tmd->threads[i])
-			free(tmd->threads[i]);
-		if(tmd->forks[i])
-			free(tmd->forks[i]);
+		j = 0;
+		while (j < col)
+		{
+			printf("%d ", arr[i][j]);
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
-	free(tmd->forks);
-	free(tmd->philosophes);
-	free(tmd->threads);
-	free(tmd);
-	return(-1);
+}
+int ft_memcpy(void *src, void *dst, int size)
+{
+	int i;
+	unsigned char *s;
+	unsigned char *d;
+
+	if(!src || !dst)
+		return(0);
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	while (i  < size)
+	{
+		printf("voici size %d\n", i);
+		d[i] = s[i];
+		i++;
+	}
+	DEBUGG;
+	return(i);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:53:10 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/06 16:38:02 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:26:38 by cbouhadr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void ft_permutation(char *str, int start, int end)
     
 }
 
-int main()
-{
-    char str[] = "abcd";
-    int n = 4;
+// int main()
+// {
+//     char str[] = "abcd";
+//     int n = 4;
 
-    ft_permutation(str, 0, n-1);
-    return(0);
-}
+//     ft_permutation(str, 0, n-1);
+//     return(0);
+// }
