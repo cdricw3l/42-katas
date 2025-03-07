@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 19:28:03 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/07 19:35:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(void)
 {   
-    int P = 4;
-    int T = 3;
+    int P = 5;
+    int T = 10;
     int i;
     int j;
     
@@ -37,14 +37,13 @@ int	main(void)
         j = 0;
         while (j < T)
         {
-            arr[i][j] = 0;
+            arr[i][j] = j;
             j++;
         }
         i++;
     }
     
-    int **cpy = ft_copy_matrice(arr, P, T);
-    (void)cpy;
+    int **cpy = ft_copy_matrice(NULL, P, T);
     ft_printm(cpy, P, T);
 	return(0);
 }

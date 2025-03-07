@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 19:31:49 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/07 19:36:34 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int **ft_copy_matrice(int **M_in, int P, int T)
     int r;
     int **M;
 
+    if(!M_in)
+        return(NULL);
     M = malloc(sizeof(int *) * P);
     if(!M)
         return(NULL);
@@ -140,12 +142,10 @@ t_petri_network *ft_create_network(int *PT, int *M_0, int **M_in, int **M_out)
         free(network);
         return(NULL);
     }
-    (void)M_in;
-    (void)M_out;
-    // network->M_in = ft_copy_matrice(M_in, PT[0], PT[1]);
-    // network->M_out = ft_copy_matrice(M_out, PT[0], PT[1]);
-    // if(!network->M_in || !network->M_out)
-    //     return(ft_clean_petri_network_mem(network));
+    network->M_in = ft_copy_matrice(M_in, PT[0], PT[1]);
+    network->M_out = ft_copy_matrice(M_out, PT[0], PT[1]);
+    if(!network->M_in || !network->M_out)
+        return(ft_clean_petri_network_mem(network));
     return(network);    
 }
 

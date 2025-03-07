@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 17:13:53 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 19:21:27 by cw3l             ###   ########.fr       */
+/*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
+/*   Updated: 2025/03/07 19:34:44 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int  *ft_create_transitions(int T)
 int **ft_copy_matrice(int **M_in, int P, int T)
 {
     int i;
+    int r;
     int **M;
 
     M = malloc(sizeof(int *) * P);
@@ -106,11 +107,12 @@ int **ft_copy_matrice(int **M_in, int P, int T)
         M[i] = malloc(sizeof(int) * T);
         if(!M[i])
             return(ft_clean_matrice_mem(M, i));
-        if(ft_memcpy(M_in[i], M[i], sizeof(int) * T) != T)
+        r = ft_memcpy(M_in[i], M[i], sizeof(int) * T);
+        if(r / sizeof(r) != T)
         {
+            perror("Err ft_copy_matrice");
             return(ft_clean_matrice_mem(M, i));
         }
-        
         i++;
     }
     return(M);
