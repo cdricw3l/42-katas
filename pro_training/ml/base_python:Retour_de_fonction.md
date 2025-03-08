@@ -22,12 +22,12 @@ print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
     def liste_carres(n):\
         return [i ** 2 for i in range(n)]
 
-print(liste_carres(5))  # ➝ [0, 1, 4, 9, 16]
+    print(liste_carres(5))  # ➝ [0, 1, 4, 9, 16]
 
-def infos_personne(nom, age):
-    return {"nom": nom, "age": age}
+    def infos_personne(nom, age):
+        return {"nom": nom, "age": age}
 
-print(infos_personne("Alice", 25))  # ➝ {'nom': 'Alice', 'age': 25}
+    print(infos_personne("Alice", 25))  # ➝ {'nom': 'Alice', 'age': 25}
 
 ## Retourner None si aucune valeur n'est valide
 
