@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 09:01:02 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 11:24:49 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ int	ft_atoi_long(char *argv)
 {
 	long result;
 	int i;
+	int is_neg;
 
 	result = 0;
 	i = 0;
 	if(!argv)
 		return(-1);
-	
+	is_neg = 0;
+	if(argv[0] == '-')
+	{
+		is_neg = 1;
+		i++;
+	}
 	while (argv[i])
 	{
 
@@ -39,6 +45,8 @@ int	ft_atoi_long(char *argv)
 			return (-1);
 		i++;
 	}
+	if(is_neg)
+		return(result * -1);
 	return(result);
 }
 
@@ -58,8 +66,7 @@ void	ft_print_arr_str(char **arr, int len)
 
 	i = 0;
 	while(i < len)
-		printf("%s ", arr[i++]);
-	printf("\n");
+		printf("%s\n", arr[i++]);
 	
 }
 int	*ft_init_arr_arg(char **argv, int len)
@@ -102,6 +109,18 @@ int	ft_strlcpy(char *dst, char *src, int dstsize)
 	while (src[i])
 		i++;
 	return (i);
+}
+
+int ft_split_len(char **split)
+{
+	int i;
+
+	i = 0;
+	if(!split)
+		return(0);
+	while (split[i])
+		i++;
+	return(i);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 09:32:29 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 10:42:24 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int	main(int argc, char **argv)
 	ft_print_arr_int(arr_args, argc - 1);
 
 
-	char *m = "1 0 0 1 0 1 1 0 0 1 0 1 1 0 1 0";
-    
-    char **split = ft_split(m, 32);
-    if(!split)
+	char *m = "-33 0 0 1 0 1 100 0 0 1 0 1";
+	int ** tt;
+	int p = 4;
+	int t = 3;
+    tt = ft_str_to_matrice(m, p, t);
+	if(!tt)
+		return(1);
+	int i = 0;
+    while (i < p)
     {
-        printf("Erreur split\n");
-        return(1);
-    }
-	while (*split)
-    {
-        printf(" %s\n", *split);
-        split++;
+        ft_print_arr_int(tt[i],t);
+        i++;
     }
 	free(arr_args);
 	return(0);

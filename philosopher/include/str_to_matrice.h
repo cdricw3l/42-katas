@@ -6,12 +6,12 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 08:39:06 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 09:40:42 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PETRI_NETWORK_H
-#define PETRI_NETWORK_H
+#ifndef SRT_TO_MATRICE_H
+#define SRT_TO_MATRICE_H
 
 #include <unistd.h>
 #include <stdio.h>
