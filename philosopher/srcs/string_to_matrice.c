@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/08 14:09:34 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 14:19:23 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,19 +107,19 @@ int	**ft_str_to_matrice(char *str, int x, int y)
 	return (m);
 }
 
-int main()
-{
-	char *str = "1 -22222 0 2 0 0 3 0 0 4 0 44";
-	int **m = ft_str_to_matrice(str, 4, 3);
+// int main()
+// {
+// 	char *str = "1 -22222 0 2 0 0 3 0 0 4 0 44";
+// 	int **m = ft_str_to_matrice(str, 4, 3);
 	
-	if(m)
-	{
-		while (*m)
-		{
-			ft_print_arr_int(*m,3);
-			m++;
-		}
-	}
-	exit(0);
-	return(0);
-}
+// 	if(m)
+// 	{
+// 		while (*m)
+// 		{
+// 			ft_print_arr_int(*m,3);
+// 			m++;
+// 		}
+// 	}
+// 	exit(0);
+// 	return(0);
+// }

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 13:07:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 14:27:59 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #define TEST_SUCCES printf("Function: %s executed successfully.\n", __func__);
 
 int	ft_get_split_len(char **split);
+int	**ft_str_to_matrice(char *str, int x, int y);
 // int **ft_str_to_matrice(char *str, int x, int y);
 // int ft_is_valide_split(char **split);
 #endif
