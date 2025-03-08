@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/07 19:34:44 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 13:05:23 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,7 @@ void *ft_clean_petri_network_mem(t_petri_network *network)
     return(NULL);
 }
 
-void    *ft_clean_matrice_mem(int **M, int idx)
-{
-    int i;
 
-    i = 0;
-    while(i < idx)
-    {
-        free(M[i]);
-        i++;
-    }
-    free(M);
-    return(NULL);
-}
 
 int *ft_create_place(int P, int *M_0)
 {

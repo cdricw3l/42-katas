@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:14:49 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 11:32:26 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 13:07:22 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ int     ft_memcpy(void *src, void *dst, int size);
 int     ft_strlen(char *str);
 void	ft_printm(int **arr, int row, int col);
 int	    ft_strlcpy(char *dst, char *src, int dstsize);
-int     ft_split_len(char **split);
-void    *ft_clean_split(char **str, int idx);
+void	*ft_clean_split(char **str, int idx);
+int	    ft_get_split_len(char **split);
+// int     ft_split_len(char **split);
+// void    *ft_clean_split(char **str, int idx);
 
 #endif

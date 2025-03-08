@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 11:33:12 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 13:00:25 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,7 @@ int	ft_strlcpy(char *dst, char *src, int dstsize)
 	return (i);
 }
 
-int ft_split_len(char **split)
-{
-	int i;
 
-	i = 0;
-	if(!split)
-		return(0);
-	while (split[i])
-		i++;
-	return(i);
-}
 
 
 int ft_strlen(char *str)

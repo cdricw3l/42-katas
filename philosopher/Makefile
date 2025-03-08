@@ -19,8 +19,8 @@ $(NAME): $(OBJS)
 	
 run:$(OBJS)
 ifeq ($(OS), Darwin)
-	@$(CC) $(GFLAGS) -fsanitize=address $(OBJS) -o $(NAME)
-	@./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+	$(CC) $(GFLAGS) -fsanitize=address -g3 $(OBJS) -o $(NAME)
+	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
@@ -45,6 +45,7 @@ fclean: clean
 all: fclean $(NAME)
 
 git: fclean
+	cd ..
 	git add .
 	git commit -m $(NAME)/$(DATE)/$(GITCOM)
 	git push origin work
