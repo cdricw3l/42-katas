@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 16:36:22 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 16:49:50 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_print_matrice_network(t_petri_network *network)
 
     i = 0;
     printf("\n[ P: ]\n\n");
-    ft_print_arr_int(network->P, network->p);
+    ft_print_arr_int(network->M0, network->p);
     printf("\n[ T: ]\n\n");
     ft_print_arr_int(network->T, network->t);
     printf("\n[ matrice M 0 ]\n\n");
@@ -58,7 +58,7 @@ void *ft_clean_petri_network_mem(t_petri_network *network)
             i++;
         }
     }
-    free(network->P);
+    free(network->M0);
     free(network->T);
     free(network);
     return(NULL);
@@ -141,24 +141,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int ft_create_place_and_transition(t_petri_network *network)
-{
-    
-    network->P = ft_create_place(network->p,network->M0);
-    if(!network->P)
-    {
-        free(network);
-        return(0);
-    }
-    network->T =  ft_create_transitions(network->t);
-    if(!network->T)
-    {
-        free(network->P);
-        free(network);
-        return(0);
-    }
-    return(1);
-}
+
 
 t_petri_network *ft_init_network(int pt[2], char *m0)
 {
@@ -177,11 +160,15 @@ t_petri_network *ft_init_network(int pt[2], char *m0)
     }
     network->p = pt[0];
     network->t = pt[1];
-    if(!ft_create_place_and_transition(network))
-        return(NULL);
+    network->T =  ft_create_transitions(network->t);
+    if(!network->T)
+    {
+        free(network->M0);
+        free(network);
+        return(0);
+    }
     return(network);    
 }
-
 
 
 t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_out)
@@ -194,7 +181,22 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
     if(!m_in || !m_out)
         return(NULL);
     network->M_out = ft_str_to_matrice(m_out, pt[0], pt[1]);
+    if(!network->M_out)
+    {
+        free(network->M0);
+        free(network->T);
+        free(network);
+        return(NULL);
+    }
     network->M_in = ft_str_to_matrice(m_in, pt[0], pt[1]);
+    if(!network->M_in)
+    {
+        free(network->M0);
+        free(network->T);
+        ft_clean_matrice_mem(network->M_out, network->p);
+        free(network);
+        return(NULL);
+    }
     return(network);
 }
 
@@ -204,11 +206,12 @@ int main(void)
 
     int pt[2] = {4,3};
     char *m0 = "1 0 0 1";
-    char *m_out = "11 0 0 0 1 0 0 0 2 0 1 0";
+    char *m_out = "1 0 0 0 1 0 0 0 2 0 1 0";
     char *m_int = "0 0 1 1 0 0 0 2 0 0 0 1";
     
     network = ft_create_petri_net(pt,m0,m_int,m_out);
-    ft_print_matrice_network(network);
+    if(network)
+        ft_print_matrice_network(network);
 
     return(0);
 }
