@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 16:55:38 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 21:05:22 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-
-
 t_petri_network *ft_init_network(int pt[2], char *m0)
 {
     t_petri_network *network;
@@ -202,16 +200,24 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
 
 int main(void)
 {
-    t_petri_network *network;
+    t_petri_network *network_1;
+    t_petri_network *network_2;
 
     int pt[2] = {4,3};
+    
     char *m0 = "1 0 0 1";
     char *m_out = "1 0 0 0 1 0 0 0 2 0 1 0";
+
+    
     char *m_int = "0 0 1 1 0 0 0 2 0 0 0 1";
     
-    network = ft_create_petri_net(pt,m0,m_int,m_out);
-    if(network)
-        ft_print_matrice_network(network);
+    network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
+    if(network_1)
+        ft_print_matrice_network(network_1);
+        
+    network_2 = ft_create_petri_net(pt,m0,m_int,m_out);
+    if(network_2)
+        ft_print_matrice_network(network_2);
 
     return(0);
 }

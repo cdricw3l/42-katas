@@ -5,7 +5,3 @@ SO_LONG: Revoir les message d'erreur So_long et repush pour lors des soldes.
 PUSH_SWAP : Optimiser la Double rotation Push swap + coder le checker. Repush pour les soldes.
 
 GET_NEXT_LINE : "petit doute sur les bonus la verification du fd max nest pas faite donc sigabort possible". Revoir max fd.
-
-ssss
-dddd
-dzadzadaz
