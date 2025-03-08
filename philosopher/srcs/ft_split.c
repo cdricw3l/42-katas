@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:51:55 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/08 11:21:04 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 11:36:43 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,8 @@ static int	count_word(char *str)
 			i++;
 		}
 	}
-    assert(word_count == 12);
-    
 	return (word_count);
 }
-
-
 
 int ft_get_word_size(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:15:41 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 10:42:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 11:37:06 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	main(int argc, char **argv)
 	arr_args = ft_init_arr_arg(&argv[1], argc - 1);
 	if (!arr_args)
 		return (1);
-	ft_print_arr_int(arr_args, argc - 1);
 
-
-	char *m = "-33 0 0 1 0 1 100 0 0 1 0 1";
+	char *m = "1 0 0 1 0 1 0 0 0 1   1    1";
 	int ** tt;
 	int p = 4;
 	int t = 3;

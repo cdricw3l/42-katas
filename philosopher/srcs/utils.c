@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 11:24:49 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 11:33:12 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isdigit(char c)
 	return(1);
 }
 
-int	ft_atoi_long(char *argv)
+long	ft_atoi_long(char *argv)
 {
 	long result;
 	int i;
@@ -41,8 +41,6 @@ int	ft_atoi_long(char *argv)
 		if(!ft_isdigit(argv[i]))
 			return (-1);
 		result = ((result * 10) + (argv[i] - '0'));
-		if(result > INT_MAX)
-			return (-1);
 		i++;
 	}
 	if(is_neg)
