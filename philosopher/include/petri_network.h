@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 15:42:55 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 16:17:08 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@
 typedef struct s_petri_network
 {
     int     *P;
+    int     p;
     int     *T;
+    int     t;
     int     *M0;
     int     **M_in;        
     int     **M_out;

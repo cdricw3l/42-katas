@@ -6,27 +6,31 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 15:47:10 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 16:35:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/petri_network.h"
 #include "../include/philosophers.h"
 
-void ft_print_matrice_network(int *m0, int **m_out, int **m_in, int t)
+void ft_print_matrice_network(t_petri_network *network)
 {
     int i;
 
     i = 0;
-    printf("\n[ matrice M0]\n\n");
-    ft_print_arr_int(m0, t);
+    printf("\n[ P: ]\n\n");
+    ft_print_arr_int(network->P, network->p);
+    printf("\n[ T: ]\n\n");
+    ft_print_arr_int(network->T, network->t);
+    printf("\n[ matrice M 0 ]\n\n");
+    ft_print_arr_int(network->M0, network->p);
     printf("\n[ matrice M_out ]\n\n");
-    while (m_out[i])
-        ft_print_arr_int(m_out[i++], t);
+    while (network->M_out[i])
+        ft_print_arr_int(network->M_out[i++], network->t);
     i = 0;
     printf("\n[ matrice M_in ]\n\n");
-    while (m_in[i])
-        ft_print_arr_int(m_in[i++], t);
+    while (network->M_in[i])
+        ft_print_arr_int(network->M_in[i++], network->t);
     printf("\n");
 }
 
@@ -67,7 +71,7 @@ int *ft_create_place(int P, int *M_0)
     int *places;
     int i;
 
-    places = malloc(sizeof(int) * P);
+    places = malloc(sizeof(int) * (P + 1));
     if(!places)
         return(NULL);
     i = 0;
@@ -137,31 +141,44 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
+int ft_create_place_and_transition(t_petri_network *network)
+{
+    
+    network->P = ft_create_place(network->p,network->M0);
+    if(!network->P)
+    {
+        free(network);
+        return(0);
+    }
+    network->T =  ft_create_transitions(network->t);
+    if(!network->T)
+    {
+        free(network->P);
+        free(network);
+        return(0);
+    }
+    return(1);
+}
+
 t_petri_network *ft_init_network(int pt[2], char *m0)
 {
     t_petri_network *network;
     
-    if(pt[0] < 1)
+    if(pt[0] < 1 && pt[1] < 1)
         return(NULL);
     network = malloc(sizeof(t_petri_network));
     if(!network)
         return(NULL);
     network->M0 = *ft_str_to_matrice(m0, 1, pt[0]);
     if(!network->M0)
-        return(NULL);
-    network->P = ft_create_place(pt[0],network->M0);
-    if(!network->P)
     {
         free(network);
         return(NULL);
     }
-    network->T =  ft_create_transitions(pt[1]);
-    if(!network->T)
-    {
-        free(network->P);
-        free(network);
+    network->p = pt[0];
+    network->t = pt[1];
+    if(!ft_create_place_and_transition(network))
         return(NULL);
-    }
     return(network);    
 }
 
@@ -192,7 +209,7 @@ int main(void)
     char *m_int = "0 0 1 1 0 0 0 2 0 0 0 1";
     
     network = ft_create_petri_net(pt,m0,m_int,m_out);
-    ft_print_matrice_network(network->M0,network->M_out,network->M_in, 3);
+    ft_print_matrice_network(network);
 
     return(0);
 }
