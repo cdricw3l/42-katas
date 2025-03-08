@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 16:49:50 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 16:55:38 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void *ft_clean_petri_network_mem(t_petri_network *network)
     if(network->M_in)
     {
         i = 0;
-        while (i < PETRI_P)
+        while (i < network->p)
         {
             if(network->M_in[i])
                 free(network->M_in[i]);
@@ -51,7 +51,7 @@ void *ft_clean_petri_network_mem(t_petri_network *network)
     if(network->M_out)
     {
         i = 0;
-        while (i < PETRI_P)
+        while (i < network->p)
         {
             if(network->M_out[i])
                 free(network->M_out[i]);
