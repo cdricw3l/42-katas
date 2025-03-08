@@ -48,7 +48,7 @@ git: fclean
 	cd ..
 	git add .
 	git commit -m $(NAME)/$(DATE)/$(GITCOM)
-	git push origin work
+	git push
 
 copy:
 	cd .. && cd 42-katas/philosopher && rm -rf *
