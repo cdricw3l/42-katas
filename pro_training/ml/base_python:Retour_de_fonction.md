@@ -2,20 +2,20 @@
 
 ## Retourner une valeur unique
 
-exemple: 
+    exemple: 
 
-def addition(a, b):
-    return a + b
+    def addition(a, b):
+        return a + b
 
 ## Retourner plusieurs valeurs  sous forme de tuple
 
-exemple: 
+    exemple: 
 
-def operations(a, b):
-    return a + b, a - b, a * b
+    def operations(a, b):
+        return a + b, a - b, a * b
 
-resultat_add, resultat_sub, resultat_mul = operations(4, 2)
-print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
+    resultat_add, resultat_sub, resultat_mul = operations(4, 2)
+    print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
 
 ## Retourner une liste ou un dictionnaire
 
@@ -31,9 +31,9 @@ print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
 
 ## Retourner None si aucune valeur n'est valide
 
-🎯 Résumé
-✅ Retourner une seule valeur → return x
-✅ Retourner plusieurs valeurs → return x, y, z (tuple)
-✅ Retourner une liste ou un dictionnaire → [x, y, z] ou {"clé": valeur}
-❌ (à voir) Gérer les erreurs avec None ou try/except
-❌ (à voir)Utiliser yield pour générer des valeurs sans les stocker
+    🎯 Résumé
+    ✅ Retourner une seule valeur → return x
+    ✅ Retourner plusieurs valeurs → return x, y, z (tuple)
+    ✅ Retourner une liste ou un dictionnaire → [x, y, z] ou {"clé": valeur}
+    ❌ (à voir) Gérer les erreurs avec None ou try/except
+    ❌ (à voir)Utiliser yield pour générer des valeurs sans les stocker
