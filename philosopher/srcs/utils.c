@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbouhadr <cbouhadr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/02/20 10:51:04 by cbouhadr         ###   ########.fr       */
+/*   Updated: 2025/03/08 09:01:02 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,52 @@ int	*ft_init_arr_arg(char **argv, int len)
 		i++;
 	}
 	return (arr);
+}
+int	ft_strlcpy(char *dst, char *src, int dstsize)
+{
+	int	i;
+
+	i = 0;
+	if (!dstsize && src)
+		return (ft_strlen(src));
+	while (src[i] && i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
+}
+
+
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+        i++;
+    return(i);
+}
+
+int ft_memcpy(void *src, void *dst, int size)
+{
+	int i;
+	unsigned char *s;
+	unsigned char *d;
+
+	if(!src || !dst)
+		return(0);
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	while (i  < size)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return(i);
+	
 }

@@ -1,7 +1,7 @@
 CC= gcc
 NAME= philo
 DATE=$(shell date | sed 's/ /_/g')
-GFLAGS= -Werror -Wextra -Wall -fsanitize=address -g 
+GFLAGS= -Werror -Wextra -Wall  
 SRCS= $(wildcard srcs/*.c)
 OBJS= $(SRCS:*.c=.o)
 SRCS_TEST= $(wildcard unit_test/*.c)
@@ -12,18 +12,28 @@ TTE= 4000 #time_to_eat
 TTS= 4000 #time_to_sleep 
 
 GITCOM=
+OS = $(shell uname)
 
 $(NAME): $(OBJS)
-	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
-
-v:$(OBJS)
+	$(CC) $(GFLAGS) $(OBJS) -o $(NAM E)
+	
+run:$(OBJS)
+ifeq ($(OS), Darwin)
+	$(CC) $(GFLAGS) -fsanitize=address $(OBJS) -o $(NAME)
+	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
 	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 	valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
+endif
 
 test: $(OBJS_TEST)
-	$(CC) $(GFLAGS) $(OBJS_TEST) -o test_unit 
-#valgrind --leak-check=full --log-file=filename  -s ./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
-	./test_unit
+ifeq ($(OS), Darwin)
+	$(CC) $(GFLAGS) -fsanitize=address $(OBJS_TEST) -o test_unit 
+	./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+else ifeq ($(OS), Linux)
+	$(CC)  $(OBJS_TEST) -o $(NAME)
+	valgrind --leak-check=full --log-file=filename  -s ./test_unit $(NOP) $(TTD) $(TTE) $(TTS)
+endif
 
 clean:
 	rm -f test_unit

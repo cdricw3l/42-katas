@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   petri_network_test.c                               :+:      :+:    :+:   */
+/*   str_to_matrice.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 14:55:10 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 09:30:29 by cw3l             ###   ########.fr       */
+/*   Created: 2025/03/08 08:34:00 by cw3l              #+#    #+#             */
+/*   Updated: 2025/03/08 08:55:10 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/petri_network.h"
-#include "../include/philosophers.h"
+#include "../include/str_to_matrice.h"
 
-
-
-
-
-
-int	main(void)
-{   
-    // int P = 4;
-    // int T = 3;
+int **ft_str_to_matrice(char *str, int x, int y)
+{
+    char **split;
+    int **M;
     
-    // int **M_plus;
-    
-    // int arr2[4][3] = {{0,1,2}, {3,4,5}, {6,7,8}, {9,10,11}};
-    
-    
-    
-	return(0);
+    (void)x;
+    (void)y;
+    if(!str)
+        return(NULL);
+    split = ft_split(str, 32);
+    if(!split)
+        return(NULL);
+    M = malloc(sizeof(int *) * x);
+    if(!M)
+        return(NULL);
+    return(NULL);
 }
