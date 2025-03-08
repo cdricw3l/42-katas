@@ -19,7 +19,7 @@ print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
 
 ## Retourner une liste ou un dictionnaire
 
-def liste_carres(n):
+def liste_carres(n):\
     return [i ** 2 for i in range(n)]
 
 print(liste_carres(5))  # ➝ [0, 1, 4, 9, 16]
