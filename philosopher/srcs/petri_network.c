@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 16:35:02 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/08 16:36:22 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ t_petri_network *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_ou
 {
     t_petri_network *network;
 
-    
     network = ft_init_network(pt, m0);
     if(!network)
         return(NULL);
@@ -205,7 +204,7 @@ int main(void)
 
     int pt[2] = {4,3};
     char *m0 = "1 0 0 1";
-    char *m_out = "1 0 0 0 1 0 0 0 2 0 1 0";
+    char *m_out = "11 0 0 0 1 0 0 0 2 0 1 0";
     char *m_int = "0 0 1 1 0 0 0 2 0 0 0 1";
     
     network = ft_create_petri_net(pt,m0,m_int,m_out);
