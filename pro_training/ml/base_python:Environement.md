@@ -1,5 +1,3 @@
-# creer dossier project
-
 # Dans dossier project : creer un environnement
 
     python -m venv mon_env 
