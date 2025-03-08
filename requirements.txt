@@ -1,0 +1,2 @@
+norminette==3.3.55
+setuptools==70.1.1
