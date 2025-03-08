@@ -24,7 +24,7 @@ print(resultat_add, resultat_sub, resultat_mul)  # ➝ 6 2 8
 
     print(liste_carres(5))  # ➝ [0, 1, 4, 9, 16]
 
-    def infos_personne(nom, age):
+    def infos_personne(nom, age):\
         return {"nom": nom, "age": age}
 
     print(infos_personne("Alice", 25))  # ➝ {'nom': 'Alice', 'age': 25}
