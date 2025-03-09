@@ -22,7 +22,7 @@ def get_parcour_value(arr, str):
     for i in range(len(arr) - 2):
         #print("euclidian : ", get_euclidian_d(str[arr[i]], str[arr[i + 1]]))
         value = value + get_euclidian_d(str[arr[i]], str[arr[i + 1]])
-    print("Valeur du chemin : ", arr, " : ", value)
+    print("Valeur du chemin : ", arr, " : ", round(value,2))
 
 
 def permutation(arr,  idx, str):
