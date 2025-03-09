@@ -19,7 +19,7 @@ $(NAME): $(OBJS)
 	
 run:$(OBJS)
 ifeq ($(OS), Darwin)
-	$(CC) $(GFLAGS) -fsanitize=address -g3 $(OBJS) -o $(NAME)
+	$(CC) $(GFLAGS)  -fsanitize=address -g3 $(OBJS) -o $(NAME)
 	./$(NAME) $(NOP) $(TTD) $(TTE) $(TTS)
 else ifeq ($(OS), Linux)
 	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
