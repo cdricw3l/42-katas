@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:46:05 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 16:40:14 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/09 09:08:03 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_petri_network
 
 } t_petri_network;
 
+void	*ft_memset(void *b, int c, size_t len);
 
 int                 *ft_create_place(int P, int *M_0);
 int                 *ft_create_transitions(int T);
@@ -49,4 +50,5 @@ void                *ft_clean_matrice_mem(int **M, int idx);
 t_petri_network     *ft_init_network(int pt[2], char *m0);
 t_petri_network     *ft_create_petri_net(int pt[2], char *m0, char *m_in, char *m_out);
 
+int                 **matrice_fusion(int **m, int p, int t, int n);
 #endif
