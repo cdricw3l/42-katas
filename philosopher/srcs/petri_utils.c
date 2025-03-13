@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/13 19:07:24 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/13 19:11:15 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
     k = 0;
     off_set_col = 0;
     off_set_row = 0;
-    while (k < n)
+    while (n > 0)
     {
         while(i < p)
         {
             j = 0;    
             while (j < t)
             {
-                new_m[i + off_set_row][j + off_set_col] =  1;//old_m[i][j];
+                new_m[i + off_set_row][j + off_set_col] =  1;   //a decommenter old_m[i][j];
                 j++;
             }
             i++;
@@ -65,6 +65,7 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
         off_set_col += 3;
         off_set_row += 4;
         k++;
+        n--;
     }
 }
 
