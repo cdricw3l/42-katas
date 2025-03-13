@@ -1,7 +1,7 @@
 CC= gcc
 NAME= philo
 DATE=$(shell date | sed 's/ /_/g')
-GFLAGS= -Werror -Wextra -Wall  
+GFLAGS= -Werror -Wextra -Wall  -Wno-unused-parameter
 SRCS= $(wildcard srcs/*.c)
 OBJS= $(SRCS:*.c=.o)
 SRCS_TEST= $(wildcard unit_test/*.c)
@@ -15,7 +15,7 @@ GITCOM=
 OS = $(shell uname)
 
 $(NAME): $(OBJS)
-	$(CC) $(GFLAGS) $(OBJS) -o $(NAM E)
+	$(CC) $(GFLAGS) $(OBJS) -o $(NAME)
 	
 run:$(OBJS)
 ifeq ($(OS), Darwin)
@@ -43,6 +43,8 @@ fclean: clean
 	rm -f $(NAME)
 
 all: fclean $(NAME)
+
+re: all
 
 git: fclean
 	cd ..

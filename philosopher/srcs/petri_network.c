@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/09 10:43:09 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/13 19:06:52 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,8 +211,11 @@ int main(void)
     char *m_int = "0 1 2 3 4 5 6 7 8 9 10 11";
     
     network_1 = ft_create_petri_net(pt,m0,m_int,m_out);
-    if(network_1)
-        ft_print_matrice_network(network_1);
-    matrice_fusion(network_1->M_in,network_1->p,network_1->t,2);
+    if(!network_1)
+        return(1);
+    printf("%d\n", network_1->p);
+    ft_print_matrice(network_1->M_out, network_1->p,network_1->t, 1);
+    printf("\n");
+    matrice_fusion(network_1->M_in,network_1->p,network_1->t,4);
     return(0);
 }

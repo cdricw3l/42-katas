@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:21:26 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/08 13:00:25 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/13 17:53:46 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,4 +140,16 @@ int ft_memcpy(void *src, void *dst, int size)
 	}
 	return(i);
 	
+}
+
+void ft_print_matrice(int **m, int p, int t, int n)
+{
+	int i;
+
+	i = 0;
+	while (i < p * n)
+	{
+		ft_print_arr_int(m[i], n * t);
+		i++;
+	}	
 }
