@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 08:50:09 by cw3l              #+#    #+#             */
-/*   Updated: 2025/03/13 19:11:15 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/13 19:26:08 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
 {
     int i;
     int j;
-    int k;
     int off_set_col;
     int off_set_row;
 
     i = 0;
     j = 0;
-    k = 0;
     off_set_col = 0;
     off_set_row = 0;
     while (n > 0)
@@ -56,7 +54,7 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
             j = 0;    
             while (j < t)
             {
-                new_m[i + off_set_row][j + off_set_col] =  1;   //a decommenter old_m[i][j];
+                new_m[i + off_set_row][j + off_set_col] =  old_m[i][j];   //a decommenter ;
                 j++;
             }
             i++;
@@ -64,7 +62,6 @@ void ft_join_matrice(int **old_m,int **new_m, int p, int t , int n)
         i = 0;
         off_set_col += 3;
         off_set_row += 4;
-        k++;
         n--;
     }
 }
@@ -76,9 +73,6 @@ int **matrice_fusion(int **m, int p, int t, int n)
     new_matrice = ft_create_matrice(p, t, n);
     if(!new_matrice)
         return(NULL);
-    // if(ft_joint_matrice(m, p, t, n) == -1)
-    //     return(ft_clean_matrice_mem(new_matrice, p * n));
-    assert(p == 4 && t == 3);
     ft_join_matrice(m,new_matrice, p, t, n);
     ft_print_matrice(new_matrice,p, t,n);
     free(m);

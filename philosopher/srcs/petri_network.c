@@ -6,7 +6,7 @@
 /*   By: cw3l <cw3l@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:43:15 by cbouhadr          #+#    #+#             */
-/*   Updated: 2025/03/13 19:06:52 by cw3l             ###   ########.fr       */
+/*   Updated: 2025/03/13 19:14:05 by cw3l             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,6 @@ int main(void)
     printf("%d\n", network_1->p);
     ft_print_matrice(network_1->M_out, network_1->p,network_1->t, 1);
     printf("\n");
-    matrice_fusion(network_1->M_in,network_1->p,network_1->t,4);
+    matrice_fusion(network_1->M_out,network_1->p,network_1->t,4);
     return(0);
 }
