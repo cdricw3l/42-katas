@@ -89,3 +89,5 @@ c:
 
 cl:
 	valgrind --log-file=filename --leak-check=full ./push_swap $(ARG) | ./checker_linux $(ARG) | wc -l
+
+	
